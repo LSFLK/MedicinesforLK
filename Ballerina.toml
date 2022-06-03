@@ -1,9 +1,13 @@
 [build-options]
-  observabilityIncluded = true
+observabilityIncluded = true
 
 [package]
-  distribution = "2201.0.2"
-  export = ["admin_api"]
-  name = "admin_api"
-  org = "medicinesl"
+distribution = "2201.0.2"
+export = ["admin_api"]
+name = "admin_api"
+org = "medicinesl"
 
+[[platform.java11.dependency]]
+groupId = "mysql"
+artifactId = "mysql-connector-java"
+version = "8.0.27"
