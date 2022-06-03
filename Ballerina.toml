@@ -1,0 +1,13 @@
+[build-options]
+observabilityIncluded = true
+
+[package]
+distribution = "2201.0.2"
+export = ["redcrcoss"]
+name = "redcrcoss"
+org = "medicinesl"
+
+[[platform.java11.dependency]]
+groupId = "mysql"
+artifactId = "mysql-connector-java"
+version = "8.0.27"
