@@ -1,0 +1,10 @@
+#!/bin/bash
+
+APP_NAME=$(cat Ballerina.toml | grep "name =" | cut -d"=" -f2- | sed 's/\"//g; s/\ //g')
+rm -rf .choreo/build
+mkdir -p .choreo/build
+bal build --sticky --generate-config-schema --observability-included --target-dir .choreo/build || { echo 'Ballerina Build Failed' ; exit 1; }
+mv .choreo/build/bin/config-schema.json .choreo/
+unzip -p .choreo/build/bin/$(echo $APP_NAME).jar syntax-tree/syntax-tree.json > .choreo/syntax-tree.json
+rm -rf .choreo/build
+git add .choreo
