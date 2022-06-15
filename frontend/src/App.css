@@ -27,6 +27,17 @@
   --elixir-navbar-height: 3.75rem;
   --elixir-font-weight-semibold: 500;
   --elixir-hover-overlay: rgba(0,0,0,.05);
+  --elixir-heading-color: inherit;
+  --elixir-font-family-base: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --elixir-heading-font-family: var(--elixir-font-family-base);
+  --elixir-heading-font-weight: var(--elixir-font-weight-bold);
+  --elixir-font-weight-light: 300;
+  --elixir-font-weight-normal: 400;
+  --elixir-font-weight-semibold: 500;
+  --elixir-font-weight-bold: 700;
+  --elixir-heading-line-height: 1.25;
+  --elixir-heading-margin-top: 0;
+  --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
 }
 
 .App {
@@ -93,4 +104,12 @@ a:hover {
   flex: 1 0 auto;
   box-sizing: border-box;
   display: flex;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--elixir-heading-color);
+  font-family: var(--elixir-heading-font-family);
+  font-weight: var(--elixir-heading-font-weight);
+  line-height: var(--elixir-heading-line-height);
+  margin: var(--elixir-heading-margin-top) 0 var(--elixir-heading-margin-bottom) 0;
 }

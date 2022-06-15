@@ -1,8 +1,9 @@
 import React from 'react';
-
-import './App.css';
-import { NavBar } from './components';
-import { Page } from './pages/page';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { NavBar } from './components/navbar/navbar';
+import { Home } from './pages/home/home';
+import "./App.css";
+import { PackageCreation } from './pages/packageCreation/package_creation';
 
 function App() {
   return (
@@ -11,7 +12,12 @@ function App() {
         <NavBar />
       </header>
       <div className='main-wrapper'>
-        <Page />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="creation" element={<PackageCreation />} />
+          </Routes>
+        </BrowserRouter>
       </div>
       <footer className='footer footer--dark'>
         <div>@OpenSource.com</div>
