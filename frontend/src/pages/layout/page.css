@@ -4,6 +4,8 @@
     --elixir-menu-color: var(--elixir-color-gray-700);
     --elixir-menu-hover-color: var(--elixir-color-gray-600);
     --elixir-menu-color-background-hover: var(--elixir-hover-overlay);
+    --elixir-menu-color-background-active: var(--elixir-hover-overlay);
+    --elixir-menu-color-active: var(--elixir-link-color);
 }
 
 .page {
@@ -43,13 +45,14 @@
     flex-direction: column;
     justify-content: space-between;
     font-weight: var(--elixir-font-weight-semibold);
-} 
+}
 
 .thin-scrollbar {
     scrollbar-width: thin;
 }
 
-.menu, .sidebar {
+.menu,
+.sidebar {
     overflow-x: hidden;
 }
 
@@ -76,6 +79,11 @@ li {
     justify-content: space-between;
     line-height: 1.25;
     text-align: start;
+    
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+    background: var(--elixir-menu-color-background-active);
 }
 
 .menu__list-item {
@@ -94,8 +102,18 @@ li {
     box-shadow: var(--elixir-global-shadow-lw);
 }
 
+.menu__link--active, .menu__link--active:hover {
+    color: var(--elixir-menu-color-active);
+}
+
 .menu__list-item:hover {
     background: var(--elixir-menu-color-background-hover);
     border-radius: 0.25rem;
     transition: background var(--elixir-transition-fast) var(--elixir-transition-timing-default);
+}
+
+.docMainContainer {
+    display: flex;
+    width: 100%;
+
 }
