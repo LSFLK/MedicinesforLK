@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/navbar/navbar";
 import { Home } from "./pages/home/home";
 import { NeedsUpload } from "./pages/needsupload/needsupload";
 import "./App.css";
-import { PackageCreation } from "./pages/packageCreation/package_creation";
+import NewAidPackage from "./pages/aidPackage/newAidPackage/NewAidPackage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="creation" element={<PackageCreation />} />
+            <Route path="creation" element={<NewAidPackage />} />
             <Route path="needsupload" element={<NeedsUpload />} />
           </Routes>
         </BrowserRouter>
