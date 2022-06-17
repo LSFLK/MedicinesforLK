@@ -1,6 +1,6 @@
 import React from "react";
 import { PageSelection } from "../../types/pages";
-import { Page } from "../layout/page";
+import { Page } from "layout/page";
 
 import "./home.css";
 
