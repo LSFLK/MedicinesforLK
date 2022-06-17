@@ -1,5 +1,5 @@
 :root {
-  --elixir-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, .1);
+  --elixir-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   --elixir-global-spacing: 1rem;
   --elixir-spacing-vertical: var(--elixir-global-spacing);
   --elixir-spacing-horizontal: var(--elixir-global-spacing);
@@ -22,13 +22,17 @@
   --elixir-transition-fast: 200ms;
   --elixir-color-primary: #09d3ac;
   --elixir-link-color: var(--elixir-color-primary);
-  --elixir-footer-padding-vertical: calc(var(--elixir-spacing-vertical)*2);
-  --elixir-footer-padding-horizontal: calc(var(--elixir-spacing-horizontal)*2);
+  --elixir-footer-padding-vertical: calc(var(--elixir-spacing-vertical) * 2);
+  --elixir-footer-padding-horizontal: calc(
+    var(--elixir-spacing-horizontal) * 2
+  );
   --elixir-navbar-height: 3.75rem;
   --elixir-font-weight-semibold: 500;
-  --elixir-hover-overlay: rgba(0,0,0,.05);
+  --elixir-hover-overlay: rgba(0, 0, 0, 0.05);
   --elixir-heading-color: inherit;
-  --elixir-font-family-base: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --elixir-font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --elixir-heading-font-family: var(--elixir-font-family-base);
   --elixir-heading-font-weight: var(--elixir-font-weight-bold);
   --elixir-font-weight-light: 300;
@@ -84,7 +88,8 @@ a {
 
 a:hover {
   color: var(--elixir-link-color);
-  transition: color var(--elixir-transition-fast) var(--elixir-transition-timing-default);
+  transition: color var(--elixir-transition-fast)
+    var(--elixir-transition-timing-default);
 }
 
 .footer--dark {
@@ -97,7 +102,8 @@ a:hover {
 .footer {
   background-color: var(--elixir-footer-background-color);
   color: var(--elixir-footer-color);
-  padding: var(--elixir-footer-padding-vertical) var(--elixir-footer-padding-horizontal);
+  padding: var(--elixir-footer-padding-vertical)
+    var(--elixir-footer-padding-horizontal);
 }
 
 .main-wrapper {
@@ -106,10 +112,16 @@ a:hover {
   display: flex;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--elixir-heading-color);
   font-family: var(--elixir-heading-font-family);
   font-weight: var(--elixir-heading-font-weight);
   line-height: var(--elixir-heading-line-height);
-  margin: var(--elixir-heading-margin-top) 0 var(--elixir-heading-margin-bottom) 0;
+  margin: var(--elixir-heading-margin-top) 0 var(--elixir-heading-margin-bottom)
+    0;
 }
