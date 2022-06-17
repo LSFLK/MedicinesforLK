@@ -1,0 +1,59 @@
+@import "../../styles/root.css";
+
+.stepper {
+  width: fit-content;
+  max-width: 60%;
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.stepper .divider {
+  transform: rotate(90deg);
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  transition: background-color ease-in-out 150ms;
+}
+
+.step:hover {
+  background-color: var(--elixir-color-gray-100);
+  cursor: pointer;
+}
+
+.step:disabled {
+  cursor: not-allowed;
+}
+
+.step.step-rounded {
+  border-radius: 100vmax;
+}
+
+.step .step-number {
+  width: 1rem;
+  height: 1rem;
+  padding: 0.5rem;
+  border-radius: 100vmax;
+  background-color: var(--elixir-color-gray-400);
+  transition: all ease-in-out 150ms;
+}
+
+.step:disabled .step-number {
+  background-color: var(--elixir-color-gray-400);
+}
+
+.step .step-number.active {
+  background-color: var(--elixir-color-primary);
+  color: var(--elixir-color-white);
+}
+
+.step:disabled .step-number.active {
+  background-color: var(--elixir-color-gray-800);
+  color: var(--elixir-color-white);
+}
