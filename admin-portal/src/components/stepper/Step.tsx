@@ -6,7 +6,7 @@ interface Props {
   rounded?: boolean;
   index?: number;
   isActive?: boolean;
-  onClick?: () => void;
+  onClick?(): void;
   disabled?: boolean;
 }
 
@@ -29,7 +29,11 @@ const Step = ({
   return (
     <button
       onClick={handleClick}
-      className={clsx("step", rounded && "step-rounded")}
+      className={clsx(
+        "step",
+        rounded && "step-rounded",
+        !onClick && "no-hover"
+      )}
       disabled={disabled}
     >
       <span className={clsx("step-number", isActive && "active")}>{index}</span>

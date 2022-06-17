@@ -15,24 +15,19 @@ function Stepper({
   activeStep,
   disabled = false,
 }: Props) {
-  function changeStep(step: number) {
-    if (!onStepChange || step === activeStep) {
-      return undefined;
-    }
-
-    return onStepChange(step);
-  }
-
   return (
     <div className="stepper">
       {Array.from(children).map((child, index) => {
+        const onClick = onStepChange ? () => onStepChange(index) : undefined;
+
         const childProps = {
           index: index + 1,
-          onClick: () => changeStep(index),
           isActive: index === activeStep,
+          onClick,
           disabled,
           ...child.props,
         };
+
         return (
           <>
             {cloneElement(child, childProps)}

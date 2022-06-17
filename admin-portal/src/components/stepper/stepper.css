@@ -27,6 +27,11 @@
   cursor: pointer;
 }
 
+.step.no-hover:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
 .step:disabled {
   cursor: not-allowed;
 }
