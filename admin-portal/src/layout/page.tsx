@@ -1,5 +1,5 @@
 import React from "react";
-import { PageSelection } from "../../types/pages";
+import { PageSelection } from "../types/pages";
 
 import "./page.css";
 
