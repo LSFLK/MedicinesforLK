@@ -84,3 +84,18 @@ h6 {
   margin: var(--elixir-heading-margin-top) 0 var(--elixir-heading-margin-bottom)
     0;
 }
+
+.btn {
+  color: var(--elixir-color-white);
+  background-color: var(--elixir-color-red);
+  padding: .5rem 2rem;
+  border-radius: .5rem;
+  font-weight: var(--elixir-font-weight-bold);
+  font-size: 1.2rem;
+}
+
+.btn.secondary {
+  color: var(--elixir-color-red);
+  background-color: var(--elixir-color-white);
+  border: 1px solid var(--elixir-color-red);
+}

@@ -34,6 +34,7 @@ export function NavBar() {
           </a>
         </div>
         <div className="navbar__items navbar__items--right">
+          <Link to="/about-us" className="navbar__item navbar__link" >About</Link>
           <Link to="/login" className="navbar__item navbar__link" >Login</Link>
         </div>
       </div>

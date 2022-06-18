@@ -4,12 +4,13 @@ import "./styles.css";
 
 interface PageProps {
   children: React.ReactNode;
+  className?: string;
 }
 
 export function Page(props: PageProps) {
-  const { children } = props;
+  const { children, className } = props;
 
   return (
-    <main className="main-container">{children}</main>
+    <main className={`main-container ${className}` }>{children}</main>
   );
 }

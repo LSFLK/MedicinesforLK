@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/navbar";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
+import { AboutUs } from "./pages/about-us";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
+          <Route path="about-us" element={<AboutUs />} />
         </Routes>
         <footer className="footer footer--dark">
           <div>@OpenSource.com</div>
