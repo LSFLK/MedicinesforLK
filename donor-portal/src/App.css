@@ -1,38 +1,101 @@
-.App {
-  text-align: center;
+:root {
+  --elixir-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --elixir-global-spacing: 1rem;
+  --elixir-spacing-vertical: var(--elixir-global-spacing);
+  --elixir-spacing-horizontal: var(--elixir-global-spacing);
+  --elixir-color-white: #fff;
+  --elixir-color-black: #000;
+  --elixir-color-secondary: #ebedf0;
+  --elixir-color-gray-100: #f5f6f7;
+  --elixir-color-gray-200: #ebedf0;
+  --elixir-color-gray-300: #dadde1;
+  --elixir-color-gray-400: #ccd0d5;
+  --elixir-color-gray-500: #bec3c9;
+  --elixir-color-gray-600: #8d949e;
+  --elixir-color-gray-700: #606770;
+  --elixir-color-gray-800: #444950;
+  --elixir-color-gray-900: #1c1e21;
+  --elixir-color-gray-1000: var(--elixir-color-black);
+  --elixir-font-color-base: var(--elixir-color-gray-900);
+  --elixir-link-decoration: none;
+  --elixir-transition-timing-default: cubic-bezier(0.08, 0.52, 0.52, 1);
+  --elixir-transition-fast: 200ms;
+  --elixir-color-red: #C72127;
+  --elixir-color-primary: #09d3ac;
+  --elixir-link-color: var(--elixir-color-primary);
+  --elixir-footer-padding-vertical: calc(var(--elixir-spacing-vertical) * 2);
+  --elixir-footer-padding-horizontal: calc(
+    var(--elixir-spacing-horizontal) * 2
+  );
+  --elixir-navbar-height: 3.75rem;
+  --elixir-font-weight-semibold: 500;
+  --elixir-hover-overlay: rgba(0, 0, 0, 0.05);
+  --elixir-heading-color: inherit;
+  --elixir-font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --elixir-heading-font-family: var(--elixir-font-family-base);
+  --elixir-heading-font-weight: var(--elixir-font-weight-bold);
+  --elixir-font-weight-light: 300;
+  --elixir-font-weight-normal: 400;
+  --elixir-font-weight-semibold: 500;
+  --elixir-font-weight-bold: 700;
+  --elixir-heading-line-height: 1.25;
+  --elixir-heading-margin-top: 0;
+  --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
+  --elixir-mobile-breakpoint: 600px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  cursor: pointer;
+  text-decoration: var(--elixir-link-decoration);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  color: var(--elixir-link-color);
+  transition: color var(--elixir-transition-fast)
+    var(--elixir-transition-timing-default);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.footer--dark {
+  --elixir-footer-background-color: #303846;
+  --elixir-footer-color: var(--elixir-footer-link-color);
+  --elixir-footer-link-color: var(--elixir-color-secondary);
+  --elixir-footer-title-color: var(--elixir-color-white);
 }
 
-.App-link {
-  color: #61dafb;
+.footer {
+  background-color: var(--elixir-footer-background-color);
+  color: var(--elixir-footer-color);
+  padding: var(--elixir-footer-padding-vertical)
+    var(--elixir-footer-padding-horizontal);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--elixir-heading-color);
+  font-family: var(--elixir-heading-font-family);
+  font-weight: var(--elixir-heading-font-weight);
+  line-height: var(--elixir-heading-line-height);
+  margin: var(--elixir-heading-margin-top) 0 var(--elixir-heading-margin-bottom)
+    0;
+}
+
+.btn {
+  color: var(--elixir-color-white);
+  background-color: var(--elixir-color-red);
+  padding: .5rem 2rem;
+  border-radius: .5rem;
+  font-weight: var(--elixir-font-weight-bold);
+  font-size: 1.2rem;
+}
+
+.btn.secondary {
+  color: var(--elixir-color-red);
+  background-color: var(--elixir-color-white);
+  border: 1px solid var(--elixir-color-red);
 }
