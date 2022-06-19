@@ -37,6 +37,9 @@ export function NavBar() {
           <Link to="/about-us" className="navbar__item navbar__link">
             About
           </Link>
+          <Link to="/donate-now" className="navbar__item navbar__link">
+            Donate
+          </Link>
           <Link to="/login" className="navbar__item navbar__link">
             Login
           </Link>
