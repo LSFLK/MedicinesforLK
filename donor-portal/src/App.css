@@ -93,10 +93,11 @@ h6 {
   border-radius: 0.5rem;
   font-weight: var(--elixir-font-weight-bold);
   font-size: 1.2rem;
+  border: 1px solid var(--elixir-color-red);
+  cursor: pointer;
 }
 
 .btn.secondary {
   color: var(--elixir-color-red);
   background-color: var(--elixir-color-white);
-  border: 1px solid var(--elixir-color-red);
 }
