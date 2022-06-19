@@ -43,6 +43,7 @@
   --elixir-heading-line-height: 1.25;
   --elixir-heading-margin-top: 0;
   --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
+  --elixir-content-max-width: 1140px;
   --elixir-mobile-breakpoint: 600px;
 }
 
