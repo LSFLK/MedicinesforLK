@@ -1,0 +1,20 @@
+.packageDetails {
+ padding: 24px;
+}
+
+.packageDetails .descriptionArea {
+    flex-grow: 1;
+}
+
+.descriptionArea .descriptionHeading {
+    font-weight: 600;
+}
+
+.packageDetails .packageName {
+    margin-top: 22px;
+}
+
+.packageDetails .topContainer {
+    display: flex;
+    margin-top: 10px;
+}

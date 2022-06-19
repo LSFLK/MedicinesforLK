@@ -5,6 +5,7 @@ import { Home } from "./pages/home/home";
 import { NeedsUpload } from "./pages/needsupload/needsupload";
 import "./App.css";
 import NewAidPackage from "./pages/aidPackage/newAidPackage/NewAidPackage";
+import {PackageDetails} from "./pages/packageDetails/packageDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="creation" element={<NewAidPackage />} />
             <Route path="needsupload" element={<NeedsUpload />} />
+            <Route path="package/:packageId" element={<PackageDetails />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -1,0 +1,11 @@
+.orderItemsTable {
+    margin-top: 36px;
+}
+
+.orderItemsTable .actions {
+    text-align: center;
+}
+
+.orderItemsTable .deleteButton {
+    margin-left: 6px;
+}
