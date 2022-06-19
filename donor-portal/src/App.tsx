@@ -4,6 +4,7 @@ import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { AboutUs } from "./pages/about-us";
 import { Donors } from "./pages/donors"
+import { Suppliers } from "./pages/suppliers"
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="about-us" element={<AboutUs />} />
           <Route path="donors" element={<Donors />} />
+          <Route path="suppliers" element={<Suppliers />} />
         </Routes>
         <footer className="footer footer--dark">
           <div>@OpenSource.com</div>
