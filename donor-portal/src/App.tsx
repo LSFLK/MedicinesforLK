@@ -4,6 +4,7 @@ import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { AboutUs } from "./pages/about-us";
 import "./App.css";
+import { AidPackageDetailsPage } from "./pages/package";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="about-us" element={<AboutUs />} />
+          <Route path="/package/:id" element={<AidPackageDetailsPage />} />
+
         </Routes>
         <footer className="footer footer--dark">
           <div>@OpenSource.com</div>
