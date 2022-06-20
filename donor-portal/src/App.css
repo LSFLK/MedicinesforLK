@@ -43,6 +43,7 @@
   --elixir-heading-line-height: 1.25;
   --elixir-heading-margin-top: 0;
   --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
+  --elixir-content-max-width: 1140px;
   --elixir-mobile-breakpoint: 600px;
 }
 
@@ -92,10 +93,11 @@ h6 {
   border-radius: 0.5rem;
   font-weight: var(--elixir-font-weight-bold);
   font-size: 1.2rem;
+  border: 1px solid var(--elixir-color-red);
+  cursor: pointer;
 }
 
 .btn.secondary {
   color: var(--elixir-color-red);
   background-color: var(--elixir-color-white);
-  border: 1px solid var(--elixir-color-red);
 }

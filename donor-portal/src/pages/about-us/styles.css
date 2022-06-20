@@ -129,7 +129,7 @@
 }
 
 .full-width-section__inner_container {
-  max-width: 1140px;
+  max-width: var(--elixir-content-max-width);
   display: flex;
   justify-content: flex-end;
   flex: 1;
