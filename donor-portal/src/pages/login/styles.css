@@ -26,7 +26,6 @@
   margin-top: 0;
 }
 
-
 .login-container .already-registered a {
   color: var(--elixir-color-gray-700);
   font-weight: var(--elixir-font-weight-bold);
@@ -43,15 +42,15 @@ form .input-label {
   color: var(--elixir-color-gray-700);
   font-weight: var(--elixir-font-weight-bold);
   text-align: left;
-  margin: .5rem 0 .2rem;
+  margin: 0.5rem 0 0.2rem;
   min-width: 500px;
 }
 
 form input {
   background-color: var(--elixir-color-gray-200);
   border: 1px solid var(--elixir-color-gray-600);
-  border-radius: .2rem;
-  padding: .5rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -60,7 +59,7 @@ form .form-row {
   justify-content: space-between;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   form {
     width: calc(100% - 2rem);
     margin: 0;
