@@ -1,5 +1,5 @@
 import React from "react";
-import { PageSelection } from "../../types/pages";
+import { PageSelection } from "../types/pages";
 
 import "./page.css";
 
@@ -58,7 +58,7 @@ export function Page(props: PageProps) {
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="#" className={needsClassName}>
+                    <a href="/needsupload" className={needsClassName}>
                       Needs
                     </a>
                   </div>
