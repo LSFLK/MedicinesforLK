@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="creation" element={<NewAidPackage />} />
             <Route path="needsupload" element={<NeedsUpload />} />
-            <Route path="package/:packageId" element={<PackageDetails />} />
+            <Route path="packages/:packageId" element={<PackageDetails />} />
           </Routes>
         </BrowserRouter>
       </div>
