@@ -1,0 +1,38 @@
+.donors .header-image {
+  color: var(--elixir-color-red);
+}
+
+.donors .header-image::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  opacity: 30%;
+  position: absolute;
+  z-index: 0;
+}
+
+.donors .header-image h1 {
+  z-index: 1;
+  margin-left: 600px;
+  font-size: 2.5rem;
+}
+
+.donors .text-section {
+  padding-top: 30px;
+  margin: 0 6rem 6rem;
+  line-height: 160%;
+}
+
+.inquiry {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--elixir-color-red);
+      margin: auto;
+      margin-bottom: 50px;
+}
+
+.inquiry a {
+      text-decoration: underline;
+      color: rgb(35, 35, 146);
+}

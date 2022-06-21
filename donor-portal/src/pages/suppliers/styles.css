@@ -1,0 +1,11 @@
+.suppliers .header-image h1 {
+      color: var(--elixir-color-red);
+      margin-left: -700px;
+      font-size: 2.5rem;
+}
+
+.suppliers .text-section {
+      padding-top: 30px;
+      margin: 0 6rem 6rem;
+      line-height: 160%;
+    }
