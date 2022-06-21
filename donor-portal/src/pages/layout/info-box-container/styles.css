@@ -1,0 +1,8 @@
+.info-box-container {
+      margin-left: 6rem;
+      margin-right: 6rem;
+      justify-content: space-between;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: -70px;
+    }
