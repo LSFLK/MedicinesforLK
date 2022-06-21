@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {PageSelection} from "../../types/pages";
 import './packageDetails.css'
 import {Page} from "../../layout/page";
-import OrderItemsTable from "./components/packageItems/orderItemsTable";
+import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import ContributionsChart from "./components/contributionsChart/contributionsChart";
 import {DonorAidPackage} from "../../types/DonarAidPackage";
 import StatusPosts from "./components/statusPosts/statusPosts";
