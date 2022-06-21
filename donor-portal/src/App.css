@@ -51,13 +51,13 @@ a {
   text-decoration: var(--elixir-link-decoration);
 }
 
-a:hover {
+.about-us a:hover {
   color: var(--elixir-link-color);
   transition: color var(--elixir-transition-fast)
     var(--elixir-transition-timing-default);
 }
 
-.footer--dark {
+/* .footer--dark {
   --elixir-footer-background-color: #303846;
   --elixir-footer-color: var(--elixir-footer-link-color);
   --elixir-footer-link-color: var(--elixir-color-secondary);
@@ -69,7 +69,7 @@ a:hover {
   color: var(--elixir-footer-color);
   padding: var(--elixir-footer-padding-vertical)
     var(--elixir-footer-padding-horizontal);
-}
+} */
 
 h1,
 h2,

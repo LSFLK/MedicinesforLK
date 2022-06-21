@@ -82,7 +82,6 @@ export function Donors() {
             
 
       </InfoBoxContainer>
-      
     
     </Page>
   );
