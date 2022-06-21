@@ -1,0 +1,7 @@
+{
+    "clientID": "MDjhOx4rEfttlpIhzRYYLIIaf_Qa",
+    "baseUrl": "https://api.asgardeo.io/t/elixir",
+    "signInRedirectURL": "https://localhost:3000",
+    "signOutRedirectURL": "https://localhost:3000",
+    "scope": ["openid","profile"]
+}

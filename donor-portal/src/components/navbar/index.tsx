@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
+
 import "./styles.css";
 
 export function NavBar() {
+  const { state, signIn, signOut } = useAuthContext();
   return (
     <nav className="navbar navbar--fixed-top">
       <div className="navbar__inner">
@@ -35,7 +38,11 @@ export function NavBar() {
         </div>
         <div className="navbar__items navbar__items--right">
           <Link to="/about-us" className="navbar__item navbar__link" >About</Link>
-          <Link to="/login" className="navbar__item navbar__link" >Login</Link>
+          {
+            state.isAuthenticated
+              ? (<Link to="/login" onClick={() => signOut()} className="navbar__item navbar__link" >Logout</Link>)
+              : (<Link to="/login" onClick={() => signIn()} className="navbar__item navbar__link" >Login</Link>)
+          }
         </div>
       </div>
     </nav>
