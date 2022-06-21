@@ -20,7 +20,7 @@
   --elixir-link-decoration: none;
   --elixir-transition-timing-default: cubic-bezier(0.08, 0.52, 0.52, 1);
   --elixir-transition-fast: 200ms;
-  --elixir-color-red: #C72127;
+  --elixir-color-red: #c72127;
   --elixir-color-primary: #09d3ac;
   --elixir-link-color: var(--elixir-color-primary);
   --elixir-footer-padding-vertical: calc(var(--elixir-spacing-vertical) * 2);
@@ -43,6 +43,7 @@
   --elixir-heading-line-height: 1.25;
   --elixir-heading-margin-top: 0;
   --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
+  --elixir-content-max-width: 1140px;
   --elixir-mobile-breakpoint: 600px;
 }
 
@@ -88,14 +89,15 @@ h6 {
 .btn {
   color: var(--elixir-color-white);
   background-color: var(--elixir-color-red);
-  padding: .5rem 2rem;
-  border-radius: .5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
   font-weight: var(--elixir-font-weight-bold);
   font-size: 1.2rem;
+  border: 1px solid var(--elixir-color-red);
+  cursor: pointer;
 }
 
 .btn.secondary {
   color: var(--elixir-color-red);
   background-color: var(--elixir-color-white);
-  border: 1px solid var(--elixir-color-red);
 }

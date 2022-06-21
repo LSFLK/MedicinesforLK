@@ -7,7 +7,9 @@ import { Login } from "./pages/login";
 import { AboutUs } from "./pages/about-us";
 import { Donors } from "./pages/donors"
 import { Suppliers } from "./pages/suppliers"
+import { DonateNow } from "./pages/donate-now";
 import "./App.css";
+import { AidPackageDetailsPage } from "./pages/package";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="about-us" element={<AboutUs />} />
           <Route path="donors" element={<Donors />} />
           <Route path="suppliers" element={<Suppliers />} />
+          <Route path="/package/:id" element={<AidPackageDetailsPage />} />
+          <Route path="donate-now" element={<DonateNow />} />
         </Routes>
         <FullBleedContainer>
           <Footer/>

@@ -1,0 +1,17 @@
+.simple-progressbar {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  min-width: 300px;
+  background-color: var(--elixir-color-gray-200);
+  border-radius: 10px;
+}
+
+.simple-progressbar-inner {
+  position: absolute;
+  background-color: var(--elixir-color-red);
+  height: 100%;
+  width: 100px;
+  border-radius: 10px;
+  transition: all 1s;
+}

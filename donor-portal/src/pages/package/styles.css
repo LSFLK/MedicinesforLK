@@ -1,0 +1,50 @@
+.aid-package-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.aid-package-title-container {
+  width: 100%;
+}
+.aid-package-title-container h1 {
+  color: var(--elixir-color-red);
+  font-family: var(--elixir-heading-font-family);
+}
+
+.aid-package-header-container {
+  width: 100%;
+  height: calc(300px + 3rem);
+  margin-bottom: 1rem;
+}
+.aid-package-header-image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+}
+.aid-package-description-ribbon {
+  max-width: 100%;
+  height: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-left: 2rem;
+  padding-top: 0.4rem;
+  background-color: var(--elixir-color-red);
+  color: white;
+}
+
+.aid-package-progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--elixir-color-red);
+}
+.aid-pacakge-progress-bar {
+  margin: 1rem;
+}
+.aid-package-donate-btn {
+  cursor: pointer;
+  border: none;
+}

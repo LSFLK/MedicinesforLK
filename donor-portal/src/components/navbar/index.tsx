@@ -12,8 +12,6 @@ export function NavBar() {
        <Link to="" className="nav-link"> Medical Suppliers </Link><span>|</span>
        <Link to="" className="nav-link"> Newsroom </Link>
        <Link to="/login" className="login-btn"> Login </Link>
-
-
      </div>
     </nav>
   );
