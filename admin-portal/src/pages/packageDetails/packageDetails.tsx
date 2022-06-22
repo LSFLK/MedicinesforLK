@@ -12,6 +12,7 @@ import EditStatusPostPrompt from "./components/editStatusPostPrompt/editStatusPo
 import {DonorAidPackageOrderItem} from "../../types/DonorAidPackageOrderItem";
 import EditOrderItemPrompt from "./components/editOrderItemPrompt/editOrderItemPrompts";
 import {Link} from "react-router-dom";
+import PackageStatus from "./components/packageStatus/packageStatus";
 
 const demoPackage: DonorAidPackage = {
   packageId: 0,
@@ -75,6 +76,17 @@ export function PackageDetails() {
     setIsEditOrderItemModalVisible(false);
   }
 
+  const handleStatusChange = async (statusToBeChanged: DonorAidPackage.Status, label: string) => {
+    if (statusToBeChanged === aidPackage?.status) {
+      return;
+    }
+    const confirmed = window.confirm(`Are you sure you want to change the status to ${label}?`);
+    if (confirmed) {
+      // Call the API
+      setAidPackage({...aidPackage!, status: statusToBeChanged}) // Demo
+    }
+  }
+
   const handleNewPost = async (text: string) => {
     // Call the API
   }
@@ -124,7 +136,7 @@ export function PackageDetails() {
             <h1 className="packageName">{aidPackage.name}</h1>
             <div className="topContainer">
               <div className="descriptionArea">
-                <p className="descriptionHeading">Description</p>
+                <p className="heading">Description</p>
                 <p>{aidPackage.description}</p>
                 <div>
                   <OrderItemsTable
@@ -137,6 +149,10 @@ export function PackageDetails() {
               <ContributionsChart totalAmount={aidPackage.totalAmount}
                                   pledgedPercentage={aidPackage.pledgedPercentage}/>
             </div>
+            <PackageStatus
+              currentStatus={aidPackage.status}
+              onStatusChange={handleStatusChange}
+            />
             <StatusPosts
               posts={posts}
               onNewPost={handleNewPost}

@@ -32,7 +32,7 @@ export default function StatusPosts({
 
   return (
     <div className="statusPosts">
-      <p>Post Status</p>
+      <p className="heading">Post Status</p>
       <div className="newPost">
         <textarea
           value={newPostText}

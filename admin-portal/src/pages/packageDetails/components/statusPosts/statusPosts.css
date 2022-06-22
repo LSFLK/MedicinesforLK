@@ -1,3 +1,7 @@
+.statusPosts .heading {
+  font-weight: 600;
+}
+
 .statusPosts .newPost {
   display: flex;
   align-items: center;
