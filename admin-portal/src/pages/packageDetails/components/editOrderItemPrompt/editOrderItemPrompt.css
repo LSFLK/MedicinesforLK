@@ -1,0 +1,17 @@
+.editOrderItemPrompt textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.editOrderItemPrompt .errorText {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.editOrderItemPrompt .input {
+  margin-top: 8px;
+}
+
+.editOrderItemPrompt .saveButton {
+  margin-top: 10px;
+}

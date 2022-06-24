@@ -1,0 +1,42 @@
+.statusPosts .heading {
+  font-weight: 600;
+}
+
+.statusPosts .newPost {
+  display: flex;
+  align-items: center;
+}
+
+.statusPosts .newPost textarea {
+  flex-grow: 1;
+}
+
+.statusPosts .newPost button {
+  margin-left: 10px;
+  width: 100px;
+  height: 36px;
+}
+
+.statusPosts .posts {
+  margin-top: 30px;
+}
+
+.statusPosts .post{
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d0d0d0;
+}
+.statusPosts .post .postDate {
+  font-weight: 500;
+}
+
+.statusPosts .post .content {
+  display: flex;
+}
+
+.statusPosts .post .content .text {
+  flex-grow: 1;
+}
+
+.statusPosts .post .content .actions button {
+  margin-left: 5px;
+}
