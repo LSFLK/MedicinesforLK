@@ -16,12 +16,11 @@ export function AssignSuppliers({
     need: NeedsInfo,
     needAssignments: NeedAssignments
   ) => {
-    return needAssignments[need.needID].reduce(
-      (count: number, current: { supplierID: number; quantity: number }) => {
-        return count + current.quantity;
-      },
-      0
-    );
+    let totalAssignedCount = 0;
+    needAssignments[need.needID].forEach((quantity) => {
+      totalAssignedCount += quantity;
+    });
+    return totalAssignedCount;
   };
 
   const data = useMemo<Array<{ [key: string]: any }>>(
@@ -132,14 +131,20 @@ export function AssignSuppliers({
                     <SupplierNeedAllocationTable
                       supplierQuotes={row.original.supplierQuotes}
                       setAssignmentForSupplier={(
-                        supplierID: string,
-                        assignment: number
+                        supplierID: number,
+                        quantity: number
                       ) => {
+                        const needsID = row.original["needID"];
+                        const currentAssignments = needAssignments[needsID];
+
+                        const updatedAssignments = currentAssignments.set(
+                          supplierID,
+                          quantity
+                        );
+
                         setNeedAssignments({
                           ...needAssignments,
-                          [row.original["needID"]]: [
-                            { supplierID: supplierID, quantity: assignment },
-                          ],
+                          [needsID]: updatedAssignments,
                         });
                       }}
                     />

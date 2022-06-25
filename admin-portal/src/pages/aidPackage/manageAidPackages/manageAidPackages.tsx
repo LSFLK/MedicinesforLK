@@ -19,7 +19,18 @@ export function ManageAidPackages({
         <li>submit edited package details in a POST request</li>
       </ul>
       <h4>Needs Assignments</h4>
-      <code>{JSON.stringify(needAssignments, null, 2)}</code>
+      <code>
+        {Object.keys(needAssignments).map((needID) => (
+          <>
+            <h5>Need ID: {needID}</h5>
+            <span>
+              {"Format: [[supplierID, quanity], ...]"}
+              <br />
+              {JSON.stringify(Array.from(needAssignments[needID].entries()))}
+            </span>
+          </>
+        ))}
+      </code>
       <h4>Needs List</h4>
       <code>{JSON.stringify(medicalNeeds, null, 2)}</code>
     </pre>

@@ -14,7 +14,7 @@ enum STEPS {
 }
 
 export type NeedAssignments = {
-  [needID: string]: Array<{ supplierID: number; quantity: number }>;
+  [needID: string]: Map<number, number>; // Map<supplierId: quantity>
 };
 
 export function AidPackage() {
@@ -28,7 +28,7 @@ export function AidPackage() {
       setNeedAssignments(
         response.medicalNeedInfo.reduce(
           (previousValue: NeedAssignments, currentValue) => {
-            previousValue[currentValue.needID] = [];
+            previousValue[currentValue.needID] = new Map();
             return previousValue;
           },
           {}
