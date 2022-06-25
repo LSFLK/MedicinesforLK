@@ -18,3 +18,22 @@
     display: flex;
     margin-top: 10px;
 }
+
+.packageDetails .contributionsChart .heading {
+    font-weight: 600;
+    text-align: center;
+}
+
+.packageDetails .contributionsChart .chart {
+    display: flex;
+    justify-content: center;
+}
+
+.packageDetails .contributionsChart {
+    width: 500px;
+    border: solid #cccccc;
+    margin-left: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
