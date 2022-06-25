@@ -128,7 +128,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
             },
             {
               "quotationID": 1,
-              "supplierID": 1,
+              "supplierID": 2,
               "brandName": "brandName",
               "availableQuantity": 10000,
               "expiryDate": {
@@ -139,7 +139,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
               "unitPrice": 1000.56,
               "regulatoryInfo": "regulatoryInfo",
               "supplier": {
-                "supplierID": 1,
+                "supplierID": 2,
                 "name": "name",
                 "shortName": "shortName",
                 "email": "email@gmail.com",

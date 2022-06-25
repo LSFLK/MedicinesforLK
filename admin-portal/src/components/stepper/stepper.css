@@ -4,7 +4,7 @@
   width: fit-content;
   max-width: 60%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 1rem;
 }
 
