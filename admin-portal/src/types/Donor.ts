@@ -4,5 +4,5 @@ export interface Donor {
   orgLink: string;
   email: string;
   phone: number;
-  quationID: number;
+  quotationID: number;
 }

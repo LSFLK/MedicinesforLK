@@ -10,7 +10,6 @@ import {Donor} from "../../types/Donor";
 import {PledgeActivity} from "../../types/PledgeActivity";
 import Modal from "../../components/modal/modal";
 import EditActivityPrompt from "./components/editActivityPrompt/editActivityPrompt";
-import {DonorAidPackageStatusPost} from "../../types/DonorAidPackageStatusPost";
 
 const demoPackage: DonorAidPackage = {
   packageId: 0,
@@ -49,7 +48,7 @@ const demoDonor: Donor = {
   orgLink: "",
   orgName: "Suwasetha Charity",
   phone: 0,
-  quationID: 0
+  quotationID: 0
 }
 
 const demoPledge: Pledge = {
@@ -103,6 +102,14 @@ export default function EditPledge() {
 
   }
 
+  const handleStatusChange = (status: Pledge.Status, label: string) => {
+    const confirmed = window.confirm(`Are you sure you want to delete the status to ${label}?`);
+    if (confirmed) {
+      // Call the API
+      setPledge(prevPledge =>({...prevPledge, status}) ); // Demo
+    }
+  }
+
   return (
     <Page selection={PageSelection.HOME}>
       <div>
@@ -118,7 +125,11 @@ export default function EditPledge() {
             onSave={handleEditActivity}
           />
         </Modal>
-        <PledgeSummary donor={donor} pledge={pledge}/>
+        <PledgeSummary
+          donor={donor}
+          pledge={pledge}
+          onStatusChange={handleStatusChange}
+        />
         <PledgeActivities activities={activities}
                           onEditActivityButtonClick={handleEditActivityClick}
                           onDeleteActivityButtonClick={handleDeleteActivity}
