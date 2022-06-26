@@ -133,6 +133,7 @@ export function AssignSuppliers({
                   <td colSpan={visibleColumns.length}>
                     <SupplierNeedAllocationTable
                       supplierQuotes={row.original.supplierQuotes}
+                      assignmentsForSupplier={needAssignments[needsID]}
                       setAssignmentForSupplier={(
                         supplierID: number,
                         quantity: number
@@ -164,10 +165,12 @@ function SupplierNeedAllocationTable({
   supplierQuotes,
   setAssignmentForSupplier,
   remainingNeed,
+  assignmentsForSupplier,
 }: {
   supplierQuotes: SupplierQuote[];
   setAssignmentForSupplier: any;
   remainingNeed: number;
+  assignmentsForSupplier: Map<number, number>;
 }) {
   supplierQuotes = supplierQuotes || [];
 
@@ -175,10 +178,11 @@ function SupplierNeedAllocationTable({
     () =>
       supplierQuotes.map((quote) => ({
         supplier: quote.supplier.name,
+        quantity: assignmentsForSupplier.get(quote.supplierID),
         max: Math.min(remainingNeed, quote.availableQuantity),
         supplierID: quote.supplierID,
       })),
-    [supplierQuotes, remainingNeed]
+    [supplierQuotes, assignmentsForSupplier, remainingNeed]
   );
 
   const columns = useMemo(
@@ -193,7 +197,7 @@ function SupplierNeedAllocationTable({
       },
       {
         Header: "Order Quantity",
-        accessor: "qtyOrder",
+        accessor: "quantity",
         Cell: EditableCell,
       },
     ],
