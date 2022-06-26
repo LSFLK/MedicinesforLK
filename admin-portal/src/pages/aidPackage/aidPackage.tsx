@@ -17,10 +17,15 @@ export type NeedAssignments = {
   [needID: string]: Map<number, number>; // Map<supplierId: quantity>
 };
 
-export function AidPackage() {
+export type AidPackages = {
+  [supplierID: number]: { name: string; details: string };
+};
+
+export function CreateAidPackage() {
   const [currentFormStep, setCurrentFormStep] = useState(0);
   const [needAssignments, setNeedAssignments] = useState<NeedAssignments>({});
   const [medicalNeeds, setMedicalNeeds] = useState<Array<NeedsInfo>>([]);
+  const [aidPackages, setAidPackages] = useState<AidPackages>({});
 
   useEffect(() => {
     fetchMedicalNeeds().then((response) => {
@@ -67,6 +72,8 @@ export function AidPackage() {
               medicalNeeds={medicalNeeds}
               needAssignments={needAssignments}
               setNeedAssignments={setNeedAssignments}
+              aidPackages={aidPackages}
+              setAidPackages={setAidPackages}
             />
             <button onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}>
               Back
