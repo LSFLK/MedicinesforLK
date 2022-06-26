@@ -16,11 +16,10 @@ export function AssignSuppliers({
     need: NeedsInfo,
     needAssignments: NeedAssignments
   ) => {
-    let totalAssignedCount = 0;
-    needAssignments[need.needID].forEach((quantity) => {
-      totalAssignedCount += quantity;
-    });
-    return totalAssignedCount;
+    return Array.from(needAssignments[need.needID].values()).reduce(
+      (currentSum, value) => currentSum + value,
+      0
+    );
   };
 
   const data = useMemo<Array<{ [key: string]: any }>>(
@@ -107,6 +106,10 @@ export function AssignSuppliers({
         {rows.map((row, index) => {
           prepareRow(row);
 
+          const needsID = row.original["needID"];
+          const currentAssignments = needAssignments[needsID];
+          const remainingNeed = row.values["remainingNeed"];
+
           return (
             <>
               <tr {...row.getRowProps()}>
@@ -134,12 +137,9 @@ export function AssignSuppliers({
                         supplierID: number,
                         quantity: number
                       ) => {
-                        const needsID = row.original["needID"];
-                        const currentAssignments = needAssignments[needsID];
-
                         const updatedAssignments = currentAssignments.set(
                           supplierID,
-                          quantity
+                          Number(quantity)
                         );
 
                         setNeedAssignments({
@@ -147,6 +147,7 @@ export function AssignSuppliers({
                           [needsID]: updatedAssignments,
                         });
                       }}
+                      remainingNeed={remainingNeed}
                     />
                   </td>
                 </tr>
@@ -162,9 +163,11 @@ export function AssignSuppliers({
 function SupplierNeedAllocationTable({
   supplierQuotes,
   setAssignmentForSupplier,
+  remainingNeed,
 }: {
   supplierQuotes: SupplierQuote[];
   setAssignmentForSupplier: any;
+  remainingNeed: number;
 }) {
   supplierQuotes = supplierQuotes || [];
 
@@ -172,10 +175,10 @@ function SupplierNeedAllocationTable({
     () =>
       supplierQuotes.map((quote) => ({
         supplier: quote.supplier.name,
-        max: quote.availableQuantity,
+        max: Math.min(remainingNeed, quote.availableQuantity),
         supplierID: quote.supplierID,
       })),
-    [supplierQuotes]
+    [supplierQuotes, remainingNeed]
   );
 
   const columns = useMemo(
