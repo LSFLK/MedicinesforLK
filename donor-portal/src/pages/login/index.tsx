@@ -25,17 +25,21 @@ export function Login() {
           Are you a Registered charity? <a>Register for an account</a>
         </p>
         <form action="">
-          <label className="input-label" htmlFor="email">EMAIL</label>
+          <label className="input-label" htmlFor="email">
+            EMAIL
+          </label>
           <input
             type="text"
             name="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-          <label className="input-label" htmlFor="password">PASSWORD</label>
+          <label className="input-label" htmlFor="password">
+            PASSWORD
+          </label>
           <input type="password" name="password" />
           <div className="form-row">
-            <label >
+            <label>
               <input
                 type="checkbox"
                 name="remember-me"

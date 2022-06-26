@@ -37,14 +37,19 @@ export function NavBar() {
           </a>
         </div>
         <div className="navbar__items navbar__items--right">
-          <Link to="/about-us" className="navbar__item navbar__link" >About</Link>
+          <Link to="/about-us" className="navbar__item navbar__link">
+            About
+          </Link>
+          <Link to="/donate-now" className="navbar__item navbar__link">
+            Donate
+          </Link>
           {
             state.isAuthenticated
               ? (<Link to="/login" onClick={() => signOut()} className="navbar__item navbar__link" >Logout</Link>)
               : (<Link to="/login" onClick={() => signIn()} className="navbar__item navbar__link" >Login</Link>)
           }
-        </div>
-      </div>
-    </nav>
+        </div >
+      </div >
+    </nav >
   );
 }

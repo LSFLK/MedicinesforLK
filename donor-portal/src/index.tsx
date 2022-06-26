@@ -8,7 +8,7 @@ import { AuthProvider } from "@asgardeo/auth-react";
 import { default as authConfig } from "./config.json";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>

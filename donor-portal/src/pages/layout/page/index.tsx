@@ -10,7 +10,5 @@ interface PageProps {
 export function Page(props: PageProps) {
   const { children, className } = props;
 
-  return (
-    <main className={`main-container ${className}` }>{children}</main>
-  );
+  return <main className={`main-container ${className}`}>{children}</main>;
 }
