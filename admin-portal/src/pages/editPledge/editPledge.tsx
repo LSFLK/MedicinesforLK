@@ -10,6 +10,7 @@ import {Donor} from "../../types/Donor";
 import {PledgeActivity} from "../../types/PledgeActivity";
 import Modal from "../../components/modal/modal";
 import EditActivityPrompt from "./components/editActivityPrompt/editActivityPrompt";
+import './editPledge.css';
 
 const demoPackage: DonorAidPackage = {
   packageId: 0,
@@ -112,7 +113,7 @@ export default function EditPledge() {
 
   return (
     <Page selection={PageSelection.HOME}>
-      <div>
+      <div className="editPledge">
         <div>
           <Link to='/'>Aid Packages</Link>&nbsp;&gt;&nbsp;
           <Link to={`/packages/${aidPackage.packageId}`}>{aidPackage.name}</Link>&nbsp;&gt;&nbsp;
