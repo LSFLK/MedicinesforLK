@@ -3,7 +3,6 @@ import {PageSelection} from "../../types/pages";
 import './packageDetails.css'
 import {Page} from "../../layout/page";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
-import ContributionsChart from "./components/contributionsChart/contributionsChart";
 import {DonorAidPackage} from "../../types/DonarAidPackage";
 import StatusPosts from "./components/statusPosts/statusPosts";
 import {DonorAidPackageStatusPost} from "../../types/DonorAidPackageStatusPost";
@@ -11,8 +10,9 @@ import Modal from "../../components/modal/modal";
 import EditStatusPostPrompt from "./components/editStatusPostPrompt/editStatusPostPrompt";
 import {DonorAidPackageOrderItem} from "../../types/DonorAidPackageOrderItem";
 import EditOrderItemPrompt from "./components/editOrderItemPrompt/editOrderItemPrompts";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import PackageStatus from "./components/packageStatus/packageStatus";
+import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 
 const demoPackage: DonorAidPackage = {
   packageId: 0,
@@ -60,6 +60,7 @@ const posts: DonorAidPackageStatusPost[] = [
 ]
 
 export function PackageDetails() {
+  const {packageId} = useParams<{packageId: string}>();
   const [aidPackage, setAidPackage] = useState<DonorAidPackage | null>(demoPackage);
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] = useState(false);
@@ -146,8 +147,15 @@ export function PackageDetails() {
                   />
                 </div>
               </div>
-              <ContributionsChart totalAmount={aidPackage.totalAmount}
-                                  pledgedPercentage={aidPackage.pledgedPercentage}/>
+              <div className="contributionsChart">
+                <p className="heading">Contributions</p>
+                <div className="chart">
+                  <ContributionsChart totalAmount={aidPackage.totalAmount} pledgedPercentage={aidPackage.pledgedPercentage}/>
+                </div>
+                <p>Goal: ${aidPackage.totalAmount}</p>
+                <p>Received: ${(aidPackage.totalAmount * (aidPackage.pledgedPercentage/100)).toFixed()}</p>
+                <Link to={`/packages/${packageId}/pledge-status`}>See pledge status</Link>
+              </div>
             </div>
             <PackageStatus
               currentStatus={aidPackage.status}

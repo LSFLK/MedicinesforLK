@@ -1,0 +1,8 @@
+.pledgeStatus .heading {
+  margin-top: 22px;
+}
+
+.pledgeStatus .contributionsSummary {
+  display: flex;
+  align-items: center;
+}
