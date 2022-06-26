@@ -92,7 +92,7 @@ export default function EditPledge() {
   }
 
   const handleDeleteActivity = (activity: PledgeActivity) => {
-    const confirmed = window.confirm('Are you sure you want to delete this post?');
+    const confirmed = window.confirm('Are you sure you want to delete this activity?');
     if (confirmed) {
       // Call the API
     }
