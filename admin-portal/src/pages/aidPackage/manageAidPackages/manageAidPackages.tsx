@@ -1,38 +1,61 @@
 import { NeedsInfo } from "data/medical-needs.mock.data";
-import { NeedAssignments } from "../aidPackage";
+import { useEffect, useState } from "react";
+import { AidPackages, NeedAssignments } from "../aidPackage";
+import { AidPackageDetailsTable } from "./aidPackageDetailsTable";
+import { AidPackageTable } from "./aidPackagesTable";
 
 export function ManageAidPackages({
   medicalNeeds,
   needAssignments,
   setNeedAssignments,
+  aidPackages,
+  setAidPackages,
 }: {
   medicalNeeds: Array<NeedsInfo>;
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
+  aidPackages: AidPackages;
+  setAidPackages: (aidPackages: AidPackages) => void;
 }) {
+  const [selectedPackage, setSelectedPackage] = useState<number>();
+
+  useEffect(() => {
+    // get the list of suppliers assigned to a need
+    const suppliers = new Set<number>();
+    Object.keys(needAssignments).forEach((needID) => {
+      needAssignments[needID].forEach((qty, supplierID) => {
+        suppliers.add(supplierID);
+      });
+    });
+
+    // create aid package for each supplier (aid package + #)
+    const syncedAidPackages: AidPackages = {};
+    Array.from(suppliers).forEach((supplierID, index) => {
+      if (aidPackages[supplierID]) {
+        syncedAidPackages[supplierID] = aidPackages[supplierID];
+      } else {
+        syncedAidPackages[supplierID] = {
+          name: `AidPackage ${index + 1}`,
+          details: "",
+        };
+      }
+    });
+    setAidPackages(syncedAidPackages);
+  }, [aidPackages, setAidPackages, needAssignments]);
+
   return (
-    <pre>
-      TODO:
-      <ul>
-        <li>create packages based on needAssignments passed in</li>
-        <li>allow editing package details</li>
-        <li>submit edited package details in a POST request</li>
-      </ul>
-      <h4>Needs Assignments</h4>
-      <code>
-        {Object.keys(needAssignments).map((needID) => (
-          <>
-            <h5>Need ID: {needID}</h5>
-            <span>
-              {"Format: [[supplierID, quanity], ...]"}
-              <br />
-              {JSON.stringify(Array.from(needAssignments[needID].entries()))}
-            </span>
-          </>
-        ))}
-      </code>
-      <h4>Needs List</h4>
-      <code>{JSON.stringify(medicalNeeds, null, 2)}</code>
-    </pre>
+    <>
+      <AidPackageTable
+        aidPackages={aidPackages}
+        setSelectedPackage={setSelectedPackage}
+      />
+      {selectedPackage && (
+        <AidPackageDetailsTable
+          selectedPackage={aidPackages[selectedPackage]}
+          supplierID={selectedPackage}
+          needAssignments={needAssignments}
+        />
+      )}
+    </>
   );
 }

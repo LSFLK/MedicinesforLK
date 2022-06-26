@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/navbar/navbar";
 import { Home } from "./pages/home/home";
 import { NeedsUpload } from "./pages/needsupload/needsupload";
-import { AidPackage } from "pages/aidPackage/aidPackage";
+import { CreateAidPackage } from "pages/aidPackage/aidPackage";
 import { PackageDetails } from "./pages/packageDetails/packageDetails";
 import "./App.css";
 
@@ -17,7 +17,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="creation" element={<AidPackage />} />
+            <Route path="creation" element={<CreateAidPackage />} />
             <Route path="needsupload" element={<NeedsUpload />} />
             <Route path="packages/:packageId" element={<PackageDetails />} />
           </Routes>
