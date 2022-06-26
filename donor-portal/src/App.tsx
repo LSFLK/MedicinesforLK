@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { FullBleedContainer } from "./pages/layout/full-bleed-container";
 import { NavBar } from "./components/navbar";
+import { Footer } from "./components/footer"
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { AboutUs } from "./pages/about-us";
@@ -14,7 +16,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <header className="App-header">
-          <NavBar />
+          <NavBar/>
         </header>
         <Switch>
           <Route path="/"> <Home /> </Route>
@@ -25,9 +27,9 @@ function App() {
           <Route path="/package/:id" > <AidPackageDetailsPage /> </Route>
           <Route path="donate-now" > <DonateNow /> </Route>
         </Switch>
-        <footer className="footer footer--dark">
-          <div>@OpenSource.com</div>
-        </footer>
+        <FullBleedContainer>
+          <Footer/>
+        </FullBleedContainer>
       </BrowserRouter>
     </div>
   );
