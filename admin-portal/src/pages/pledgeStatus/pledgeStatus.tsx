@@ -61,7 +61,7 @@ export default function PledgeStatus() {
   const navigate = useNavigate();
 
   const handlePledgeEdit = (pledge: DonorAidPackagePledge) => {
-    navigate(`pledge/${pledge.id}`)
+    navigate(`pledges/${pledge.id}`)
   }
 
   const handlePledgeDelete = (pledge: DonorAidPackagePledge) => {

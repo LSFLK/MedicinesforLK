@@ -46,7 +46,7 @@ const demoPackage: DonorAidPackage = {
 
 }
 
-const posts: DonorAidPackageStatusPost[] = [
+const demoPosts: DonorAidPackageStatusPost[] = [
   {
     postID: 1,
     createdAt: 1655720893,
@@ -62,6 +62,7 @@ const posts: DonorAidPackageStatusPost[] = [
 export function PackageDetails() {
   const {packageId} = useParams<{packageId: string}>();
   const [aidPackage, setAidPackage] = useState<DonorAidPackage | null>(demoPackage);
+  const [posts, setPosts] = useState<DonorAidPackageStatusPost[]>(demoPosts)
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] = useState(false);
   const postToBeEdited = useRef<DonorAidPackageStatusPost | null>(null)

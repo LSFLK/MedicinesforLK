@@ -19,7 +19,7 @@ export function TableRow(props: TableRowProps) {
             <td>
                 <div className="tableButtonLayer">
                     <button onClick={() => navigate(`/packages/${aidPackage.packageID}`)}> Details </button>
-                    <button> Pledges </button>
+                    <button onClick={()=>navigate(`/packages/${aidPackage.packageID}/pledge-status`)}> Pledges </button>
                 </div>
             </td>
         </tr>
