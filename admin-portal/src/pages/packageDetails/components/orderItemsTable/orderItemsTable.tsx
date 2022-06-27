@@ -1,11 +1,11 @@
 import React from "react";
-import {DonorAidPackageOrderItem} from "../../../../types/DonorAidPackageOrderItem";
+import {AidPackageItem} from "../../../../types/DonorAidPackageOrderItem";
 import './orderItemsTable.css';
 
 interface PackageItemsTableProps {
-  items: DonorAidPackageOrderItem[],
-  onEditItemButtonClick: (item: DonorAidPackageOrderItem) => void;
-  onDeleteButtonClick: (item: DonorAidPackageOrderItem) => void;
+  items: AidPackageItem[],
+  onEditItemButtonClick: (item: AidPackageItem) => void;
+  onDeleteButtonClick: (item: AidPackageItem) => void;
 }
 
 export default function OrderItemsTable({items, onEditItemButtonClick, onDeleteButtonClick}: PackageItemsTableProps) {

@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {Page} from "../../layout/page";
 import {PageSelection} from "../../types/pages";
 import {Link} from "react-router-dom";
-import {DonorAidPackage} from "../../types/DonarAidPackage";
+import {AidPackage, DonorAidPackage} from "../../types/AidPackage";
 import PledgeSummary from "./components/pledgeSummary/pledgeSummary";
 import PledgeActivities from "./components/pledgeActivities/pledgeActivities";
 import {Pledge} from "../../types/Pledge";
@@ -38,7 +38,7 @@ const demoPackage: DonorAidPackage = {
     }
   ],
   pledgedPercentage: 40,
-  status: DonorAidPackage.Status.Ordered,
+  status: AidPackage.Status.Ordered,
   supplierID: 0,
   totalAmount: 2500
 }
