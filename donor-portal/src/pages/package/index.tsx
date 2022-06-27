@@ -13,7 +13,7 @@ export function AidPackageDetailsPage() {
   /**
    * id of the package to load.
    */
-  const { id: pkgId } = useParams();
+  const { id: pkgId } = useParams<{id: string}>();
 
   /**
    * holds package data when valid

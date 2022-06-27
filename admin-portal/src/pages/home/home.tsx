@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
 
@@ -7,7 +7,10 @@ import "./home.css";
 interface HomePageProps {}
 
 export function Home(params: HomePageProps) {
-  let navigate = useNavigate();
+  let history = useHistory();
+  let navigate = (path: string) => {
+    history.push(path);
+  }
   return (
     <Page selection={PageSelection.HOME}>
       <div className="pageContent">

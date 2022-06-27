@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {PageSelection} from "../../types/pages";
 import {Page} from "../../layout/page";
 import {DonorAidPackage} from "../../types/DonarAidPackage";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import DonorTable from "./donorTable/donorTable";
 import './pledgeStatus.css'
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
@@ -58,7 +58,10 @@ export default function PledgeStatus() {
   const {packageId} = useParams<{ packageId: string }>()
   const [aidPackage, setAidPackage] = useState<DonorAidPackage>(demoPackage);
   const [pledges, setPledges] = useState<DonorAidPackagePledge[]>(demoPledges);
-  const navigate = useNavigate();
+  const history = useHistory();
+  const navigate = (path: string) => {
+    history.push(path);
+  };
 
   const handlePledgeEdit = (pledge: DonorAidPackagePledge) => {
     navigate(`pledge/${pledge.id}`)

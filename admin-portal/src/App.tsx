@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { NavBar } from "./components";
 import { Home } from "./pages/home/home";
 import { NeedsUpload } from "./pages/needsupload/needsupload";
 import "./App.css";
 import NewAidPackage from "./pages/aidPackage/newAidPackage/NewAidPackage";
-import {PackageDetails} from "./pages/packageDetails/packageDetails";
+import { PackageDetails } from "./pages/packageDetails/packageDetails";
 import PledgeStatus from "./pages/pledgeStatus/pledgeStatus";
 
 function App() {
@@ -16,13 +16,13 @@ function App() {
       </header>
       <div className="main-wrapper">
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="creation" element={<NewAidPackage />} />
-            <Route path="needsupload" element={<NeedsUpload />} />
-            <Route path="packages/:packageId" element={<PackageDetails />} />
-            <Route path="packages/:packageId/pledge-status" element={<PledgeStatus />} />
-          </Routes>
+          <Switch>
+            <Route path="/"> <Home /> </Route>
+            <Route path="creation" > <NewAidPackage /> </Route>
+            <Route path="needsupload"> <NeedsUpload /> </Route>
+            <Route path="packages/:packageId"> <PackageDetails /> </Route>
+            <Route path="packages/:packageId/pledge-status" > <PledgeStatus /> </Route>
+          </Switch>
         </BrowserRouter>
       </div>
       <footer className="footer footer--dark">
