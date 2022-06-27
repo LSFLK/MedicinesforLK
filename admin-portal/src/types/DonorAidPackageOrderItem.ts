@@ -1,5 +1,10 @@
+import {Quotation} from "./Quotation";
+
 export interface AidPackageItem {
-  orderItemId: number;
-  medicalItemName: string;
+  packageItemID: number;
+  packageID: number;
+  quotationID: number;
   quantity: number;
+  totalAmount: number;
+  quotation: Quotation;
 }

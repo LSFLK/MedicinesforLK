@@ -1,11 +1,11 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {PageSelection} from "../../types/pages";
 import './packageDetails.css'
 import {Page} from "../../layout/page";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
-import {AidPackage, DonorAidPackage} from "../../types/AidPackage";
-import StatusPosts from "./components/statusPosts/statusPosts";
-import {DonorAidPackageStatusPost} from "../../types/DonorAidPackageStatusPost";
+import {AidPackage} from "../../types/AidPackage";
+import UpdateComments from "./components/updateComments/updateComments";
+import {AidPackageUpdateComments} from "../../types/AidPackageUpdateComments";
 import Modal from "../../components/modal/modal";
 import EditStatusPostPrompt from "./components/editStatusPostPrompt/editStatusPostPrompt";
 import {AidPackageItem} from "../../types/DonorAidPackageOrderItem";
@@ -13,60 +13,41 @@ import EditOrderItemPrompt from "./components/editOrderItemPrompt/editOrderItemP
 import {Link, useParams} from "react-router-dom";
 import PackageStatus from "./components/packageStatus/packageStatus";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
-
-const demoPackage: DonorAidPackage = {
-  packageId: 0,
-  name: "Aid Package 1",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-  orderItems: [{
-    orderItemId: 1,
-    medicalItemName: "Paracetamol",
-    quantity: 1000,
-  },
-    {
-      orderItemId: 2,
-      medicalItemName: "Methotrexate",
-      quantity: 100,
-    },
-    {
-      orderItemId: 3,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    },
-    {
-      orderItemId: 4,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    }
-  ],
-  pledgedPercentage: 40,
-  status: AidPackage.Status.Ordered,
-  supplierID: 0,
-  totalAmount: 2500
-
-}
-
-const demoPosts: DonorAidPackageStatusPost[] = [
-  {
-    postID: 1,
-    createdAt: 1655720893,
-    text: 'This is still in pending status',
-  },
-  {
-    postID: 2,
-    createdAt: 1651700893,
-    text: 'This is to fulfill an urgent need',
-  }
-]
+import {AidPackageService} from "../../apis/services/AidPackageService";
 
 export function PackageDetails() {
-  const {packageId} = useParams<{packageId: string}>();
-  const [aidPackage, setAidPackage] = useState<DonorAidPackage | null>(demoPackage);
-  const [posts, setPosts] = useState<DonorAidPackageStatusPost[]>(demoPosts)
+  const {packageId} = useParams<{ packageId: string }>();
+  const [aidPackage, setAidPackage] = useState<AidPackage>();
+  const [posts, setPosts] = useState<AidPackageUpdateComments[]>([]);
+  const [totalAmount, setTotalAmount] = useState(0);
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] = useState(false);
-  const postToBeEdited = useRef<DonorAidPackageStatusPost | null>(null)
+  const postToBeEdited = useRef<AidPackageUpdateComments | null>(null)
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null)
+
+  useEffect(() => {
+    fetchAidPackage();
+    fetchUpdateComments();
+  }, [])
+
+  const fetchAidPackage = async () => {
+    const {data} = await AidPackageService.getAidPackage(packageId!);
+    setAidPackage(data);
+    setTotalAmount(calculateTotalAmount(data));
+  }
+
+  const fetchUpdateComments = async () => {
+    const {data} = await AidPackageService.getUpdateComments(packageId!);
+    setPosts(data.aidPackageUpdateComments);
+  }
+
+  const calculateTotalAmount = (aidPackage: AidPackage) => {
+    let total = 0;
+    aidPackage.aidPackageItems.forEach((item) => {
+      total += item.totalAmount;
+    });
+    return total;
+  }
 
   const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
     orderItemToBeEdited.current = item;
@@ -94,27 +75,28 @@ export function PackageDetails() {
   }
 
   const handleOrderItemDelete = (item: AidPackageItem) => {
-    const confirmed = window.confirm(`Are you sure you want to delete item ${item.medicalItemName}?`);
+    const confirmed = window.confirm(`Are you sure you want to delete item ${item.quotation.brandName}?`);
     if (confirmed) {
       // Call the API
     }
   }
 
-  const handleDeletePostButtonClick = (post: DonorAidPackageStatusPost) => {
+  const handleDeletePostButtonClick = (post: AidPackageUpdateComments) => {
     const confirmed = window.confirm('Are you sure you want to delete this post?');
     if (confirmed) {
       // Call the API
     }
   }
 
-  const handleEditPostButtonClick = (post: DonorAidPackageStatusPost) => {
+  const handleEditPostButtonClick = (post: AidPackageUpdateComments) => {
     postToBeEdited.current = post;
     setIsEditPostModalVisible(true);
   }
 
-  const handleStatusPostEdit = async (post: DonorAidPackageStatusPost) => {
+  const handleStatusPostEdit = async (post: AidPackageUpdateComments) => {
     setIsEditPostModalVisible(false);
   }
+
   return (
     <Page selection={PageSelection.HOME}>
       <>
@@ -142,7 +124,7 @@ export function PackageDetails() {
                 <p>{aidPackage.description}</p>
                 <div>
                   <OrderItemsTable
-                    items={aidPackage?.orderItems}
+                    items={aidPackage?.aidPackageItems}
                     onEditItemButtonClick={handleEditOrderItemButtonClick}
                     onDeleteButtonClick={handleOrderItemDelete}
                   />
@@ -151,10 +133,10 @@ export function PackageDetails() {
               <div className="contributionsChart">
                 <p className="heading">Contributions</p>
                 <div className="chart">
-                  <ContributionsChart totalAmount={aidPackage.totalAmount} pledgedPercentage={aidPackage.pledgedPercentage}/>
+                  <ContributionsChart totalAmount={totalAmount} pledgedPercentage={0}/>
                 </div>
-                <p>Goal: ${aidPackage.totalAmount}</p>
-                <p>Received: ${(aidPackage.totalAmount * (aidPackage.pledgedPercentage/100)).toFixed()}</p>
+                <p>Goal: ${totalAmount}</p>
+                <p>Received: ${totalAmount}</p>
                 <Link to={`/packages/${packageId}/pledge-status`}>See pledge status</Link>
               </div>
             </div>
@@ -162,9 +144,9 @@ export function PackageDetails() {
               currentStatus={aidPackage.status}
               onStatusChange={handleStatusChange}
             />
-            <StatusPosts
+            <UpdateComments
               posts={posts}
-              onNewPost={handleNewPost}
+              onNewComment={handleNewPost}
               onEditPostButtonClick={handleEditPostButtonClick}
               onDeletePostButtonClick={handleDeletePostButtonClick}/>
           </div>

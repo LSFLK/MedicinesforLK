@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import './editStatusPostPrompt.css';
-import {DonorAidPackageStatusPost} from "../../../../types/DonorAidPackageStatusPost";
+import {AidPackageUpdateComments} from "../../../../types/AidPackageUpdateComments";
 
 interface EditStatusPostPromptProps {
-  post: DonorAidPackageStatusPost;
-  onSave: (post: DonorAidPackageStatusPost) => Promise<void>;
+  post: AidPackageUpdateComments;
+  onSave: (post: AidPackageUpdateComments) => Promise<void>;
 }
 
 export default function EditStatusPostPrompt({post, onSave}: EditStatusPostPromptProps) {
@@ -14,7 +14,7 @@ export default function EditStatusPostPrompt({post, onSave}: EditStatusPostPromp
 
   useEffect(() => {
     if(post){
-      setStatusText(post.text)
+      setStatusText(post.updateComment)
     }
     setErrorText('');
   }, [post])
@@ -23,9 +23,9 @@ export default function EditStatusPostPrompt({post, onSave}: EditStatusPostPromp
     setIsSaving(true);
     setErrorText('');
     try {
-      const editedPost: DonorAidPackageStatusPost = {
+      const editedPost: AidPackageUpdateComments = {
         ...post,
-        text: statusText
+        updateComment: statusText
       }
       await onSave(editedPost);
     } catch (e) {

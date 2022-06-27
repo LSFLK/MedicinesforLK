@@ -1,42 +1,37 @@
 import React, {useState} from "react";
 import {PageSelection} from "../../types/pages";
 import {Page} from "../../layout/page";
-import {AidPackage, DonorAidPackage} from "../../types/AidPackage";
+import {AidPackage} from "../../types/AidPackage";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import DonorTable from "./donorTable/donorTable";
 import './pledgeStatus.css'
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 import {DonorAidPackagePledge} from "../../types/DonarAidPackagePledge";
 
-const demoPackage: DonorAidPackage = {
-  packageId: 0,
+const demoPackage: AidPackage = {
+  packageID: 0,
   name: "Aid Package 1",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-  orderItems: [{
-    orderItemId: 1,
-    medicalItemName: "Paracetamol",
+  aidPackageItems: [{
+    packageItemID: 1,
     quantity: 1000,
+    totalAmount: 1000,
+    quotationID: 5,
+    quotation: {
+      quotationID: 0,
+      availableQuantity: 0,
+      brandName: "Paracetamol",
+      itemID: 0,
+      expiryDate: 0,
+      period: 0,
+      regulatoryInfo: "",
+      supplierID: 0,
+      unitPrice: 100,
+    },
+    packageID: 0
   },
-    {
-      orderItemId: 2,
-      medicalItemName: "Methotrexate",
-      quantity: 100,
-    },
-    {
-      orderItemId: 3,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    },
-    {
-      orderItemId: 4,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    }
   ],
-  pledgedPercentage: 40,
   status: AidPackage.Status.Ordered,
-  supplierID: 0,
-  totalAmount: 2500
 }
 
 const demoPledges: DonorAidPackagePledge[] = [
@@ -56,7 +51,7 @@ const demoPledges: DonorAidPackagePledge[] = [
 
 export default function PledgeStatus() {
   const {packageId} = useParams<{ packageId: string }>()
-  const [aidPackage, setAidPackage] = useState<DonorAidPackage>(demoPackage);
+  const [aidPackage, setAidPackage] = useState<AidPackage>(demoPackage);
   const [pledges, setPledges] = useState<DonorAidPackagePledge[]>(demoPledges);
   const navigate = useNavigate();
 
@@ -84,8 +79,8 @@ export default function PledgeStatus() {
             <ContributionsChart totalAmount={1000} pledgedPercentage={10}/>
           </div>
           <div>
-            <p>Goal: ${aidPackage.totalAmount}</p>
-            <p>Received: ${(aidPackage.totalAmount * aidPackage.pledgedPercentage / 100).toFixed()}</p>
+            <p>Goal: &1000</p>
+            <p>Received: $100</p>
             <p>Status: Goal Pending</p>
           </div>
         </div>

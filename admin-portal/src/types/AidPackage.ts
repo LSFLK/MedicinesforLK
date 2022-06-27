@@ -8,17 +8,6 @@ export interface AidPackage {
   aidPackageItems: AidPackageItem[];
 }
 
-export interface DonorAidPackage {
-  packageId: number;
-  description: string;
-  name: string;
-  status:AidPackage.Status;
-  supplierID: number;
-  orderItems: AidPackageItem[];
-  totalAmount: number;
-  pledgedPercentage: number;
-}
-
 export namespace AidPackage {
   export enum Status {
     Draft="Draft",

@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import {Page} from "../../layout/page";
 import {PageSelection} from "../../types/pages";
 import {Link} from "react-router-dom";
-import {AidPackage, DonorAidPackage} from "../../types/AidPackage";
+import {AidPackage} from "../../types/AidPackage";
 import PledgeSummary from "./components/pledgeSummary/pledgeSummary";
 import PledgeActivities from "./components/pledgeActivities/pledgeActivities";
 import {Pledge} from "../../types/Pledge";
@@ -12,35 +12,30 @@ import Modal from "../../components/modal/modal";
 import EditActivityPrompt from "./components/editActivityPrompt/editActivityPrompt";
 import './editPledge.css';
 
-const demoPackage: DonorAidPackage = {
-  packageId: 0,
+const demoPackage: AidPackage = {
+  packageID: 0,
   name: "Aid Package 1",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-  orderItems: [{
-    orderItemId: 1,
-    medicalItemName: "Paracetamol",
+  aidPackageItems: [{
+    packageItemID: 1,
     quantity: 1000,
+    totalAmount: 1000,
+    quotationID: 5,
+    quotation: {
+      quotationID: 0,
+      availableQuantity: 0,
+      brandName: "Paracetamol",
+      itemID: 0,
+      expiryDate: 0,
+      period: 0,
+      regulatoryInfo: "",
+      supplierID: 0,
+      unitPrice: 100,
+    },
+    packageID: 0
   },
-    {
-      orderItemId: 2,
-      medicalItemName: "Methotrexate",
-      quantity: 100,
-    },
-    {
-      orderItemId: 3,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    },
-    {
-      orderItemId: 4,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    }
   ],
-  pledgedPercentage: 40,
   status: AidPackage.Status.Ordered,
-  supplierID: 0,
-  totalAmount: 2500
 }
 
 const demoDonor: Donor = {
@@ -74,7 +69,7 @@ const demoActivities: PledgeActivity[] = [
 ]
 
 export default function EditPledge() {
-  const [aidPackage, setAidPackage] = useState<DonorAidPackage>(demoPackage);
+  const [aidPackage, setAidPackage] = useState<AidPackage>(demoPackage);
   const [pledge, setPledge] = useState<Pledge>(demoPledge);
   const [donor, setDonor] = useState<Donor>(demoDonor);
   const [activities, setActivities] = useState<PledgeActivity[]>(demoActivities);
@@ -116,8 +111,8 @@ export default function EditPledge() {
       <div className="editPledge">
         <div>
           <Link to='/'>Aid Packages</Link>&nbsp;&gt;&nbsp;
-          <Link to={`/packages/${aidPackage.packageId}`}>{aidPackage.name}</Link>&nbsp;&gt;&nbsp;
-          <Link to={`/packages/${aidPackage.packageId}/pledge-status`}>Pledge Status</Link>&nbsp;&gt;&nbsp;
+          <Link to={`/packages/${aidPackage.packageID}`}>{aidPackage.name}</Link>&nbsp;&gt;&nbsp;
+          <Link to={`/packages/${aidPackage.packageID}/pledge-status`}>Pledge Status</Link>&nbsp;&gt;&nbsp;
           {donor?.orgName}
         </div>
         <Modal show={isEditActivityModalVisible} onClose={() => setIsEditActivityModalVisible(false)}>

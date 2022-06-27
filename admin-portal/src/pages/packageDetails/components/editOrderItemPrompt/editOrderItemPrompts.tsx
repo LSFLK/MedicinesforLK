@@ -9,14 +9,12 @@ interface EditOrderItemPromptProps {
 
 export default function EditOrderItemPrompt({orderItem, onSave}: EditOrderItemPromptProps) {
   const [isSaving, setIsSaving] = useState(false);
-  const [name, setName] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [errorText, setErrorText] = useState('')
 
 
   useEffect(() => {
     if (orderItem) {
-      setName(orderItem.medicalItemName);
       setQuantity(orderItem.quantity);
     }
     setErrorText('');
@@ -28,7 +26,6 @@ export default function EditOrderItemPrompt({orderItem, onSave}: EditOrderItemPr
     try {
       const editedItem: AidPackageItem = {
         ...orderItem,
-        medicalItemName: name,
         quantity
       }
       await onSave(editedItem);
@@ -41,12 +38,6 @@ export default function EditOrderItemPrompt({orderItem, onSave}: EditOrderItemPr
   return (
     <div className="editOrderItemPrompt">
       <h4>Edit Order Item</h4>
-      <div className="input">
-        <label htmlFor="orderItemName">Item Name</label>
-        <div>
-          <input id="orderItemName" value={name}/>
-        </div>
-      </div>
       <div className="input">
         <label htmlFor="orderItemQty">Quantity</label>
         <div>
