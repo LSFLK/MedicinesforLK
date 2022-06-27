@@ -14,7 +14,7 @@ export function Home() {
     const fetchData = async () => {
       const response = await AidPackageService.getAidPackages();
       if (response.data) {
-        setAidPackages(response.data);
+        setAidPackages({aidPackages: response.data});
       }
     }
 

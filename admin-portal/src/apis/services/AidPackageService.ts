@@ -1,11 +1,10 @@
 import http from "../httpCommon";
-import {AidPackages} from "../../types/AidPackages";
 import {AidPackage} from "../../types/AidPackage";
 import {AidPackageUpdateComments} from "../../types/AidPackageUpdateComments";
 
 export class AidPackageService {
   static getAidPackages() {
-    return http.get<AidPackages>("AidPackages");
+    return http.get<AidPackage[]>("AidPackages");
   }
 
   static getAidPackage(packageID: number | string) {
@@ -13,7 +12,7 @@ export class AidPackageService {
   }
 
   static getUpdateComments(packageID: number | string) {
-    return http.get<{ aidPackageUpdateComments: AidPackageUpdateComments[] }>(
+    return http.get<AidPackageUpdateComments[]>(
       `AidPackage/UpdateComments?packageID=${packageID}`
     )
   }

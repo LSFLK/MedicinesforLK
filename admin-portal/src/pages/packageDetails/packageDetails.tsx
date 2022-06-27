@@ -38,7 +38,7 @@ export function PackageDetails() {
 
   const fetchUpdateComments = async () => {
     const {data} = await AidPackageService.getUpdateComments(packageId!);
-    setPosts(data.aidPackageUpdateComments);
+    setPosts(data);
   }
 
   const calculateTotalAmount = (aidPackage: AidPackage) => {
