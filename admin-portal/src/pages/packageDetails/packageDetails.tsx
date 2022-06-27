@@ -67,7 +67,7 @@ export function PackageDetails() {
     const confirmed = window.confirm(`Are you sure you want to change the status to ${label}?`);
     if (confirmed) {
       const {data} = await AidPackageService.updateAidPackage({...aidPackage!, status:statusToBeChanged})
-      setAidPackage(data) // Demo
+      setAidPackage(data);
     }
   }
 
