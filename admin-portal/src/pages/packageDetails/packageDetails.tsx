@@ -5,9 +5,9 @@ import {Page} from "../../layout/page";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import {AidPackage} from "../../types/AidPackage";
 import UpdateComments from "./components/updateComments/updateComments";
-import {AidPackageUpdateComments} from "../../types/AidPackageUpdateComments";
+import {AidPackageUpdateComment} from "../../types/AidPackageUpdateComment";
 import Modal from "../../components/modal/modal";
-import EditStatusPostPrompt from "./components/editStatusPostPrompt/editStatusPostPrompt";
+import EditUpdateCommentPrompt from "./components/editUpdateCommentPrompt/editUpdateCommentPrompt";
 import {AidPackageItem} from "../../types/DonorAidPackageOrderItem";
 import EditOrderItemPrompt from "./components/editOrderItemPrompt/editOrderItemPrompts";
 import {Link, useParams} from "react-router-dom";
@@ -18,11 +18,11 @@ import {AidPackageService} from "../../apis/services/AidPackageService";
 export function PackageDetails() {
   const {packageId} = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
-  const [posts, setPosts] = useState<AidPackageUpdateComments[]>([]);
+  const [posts, setPosts] = useState<AidPackageUpdateComment[]>([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] = useState(false);
-  const postToBeEdited = useRef<AidPackageUpdateComments | null>(null)
+  const postToBeEdited = useRef<AidPackageUpdateComment | null>(null)
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null)
 
   useEffect(() => {
@@ -55,7 +55,8 @@ export function PackageDetails() {
   }
 
   const handleOrderItemEdit = async (editedOrderItem: AidPackageItem) => {
-    // Call the API
+    await AidPackageService.updateAidPackageItem(packageId!, editedOrderItem);
+    await fetchAidPackage();
     setIsEditOrderItemModalVisible(false);
   }
 
@@ -65,8 +66,8 @@ export function PackageDetails() {
     }
     const confirmed = window.confirm(`Are you sure you want to change the status to ${label}?`);
     if (confirmed) {
-      // Call the API
-      setAidPackage({...aidPackage!, status: statusToBeChanged}) // Demo
+      const {data} = await AidPackageService.updateAidPackage({...aidPackage!, status:statusToBeChanged})
+      setAidPackage(data) // Demo
     }
   }
 
@@ -81,19 +82,21 @@ export function PackageDetails() {
     }
   }
 
-  const handleDeletePostButtonClick = (post: AidPackageUpdateComments) => {
+  const handleDeletePostButtonClick = (post: AidPackageUpdateComment) => {
     const confirmed = window.confirm('Are you sure you want to delete this post?');
     if (confirmed) {
       // Call the API
     }
   }
 
-  const handleEditPostButtonClick = (post: AidPackageUpdateComments) => {
+  const handleEditPostButtonClick = (post: AidPackageUpdateComment) => {
     postToBeEdited.current = post;
     setIsEditPostModalVisible(true);
   }
 
-  const handleStatusPostEdit = async (post: AidPackageUpdateComments) => {
+  const handleStatusPostEdit = async (comment: AidPackageUpdateComment) => {
+    await AidPackageService.updateUpdateComment(packageId!, comment);
+    await fetchUpdateComments();
     setIsEditPostModalVisible(false);
   }
 
@@ -112,7 +115,10 @@ export function PackageDetails() {
               />
             </Modal>
             <Modal show={isEditPostModalVisible} onClose={() => setIsEditPostModalVisible(false)}>
-              <EditStatusPostPrompt post={postToBeEdited.current!} onSave={handleStatusPostEdit}/>
+              <EditUpdateCommentPrompt
+                comment={postToBeEdited.current!}
+                onSave={handleStatusPostEdit}
+              />
             </Modal>
             <div>
               <Link to='/'>Aid Packages</Link> &gt; {aidPackage.name}

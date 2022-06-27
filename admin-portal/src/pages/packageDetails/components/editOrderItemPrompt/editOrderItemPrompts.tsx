@@ -41,7 +41,12 @@ export default function EditOrderItemPrompt({orderItem, onSave}: EditOrderItemPr
       <div className="input">
         <label htmlFor="orderItemQty">Quantity</label>
         <div>
-          <input id="orderItemQty" value={quantity} type="number"/>
+          <input
+            id="orderItemQty"
+            value={quantity}
+            type="number"
+            onChange={(event) => setQuantity(parseInt(event.currentTarget.value))}
+          />
         </div>
       </div>
       {errorText && (

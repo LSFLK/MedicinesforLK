@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import './updatecomments.css';
-import {AidPackageUpdateComments} from "../../../../types/AidPackageUpdateComments";
+import {AidPackageUpdateComment} from "../../../../types/AidPackageUpdateComment";
 
 
 interface UpdateCommentsProps {
-  posts: AidPackageUpdateComments[];
+  posts: AidPackageUpdateComment[];
   onNewComment: (text: string) => Promise<void>;
-  onEditPostButtonClick: (post: AidPackageUpdateComments) => void;
-  onDeletePostButtonClick: (post: AidPackageUpdateComments) => void;
+  onEditPostButtonClick: (post: AidPackageUpdateComment) => void;
+  onDeletePostButtonClick: (post: AidPackageUpdateComment) => void;
 }
 
 export default function UpdateComments({

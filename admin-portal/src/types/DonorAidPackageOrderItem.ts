@@ -6,5 +6,6 @@ export interface AidPackageItem {
   quotationID: number;
   quantity: number;
   totalAmount: number;
+  needID: number;
   quotation: Quotation;
 }
