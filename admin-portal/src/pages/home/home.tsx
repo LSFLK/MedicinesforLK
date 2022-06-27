@@ -37,7 +37,7 @@ export function Home(params: HomePageProps) {
               <td>
                 <div className="tableButtonLayer">
                   <button onClick={()=>navigate('/packages/1')}> Details </button>
-                  <button> Pledges </button>
+                  <button onClick={()=>navigate('/packages/1/pledge-status')}> Pledges </button>
                 </div>
               </td>
             </tr>
@@ -49,7 +49,7 @@ export function Home(params: HomePageProps) {
               <td>
                 <div className="tableButtonLayer">
                   <button onClick={()=>navigate('/packages/2')}> Details </button>
-                  <button> Pledges </button>
+                  <button onClick={()=>navigate('/packages/2/pledge-status')}> Pledges </button>
                 </div>
               </td>
             </tr>
