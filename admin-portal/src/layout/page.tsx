@@ -44,7 +44,7 @@ export function Page(props: PageProps) {
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="creation" className={packagesClassName}>
+                    <a href="/creation" className={packagesClassName}>
                       Aid Packages
                     </a>
                   </div>

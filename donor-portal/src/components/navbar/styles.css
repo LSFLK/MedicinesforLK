@@ -10,7 +10,7 @@
   --elixir-navbar-item-padding-horizontal: 0.75rem;
 }
 
-.navbar {
+/* .navbar {
   display: flex;
   box-sizing: border-box;
   background-color: var(--elixir-navbar-background-color);
@@ -106,4 +106,63 @@
   margin-left: 0.3rem;
   position: relative;
   top: 1px;
+} */
+
+
+.navbar {
+  height: 70px;
+  background-color: var(--elixir-color-red);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  background-image: url("../../../public/assets/images/logo.png") ;
+  height: 70px;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 170px 70px;
+  background-position: center;
+  width: 250px;
+  cursor: pointer;
+}
+
+.nav-links {
+  background-color: var(--elixir-color-red);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-right: 70px;
+}
+
+.nav-link {
+  margin: 18px;
+  color: white;
+  font-size: 14px;
+}
+.nav-link:hover {
+  color: var(--elixir-color-gray-400);
+}
+.login-btn {
+  background-color: #f7f7f7;
+  background-image: linear-gradient(#f7f7f7, #e7e7e7);
+  border-radius: 50%;
+  box-shadow: 3px 3px 1px rgb(151, 151, 151), inset 0 2px 3px #fff;
+  color: var(--elixir-color-red);
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  top: 10px;
+  width: 75px;
+  height: 75px;
+  z-index: 1;
+  text-align: center;
+  line-height: 70px;
+}
+
+.login-btn:hover {
+  color: red;
 }

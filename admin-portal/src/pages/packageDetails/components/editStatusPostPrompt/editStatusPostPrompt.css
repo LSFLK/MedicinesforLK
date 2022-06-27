@@ -1,0 +1,9 @@
+.editStatusPostPrompt textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.editStatusPostPrompt .errorText {
+  margin-bottom: 10px;
+  color: red;
+}

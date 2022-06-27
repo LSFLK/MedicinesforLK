@@ -1,0 +1,9 @@
+.editActivityPrompt textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.editActivityPrompt .errorText {
+  margin-bottom: 10px;
+  color: red;
+}

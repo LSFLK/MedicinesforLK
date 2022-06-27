@@ -1,12 +1,13 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
 
 import "./home.css";
-
 interface HomePageProps {}
 
 export function Home(params: HomePageProps) {
+  let navigate = useNavigate();
   return (
     <Page selection={PageSelection.HOME}>
       <div className="pageContent">
@@ -35,8 +36,8 @@ export function Home(params: HomePageProps) {
               <td>Brolin Pharmaceutical Suppliers</td>
               <td>
                 <div className="tableButtonLayer">
-                  <button> Details </button>
-                  <button> Pledges </button>
+                  <button onClick={()=>navigate('/packages/1')}> Details </button>
+                  <button onClick={()=>navigate('/packages/1/pledge-status')}> Pledges </button>
                 </div>
               </td>
             </tr>
@@ -47,8 +48,8 @@ export function Home(params: HomePageProps) {
               <td>Maclin Pharmaceutical Suppliers</td>
               <td>
                 <div className="tableButtonLayer">
-                  <button> Details </button>
-                  <button> Pledges </button>
+                  <button onClick={()=>navigate('/packages/2')}> Details </button>
+                  <button onClick={()=>navigate('/packages/2/pledge-status')}> Pledges </button>
                 </div>
               </td>
             </tr>
