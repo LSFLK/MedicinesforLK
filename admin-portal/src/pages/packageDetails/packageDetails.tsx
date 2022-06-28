@@ -3,16 +3,16 @@ import {PageSelection} from "../../types/pages";
 import './packageDetails.css'
 import {Page} from "../../layout/page";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
-import ContributionsChart from "./components/contributionsChart/contributionsChart";
-import {DonorAidPackage} from "../../types/DonarAidPackage";
+import {AidPackage, DonorAidPackage} from "../../types/AidPackage";
 import StatusPosts from "./components/statusPosts/statusPosts";
 import {DonorAidPackageStatusPost} from "../../types/DonorAidPackageStatusPost";
 import Modal from "../../components/modal/modal";
 import EditStatusPostPrompt from "./components/editStatusPostPrompt/editStatusPostPrompt";
-import {DonorAidPackageOrderItem} from "../../types/DonorAidPackageOrderItem";
+import {AidPackageItem} from "../../types/DonorAidPackageOrderItem";
 import EditOrderItemPrompt from "./components/editOrderItemPrompt/editOrderItemPrompts";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import PackageStatus from "./components/packageStatus/packageStatus";
+import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 
 const demoPackage: DonorAidPackage = {
   packageId: 0,
@@ -40,13 +40,13 @@ const demoPackage: DonorAidPackage = {
     }
   ],
   pledgedPercentage: 40,
-  status: DonorAidPackage.Status.Ordered,
+  status: AidPackage.Status.Ordered,
   supplierID: 0,
   totalAmount: 2500
 
 }
 
-const posts: DonorAidPackageStatusPost[] = [
+const demoPosts: DonorAidPackageStatusPost[] = [
   {
     postID: 1,
     createdAt: 1655720893,
@@ -60,23 +60,25 @@ const posts: DonorAidPackageStatusPost[] = [
 ]
 
 export function PackageDetails() {
+  const {packageId} = useParams<{packageId: string}>();
   const [aidPackage, setAidPackage] = useState<DonorAidPackage | null>(demoPackage);
+  const [posts, setPosts] = useState<DonorAidPackageStatusPost[]>(demoPosts)
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] = useState(false);
   const postToBeEdited = useRef<DonorAidPackageStatusPost | null>(null)
-  const orderItemToBeEdited = useRef<DonorAidPackageOrderItem | null>(null)
+  const orderItemToBeEdited = useRef<AidPackageItem | null>(null)
 
-  const handleEditOrderItemButtonClick = (item: DonorAidPackageOrderItem) => {
+  const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
     orderItemToBeEdited.current = item;
     setIsEditOrderItemModalVisible(true);
   }
 
-  const handleOrderItemEdit = async (editedOrderItem: DonorAidPackageOrderItem) => {
+  const handleOrderItemEdit = async (editedOrderItem: AidPackageItem) => {
     // Call the API
     setIsEditOrderItemModalVisible(false);
   }
 
-  const handleStatusChange = async (statusToBeChanged: DonorAidPackage.Status, label: string) => {
+  const handleStatusChange = async (statusToBeChanged: AidPackage.Status, label: string) => {
     if (statusToBeChanged === aidPackage?.status) {
       return;
     }
@@ -91,7 +93,7 @@ export function PackageDetails() {
     // Call the API
   }
 
-  const handleOrderItemDelete = (item: DonorAidPackageOrderItem) => {
+  const handleOrderItemDelete = (item: AidPackageItem) => {
     const confirmed = window.confirm(`Are you sure you want to delete item ${item.medicalItemName}?`);
     if (confirmed) {
       // Call the API
@@ -146,8 +148,15 @@ export function PackageDetails() {
                   />
                 </div>
               </div>
-              <ContributionsChart totalAmount={aidPackage.totalAmount}
-                                  pledgedPercentage={aidPackage.pledgedPercentage}/>
+              <div className="contributionsChart">
+                <p className="heading">Contributions</p>
+                <div className="chart">
+                  <ContributionsChart totalAmount={aidPackage.totalAmount} pledgedPercentage={aidPackage.pledgedPercentage}/>
+                </div>
+                <p>Goal: ${aidPackage.totalAmount}</p>
+                <p>Received: ${(aidPackage.totalAmount * (aidPackage.pledgedPercentage/100)).toFixed()}</p>
+                <Link to={`/packages/${packageId}/pledge-status`}>See pledge status</Link>
+              </div>
             </div>
             <PackageStatus
               currentStatus={aidPackage.status}

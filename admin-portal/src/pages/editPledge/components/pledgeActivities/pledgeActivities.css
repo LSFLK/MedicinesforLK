@@ -1,0 +1,43 @@
+.pledgeActivity .heading {
+    font-weight: 600;
+}
+
+.pledgeActivity .newActivity {
+    display: flex;
+    align-items: center;
+ }
+
+.pledgeActivity .newActivity textarea {
+    flex-grow: 1;
+}
+
+.pledgeActivity .newActivity button {
+    margin-left: 10px;
+    width: 100px;
+    height: 36px;
+}
+
+.pledgeActivity .activities {
+    margin-top: 30px;
+}
+
+.pledgeActivity .activity {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.pledgeActivity .activity .activityDate {
+    font-weight: 500;
+}
+
+.pledgeActivity .activity .content {
+    display: flex;
+}
+
+.pledgeActivity .activity .content .text {
+    flex-grow: 1;
+}
+
+.pledgeActivity .activity .content .actions button {
+    margin-left: 5px;
+}
