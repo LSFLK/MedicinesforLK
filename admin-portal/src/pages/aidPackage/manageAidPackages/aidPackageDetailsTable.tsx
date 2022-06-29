@@ -1,15 +1,17 @@
 import { useMemo } from "react";
 import { useTable } from "react-table";
-import { NeedAssignments } from "../aidPackage";
+import { AidPackage, NeedAssignments } from "../aidPackage";
 
 export function AidPackageDetailsTable({
   selectedPackage,
   supplierID,
   needAssignments,
+  updateAidPackage,
 }: {
   selectedPackage: { name: string; details: string };
   supplierID: number;
   needAssignments: NeedAssignments;
+  updateAidPackage: (updatedAidPackages: AidPackage) => void;
 }) {
   const data = useMemo(
     () =>
@@ -57,15 +59,36 @@ export function AidPackageDetailsTable({
     tableInstance;
 
   return (
-    <>
+    <div className="aid-package-details">
       <hr />
       <h4>Edit Package: {selectedPackage.name}</h4>
-      <label>
-        Name: <input type="text" value={selectedPackage.name} />
-      </label>
-      <label>
-        Description: <textarea value={selectedPackage.details} />
-      </label>
+      <div className="input-group">
+        <label htmlFor="package-name">Name:</label>
+        <input
+          type="text"
+          id="package-name"
+          name="package-name"
+          value={selectedPackage.name}
+          onChange={(event) => {
+            updateAidPackage({ ...selectedPackage, name: event.target.value });
+          }}
+        />
+      </div>
+
+      <div className="input-group">
+        <label htmlFor="package-description">Description:</label>
+        <textarea
+          id="package-description"
+          name="package-description"
+          value={selectedPackage.details}
+          onChange={(event) => {
+            updateAidPackage({
+              ...selectedPackage,
+              details: event.target.value,
+            });
+          }}
+        />
+      </div>
 
       <table {...getTableProps()}>
         <thead>
@@ -93,6 +116,6 @@ export function AidPackageDetailsTable({
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }

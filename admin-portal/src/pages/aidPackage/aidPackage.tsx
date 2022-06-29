@@ -17,8 +17,9 @@ export type NeedAssignments = {
   [needID: string]: Map<number, number>; // Map<supplierId: quantity>
 };
 
+export type AidPackage = { name: string; details: string };
 export type AidPackages = {
-  [supplierID: number]: { name: string; details: string };
+  [supplierID: number]: AidPackage;
 };
 
 export function CreateAidPackage() {

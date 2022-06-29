@@ -1,6 +1,6 @@
 import { NeedsInfo } from "data/medical-needs.mock.data";
 import { useEffect, useState } from "react";
-import { AidPackages, NeedAssignments } from "../aidPackage";
+import { AidPackage, AidPackages, NeedAssignments } from "../aidPackage";
 import { AidPackageDetailsTable } from "./aidPackageDetailsTable";
 import { AidPackageTable } from "./aidPackagesTable";
 
@@ -52,6 +52,12 @@ export function ManageAidPackages({
       {selectedPackage && (
         <AidPackageDetailsTable
           selectedPackage={aidPackages[selectedPackage]}
+          updateAidPackage={(updatedPackage: AidPackage) => {
+            setAidPackages({
+              ...aidPackages,
+              [selectedPackage]: updatedPackage,
+            });
+          }}
           supplierID={selectedPackage}
           needAssignments={needAssignments}
         />
