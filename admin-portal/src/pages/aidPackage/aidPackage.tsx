@@ -42,6 +42,10 @@ export function CreateAidPackage() {
         )
       );
     });
+
+    AdminDataServices.getAidPackages().then((res: any) => {
+      console.log(JSON.stringify(res));
+    });
   }, []);
 
   const goToStep = (step: STEPS) => {
