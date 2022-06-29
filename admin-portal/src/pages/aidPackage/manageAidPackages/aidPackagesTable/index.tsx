@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { useTable, useRowSelect } from "react-table";
-import { AidPackages } from "../aidPackage";
-import "./manageAidPackages.css";
+import { AidPackages } from "../../aidPackage";
 
 export function AidPackageTable({
   aidPackages,
@@ -67,8 +66,12 @@ export function AidPackageTable({
   );
 
   const tableInstance = useTable(
-    // @ts-ignore
-    { columns, data, autoResetSelectedRows: false },
+    {
+      // @ts-ignore
+      columns,
+      data,
+      autoResetSelectedRows: false,
+    },
     useRowSelect
   );
 
