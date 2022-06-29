@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useTable, useRowSelect } from "react-table";
 import { AidPackages } from "../aidPackage";
+import "./manageAidPackages.css";
 
 export function AidPackageTable({
   aidPackages,
@@ -101,6 +102,7 @@ export function AidPackageTable({
                         // @ts-ignore
                         row.isSelected && "var(--elixir-color-primary)",
                     }}
+                    className="manage-package-row"
                   >
                     {cell.render("Cell")}
                   </td>
