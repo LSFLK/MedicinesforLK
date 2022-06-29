@@ -48,6 +48,20 @@ export function AidPackageTable({
         Header: "Total Cost",
         accessor: "totalCost",
       },
+      {
+        Header: "Actions",
+        Cell: () => (
+          <button
+            onClick={(event) => {
+              event.stopPropagation();
+              // TODO: prepare and submit record
+              // TODO: remove row if successful & show toast
+            }}
+          >
+            Publish
+          </button>
+        ),
+      },
     ],
     []
   );
