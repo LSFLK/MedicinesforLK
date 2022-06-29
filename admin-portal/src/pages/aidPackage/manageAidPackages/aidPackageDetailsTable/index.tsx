@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTable } from "react-table";
-import { AidPackage, NeedAssignments } from "../aidPackage";
+import { AidPackage, NeedAssignments } from "../../aidPackage";
 
 export function AidPackageDetailsTable({
   selectedPackage,

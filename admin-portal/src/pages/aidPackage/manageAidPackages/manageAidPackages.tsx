@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AidPackage, AidPackages, NeedAssignments } from "../aidPackage";
 import { AidPackageDetailsTable } from "./aidPackageDetailsTable";
 import { AidPackageTable } from "./aidPackagesTable";
+import "./manageAidPackages.css";
 
 export function ManageAidPackages({
   medicalNeeds,
@@ -28,20 +29,30 @@ export function ManageAidPackages({
       });
     });
 
-    // create aid package for each supplier (aid package + #)
-    const syncedAidPackages: AidPackages = {};
-    Array.from(suppliers).forEach((supplierID, index) => {
-      if (aidPackages[supplierID]) {
-        syncedAidPackages[supplierID] = aidPackages[supplierID];
-      } else {
-        syncedAidPackages[supplierID] = {
-          name: `AidPackage ${index + 1}`,
-          details: "",
-        };
-      }
-    });
-    setAidPackages(syncedAidPackages);
-  }, [aidPackages, setAidPackages, needAssignments]);
+    // return early if suppliers have not changed
+    const sortedCurrentSupplierIds = Object.keys(aidPackages)
+      .map(Number)
+      .sort();
+    const sortedSupplierIds = Array.from(suppliers.keys()).sort();
+    if (
+      JSON.stringify(sortedCurrentSupplierIds) !==
+      JSON.stringify(sortedSupplierIds)
+    ) {
+      // create aid package for each supplier (aid package + #)
+      const syncedAidPackages: AidPackages = {};
+      Array.from(suppliers).forEach((supplierID, index) => {
+        if (aidPackages[supplierID]) {
+          syncedAidPackages[supplierID] = aidPackages[supplierID];
+        } else {
+          syncedAidPackages[supplierID] = {
+            name: `AidPackage ${index + 1}`,
+            details: "",
+          };
+        }
+      });
+      setAidPackages(syncedAidPackages);
+    }
+  }, [setAidPackages, aidPackages, needAssignments]);
 
   return (
     <>
