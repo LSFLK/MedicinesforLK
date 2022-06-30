@@ -32,13 +32,16 @@
 
 .uploadNeedsContainer {
     display: flex;
-    justify-content: center;
+    margin-left: 10px;  
 }
 
-/* tr:nth-child(even) {
-    background-color: #dddddd;
-} */
+.uploadNeedsContainer p {
+    font-size: 17px;
+}
+/* 
+.uploadNeedsContainer button {
 
+} */
 
 .textField {
     height: 16px;
