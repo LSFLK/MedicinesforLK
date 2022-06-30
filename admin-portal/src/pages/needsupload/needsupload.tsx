@@ -1,18 +1,30 @@
-import React from "react";
+import React, {useState} from 'react';
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
+import http from "../../apis/httpCommon"
+import "./needsUpload.css";
 
-import "./needsupload.css";
+export function NeedsUpload() {
 
-interface NeedsUploadPageProps {}
-const changeHandler = () => {
-  // setSelectedFile(event.target.files[0]);
-  // setIsSelected(true);
-};
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("")
 
-const handleSubmission = () => {};
+  function handleChange(event: any) {
+    setFile(event.target.files[0]);
+    setFileName(event.target.files[0].name);
+  }
+  
+  function handleSubmit(event: any) {
+    event.preventDefault()
+    const formData = new FormData();
+    if(file!=undefined){
+      formData.append('file', file);
+      formData.append('fileName', fileName);
 
-export function NeedsUpload(params: NeedsUploadPageProps) {
+    }
+    
+  }
+
   return (
     <Page selection={PageSelection.UPLOAD_NEEDS}>
       <div className="pageContent">
@@ -21,10 +33,11 @@ export function NeedsUpload(params: NeedsUploadPageProps) {
         </header>
 
         <div className="uploadNeedsContainer">
-          <input type="file" name="file" onChange={changeHandler} />
-          <div>
-            <button onClick={handleSubmission}>Submit</button>
-          </div>
+        <form onSubmit={handleSubmit}>
+          <p>Select the needs csv file that you want to upload.</p>
+          <input type="file" accept=".csv" onChange={handleChange}/>
+          <button type="submit">Upload</button>
+        </form>
         </div>
       </div>
     </Page>
