@@ -51,14 +51,14 @@ export function Page(props: PageProps) {
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="#" className={supplierClassName}>
+                    <a href="/supplierQuotationUpload" className={supplierClassName}>
                       Suppliers
                     </a>
                   </div>
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="/needsupload" className={needsClassName}>
+                    <a href="/needsUpload" className={needsClassName}>
                       Needs
                     </a>
                   </div>
