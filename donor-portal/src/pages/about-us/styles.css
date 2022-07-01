@@ -32,7 +32,9 @@
 }
 
 .about-us .text-section {
-  margin: 0 1rem 3rem;
+  padding-top: 30px;
+  margin: 0 6rem 6rem;
+  line-height: 160%;
 }
 
 .about-us .world-map-section {
@@ -105,15 +107,14 @@
 
 .partner-card-container {
   display: flex;
-  gap: 2rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  justify-content: space-around;
 }
 
 .partner-section-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  width: 30%;
 }
 
 .partner-section-card img {
@@ -145,4 +146,40 @@
   right: 0;
   margin: 3rem 2rem;
   max-width: 300px;
+}
+
+
+.profile-card-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.leadership-section {
+  margin-top: 50px;
+}
+
+.profile-card {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  width: 20%;
+}
+
+.profile-card img {
+  border-radius: 50%;
+  width: 100%;
+  filter: drop-shadow(5px 5px 5px rgb(202, 202, 202));
+}
+.profile-card h3 {
+  font-weight: 600;
+}
+.profile-card a {
+  text-decoration: none;
+  color: black;
+
+}
+
+.profile-card p {
+  margin-top: -15px;
 }
