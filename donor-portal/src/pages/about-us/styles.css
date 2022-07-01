@@ -173,6 +173,7 @@
 }
 .profile-card h3 {
   font-weight: 600;
+  margin-top: 10px;
 }
 .profile-card a {
   text-decoration: none;
