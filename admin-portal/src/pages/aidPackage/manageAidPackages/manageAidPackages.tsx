@@ -11,14 +11,16 @@ export function ManageAidPackages({
   setNeedAssignments,
   aidPackages,
   setAidPackages,
+  handleAidPkgPublish,
 }: {
   medicalNeeds: Array<NeedsInfo>;
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
   aidPackages: AidPackages;
   setAidPackages: (aidPackages: AidPackages) => void;
+  handleAidPkgPublish: (supplier: number) => Promise<void>;
 }) {
-  const [selectedPackage, setSelectedPackage] = useState<number>();
+  const [selectedPackage, setSelectedPackage] = useState<number|null>();
 
   useEffect(() => {
     // get the list of suppliers assigned to a need
@@ -59,6 +61,7 @@ export function ManageAidPackages({
       <AidPackageTable
         aidPackages={aidPackages}
         setSelectedPackage={setSelectedPackage}
+        handleAidPkgPublish={handleAidPkgPublish}
       />
       {selectedPackage && (
         <AidPackageDetailsTable

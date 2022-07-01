@@ -5,9 +5,10 @@ import { Page } from "layout/page";
 import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
 import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
 import { fetchMedicalNeeds, NeedsInfo } from "data/medical-needs.mock.data";
+import { AidPackageService } from "../../apis/services/AidPackageService";
+import toast from "react-simple-toasts";
 
 import "./aidPackage.css";
-import { AidPackageService } from "../../apis/services/AidPackageService";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,
@@ -18,7 +19,11 @@ export type NeedAssignments = {
   [needID: string]: Map<number, number>; // Map<supplierId: quantity>
 };
 
-export type AidPackage = { name: string; details: string };
+export type AidPackage = {
+  name: string;
+  details: string;
+  isPublished?: boolean;
+};
 export type AidPackages = {
   [supplierID: number]: AidPackage;
 };
@@ -52,6 +57,47 @@ export function CreateAidPackage() {
     setCurrentFormStep(step);
   };
 
+  /**
+   * responsible for calling the post api to
+   * create an aid package
+   * @param supplier
+   */
+  const handleAidPkgPublish = async (supplier: number): Promise<any> => {
+    const aidPackage = aidPackages[supplier];
+    const needs = Object.keys(needAssignments)
+      .filter((needID) => {
+        return needAssignments[needID].has(supplier);
+      })
+      .map((id) => {
+        return {
+          id: Number(id),
+          quantity: needAssignments[id].get(supplier),
+        };
+      });
+
+    if (aidPackage) {
+      return AdminDataServices.publishAidPackage({
+        supplier,
+        ...aidPackage,
+        needs,
+      })
+        .then(() => {
+          toast(`Successfully Published ${aidPackage.name}`);
+          /**
+           * flags the package to be removed from
+           * table.
+           */
+          aidPackages[supplier].isPublished = true;
+          setAidPackages({ ...aidPackages });
+        })
+        .catch((error) => {
+          toast("something went wrong");
+        });
+    } else {
+      throw new Error("invalid supplier"); // or handle otherwise.
+    }
+  };
+
   return (
     <Page selection={PageSelection.PACKAGE_CREATION}>
       <div className="create-aid-container">
@@ -82,6 +128,7 @@ export function CreateAidPackage() {
               setNeedAssignments={setNeedAssignments}
               aidPackages={aidPackages}
               setAidPackages={setAidPackages}
+              handleAidPkgPublish={handleAidPkgPublish}
             />
           )}
         </div>

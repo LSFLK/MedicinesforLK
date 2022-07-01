@@ -1,29 +1,56 @@
-import { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTable, useRowSelect } from "react-table";
 import { AidPackages } from "../../aidPackage";
 
 export function AidPackageTable({
   aidPackages,
   setSelectedPackage,
+  handleAidPkgPublish,
 }: {
   aidPackages: AidPackages;
-  setSelectedPackage: (supplierID: number) => void;
+  setSelectedPackage: (supplierID: number | null) => void;
+  handleAidPkgPublish: (suppllierId: number) => Promise<void>;
 }) {
   const data = useMemo(
     () =>
-      Object.keys(aidPackages).map((key) => {
-        let supplierID = Number(key);
-
-        return {
-          name: aidPackages[supplierID].name,
-          supplier: supplierID,
-          description: aidPackages[supplierID].details,
-          period: null,
-          totalCost: 0,
-        };
-      }),
+      Object.keys(aidPackages)
+        .filter((key) => {
+          let supplierID = Number(key);
+          return !aidPackages[supplierID].isPublished;
+        })
+        .map((key) => {
+          let supplierID = Number(key);
+          return {
+            name: aidPackages[supplierID].name,
+            supplier: supplierID,
+            description: aidPackages[supplierID].details,
+            period: null,
+            totalCost: 0,
+            isPublished: aidPackages[supplierID].isPublished,
+          };
+        }),
     [aidPackages]
   );
+
+  /**
+   * calls the drilled in publish handler prop
+   * and upon success removes the row.
+   * @param supplierId
+   * @param setIsUploading
+   */
+  const handlePublish = (
+    supplierId: number,
+    setIsUploading: (uploading: boolean) => void
+  ) => {
+    setIsUploading(true);
+    handleAidPkgPublish(supplierId)
+      .then(() => {
+        setSelectedPackage(null);
+      })
+      .finally(() => {
+        setIsUploading(false);
+      });
+  };
 
   const columns = useMemo(
     () => [
@@ -49,21 +76,26 @@ export function AidPackageTable({
       },
       {
         Header: "Actions",
-        Cell: () => (
-          <button
-            className="btn secondary small"
-            onClick={(event) => {
-              event.stopPropagation();
-              // TODO: prepare and submit record
-              // TODO: remove row if successful & show toast
-            }}
-          >
-            Publish
-          </button>
-        ),
+        Cell: ({ row }: any) => {
+          let [isUploading, setIsUploading] = useState(false);
+          return (
+            <button
+              onClick={() =>
+                handlePublish(row.original.supplier, setIsUploading)
+              }
+              disabled={isUploading}
+            >
+              {isUploading
+                ? "Publishing..."
+                : row.original.isPublished
+                ? "Published"
+                : "Publish"}
+            </button>
+          );
+        },
       },
     ],
-    []
+    [aidPackages, data]
   );
 
   const tableInstance = useTable(
@@ -85,7 +117,6 @@ export function AidPackageTable({
     // @ts-ignore
     toggleAllRowsSelected,
   } = tableInstance;
-
   return (
     <table {...getTableProps()}>
       <thead className="manage-package-header-row">
@@ -99,6 +130,7 @@ export function AidPackageTable({
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
+          console.log(row);
           prepareRow(row);
 
           return (
