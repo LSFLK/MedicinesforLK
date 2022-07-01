@@ -23,30 +23,24 @@ export function AboutUs() {
       <div className="text-section">
         <h2>About Us</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+          We are a group of volunteers from around the world supporting the Sri 
+          Lanka Red Cross to address the acute medical supply shortage in our 
+          motherland. Collectively we bring our skills in software development, 
+          pharmaceutical supply chain logistics and disaster aid management to 
+          develop a unique solution that can provide transparency for donors and 
+          efficiency for medical providers. 
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+          In partnership with the Lanka Software Foundation, Watchdog, The Last Word, 
+          the Ministry of Health, and the Medical Supply Division we are developing 
+          an online platform to match financial contributions from the Sri Lankan diaspora, 
+          charity organizations and businesses with the pharmaceutical demand needs from 
+          hospitals across the nation. 
         </p>
-        <p>
-          Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        <p>  
+          The Sri Lanka Red Cross serves to coordinate distribution activities on the ground 
+          and helps perform auditing and monitoring actions to ensure donors receive 
+          end-to-end visibility of shipments from suppliers  to those in need.
         </p>
       </div>
       <FullBleedContainer className="world-map-section">

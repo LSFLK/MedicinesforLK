@@ -32,7 +32,9 @@
 }
 
 .about-us .text-section {
-  margin: 0 1rem 3rem;
+  padding-top: 30px;
+  margin: 0 6rem 6rem;
+  line-height: 160%;
 }
 
 .about-us .world-map-section {
