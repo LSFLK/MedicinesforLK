@@ -1,5 +1,5 @@
 import { NeedsInfo } from "data/medical-needs.mock.data";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useTable, useExpanded } from "react-table";
 import { NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
@@ -40,7 +40,6 @@ export function AssignSuppliers({
           remainingQuantity:
             need.remainingQuantity - getAssignedCount(need, needAssignments),
           supplierQuotes: need.supplierQuotes || [],
-          expanded: true,
         };
       }),
     [medicalNeeds, needAssignments]
@@ -88,7 +87,21 @@ export function AssignSuppliers({
     rows,
     prepareRow,
     visibleColumns,
-  } = useTable({ columns, data, autoResetHiddenColumns: false }, useExpanded);
+    // @ts-ignore
+    toggleAllRowsExpanded,
+  } = useTable(
+    {
+      columns,
+      data,
+      // @ts-ignore
+      autoResetExpanded: false,
+    },
+    useExpanded
+  );
+
+  useEffect(() => {
+    toggleAllRowsExpanded();
+  }, [medicalNeeds, toggleAllRowsExpanded]);
 
   return (
     <table {...getTableProps()}>
