@@ -105,13 +105,14 @@ export function AssignSuppliers({
       </thead>
 
       <tbody {...getTableBodyProps()}>
-        {/* TODO: add validation for remaining need */}
         {rows.map((row, index) => {
           prepareRow(row);
 
           const needsID = row.original["needID"];
           const currentAssignments = needAssignments[needsID];
           const requiredQuantity = row.values["requiredQuantity"];
+
+          const remainingQuantity = row.values["remainingQuantity"];
 
           return (
             <>
@@ -131,6 +132,14 @@ export function AssignSuppliers({
                   );
                 })}
               </tr>
+              {remainingQuantity < 0 && (
+                <tr>
+                  <td className="need-validation-row" colSpan={6}>
+                    Total assigned quantity must be less than quantity needed
+                  </td>
+                </tr>
+              )}
+
               {(row as any).isExpanded ? (
                 <tr>
                   <td colSpan={visibleColumns.length}>
