@@ -110,7 +110,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
               "quotationID": 1,
               "supplierID": 1,
               "brandName": "brandName",
-              "availableQuantity": 10000,
+              "availableQuantity": 5000,
               "expiryDate": {
                 "year": 2022,
                 "month": 8,
