@@ -13,71 +13,38 @@ export function Donors() {
       </HeaderImage>
       <div className="text-section">
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+          If you represent an organization please click on the ‘Login’ button to 
+          register an account on Elixir. After you complete login, select a desired 
+          aid package and enter a pledge amount. After the target donations for your 
+          aid package has been reached we will contact you to arrange payment.
         </p>
       </div>
       <InfoBoxContainer>
             <InfoBox 
-                  iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/2214px-How_to_use_icon.svg.png"
-                  text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                  nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                  volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                  ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
-                  heading="Individual Donors"
+                  iconUrl="assets/images/charity2.jpg"
+                  text="Click the login page to begin registration."
+                  heading="Charities"
                   link="#"
             ></InfoBox>
             <InfoBox 
-                  iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/2214px-How_to_use_icon.svg.png"
-                  text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                  nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                  volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                  ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+                  iconUrl="assets/images/gov.jpg"
+                  text="Click the login page to begin registration."
                   heading="Government Embassies"
                   link="#"
             ></InfoBox>
             <InfoBox 
-                  iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/2214px-How_to_use_icon.svg.png"
-                  text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                  nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                  volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation volutpat suscitit."
-                  heading="Large Foundations / Corporations"
+                  iconUrl="/assets/images/corporation.jpg"
+                  text="Click the login page to begin registration."
+                  heading="Foundations / Corporations"
                   link="#"
             ></InfoBox>
             <InfoBox 
-                  iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/2214px-How_to_use_icon.svg.png"
-                  text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                  nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                  volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-                  ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+                  iconUrl="/assets/images/individual_donor.jpg"
+                  text="Donate to Elixir via our partner donor organizations"
                   heading="Individual Donors"
                   link="#"
             ></InfoBox>
-            <p className="inquiry">For all inquiries please emails us at  <a href="">inquires@redcross.lk</a></p>
+            <p className="inquiry">For all inquiries please emails us at  <a href="mailto: inquires@redcross.lk">inquires@redcross.lk</a></p>
 
             
 
