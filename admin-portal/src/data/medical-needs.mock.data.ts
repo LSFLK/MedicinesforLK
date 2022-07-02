@@ -54,7 +54,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
     res({
       "medicalNeedInfo": [
         {
-          "name": "name",
+          "name": "Paracetamol",
           "needID": 1,
           "period": {
             "year": 2020,
@@ -79,7 +79,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
               "regulatoryInfo": "regulatoryInfo",
               "supplier": {
                 "supplierID": 1,
-                "name": "name",
+                "name": "Pharma Co.",
                 "shortName": "shortName",
                 "email": "email@gmail.com",
                 "phoneNumber": "phoneNumber"
@@ -120,7 +120,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
               "regulatoryInfo": "regulatoryInfo",
               "supplier": {
                 "supplierID": 1,
-                "name": "name",
+                "name": "Pharma Co.",
                 "shortName": "shortName",
                 "email": "email@gmail.com",
                 "phoneNumber": "phoneNumber"
@@ -140,7 +140,7 @@ export function fetchMedicalNeeds(): Promise<{medicalNeedInfo: Array<NeedsInfo>}
               "regulatoryInfo": "regulatoryInfo",
               "supplier": {
                 "supplierID": 2,
-                "name": "name",
+                "name": "ACME Inc.",
                 "shortName": "shortName",
                 "email": "email@gmail.com",
                 "phoneNumber": "phoneNumber"
