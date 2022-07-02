@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useTable, useExpanded } from "react-table";
 import { NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
+import "./assignSuppliers.css";
 
 export function AssignSuppliers({
   needAssignments,
