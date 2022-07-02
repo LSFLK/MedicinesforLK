@@ -16,6 +16,7 @@
   --elixir-color-gray-800: #444950;
   --elixir-color-gray-900: #1c1e21;
   --elixir-color-gray-1000: var(--elixir-color-black);
+  --elixir-color-red: #c72127;
   --elixir-font-color-base: var(--elixir-color-gray-900);
   --elixir-link-decoration: none;
   --elixir-transition-timing-default: cubic-bezier(0.08, 0.52, 0.52, 1);

@@ -1,0 +1,19 @@
+.supplier-allocation-table .has-error {
+  display: flex;
+  flex-direction: column;
+}
+
+.supplier-allocation-table .validation-message {
+  display: none;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--elixir-color-red);
+}
+
+.supplier-allocation-table .has-error .validation-message {
+  display: block;
+}
+
+.supplier-allocation-table .has-error input {
+  border: 1px solid var(--elixir-color-red);
+}

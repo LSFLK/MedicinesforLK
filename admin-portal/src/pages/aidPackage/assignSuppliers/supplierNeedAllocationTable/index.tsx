@@ -58,7 +58,7 @@ export function SupplierNeedAllocationTable({
     });
 
   return (
-    <table {...getTableProps()}>
+    <table {...getTableProps()} className="supplier-allocation-table">
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -86,7 +86,7 @@ export function SupplierNeedAllocationTable({
 
 function EditableCell({
   value: initialValue,
-  row: { index },
+  row: { index, values },
   column: { id },
   updateAssignment,
 }: any) {
@@ -101,5 +101,29 @@ function EditableCell({
     setValue(initialValue);
   }, [initialValue]);
 
-  return <input type="number" value={value} onChange={onChange} />;
+  const validationResult = validateRow(value, values["max"]);
+
+  return (
+    <div className={validationResult.hasError ? "has-error" : ""}>
+      <input type="number" value={value} onChange={onChange} />
+      <span className="validation-message">
+        {validationResult.errorMessages?.[0]}
+      </span>
+    </div>
+  );
+}
+
+function validateRow(
+  value: number,
+  maxValue: number
+): { hasError: boolean; errorMessages?: Array<string> } {
+  const exceedsMaxAmount = maxValue < value;
+  if (exceedsMaxAmount) {
+    return {
+      hasError: true,
+      errorMessages: ["Assigned quantity must be lower than the supplier max"],
+    };
+  }
+
+  return { hasError: false, errorMessages: [] };
 }
