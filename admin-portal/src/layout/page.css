@@ -1,11 +1,12 @@
 :root {
+  --elixir-color-red: #c72127;
   --elixir-toc-border-color: var(--elixir-color-gray-300);
   --elixir-sidebar-width: 300px;
   --elixir-menu-color: var(--elixir-color-gray-700);
   --elixir-menu-hover-color: var(--elixir-color-gray-600);
   --elixir-menu-color-background-hover: var(--elixir-hover-overlay);
   --elixir-menu-color-background-active: var(--elixir-hover-overlay);
-  --elixir-menu-color-active: var(--elixir-link-color);
+  --elixir-menu-color-active: var(--elixir-color-red);
 }
 
 .page {
@@ -40,7 +41,6 @@
 
 .menu {
   flex-grow: 1;
-  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,7 +66,6 @@
   padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 li {
@@ -74,11 +73,17 @@ li {
 }
 
 .menu__link {
-  color: var(--elixir-menu-color);
+  color: var(--elixir-color-black);
   flex: 1;
+  padding: 1rem;
   justify-content: space-between;
   line-height: 1.25;
   text-align: start;
+  font-weight: bold;
+}
+
+.menu__link:hover {
+  color: var(--elixir-color-red);
 }
 
 .menu__link--active:not(.menu__link--sublist) {
@@ -87,26 +92,24 @@ li {
 
 .menu__list-item {
   align-content: flex-start;
-  height: 30px;
 }
 
 .menu__list-item-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
   box-sizing: border-box;
-  height: 100%;
-  padding-left: 10px;
-  padding-top: 5px;
   box-shadow: var(--elixir-global-shadow-lw);
 }
 
 .menu__link--active,
 .menu__link--active:hover {
-  color: var(--elixir-menu-color-active);
+  color: var(--elixir-color-red);
 }
 
 .menu__list-item:hover {
+  color: var(--elixir-color-red);
   background: var(--elixir-menu-color-background-hover);
   border-radius: 0.25rem;
   transition: background var(--elixir-transition-fast)
