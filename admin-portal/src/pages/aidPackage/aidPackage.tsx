@@ -54,7 +54,7 @@ export function CreateAidPackage() {
 
   return (
     <Page selection={PageSelection.PACKAGE_CREATION}>
-      <main className="">
+      <div className="create-aid-container">
         <h1>Create an Aid Package</h1>
         <Stepper activeStep={currentFormStep}>
           <Step
@@ -66,20 +66,16 @@ export function CreateAidPackage() {
             onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
           />
         </Stepper>
-        {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
-          <>
+
+        <div className="create-aid-body">
+          {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
             <AssignSuppliers
               medicalNeeds={medicalNeeds}
               needAssignments={needAssignments}
               setNeedAssignments={setNeedAssignments}
             />
-            <button onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}>
-              Next
-            </button>
-          </>
-        )}
-        {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
-          <>
+          )}
+          {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
             <ManageAidPackages
               medicalNeeds={medicalNeeds}
               needAssignments={needAssignments}
@@ -87,12 +83,28 @@ export function CreateAidPackage() {
               aidPackages={aidPackages}
               setAidPackages={setAidPackages}
             />
-            <button onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}>
+          )}
+        </div>
+
+        <div className="bottom-sticky-nav">
+          {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
+            <button
+              className="btn secondary"
+              onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
+            >
               Back
             </button>
-          </>
-        )}
-      </main>
+          )}
+          {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
+            <button
+              className="btn pull-right"
+              onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
+            >
+              Next
+            </button>
+          )}
+        </div>
+      </div>
     </Page>
   );
 }
