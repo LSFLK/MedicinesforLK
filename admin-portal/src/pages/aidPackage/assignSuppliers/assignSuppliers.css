@@ -18,7 +18,24 @@
   border: 1px solid var(--elixir-color-red);
 }
 
-.need-validation-row {
+.create-aid-body .need-validation-row {
   background-color: var(--elixir-color-red);
   color: var(--elixir-color-white);
+  padding-left: 1rem;
+}
+
+.manage-package-row > td:first-child {
+  padding-left: 0.5rem;
+}
+
+.manage-package-header-row th:first-child {
+  padding-left: 0.5rem;
+}
+
+.aid-package-details td:first-child {
+  padding-left: 0.5rem;
+}
+
+.aid-package-details th:first-child {
+  padding-left: 0.5rem;
 }

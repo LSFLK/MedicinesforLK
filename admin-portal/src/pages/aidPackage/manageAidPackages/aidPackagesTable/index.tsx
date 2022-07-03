@@ -51,6 +51,7 @@ export function AidPackageTable({
         Header: "Actions",
         Cell: () => (
           <button
+            className="btn secondary small"
             onClick={(event) => {
               event.stopPropagation();
               // TODO: prepare and submit record
@@ -87,7 +88,7 @@ export function AidPackageTable({
 
   return (
     <table {...getTableProps()}>
-      <thead>
+      <thead className="manage-package-header-row">
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
@@ -109,21 +110,13 @@ export function AidPackageTable({
                 // @ts-ignore
                 row.toggleRowSelected(true);
               }}
+              className={`manage-package-row ${
+                // @ts-ignore
+                row.isSelected && "manage-package-row--selected"
+              }`}
             >
               {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      background:
-                        // @ts-ignore
-                        row.isSelected && "var(--elixir-color-primary)",
-                    }}
-                    className="manage-package-row"
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
