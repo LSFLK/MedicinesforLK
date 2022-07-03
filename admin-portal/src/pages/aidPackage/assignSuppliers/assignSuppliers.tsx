@@ -48,11 +48,25 @@ export function AssignSuppliers({
   const columns = useMemo(
     () => [
       {
-        Header: () => null, // No header
+        Header: () => null,
+        minWidth: 40,
         id: "expander", // It needs an ID
         Cell: ({ row }: any) => (
-          <span {...row.getToggleRowExpandedProps()}>
-            {row.isExpanded ? "⌄" : "›"}
+          <span
+            className={`expander ${row.isExpanded && "expanded"}`}
+            {...row.getToggleRowExpandedProps()}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+              />
+            </svg>
           </span>
         ),
       },
@@ -129,19 +143,10 @@ export function AssignSuppliers({
 
           return (
             <>
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} className="needs-row">
                 {row.cells.map((cell) => {
                   return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        padding: "10px",
-                        border: "solid 1px gray",
-                        background: "papayawhip",
-                      }}
-                    >
-                      {cell.render("Cell")}
-                    </td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
@@ -155,7 +160,10 @@ export function AssignSuppliers({
 
               {(row as any).isExpanded ? (
                 <tr>
-                  <td colSpan={visibleColumns.length}>
+                  <td
+                    className="supplier-allocation-table-container"
+                    colSpan={visibleColumns.length}
+                  >
                     <SupplierNeedAllocationTable
                       supplierQuotes={row.original.supplierQuotes}
                       assignmentsForSupplier={needAssignments[needsID]}

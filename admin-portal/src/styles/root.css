@@ -60,3 +60,8 @@
   color: var(--elixir-color-red);
   background-color: var(--elixir-color-white);
 }
+
+.btn.small {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+}

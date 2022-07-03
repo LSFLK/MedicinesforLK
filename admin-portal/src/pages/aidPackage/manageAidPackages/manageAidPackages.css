@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.manage-package-row--selected {
+  background-color: var(--elixir-color-gray-300);
+}
+
 .aid-package-details .input-group {
   display: flex;
   margin-bottom: 1rem;
