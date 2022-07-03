@@ -44,3 +44,19 @@
   --elixir-heading-margin-top: 0;
   --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
 }
+
+.btn {
+  color: var(--elixir-color-white);
+  background-color: var(--elixir-color-red);
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: var(--elixir-font-weight-bold);
+  font-size: 1.2rem;
+  border: 1px solid var(--elixir-color-red);
+  cursor: pointer;
+}
+
+.btn.secondary {
+  color: var(--elixir-color-red);
+  background-color: var(--elixir-color-white);
+}
