@@ -57,8 +57,14 @@ export function CreateAidPackage() {
       <main className="">
         <h1>Create an Aid Package</h1>
         <Stepper activeStep={currentFormStep}>
-          <Step title="Assign Suppliers" />
-          <Step title="Manage Aid Packages" />
+          <Step
+            title="Assign Suppliers"
+            onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
+          />
+          <Step
+            title="Manage Aid Packages"
+            onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
+          />
         </Stepper>
         {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
           <>
