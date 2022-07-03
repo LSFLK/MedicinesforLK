@@ -31,7 +31,7 @@ function Stepper({
         return (
           <Fragment key={index}>
             {cloneElement(child, childProps)}
-            {index !== children.length - 1 && <hr className="divider" />}
+            {index !== children.length - 1 && <span className="divider" />}
           </Fragment>
         );
       })}
