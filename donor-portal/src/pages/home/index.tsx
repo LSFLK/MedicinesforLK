@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { HeaderImage } from "../layout/header-image";
 import { Page } from "../layout/page";
 import "./styles.css";
-import { DonorServices } from "../../apis/services"
-import { AidPackage } from "../../types/AidPackage"
+import { DonorServices } from "../../apis/services";
+import { AidPackage } from "../../types/AidPackage";
 
 type DonarAidPackage = {
   packageID: number;
@@ -27,7 +27,7 @@ const packageList = [
     description:
       "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
     totalAmount: 150000,
-    pledgedPercentage: 78,
+    pledgedPercentage: 100,
   },
   {
     packageID: 2,
@@ -83,6 +83,7 @@ export function Home() {
   );
 
   useEffect(() => {
+
     setAidPackages(
       packageList.filter((donorPackage) => {
         if (goalFilter === GoalStatus.GOAL_PENDING) {
@@ -92,7 +93,14 @@ export function Home() {
         }
       })
     );
-  });
+  },[goalFilter]);
+
+  //call the api
+ /* 
+  const fetchAidPackages = async () => {
+    const {data} = await DonorServices.getAidPackages();
+  }
+*/
 
   return (
     <Page className="home-page">
