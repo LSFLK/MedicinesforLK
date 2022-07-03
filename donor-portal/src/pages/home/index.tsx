@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { HeaderImage } from "../layout/header-image";
 import { Page } from "../layout/page";
 import "./styles.css";
+import { DonorServices } from "../../apis/services"
+import { AidPackage } from "../../types/AidPackage"
 
 type DonarAidPackage = {
   packageID: number;
