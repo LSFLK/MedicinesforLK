@@ -1,10 +1,10 @@
 .info-box {
-      height: 390px;
+      height: 300px;
       flex-basis: 40%;
       padding-left: 30px;
       padding-right: 30px;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 40px;
+      padding-bottom: 30px;
       text-align: center;
       border-radius: 20px;
       margin-bottom: 40px;
@@ -12,8 +12,8 @@
 }
 
 .info-box img{
-      height: 120px;
-      opacity: 40%;
+      height: 160px;
+      opacity: 60%;
 }
 
 .info-box button {
