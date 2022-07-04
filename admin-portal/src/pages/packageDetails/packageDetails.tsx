@@ -66,26 +66,32 @@ export function PackageDetails() {
     }
     const confirmed = window.confirm(`Are you sure you want to change the status to ${label}?`);
     if (confirmed) {
-      const {data} = await AidPackageService.updateAidPackage({...aidPackage!, status:statusToBeChanged})
+      const {data} = await AidPackageService.updateAidPackage({...aidPackage!, status: statusToBeChanged})
       setAidPackage(data);
     }
   }
 
-  const handleNewPost = async (text: string) => {
-    // Call the API
+  const handleNewComment = async (comment: string) => {
+    await AidPackageService.upsertUpdateComment(packageId!, {
+      packageUpdateId: 0,
+      packageID: parseInt(packageId!),
+      updateComment: comment,
+      dateTime: "",
+    });
+    await fetchAidPackage();
   }
 
-  const handleOrderItemDelete = (item: AidPackageItem) => {
+  const handlePackageItemDelete = (item: AidPackageItem) => {
     const confirmed = window.confirm(`Are you sure you want to delete item ${item.quotation.brandName}?`);
     if (confirmed) {
-      // Call the API
+      // await AidPackageService.deleteUpdateComment()
     }
   }
 
-  const handleDeletePostButtonClick = (post: AidPackageUpdateComment) => {
+  const handleDeleteCommentButtonClick = async (updateComment: AidPackageUpdateComment) => {
     const confirmed = window.confirm('Are you sure you want to delete this post?');
     if (confirmed) {
-      // Call the API
+      await AidPackageService.deleteUpdateComment(packageId!, updateComment.packageUpdateId);
     }
   }
 
@@ -95,7 +101,7 @@ export function PackageDetails() {
   }
 
   const handleStatusPostEdit = async (comment: AidPackageUpdateComment) => {
-    await AidPackageService.updateUpdateComment(packageId!, comment);
+    await AidPackageService.upsertUpdateComment(packageId!, comment);
     await fetchUpdateComments();
     setIsEditPostModalVisible(false);
   }
@@ -132,7 +138,7 @@ export function PackageDetails() {
                   <OrderItemsTable
                     items={aidPackage?.aidPackageItems}
                     onEditItemButtonClick={handleEditOrderItemButtonClick}
-                    onDeleteButtonClick={handleOrderItemDelete}
+                    onDeleteButtonClick={handlePackageItemDelete}
                   />
                 </div>
               </div>
@@ -152,9 +158,9 @@ export function PackageDetails() {
             />
             <UpdateComments
               posts={posts}
-              onNewComment={handleNewPost}
+              onNewComment={handleNewComment}
               onEditPostButtonClick={handleEditPostButtonClick}
-              onDeletePostButtonClick={handleDeletePostButtonClick}/>
+              onDeletePostButtonClick={handleDeleteCommentButtonClick}/>
           </div>
         )}
       </>

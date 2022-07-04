@@ -5,36 +5,49 @@ import {AidPackageItem} from "../../types/DonorAidPackageOrderItem";
 
 export class AidPackageService {
   static getAidPackages() {
-    return http.get<AidPackage[]>("AidPackages");
+    return http.get<AidPackage[]>("aidpackages");
   }
 
   static getAidPackage(packageID: number | string) {
-    return http.get<AidPackage>(`AidPackage?packageID=${packageID}`)
+    return http.get<AidPackage>(`aidpackages/${packageID}`)
   }
 
   static updateAidPackage(aidPackage: AidPackage) {
     return http.patch<AidPackage>(
-      `AidPackage`,
+      `aidpackages`,
       aidPackage)
   }
 
   static getUpdateComments(packageID: number | string) {
     return http.get<AidPackageUpdateComment[]>(
-      `AidPackage/UpdateComments?packageID=${packageID}`
+      `aidpackages/${packageID}/updatecomments`
     )
   }
 
-  static updateUpdateComment(packageID: number | string, comment: AidPackageUpdateComment) {
+  static upsertUpdateComment(packageID: number | string, comment: AidPackageUpdateComment) {
     return http.put<AidPackageUpdateComment>(
-      `AidPackage/${packageID}/UpdateComment`,
+      `aidpackages/${packageID}/updatecomments`,
       comment
+    )
+  }
+
+  static deleteUpdateComment(packageID: number | string, packageUpdateCommentID: number) {
+    return http.delete(
+      `aidpackages/${packageID}/updatecomment/${packageUpdateCommentID}`,
     )
   }
 
   static updateAidPackageItem(packageID: number | string, packageItem: AidPackageItem) {
     return http.put<AidPackageItem>(
-      `AidPackage/${packageID}/AidPackageItem`,
+      `aidpackages/${packageID}/aidpackageitems`,
       packageItem
     )
   }
+
+  static deleteAidPackageItem(packageID: number | string, packageItemID: number) {
+    return http.delete(
+      `aidpackages/${packageID}/aidpackageitems/${packageItemID}`,
+    )
+  }
+
 }

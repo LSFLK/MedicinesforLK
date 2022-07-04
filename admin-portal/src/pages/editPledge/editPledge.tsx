@@ -31,15 +31,17 @@ const demoPledge: Pledge = {
 
 const demoActivities: PledgeActivity[] = [
   {
-    activityID: 0,
-    text: "Created the invoice for this pledge",
-    createdAt: 1655720893,
+    pledgeID: 0,
+    pledgeUpdateID: 0,
+    updateComment: "Created the invoice for this pledge",
+    dateTime: 1655720893
   },
 
   {
-    activityID: 0,
-    text: "Lorem Ipsum dollar sit amet",
-    createdAt: 1654720893,
+    pledgeID: 0,
+    pledgeUpdateID: 0,
+    updateComment: "Lorem Ipsum dollar sit amet",
+    dateTime: 1654720893
   },
 ]
 
