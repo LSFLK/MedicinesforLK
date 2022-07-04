@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {PageSelection} from "../../types/pages";
 import {Page} from "../../layout/page";
-import {DonorAidPackage} from "../../types/DonarAidPackage";
+import {AidPackage, DonorAidPackage} from "../../types/AidPackage";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import DonorTable from "./donorTable/donorTable";
 import './pledgeStatus.css'
@@ -34,7 +34,7 @@ const demoPackage: DonorAidPackage = {
     }
   ],
   pledgedPercentage: 40,
-  status: DonorAidPackage.Status.Ordered,
+  status: AidPackage.Status.Ordered,
   supplierID: 0,
   totalAmount: 2500
 }

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {DonorAidPackageOrderItem} from "../../../../types/DonorAidPackageOrderItem";
+import {AidPackageItem} from "../../../../types/DonorAidPackageOrderItem";
 import './editOrderItemPrompt.css';
 
 interface EditOrderItemPromptProps {
-  orderItem: DonorAidPackageOrderItem;
-  onSave: (editedOrderItem: DonorAidPackageOrderItem) => Promise<void>;
+  orderItem: AidPackageItem;
+  onSave: (editedOrderItem: AidPackageItem) => Promise<void>;
 }
 
 export default function EditOrderItemPrompt({orderItem, onSave}: EditOrderItemPromptProps) {
@@ -26,7 +26,7 @@ export default function EditOrderItemPrompt({orderItem, onSave}: EditOrderItemPr
     setIsSaving(true);
     setErrorText('');
     try {
-      const editedItem: DonorAidPackageOrderItem = {
+      const editedItem: AidPackageItem = {
         ...orderItem,
         medicalItemName: name,
         quantity
