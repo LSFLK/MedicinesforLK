@@ -29,7 +29,7 @@ export function NavBar(params: NavBarProps) {
             <div className="navbar__logo">
               <img
                 src="/assets/images/elixirLogo4.png"
-                alt="Create React App Logo"
+                alt="Elixir Logo"
                 className="themedImage--light"
               />
             </div>
