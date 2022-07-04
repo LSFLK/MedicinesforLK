@@ -2,25 +2,19 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PageSelection } from "../../types/pages";
 import { Page } from "../../layout/page";
-import AdminService from "../../apis/services";
 import { AidPackages } from "../../types/AidPackages";
-
-import "./home.css";
-import { AidPackage } from "types/AidPackage";
-import { TableRow } from "./tableRow/tableRow";
 import { TableRows } from "./tableRows/tableRows";
+import "./home.css";
+import {AidPackageService} from "../../apis/services/AidPackageService";
 
-interface HomePageProps { }
-
-export function Home(params: HomePageProps) {
-  let navigate = useNavigate();
+export function Home() {
   const [aidPackages, setAidPackages] = useState<AidPackages>();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await AdminService.getAidPackages();
+      const response = await AidPackageService.getAidPackages();
       if (response.data) {
-        setAidPackages(response.data);
+        setAidPackages({aidPackages: response.data});
       }
     }
 

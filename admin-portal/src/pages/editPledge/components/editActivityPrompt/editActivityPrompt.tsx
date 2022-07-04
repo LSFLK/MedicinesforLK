@@ -14,7 +14,7 @@ export default function EditActivityPrompt({activity, onSave}: EditActivityPromp
 
   useEffect(() => {
     if(activity){
-      setText(activity.text)
+      setText(activity.updateComment)
     }
     setErrorText('');
   }, [activity])
@@ -25,7 +25,7 @@ export default function EditActivityPrompt({activity, onSave}: EditActivityPromp
     try {
       const editedActivity: PledgeActivity = {
         ...activity,
-        text: text
+        updateComment: text
       }
       await onSave(editedActivity);
     } catch (e) {

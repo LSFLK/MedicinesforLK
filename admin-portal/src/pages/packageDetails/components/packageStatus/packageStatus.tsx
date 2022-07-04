@@ -24,12 +24,14 @@ export default function PackageStatus({currentStatus, onStatusChange}: PackageSt
       <div>
         <div>
           {Object.entries(statusToLabel).map(([status, label], index) => (
-            <span className="statusLabel">
+            <span className="statusLabel" key={status}>
               <input
                 type="checkbox"
                 id={status}
                 checked={status === currentStatus}
-                onClick={() => onStatusChange(status as AidPackage.Status, label)}
+                onChange={(event) => {
+                  onStatusChange(status as AidPackage.Status, label)
+                }}
               />
               <label htmlFor={status}>{label}</label>
               {index + 1 < Object.entries(statusToLabel).length && (<span>&nbsp;&gt;&nbsp;</span>)}

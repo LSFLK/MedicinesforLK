@@ -1,33 +1,33 @@
 import React, {useEffect, useState} from "react";
-import './editStatusPostPrompt.css';
-import {DonorAidPackageStatusPost} from "../../../../types/DonorAidPackageStatusPost";
+import './editUpdateCommentPrompt.css';
+import {AidPackageUpdateComment} from "../../../../types/AidPackageUpdateComment";
 
 interface EditStatusPostPromptProps {
-  post: DonorAidPackageStatusPost;
-  onSave: (post: DonorAidPackageStatusPost) => Promise<void>;
+  comment: AidPackageUpdateComment;
+  onSave: (comment: AidPackageUpdateComment) => Promise<void>;
 }
 
-export default function EditStatusPostPrompt({post, onSave}: EditStatusPostPromptProps) {
+export default function EditUpdateCommentPrompt({comment, onSave}: EditStatusPostPromptProps) {
   const [isSaving, setIsSaving] = useState(false);
-  const [statusText, setStatusText] = useState('');
+  const [updateComment, setUpdateComment] = useState('');
   const [errorText, setErrorText] = useState('')
 
   useEffect(() => {
-    if(post){
-      setStatusText(post.text)
+    if(comment){
+      setUpdateComment(comment.updateComment)
     }
     setErrorText('');
-  }, [post])
+  }, [comment])
 
   const handleSaveButtonClick = async () => {
     setIsSaving(true);
     setErrorText('');
     try {
-      const editedPost: DonorAidPackageStatusPost = {
-        ...post,
-        text: statusText
+      const editedComment: AidPackageUpdateComment = {
+        ...comment,
+        updateComment: updateComment
       }
-      await onSave(editedPost);
+      await onSave(editedComment);
     } catch (e) {
       setErrorText('Something went wrong. Couldn\' edit the post.')
     }
@@ -35,13 +35,13 @@ export default function EditStatusPostPrompt({post, onSave}: EditStatusPostPromp
   }
 
   return (
-    <div className="editStatusPostPrompt">
+    <div className="editUpdateCommentPrompt">
       <h4>Edit status</h4>
       <textarea
-        value={statusText}
+        value={updateComment}
         rows={4}
         onChange={(event) => {
-          setStatusText(event.currentTarget.value)
+          setUpdateComment(event.currentTarget.value)
         }}
       />
       {errorText && (

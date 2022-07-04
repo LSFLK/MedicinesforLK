@@ -43,10 +43,10 @@ export default function PledgeActivities({
       </div>
       <div className="activities">
         {activities.map((activity) => (
-          <div key={activity.activityID} className="activity">
-            <p className="activityDate">{new Date(activity.createdAt * 1000).toDateString()}</p>
+          <div key={activity.pledgeUpdateID} className="activity">
+            <p className="activityDate">{new Date(activity.dateTime * 1000).toDateString()}</p>
             <div className="content">
-              <span className="text">{activity.text}</span>
+              <span className="text">{activity.updateComment}</span>
               <div className="actions">
                 <button onClick={() => onEditActivityButtonClick(activity)}>Edit</button>
                 <button onClick={() => onDeleteActivityButtonClick(activity)}>Delete</button>

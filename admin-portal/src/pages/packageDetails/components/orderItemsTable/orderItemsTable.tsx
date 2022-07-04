@@ -20,8 +20,10 @@ export default function OrderItemsTable({items, onEditItemButtonClick, onDeleteB
       </thead>
       <tbody>
       {items.map((item) => (
-        <tr key={item.orderItemId}>
-          <td>{item.medicalItemName}</td>
+        <tr key={item.packageItemID}>
+          <td>
+            {/*{item.quotation.brandName} TODO: Uncomment when the field is there on the response */}
+          </td>
           <td>{item.quantity}</td>
           <td className="actions">
             <button
