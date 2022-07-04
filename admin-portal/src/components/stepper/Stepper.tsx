@@ -1,4 +1,4 @@
-import React, { cloneElement, ReactElement } from "react";
+import React, { cloneElement, Fragment, ReactElement } from "react";
 import Step from "./Step";
 import "./stepper.css";
 
@@ -29,10 +29,10 @@ function Stepper({
         };
 
         return (
-          <>
+          <Fragment key={index}>
             {cloneElement(child, childProps)}
-            {index !== children.length - 1 && <hr className="divider" />}
-          </>
+            {index !== children.length - 1 && <span className="divider" />}
+          </Fragment>
         );
       })}
     </div>

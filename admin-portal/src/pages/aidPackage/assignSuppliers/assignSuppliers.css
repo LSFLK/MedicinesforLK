@@ -1,0 +1,41 @@
+.supplier-allocation-table .has-error {
+  display: flex;
+  flex-direction: column;
+}
+
+.supplier-allocation-table .validation-message {
+  display: none;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--elixir-color-red);
+}
+
+.supplier-allocation-table .has-error .validation-message {
+  display: block;
+}
+
+.supplier-allocation-table .has-error input {
+  border: 1px solid var(--elixir-color-red);
+}
+
+.create-aid-body .need-validation-row {
+  background-color: var(--elixir-color-red);
+  color: var(--elixir-color-white);
+  padding-left: 1rem;
+}
+
+.manage-package-row > td:first-child {
+  padding-left: 0.5rem;
+}
+
+.manage-package-header-row th:first-child {
+  padding-left: 0.5rem;
+}
+
+.aid-package-details td:first-child {
+  padding-left: 0.5rem;
+}
+
+.aid-package-details th:first-child {
+  padding-left: 0.5rem;
+}

@@ -16,6 +16,7 @@
   --elixir-color-gray-800: #444950;
   --elixir-color-gray-900: #1c1e21;
   --elixir-color-gray-1000: var(--elixir-color-black);
+  --elixir-color-red: #c72127;
   --elixir-font-color-base: var(--elixir-color-gray-900);
   --elixir-link-decoration: none;
   --elixir-transition-timing-default: cubic-bezier(0.08, 0.52, 0.52, 1);
@@ -42,4 +43,25 @@
   --elixir-heading-line-height: 1.25;
   --elixir-heading-margin-top: 0;
   --elixir-heading-margin-bottom: var(--elixir-spacing-vertical);
+}
+
+.btn {
+  color: var(--elixir-color-white);
+  background-color: var(--elixir-color-red);
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: var(--elixir-font-weight-bold);
+  font-size: 1.2rem;
+  border: 1px solid var(--elixir-color-red);
+  cursor: pointer;
+}
+
+.btn.secondary {
+  color: var(--elixir-color-red);
+  background-color: var(--elixir-color-white);
+}
+
+.btn.small {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
 }

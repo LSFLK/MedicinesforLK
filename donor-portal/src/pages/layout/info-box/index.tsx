@@ -6,9 +6,9 @@ export function InfoBox({ iconUrl, link, heading, text }: { iconUrl: string; lin
             <img src={iconUrl} alt="" />
             <h2>{heading}</h2>
             <p>{text}</p>
-            <a href={link}>
+            {/* <a href={link}>
                   <button>Learn More</button>
-            </a>
+            </a> */}
         </div>
       );
 }

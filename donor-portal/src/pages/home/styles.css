@@ -8,9 +8,11 @@
 
 .home-page .header-image__text-container p {
   max-width: 20rem;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 1.15rem;
   margin: 0 2rem;
+  padding: 20px;
+  background-color: rgba(175, 175, 175, 0.274);
 }
 
 .home-heading {

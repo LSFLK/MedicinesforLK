@@ -1,0 +1,26 @@
+.manage-package-row {
+  cursor: pointer;
+}
+
+.manage-package-row--selected {
+  background-color: var(--elixir-color-gray-300);
+}
+
+.aid-package-details .input-group {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.aid-package-details .input-group label {
+  min-width: 6rem;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.aid-package-details .input-group textarea,
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 22rem;
+}
