@@ -1,5 +1,9 @@
 import { Quotation } from "./Quotation";
 
+export interface PartialAidPackageItem {
+
+}
+
 export interface AidPackageItem {
   packageItemID: number;
   packageID: number;

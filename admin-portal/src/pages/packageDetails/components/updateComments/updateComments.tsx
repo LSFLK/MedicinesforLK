@@ -45,7 +45,7 @@ export default function UpdateComments({
       </div>
       <div className="comment">
         {posts.map((post) => (
-          <div key={post.packageUpdateId} className="post">
+          <div key={post.packageUpdateID} className="post">
             <p className="date">{post.dateTime}</p>
             <div className="content">
               <span className="text">{post.updateComment}</span>

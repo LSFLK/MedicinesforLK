@@ -18,7 +18,7 @@ export class AidPackageService {
 
   static getUpdateComments(packageID: number | string) {
     return http.get<AidPackageUpdateComment[]>(
-      `aidpackages/${packageID}/updatecomments`
+      `aidPackages/${packageID}/updatecomments`
     );
   }
 
@@ -27,17 +27,17 @@ export class AidPackageService {
     comment: AidPackageUpdateComment
   ) {
     return http.put<AidPackageUpdateComment>(
-      `aidpackages/${packageID}/updatecomments`,
+      `aidPackages/${packageID}/updatecomments`,
       comment
     );
   }
 
   static deleteUpdateComment(
     packageID: number | string,
-    packageUpdateCommentID: number
+    packageUpdateID: number
   ) {
     return http.delete(
-      `aidpackages/${packageID}/updatecomment/${packageUpdateCommentID}`
+      `aidPackages/${packageID}/updatecomment/${packageUpdateID}`
     );
   }
 

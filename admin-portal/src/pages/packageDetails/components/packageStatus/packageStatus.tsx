@@ -2,19 +2,9 @@ import React from "react";
 import "./packageStatus.css";
 import { AidPackage } from "../../../../types/AidPackage";
 
-const statusToLabel: { [key in AidPackage.Status]: string } = {
-  [AidPackage.Status.Draft]: "Draft",
-  [AidPackage.Status.Published]: "Published",
-  [AidPackage.Status.AwaitingPayment]: "Awaiting Payment",
-  [AidPackage.Status.Ordered]: "Ordered",
-  [AidPackage.Status.Shipped]: "Shipped",
-  [AidPackage.Status.ReceivedAtMOH]: "Received at MOH",
-  [AidPackage.Status.Delivered]: "Delivered",
-};
-
 interface PackageStatusProps {
   currentStatus: AidPackage.Status;
-  onStatusChange: (statusToBeChanged: AidPackage.Status, label: string) => void;
+  onStatusChange: (statusToBeChanged: AidPackage.Status) => void;
 }
 
 export default function PackageStatus({
@@ -26,18 +16,18 @@ export default function PackageStatus({
       <p className="heading">Status</p>
       <div>
         <div>
-          {Object.entries(statusToLabel).map(([status, label], index) => (
-            <span className="statusLabel" key={status}>
+          {Object.entries(AidPackage.Status).map(([key, status], index) => (
+            <span className="statusLabel" key={key}>
               <input
                 type="checkbox"
-                id={status}
+                id={key}
                 checked={status === currentStatus}
                 onChange={(event) => {
-                  onStatusChange(status as AidPackage.Status, label);
+                  onStatusChange(status as AidPackage.Status);
                 }}
               />
-              <label htmlFor={status}>{label}</label>
-              {index + 1 < Object.entries(statusToLabel).length && (
+              <label htmlFor={key}>{status}</label>
+              {index + 1 < Object.entries(AidPackage.Status).length && (
                 <span>&nbsp;&gt;&nbsp;</span>
               )}
             </span>

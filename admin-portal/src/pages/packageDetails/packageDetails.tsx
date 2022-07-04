@@ -63,13 +63,12 @@ export function PackageDetails() {
 
   const handleStatusChange = async (
     statusToBeChanged: AidPackage.Status,
-    label: string
   ) => {
     if (statusToBeChanged === aidPackage?.status) {
       return;
     }
     const confirmed = window.confirm(
-      `Are you sure you want to change the status to ${label}?`
+      `Are you sure you want to change the status to ${statusToBeChanged}?`
     );
     if (confirmed) {
       const { data } = await AidPackageService.updateAidPackage({
@@ -82,20 +81,21 @@ export function PackageDetails() {
 
   const handleNewComment = async (comment: string) => {
     await AidPackageService.upsertUpdateComment(packageId!, {
-      packageUpdateId: 0,
+      packageUpdateID: 0,
       packageID: parseInt(packageId!),
       updateComment: comment,
       dateTime: "",
     });
-    await fetchAidPackage();
+    await fetchUpdateComments();
   };
 
-  const handlePackageItemDelete = (item: AidPackageItem) => {
+  const handlePackageItemDelete = async (item: AidPackageItem) => {
     const confirmed = window.confirm(
       `Are you sure you want to delete item ${item.quotation.brandName}?`
     );
     if (confirmed) {
-      // await AidPackageService.deleteUpdateComment()
+      await AidPackageService.deleteAidPackageItem(packageId!, item.packageItemID);
+      await fetchAidPackage();
     }
   };
 
@@ -106,10 +106,12 @@ export function PackageDetails() {
       "Are you sure you want to delete this post?"
     );
     if (confirmed) {
+      debugger
       await AidPackageService.deleteUpdateComment(
         packageId!,
-        updateComment.packageUpdateId
+        updateComment.packageUpdateID
       );
+      fetchUpdateComments();
     }
   };
 
