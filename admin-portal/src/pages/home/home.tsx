@@ -5,7 +5,7 @@ import { Page } from "../../layout/page";
 import { AidPackages } from "../../types/AidPackages";
 import { TableRows } from "./tableRows/tableRows";
 import "./home.css";
-import {AidPackageService} from "../../apis/services/AidPackageService";
+import { AidPackageService } from "../../apis/services/AidPackageService";
 
 export function Home() {
   const [aidPackages, setAidPackages] = useState<AidPackages>();
@@ -14,9 +14,9 @@ export function Home() {
     const fetchData = async () => {
       const response = await AidPackageService.getAidPackages();
       if (response.data) {
-        setAidPackages({aidPackages: response.data});
+        setAidPackages({ aidPackages: response.data });
       }
-    }
+    };
 
     fetchData().catch(console.error);
   }, []);

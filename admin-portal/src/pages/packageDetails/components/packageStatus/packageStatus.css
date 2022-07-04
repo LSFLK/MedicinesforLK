@@ -1,11 +1,11 @@
 .packageStatus {
-    margin-bottom: 36px;
+  margin-bottom: 36px;
 }
 
 .packageStatus .heading {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .packageStatus .statusLabel label {
-    cursor: pointer;
+  cursor: pointer;
 }
