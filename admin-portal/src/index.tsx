@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { AuthProvider } from "@asgardeo/auth-react";
+import { AuthProvider, Storage } from "@asgardeo/auth-react";
+import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
 
 import { default as authConfig } from "./config.json";
 
@@ -12,7 +13,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AuthProvider config={authConfig}>
+    <AuthProvider
+      config={{ ...authConfig, storage: "webWorker" as Storage.WebWorker }}
+      plugin={TokenExchangePlugin.getInstance()}
+    >
     <App />
     </AuthProvider>
   </React.StrictMode>
