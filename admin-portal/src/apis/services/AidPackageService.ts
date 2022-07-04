@@ -68,4 +68,16 @@ export class AidPackageService {
   static postNeeds(formData: any) {
     return http.post(`requirements/medicalneeds`, formData);
   }
+
+  static postAidPackage({
+    name,
+    description,
+    needs,
+  }: {
+    name: string;
+    description: string;
+    needs: Array<{ id: number; quantity?: number }>;
+  }) {
+    return http.post(`aidpackages`, { name, description, needs });
+  }
 }

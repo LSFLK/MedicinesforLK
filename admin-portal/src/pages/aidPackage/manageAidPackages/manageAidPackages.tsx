@@ -20,7 +20,7 @@ export function ManageAidPackages({
   setAidPackages: (aidPackages: AidPackages) => void;
   handleAidPkgPublish: (supplier: number) => Promise<void>;
 }) {
-  const [selectedPackage, setSelectedPackage] = useState<number|null>();
+  const [selectedPackage, setSelectedPackage] = useState<number | null>();
 
   useEffect(() => {
     // get the list of suppliers assigned to a need

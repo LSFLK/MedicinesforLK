@@ -35,8 +35,6 @@ export function AidPackageTable({
   /**
    * calls the drilled in publish handler prop
    * and upon success removes the row.
-   * @param supplierId
-   * @param setIsUploading
    */
   const handlePublish = (
     supplierId: number,
@@ -130,7 +128,6 @@ export function AidPackageTable({
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
-          console.log(row);
           prepareRow(row);
 
           return (

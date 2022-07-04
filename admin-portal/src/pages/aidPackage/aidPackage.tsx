@@ -4,11 +4,13 @@ import { PageSelection } from "types/pages";
 import { Page } from "layout/page";
 import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
 import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
-import { fetchMedicalNeeds, NeedsInfo } from "data/medical-needs.mock.data";
-import { AidPackageService } from "../../apis/services/AidPackageService";
+import { NeedsInfo } from "data/medical-needs.mock.data";
+
 import toast from "react-simple-toasts";
 
 import "./aidPackage.css";
+import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
+import { AidPackageService } from "apis/services/AidPackageService";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,
@@ -35,21 +37,18 @@ export function CreateAidPackage() {
   const [aidPackages, setAidPackages] = useState<AidPackages>({});
 
   useEffect(() => {
-    fetchMedicalNeeds().then((response) => {
-      setMedicalNeeds(response.medicalNeedInfo);
+    MedicalNeedsService.getMedicalNeeds().then((response: any) => {
+      const needsArray = response.data;
+      setMedicalNeeds(needsArray);
       setNeedAssignments(
-        response.medicalNeedInfo.reduce(
-          (previousValue: NeedAssignments, currentValue) => {
+        needsArray.reduce(
+          (previousValue: NeedAssignments, currentValue: any) => {
             previousValue[currentValue.needID] = new Map();
             return previousValue;
           },
           {}
         )
       );
-    });
-
-    AidPackageService.getAidPackages().then((res) => {
-      console.log(JSON.stringify(res));
     });
   }, []);
 
@@ -76,9 +75,9 @@ export function CreateAidPackage() {
       });
 
     if (aidPackage) {
-      return AdminDataServices.publishAidPackage({
-        supplier,
-        ...aidPackage,
+      return AidPackageService.postAidPackage({
+        name: aidPackage.name,
+        description: aidPackage.details,
         needs,
       })
         .then(() => {
@@ -119,6 +118,7 @@ export function CreateAidPackage() {
               medicalNeeds={medicalNeeds}
               needAssignments={needAssignments}
               setNeedAssignments={setNeedAssignments}
+              aidPackages={aidPackages}
             />
           )}
           {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (

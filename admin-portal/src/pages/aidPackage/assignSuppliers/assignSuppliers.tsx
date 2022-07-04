@@ -1,7 +1,7 @@
 import { NeedsInfo } from "data/medical-needs.mock.data";
 import { useEffect, useMemo } from "react";
 import { useTable, useExpanded } from "react-table";
-import { NeedAssignments } from "../aidPackage";
+import { AidPackages, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import "./assignSuppliers.css";
 
@@ -9,10 +9,12 @@ export function AssignSuppliers({
   needAssignments,
   setNeedAssignments,
   medicalNeeds,
+  aidPackages,
 }: {
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
   medicalNeeds: Array<NeedsInfo>;
+  aidPackages: AidPackages;
 }) {
   const getAssignedCount = (
     need: NeedsInfo,
@@ -167,6 +169,7 @@ export function AssignSuppliers({
                     <SupplierNeedAllocationTable
                       supplierQuotes={row.original.supplierQuotes}
                       assignmentsForSupplier={needAssignments[needsID]}
+                      aidPackages={aidPackages}
                       setAssignmentForSupplier={(
                         supplierID: number,
                         quantity: number
