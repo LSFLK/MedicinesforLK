@@ -23,10 +23,7 @@ export function Footer() {
       </div>
       <div className="footer-black">
         <div className="footer-black-top">
-          <img
-            src="/assets/images/about-us/sl-red-cross-logo.jpg"
-            alt=""
-          />
+          <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
           <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
             nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
@@ -56,7 +53,7 @@ export function Footer() {
             Medical Suppliers
           </Link>
           <span>|</span>
-          <Link to="" className="text-link">
+          <Link to="/news-room" className="text-link">
             Newsroom
           </Link>
           <span>|</span>
