@@ -1,4 +1,4 @@
-import {Quotation} from "./Quotation";
+import { Quotation } from "./Quotation";
 
 export interface AidPackageItem {
   packageItemID: number;

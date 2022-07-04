@@ -1,7 +1,6 @@
-import React, {useState} from "react";
-import './updatecomments.css';
-import {AidPackageUpdateComment} from "../../../../types/AidPackageUpdateComment";
-
+import React, { useState } from "react";
+import "./updatecomments.css";
+import { AidPackageUpdateComment } from "../../../../types/AidPackageUpdateComment";
 
 interface UpdateCommentsProps {
   posts: AidPackageUpdateComment[];
@@ -11,12 +10,11 @@ interface UpdateCommentsProps {
 }
 
 export default function UpdateComments({
-                                      posts,
-                                      onNewComment,
-                                      onEditPostButtonClick,
-                                      onDeletePostButtonClick
-                                    }: UpdateCommentsProps) {
-
+  posts,
+  onNewComment,
+  onEditPostButtonClick,
+  onDeletePostButtonClick,
+}: UpdateCommentsProps) {
   const [newComment, setNewComment] = useState("");
   const [isCommenting, setIsCommenting] = useState(false);
 
@@ -24,11 +22,11 @@ export default function UpdateComments({
     setIsCommenting(true);
     try {
       await onNewComment(newComment);
-      setNewComment('')
+      setNewComment("");
     } finally {
-      setIsCommenting(false)
+      setIsCommenting(false);
     }
-  }
+  };
 
   return (
     <div className="updateComments">
@@ -37,10 +35,11 @@ export default function UpdateComments({
         <textarea
           value={newComment}
           rows={4}
-          onChange={(event) => setNewComment(event.currentTarget.value)}/>
+          onChange={(event) => setNewComment(event.currentTarget.value)}
+        />
         <div>
           <button onClick={handleNewPostButtonClick}>
-            {isCommenting ? 'Posting...' : 'Post'}
+            {isCommenting ? "Posting..." : "Post"}
           </button>
         </div>
       </div>
@@ -51,15 +50,18 @@ export default function UpdateComments({
             <div className="content">
               <span className="text">{post.updateComment}</span>
               <div className="actions">
-                <button onClick={() => onEditPostButtonClick(post)}>Edit</button>
-                <button onClick={() => onDeletePostButtonClick(post)}>Delete</button>
+                <button onClick={() => onEditPostButtonClick(post)}>
+                  Edit
+                </button>
+                <button onClick={() => onDeletePostButtonClick(post)}>
+                  Delete
+                </button>
               </div>
             </div>
           </div>
         ))}
-        <div>
-        </div>
+        <div></div>
       </div>
     </div>
-  )
+  );
 }

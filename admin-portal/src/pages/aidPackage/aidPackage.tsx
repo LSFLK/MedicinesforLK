@@ -7,7 +7,7 @@ import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
 import { fetchMedicalNeeds, NeedsInfo } from "data/medical-needs.mock.data";
 
 import "./aidPackage.css";
-import {AidPackageService} from "../../apis/services/AidPackageService";
+import { AidPackageService } from "../../apis/services/AidPackageService";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,

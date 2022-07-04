@@ -1,11 +1,11 @@
 .pledgeSummary {
-    margin-top: 50px;
-    display: inline-grid;
-    grid-template-columns: auto auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+  margin-top: 50px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
 }
 
 .pledgeSummary .heading {
-    font-weight: 600;
+  font-weight: 600;
 }

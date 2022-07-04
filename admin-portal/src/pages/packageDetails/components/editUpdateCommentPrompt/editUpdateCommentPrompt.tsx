@@ -1,38 +1,41 @@
-import React, {useEffect, useState} from "react";
-import './editUpdateCommentPrompt.css';
-import {AidPackageUpdateComment} from "../../../../types/AidPackageUpdateComment";
+import React, { useEffect, useState } from "react";
+import "./editUpdateCommentPrompt.css";
+import { AidPackageUpdateComment } from "../../../../types/AidPackageUpdateComment";
 
 interface EditStatusPostPromptProps {
   comment: AidPackageUpdateComment;
   onSave: (comment: AidPackageUpdateComment) => Promise<void>;
 }
 
-export default function EditUpdateCommentPrompt({comment, onSave}: EditStatusPostPromptProps) {
+export default function EditUpdateCommentPrompt({
+  comment,
+  onSave,
+}: EditStatusPostPromptProps) {
   const [isSaving, setIsSaving] = useState(false);
-  const [updateComment, setUpdateComment] = useState('');
-  const [errorText, setErrorText] = useState('')
+  const [updateComment, setUpdateComment] = useState("");
+  const [errorText, setErrorText] = useState("");
 
   useEffect(() => {
-    if(comment){
-      setUpdateComment(comment.updateComment)
+    if (comment) {
+      setUpdateComment(comment.updateComment);
     }
-    setErrorText('');
-  }, [comment])
+    setErrorText("");
+  }, [comment]);
 
   const handleSaveButtonClick = async () => {
     setIsSaving(true);
-    setErrorText('');
+    setErrorText("");
     try {
       const editedComment: AidPackageUpdateComment = {
         ...comment,
-        updateComment: updateComment
-      }
+        updateComment: updateComment,
+      };
       await onSave(editedComment);
     } catch (e) {
-      setErrorText('Something went wrong. Couldn\' edit the post.')
+      setErrorText("Something went wrong. Couldn' edit the post.");
     }
     setIsSaving(false);
-  }
+  };
 
   return (
     <div className="editUpdateCommentPrompt">
@@ -41,20 +44,15 @@ export default function EditUpdateCommentPrompt({comment, onSave}: EditStatusPos
         value={updateComment}
         rows={4}
         onChange={(event) => {
-          setUpdateComment(event.currentTarget.value)
+          setUpdateComment(event.currentTarget.value);
         }}
       />
-      {errorText && (
-        <div className="errorText">{errorText}</div>
-      )}
+      {errorText && <div className="errorText">{errorText}</div>}
       <div>
-        <button
-          disabled={isSaving}
-          onClick={handleSaveButtonClick}
-        >
-          {isSaving ? 'Saving...' : 'Save'}
+        <button disabled={isSaving} onClick={handleSaveButtonClick}>
+          {isSaving ? "Saving..." : "Save"}
         </button>
       </div>
     </div>
-  )
+  );
 }

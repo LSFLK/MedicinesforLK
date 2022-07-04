@@ -1,66 +1,67 @@
 :root {
-    --elixir-leading-desktop: 1.25;
-    --elixir-leading: calc(var(--elixir-leading-desktop)*1rem);
+  --elixir-leading-desktop: 1.25;
+  --elixir-leading: calc(var(--elixir-leading-desktop) * 1rem);
 }
 
 .pageContent {
-    --elixir-h1-vertical-rhythm-bottom: 1.25;
-    --elixir-h1-vertical-rhythm-top: 3;
-    --elixir-h2-vertical-rhythm-top: 2;
-    --elixir-h3-vertical-rhythm-top: 1.5;
-    --elixir-heading-vertical-rhythm-top: 1.25;
-    --elixir-heading-vertical-rhythm-bottom: 1;
-    width: 100%;
+  --elixir-h1-vertical-rhythm-bottom: 1.25;
+  --elixir-h1-vertical-rhythm-top: 3;
+  --elixir-h2-vertical-rhythm-top: 2;
+  --elixir-h3-vertical-rhythm-top: 1.5;
+  --elixir-heading-vertical-rhythm-top: 1.25;
+  --elixir-heading-vertical-rhythm-bottom: 1;
+  width: 100%;
 }
 
 .pageContent:before {
-    content: "";
-    display: table;
+  content: "";
+  display: table;
 }
 
 .pageContent h1:first-child {
-    --elixir-h1-font-size: 3rem;
-    margin-bottom: calc(var(--elixir-h1-vertical-rhythm-bottom)*var(--elixir-leading));
+  --elixir-h1-font-size: 3rem;
+  margin-bottom: calc(
+    var(--elixir-h1-vertical-rhythm-bottom) * var(--elixir-leading)
+  );
 }
 
 .pageHeader {
-    display: flex;
-    align-self: flex-start;
-    padding-top: 10px;
-    padding-left: 10px;
+  display: flex;
+  align-self: flex-start;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .uploadNeedsContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* tr:nth-child(even) {
     background-color: #dddddd;
 } */
 
-
 .textField {
-    height: 16px;
+  height: 16px;
 
-    font-size: 14px;
-    line-height: 16px;
+  font-size: 14px;
+  line-height: 16px;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    color: var(--elixir-color-gray-900);
+  color: var(--elixir-color-gray-900);
 
-    border: none;
-    border-radius: 3px;
+  border: none;
+  border-radius: 3px;
 
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-    outline: none;
+  outline: none;
 }
