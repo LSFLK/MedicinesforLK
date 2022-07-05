@@ -24,15 +24,15 @@
 }
 
 .inquiry {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--elixir-color-red);
-      margin: auto;
-      margin-bottom: 50px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--elixir-color-red);
+  margin: auto;
+  margin-bottom: 50px;
 }
 
 .inquiry a {
-      text-decoration: underline;
-      color: rgb(35, 35, 146);
+  text-decoration: underline;
+  color: rgb(35, 35, 146);
 }

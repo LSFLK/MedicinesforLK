@@ -1,29 +1,29 @@
 .info-box {
-      height: 300px;
-      flex-basis: 40%;
-      padding-left: 30px;
-      padding-right: 30px;
-      padding-top: 40px;
-      padding-bottom: 30px;
-      text-align: center;
-      border-radius: 20px;
-      margin-bottom: 40px;
-      border: 3px solid var(--elixir-color-gray-600);
+  height: 300px;
+  flex-basis: 40%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  border: 3px solid var(--elixir-color-gray-600);
 }
 
-.info-box img{
-      height: 160px;
-      opacity: 60%;
+.info-box img {
+  height: 160px;
+  opacity: 60%;
 }
 
 .info-box button {
-      height: 32px;
-      font-size: 15px;
-      font-weight: 600;
-      width: 100px;
-      border: 2px solid var(--elixir-color-gray-600);
-      border-radius: 8px;
-      color: var(--elixir-color-red);
-      background-color: white;
-      cursor: pointer;
+  height: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  width: 100px;
+  border: 2px solid var(--elixir-color-gray-600);
+  border-radius: 8px;
+  color: var(--elixir-color-red);
+  background-color: white;
+  cursor: pointer;
 }
