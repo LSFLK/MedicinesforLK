@@ -9,7 +9,7 @@ export function NavBar() {
        <Link to="/about-us" className="nav-link"> About </Link><span>|</span>
        <Link to="/donors" className="nav-link"> Donors </Link><span>|</span>
        <Link to="" className="nav-link"> Request Medicine </Link><span>|</span>
-       <Link to="" className="nav-link"> Medical Suppliers </Link><span>|</span>
+       <Link to="/suppliers" className="nav-link"> Medical Suppliers </Link><span>|</span>
        <Link to="" className="nav-link"> Newsroom </Link>
        <Link to="/login" className="login-btn"> Login </Link>
      </div>

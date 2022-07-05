@@ -17,9 +17,10 @@
 }
 
 .info-box button {
-      height: 35px;
-      font-size: 14px;
-      width: 150px;
+      height: 32px;
+      font-size: 15px;
+      font-weight: 600;
+      width: 100px;
       border: 2px solid var(--elixir-color-gray-600);
       border-radius: 8px;
       color: var(--elixir-color-red);

@@ -38,11 +38,11 @@ export function Donors() {
                   heading="Foundations / Corporations"
                   link="#"
             ></InfoBox>
-            <InfoBox 
+            <InfoBox
                   iconUrl="/assets/images/individual_donor.jpg"
                   text="Donate to Elixir via our partner donor organizations"
                   heading="Individual Donors"
-                  link="#"
+                  link="/donate-now"
             ></InfoBox>
             <p className="inquiry">For all inquiries please emails us at  <a href="mailto: inquires@redcross.lk">inquires@redcross.lk</a></p>
 
