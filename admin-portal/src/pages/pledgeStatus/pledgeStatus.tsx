@@ -8,30 +8,32 @@ import "./pledgeStatus.css";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 import { DonorAidPackagePledge } from "../../types/DonarAidPackagePledge";
 import { AidPackageService } from "../../apis/services/AidPackageService";
+import { Pledge } from "../../types/Pledge";
 
-const demoPledges: DonorAidPackagePledge[] = [
-  {
-    id: 1,
-    name: "Suwasetha Charity",
-    amount: 1000,
-    status: "Created",
-  },
-  {
-    id: 2,
-    name: "Some Charity",
-    amount: 875,
-    status: "Created",
-  },
-];
+// const demoPledges: DonorAidPackagePledge[] = [
+//   {
+//     id: 1,
+//     name: "Suwasetha Charity",
+//     amount: 1000,
+//     status: "Created",
+//   },
+//   {
+//     id: 2,
+//     name: "Some Charity",
+//     amount: 875,
+//     status: "Created",
+//   },
+// ];
 
 export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
-  const [pledges, setPledges] = useState<DonorAidPackagePledge[]>(demoPledges);
+  const [pledges, setPledges] = useState<Pledge[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchAidPackage();
+    fetchPledges();
   }, []);
 
   const fetchAidPackage = async () => {
@@ -39,13 +41,18 @@ export default function PledgeStatus() {
     setAidPackage(data);
   };
 
-  const handlePledgeEdit = (pledge: DonorAidPackagePledge) => {
-    navigate(`pledges/${pledge.id}`);
+  const fetchPledges = async () => {
+    const { data } = await AidPackageService.getPledges(packageId!);
+    setPledges(data);
   };
 
-  const handlePledgeDelete = (pledge: DonorAidPackagePledge) => {
+  const handlePledgeEdit = (pledge: Pledge) => {
+    navigate(`pledges/${pledge.pledgeID}`);
+  };
+
+  const handlePledgeDelete = (pledge: Pledge) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete the pledge of ${pledge.name}?`
+      `Are you sure you want to delete the pledge of ${pledge.donor.orgName}?`
     );
     if (confirmed) {
       // Call the api

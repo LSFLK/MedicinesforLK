@@ -12,22 +12,23 @@ import Modal from "../../components/modal/modal";
 import EditActivityPrompt from "./components/editActivityPrompt/editActivityPrompt";
 import "./editPledge.css";
 import { AidPackageService } from "../../apis/services/AidPackageService";
+import { PledgeService } from "../../apis/services/PledgeService";
 
 const demoDonor: Donor = {
   donorID: 0,
   email: "",
   orgLink: "",
   orgName: "Suwasetha Charity",
-  phone: 0,
+  phoneNumber: 0,
   quotationID: 0,
 };
 
-const demoPledge: Pledge = {
-  aidPackageID: 0,
-  amount: 1000,
-  donorID: 0,
-  status: Pledge.Status.Created,
-};
+// const demoPledge: Pledge = {
+//   packageID: 0,
+//   amount: 1000,
+//   donorID: 0,
+//   status: Pledge.Status.Created,
+// };
 
 const demoActivities: PledgeActivity[] = [
   {
@@ -48,7 +49,7 @@ const demoActivities: PledgeActivity[] = [
 export default function EditPledge() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
-  const [pledge, setPledge] = useState<Pledge>(demoPledge);
+  const [pledge, setPledge] = useState<Pledge>();
   const [donor, setDonor] = useState<Donor>(demoDonor);
   const [activities, setActivities] =
     useState<PledgeActivity[]>(demoActivities);
@@ -58,11 +59,17 @@ export default function EditPledge() {
 
   useEffect(() => {
     fetchAidPackage();
+    fetchPledge();
   }, []);
 
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
     setAidPackage(data);
+  };
+
+  const fetchPledge = async () => {
+    const { data } = await PledgeService.getPledge(packageId!);
+    setPledge(data);
   };
 
   const handleEditActivityClick = (activity: PledgeActivity) => {
@@ -93,15 +100,15 @@ export default function EditPledge() {
     );
     if (confirmed) {
       // Call the API
-      setPledge((prevPledge) => ({ ...prevPledge, status })); // Demo
+      setPledge((prevPledge) => ({ ...prevPledge!, status })); // Demo
     }
   };
 
   return (
     <Page selection={PageSelection.HOME}>
       <>
-        {!aidPackage && <p>Loading Aid Package...</p>}
-        {aidPackage && (
+        {(!aidPackage || !pledge) && <p>Loading Aid Package...</p>}
+        {aidPackage && pledge && (
           <div className="editPledge">
             <div>
               <Link to="/">Aid Packages</Link>&nbsp;&gt;&nbsp;
@@ -126,7 +133,7 @@ export default function EditPledge() {
             </Modal>
             <PledgeSummary
               donor={donor}
-              pledge={pledge}
+              pledge={pledge!}
               onStatusChange={handleStatusChange}
             />
             <PledgeActivities

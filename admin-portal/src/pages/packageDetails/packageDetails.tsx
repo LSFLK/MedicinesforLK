@@ -61,9 +61,7 @@ export function PackageDetails() {
     setIsEditOrderItemModalVisible(false);
   };
 
-  const handleStatusChange = async (
-    statusToBeChanged: AidPackage.Status,
-  ) => {
+  const handleStatusChange = async (statusToBeChanged: AidPackage.Status) => {
     if (statusToBeChanged === aidPackage?.status) {
       return;
     }
@@ -94,7 +92,10 @@ export function PackageDetails() {
       `Are you sure you want to delete item ${item.quotation.brandName}?`
     );
     if (confirmed) {
-      await AidPackageService.deleteAidPackageItem(packageId!, item.packageItemID);
+      await AidPackageService.deleteAidPackageItem(
+        packageId!,
+        item.packageItemID
+      );
       await fetchAidPackage();
     }
   };
@@ -106,7 +107,7 @@ export function PackageDetails() {
       "Are you sure you want to delete this post?"
     );
     if (confirmed) {
-      debugger
+      debugger;
       await AidPackageService.deleteUpdateComment(
         packageId!,
         updateComment.packageUpdateID
