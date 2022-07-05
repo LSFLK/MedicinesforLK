@@ -6,11 +6,9 @@ import { supplierService } from "apis/supplierService";
 
 export function SupplierQuotationUpload() {
   const [file, setFile] = useState();
-  const [fileName, setFileName] = useState("");
 
   function handleChange(event: any) {
     setFile(event.target.files[0]);
-    setFileName(event.target.files[0].name);
   }
 
   const handleSubmit = async (event: any) => {
@@ -18,7 +16,6 @@ export function SupplierQuotationUpload() {
     const formData = new FormData();
     if (file != undefined) {
       formData.append("file", file);
-      formData.append("fileName", fileName);
       const data = await supplierService.postQuotation(formData);
       console.log(data);
     } else {
