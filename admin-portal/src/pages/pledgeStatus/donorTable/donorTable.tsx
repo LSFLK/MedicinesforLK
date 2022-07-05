@@ -1,10 +1,10 @@
 import React from "react";
-import { DonorAidPackagePledge } from "../../../types/DonarAidPackagePledge";
+import { Pledge } from "../../../types/Pledge";
 
 interface DonorTableProps {
-  pledges: DonorAidPackagePledge[];
-  onPledgeDelete: (pledge: DonorAidPackagePledge) => void;
-  onPledgeEdit: (pledge: DonorAidPackagePledge) => void;
+  pledges: Pledge[];
+  onPledgeDelete: (pledge: Pledge) => void;
+  onPledgeEdit: (pledge: Pledge) => void;
 }
 
 export default function DonorTable({
@@ -25,8 +25,8 @@ export default function DonorTable({
         </thead>
         <tbody>
           {pledges.map((pledge) => (
-            <tr key={pledge.id}>
-              <td>{pledge.name}</td>
+            <tr key={pledge.pledgeID}>
+              <td>{pledge.donor.orgName}</td>
               <td>{pledge.amount}</td>
               <td>{pledge.status}</td>
               <td>

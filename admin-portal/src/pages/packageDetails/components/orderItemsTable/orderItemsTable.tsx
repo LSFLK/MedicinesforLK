@@ -25,9 +25,7 @@ export default function OrderItemsTable({
       <tbody>
         {items.map((item) => (
           <tr key={item.packageItemID}>
-            <td>
-              {/*{item.quotation.brandName} TODO: Uncomment when the field is there on the response */}
-            </td>
+            <td>{item.quotation.brandName}</td>
             <td>{item.quantity}</td>
             <td className="actions">
               <button onClick={() => onEditItemButtonClick(item)}>Edit</button>

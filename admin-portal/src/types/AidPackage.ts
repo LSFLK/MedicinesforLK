@@ -12,10 +12,10 @@ export namespace AidPackage {
   export enum Status {
     Draft = "Draft",
     Published = "Published",
-    AwaitingPayment = "AwaitingPayment",
+    AwaitingPayment = "Awaiting Payment",
     Ordered = "Ordered",
     Shipped = "Shipped",
-    ReceivedAtMOH = "ReceivedAtMOH",
+    ReceivedAtMOH = "Received At MOH",
     Delivered = "Delivered",
   }
 }

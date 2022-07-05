@@ -1,8 +1,12 @@
+import { Donor } from "./Donor";
+
 export interface Pledge {
-  aidPackageID: number;
+  pledgeID: number;
+  packageID: number;
   donorID: number;
   amount: number;
   status: Pledge.Status;
+  donor: Donor;
 }
 
 export namespace Pledge {

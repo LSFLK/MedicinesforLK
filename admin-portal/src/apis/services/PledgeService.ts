@@ -1,8 +1,13 @@
 import http from "../httpCommon";
 import { PledgeActivity } from "../../types/PledgeActivity";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
+import { Pledge } from "../../types/Pledge";
 
 export class PledgeService {
+  static getPledge(pledgeID: number | string) {
+    return http.get<Pledge>(`pledges/${pledgeID}`);
+  }
+
   static deletePledge(pledgeID: number | string) {
     return http.delete(`pledges/${pledgeID}`);
   }

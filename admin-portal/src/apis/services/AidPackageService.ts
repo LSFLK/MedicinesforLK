@@ -2,6 +2,7 @@ import http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
+import { Pledge } from "../../types/Pledge";
 
 export class AidPackageService {
   static getAidPackages() {
@@ -34,10 +35,10 @@ export class AidPackageService {
 
   static deleteUpdateComment(
     packageID: number | string,
-    packageUpdateCommentID: number
+    packageUpdateID: number
   ) {
     return http.delete(
-      `aidpackages/${packageID}/updatecomment/${packageUpdateCommentID}`
+      `aidpackages/${packageID}/updatecomment/${packageUpdateID}`
     );
   }
 
@@ -58,5 +59,9 @@ export class AidPackageService {
     return http.delete(
       `aidpackages/${packageID}/aidpackageitems/${packageItemID}`
     );
+  }
+
+  static getPledges(packageID: number | string) {
+    return http.get<Pledge[]>(`aidpackage/${packageID}/pledges`);
   }
 }
