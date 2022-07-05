@@ -1,6 +1,6 @@
 export interface DonorAidPackagePledge {
-  id: number,
-  name: string,
-  amount: number,
-  status: string,
+  id: number;
+  name: string;
+  amount: number;
+  status: string;
 }

@@ -7,32 +7,26 @@ export function NavBar() {
       <div className="logo"></div>
       <div className="nav-links">
         <Link to="/about-us" className="nav-link">
-          {" "}
-          About{" "}
+          About
         </Link>
         <span>|</span>
         <Link to="/donors" className="nav-link">
-          {" "}
-          Donors{" "}
+          Donors
         </Link>
         <span>|</span>
         <Link to="" className="nav-link">
-          {" "}
-          Request Medicine{" "}
+          Request Medicine
         </Link>
         <span>|</span>
         <Link to="/suppliers" className="nav-link">
-          {" "}
-          Medical Suppliers{" "}
+          Medical Suppliers
         </Link>
         <span>|</span>
-        <Link to="" className="nav-link">
-          {" "}
-          Newsroom{" "}
+        <Link to="/news-room" className="nav-link">
+          Newsroom
         </Link>
         <Link to="/login" className="login-btn">
-          {" "}
-          Login{" "}
+          Login
         </Link>
       </div>
     </nav>

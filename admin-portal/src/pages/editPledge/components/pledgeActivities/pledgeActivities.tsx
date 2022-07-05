@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {PledgeActivity} from "../../../../types/PledgeActivity";
-import './pledgeActivities.css'
+import React, { useState } from "react";
+import { PledgeActivity } from "../../../../types/PledgeActivity";
+import "./pledgeActivities.css";
 
 interface PledgeActivityProps {
   activities: PledgeActivity[];
@@ -10,53 +10,61 @@ interface PledgeActivityProps {
 }
 
 export default function PledgeActivities({
-                                           activities,
-                                           onEditActivityButtonClick,
-                                           onDeleteActivityButtonClick,
-                                           onNewActivity,
-                                         }: PledgeActivityProps) {
+  activities,
+  onEditActivityButtonClick,
+  onDeleteActivityButtonClick,
+  onNewActivity,
+}: PledgeActivityProps) {
   const [isCommenting, setIsCommenting] = useState(false);
-  const [newActivityText, setNewActivityText] = useState('');
+  const [newActivityText, setNewActivityText] = useState("");
 
   const handleSave = async () => {
     setIsCommenting(true);
     try {
       await onNewActivity(newActivityText);
-      setNewActivityText('');
+      setNewActivityText("");
     } finally {
       setIsCommenting(false);
     }
-  }
+  };
   return (
     <div className="pledgeActivity">
       <p className="heading">Activity:</p>
       <div className="newActivity">
-        <textarea rows={4}
-                  value={newActivityText}
-                  onChange={(event => {setNewActivityText(event.currentTarget.value)})}
+        <textarea
+          rows={4}
+          value={newActivityText}
+          onChange={(event) => {
+            setNewActivityText(event.currentTarget.value);
+          }}
         />
         <div>
           <button onClick={handleSave}>
-            {isCommenting ? 'Commenting...' : 'Comment'}
+            {isCommenting ? "Commenting..." : "Comment"}
           </button>
         </div>
       </div>
       <div className="activities">
         {activities.map((activity) => (
-          <div key={activity.activityID} className="activity">
-            <p className="activityDate">{new Date(activity.createdAt * 1000).toDateString()}</p>
+          <div key={activity.pledgeUpdateID} className="activity">
+            <p className="activityDate">
+              {new Date(activity.dateTime * 1000).toDateString()}
+            </p>
             <div className="content">
-              <span className="text">{activity.text}</span>
+              <span className="text">{activity.updateComment}</span>
               <div className="actions">
-                <button onClick={() => onEditActivityButtonClick(activity)}>Edit</button>
-                <button onClick={() => onDeleteActivityButtonClick(activity)}>Delete</button>
+                <button onClick={() => onEditActivityButtonClick(activity)}>
+                  Edit
+                </button>
+                <button onClick={() => onDeleteActivityButtonClick(activity)}>
+                  Delete
+                </button>
               </div>
             </div>
           </div>
         ))}
-        <div>
-        </div>
+        <div></div>
       </div>
     </div>
-  )
+  );
 }

@@ -23,9 +23,18 @@ function App() {
             <Route path="creation" element={<CreateAidPackage />} />
             <Route path="needsupload" element={<NeedsUpload />} />
             <Route path="packages/:packageId" element={<PackageDetails />} />
-            <Route path="packages/:packageId/pledge-status" element={<PledgeStatus />} />
-            <Route path="packages/:packageId/pledge-status/pledges/:pledgeId" element={<EditPledge />} />
-            <Route path="supplierQuotationUpload" element={<SupplierQuotationUpload />} />
+            <Route
+              path="supplierQuotationUpload"
+              element={<SupplierQuotationUpload />}
+            />
+            <Route
+              path="packages/:packageId/pledge-status"
+              element={<PledgeStatus />}
+            />
+            <Route
+              path="packages/:packageId/pledge-status/pledges/:pledgeId"
+              element={<EditPledge />}
+            />
           </Routes>
         </BrowserRouter>
       </div>
