@@ -6,24 +6,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import DonorTable from "./donorTable/donorTable";
 import "./pledgeStatus.css";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
-import { DonorAidPackagePledge } from "../../types/DonarAidPackagePledge";
 import { AidPackageService } from "../../apis/services/AidPackageService";
 import { Pledge } from "../../types/Pledge";
-
-// const demoPledges: DonorAidPackagePledge[] = [
-//   {
-//     id: 1,
-//     name: "Suwasetha Charity",
-//     amount: 1000,
-//     status: "Created",
-//   },
-//   {
-//     id: 2,
-//     name: "Some Charity",
-//     amount: 875,
-//     status: "Created",
-//   },
-// ];
 
 export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();

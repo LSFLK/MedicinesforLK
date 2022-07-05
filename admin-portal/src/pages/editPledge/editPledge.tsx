@@ -23,13 +23,6 @@ const demoDonor: Donor = {
   quotationID: 0,
 };
 
-// const demoPledge: Pledge = {
-//   packageID: 0,
-//   amount: 1000,
-//   donorID: 0,
-//   status: Pledge.Status.Created,
-// };
-
 const demoActivities: PledgeActivity[] = [
   {
     pledgeID: 0,
