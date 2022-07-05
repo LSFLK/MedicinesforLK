@@ -1,9 +1,9 @@
-.editStatusPostPrompt textarea {
+.editUpdateCommentPrompt textarea {
   width: 100%;
   margin-bottom: 10px;
 }
 
-.editStatusPostPrompt .errorText {
+.editUpdateCommentPrompt .errorText {
   margin-bottom: 10px;
   color: red;
 }

@@ -148,7 +148,6 @@
   max-width: 300px;
 }
 
-
 .profile-card-container {
   display: flex;
   width: 100%;
@@ -178,7 +177,6 @@
 .profile-card a {
   text-decoration: none;
   color: black;
-
 }
 
 .profile-card p {
