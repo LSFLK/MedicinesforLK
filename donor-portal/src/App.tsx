@@ -1,22 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { FullBleedContainer } from "./pages/layout/full-bleed-container";
 import { NavBar } from "./components/navbar";
-import { Footer } from "./components/footer"
+import { Footer } from "./components/footer";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { AboutUs } from "./pages/about-us";
-import { Donors } from "./pages/donors"
-import { Suppliers } from "./pages/suppliers"
+import { Donors } from "./pages/donors";
+import { Suppliers } from "./pages/suppliers";
 import { DonateNow } from "./pages/donate-now";
 import "./App.css";
 import { AidPackageDetailsPage } from "./pages/package";
+import { NewsRoom } from "./pages/newsroom";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <header className="App-header">
-          <NavBar/>
+          <NavBar />
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,11 +27,11 @@ function App() {
           <Route path="suppliers" element={<Suppliers />} />
           <Route path="/package/:id" element={<AidPackageDetailsPage />} />
           <Route path="donate-now" element={<DonateNow />} />
+          <Route path="news-room" element={<NewsRoom />} />
         </Routes>
         <FullBleedContainer>
-          <Footer/>
+          <Footer />
         </FullBleedContainer>
-        
       </BrowserRouter>
     </div>
   );
