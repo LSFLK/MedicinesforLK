@@ -5,31 +5,27 @@ import { EmptyRow } from "../tableRow/emptyRow";
 import { TableRow } from "../tableRow/tableRow";
 
 interface TableRowsProps {
-    aidPackages?: AidPackages;
+  aidPackages?: AidPackages;
 }
 
 export function TableRows(props: TableRowsProps) {
-    const { aidPackages } = props;
-    const [tableRows, setTableRows] = useState<ReactElement[]>();
+  const { aidPackages } = props;
+  const [tableRows, setTableRows] = useState<ReactElement[]>();
 
-    useEffect(() => {
-        const getTableRows = () => {
-            const rows: ReactElement[] = [];
-            if (aidPackages) {
-                aidPackages.aidPackages.forEach((value: AidPackage) => {
-                    rows.push(<TableRow aidPackage={value} />);
-                });
-            } else {
-                rows.push(<EmptyRow />);
-            }
-            return rows;
-        }
+  useEffect(() => {
+    const getTableRows = () => {
+      const rows: ReactElement[] = [];
+      if (aidPackages) {
+        aidPackages.aidPackages.forEach((value: AidPackage) => {
+          rows.push(<TableRow aidPackage={value} />);
+        });
+      } else {
+        rows.push(<EmptyRow />);
+      }
+      return rows;
+    };
 
-        setTableRows(getTableRows());
-    }, [aidPackages]);
-    return (
-        <>
-            {tableRows}
-        </>
-    );
+    setTableRows(getTableRows());
+  }, [aidPackages]);
+  return <>{tableRows}</>;
 }

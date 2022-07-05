@@ -9,6 +9,6 @@ export namespace Pledge {
   export enum Status {
     Created = "Created",
     PaymentInitiated = "PaymentInitiated",
-    PaymentConfirmed = "PaymentConfirmed"
+    PaymentConfirmed = "PaymentConfirmed",
   }
 }

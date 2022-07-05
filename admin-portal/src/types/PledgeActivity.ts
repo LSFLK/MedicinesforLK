@@ -1,5 +1,6 @@
 export interface PledgeActivity {
-  activityID: number;
-  text: string;
-  createdAt: number;
+  pledgeID: number;
+  pledgeUpdateID: number;
+  updateComment: string;
+  dateTime: number;
 }

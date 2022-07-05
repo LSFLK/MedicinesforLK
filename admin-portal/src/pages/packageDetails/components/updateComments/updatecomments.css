@@ -1,0 +1,43 @@
+.updateComments .heading {
+  font-weight: 600;
+}
+
+.updateComments .newComment {
+  display: flex;
+  align-items: center;
+}
+
+.updateComments .newComment textarea {
+  flex-grow: 1;
+}
+
+.updateComments .newComment button {
+  margin-left: 10px;
+  width: 100px;
+  height: 36px;
+}
+
+.updateComments .comment {
+  margin-top: 30px;
+}
+
+.updateComments .comment {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.updateComments .comment .date {
+  font-weight: 500;
+}
+
+.updateComments .comment .content {
+  display: flex;
+}
+
+.updateComments .comment .content .text {
+  flex-grow: 1;
+}
+
+.updateComments .comment .content .actions button {
+  margin-left: 5px;
+}
