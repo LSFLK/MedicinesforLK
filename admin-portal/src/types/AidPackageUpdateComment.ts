@@ -1,6 +1,6 @@
 export interface AidPackageUpdateComment {
   packageID: number;
-  packageUpdateId: number;
+  packageUpdateID: number;
   updateComment: string;
   dateTime: string;
 }
