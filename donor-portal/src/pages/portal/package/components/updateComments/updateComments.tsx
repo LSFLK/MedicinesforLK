@@ -1,15 +1,12 @@
 import React from "react";
 import "./updatecomments.css";
-import {AidPackageUpdateComment} from "../../../../../types/AidPackageUpdateComment";
+import { AidPackageUpdateComment } from "../../../../../types/AidPackageUpdateComment";
 
 interface UpdateCommentsProps {
   posts: AidPackageUpdateComment[];
 }
 
-export default function UpdateComments({
-  posts,
-}: UpdateCommentsProps) {
-
+export default function UpdateComments({ posts }: UpdateCommentsProps) {
   return (
     <div className="updateComments">
       <p className="heading">Updates</p>

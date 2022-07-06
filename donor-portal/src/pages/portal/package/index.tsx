@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from "react";
-import './styles.css';
-import {Link, useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import "./styles.css";
+import { Link, useParams } from "react-router-dom";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import PackageStatus from "./components/packageStatus/packageStatus";
 import ContributionsChart from "./components/contributionsChart/contributionsChart";
 import UpdateComments from "./components/updateComments/updateComments";
-import {AidPackage} from "../../../types/AidPackage";
-import {AidPackageUpdateComment} from "../../../types/AidPackageUpdateComment";
-import {AidPackageService} from "../../../apis/services/AidPackageService";
+import { AidPackage } from "../../../types/AidPackage";
+import { AidPackageUpdateComment } from "../../../types/AidPackageUpdateComment";
+import { AidPackageService } from "../../../apis/services/AidPackageService";
 import { Page } from "../../layout/page";
 
-export default function PortalPackage(){
+export default function PortalPackage() {
   const { packageID } = useParams<{ packageID: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [posts, setPosts] = useState<AidPackageUpdateComment[]>([]);
@@ -44,24 +44,15 @@ export default function PortalPackage(){
               <p className="heading">Description</p>
               <p>{aidPackage.description}</p>
               <div>
-                <OrderItemsTable
-                  items={aidPackage?.aidPackageItems}
-                />
+                <OrderItemsTable items={aidPackage?.aidPackageItems} />
               </div>
             </div>
-                <ContributionsChart
-                  totalAmount={100}
-                  pledgedPercentage={10}
-                />
+            <ContributionsChart totalAmount={100} pledgedPercentage={10} />
           </div>
-          <PackageStatus
-            currentStatus={aidPackage.status}
-          />
-          <UpdateComments
-            posts={posts}
-          />
+          <PackageStatus currentStatus={aidPackage.status} />
+          <UpdateComments posts={posts} />
         </div>
       )}
     </Page>
-  )
+  );
 }

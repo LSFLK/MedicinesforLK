@@ -108,7 +108,6 @@
   top: 1px;
 } */
 
-
 .navbar {
   height: 70px;
   background-color: var(--elixir-color-red);
@@ -117,7 +116,7 @@
 }
 
 .logo {
-  background-image: url("../../../public/assets/images/logo.png") ;
+  background-image: url("../../../public/assets/images/logo.png");
   height: 70px;
   background-color: white;
   background-repeat: no-repeat;
