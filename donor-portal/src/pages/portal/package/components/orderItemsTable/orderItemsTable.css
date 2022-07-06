@@ -1,0 +1,16 @@
+.orderItemsTable {
+  margin-top: 36px;
+}
+
+.orderItemsTable table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+.orderItemsTable td,
+.orderItemsTable th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}

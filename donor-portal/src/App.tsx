@@ -11,6 +11,7 @@ import { DonateNow } from "./pages/donate-now";
 import "./App.css";
 import { AidPackageDetailsPage } from "./pages/package";
 import { NewsRoom } from "./pages/newsroom";
+import PortalPackage from "./pages/portal/package";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/package/:id" element={<AidPackageDetailsPage />} />
           <Route path="donate-now" element={<DonateNow />} />
           <Route path="news-room" element={<NewsRoom />} />
+          <Route path="portal/package/:packageID" element={<PortalPackage />} />
         </Routes>
         <FullBleedContainer>
           <Footer />

@@ -1,0 +1,22 @@
+.contributionsChart .heading {
+    font-weight: 600;
+    text-align: center;
+}
+
+.contributionsChart .chart {
+    display: flex;
+    justify-content: center;
+}
+
+.contributionsChart {
+    width: 500px;
+    border: solid #cccccc;
+    margin-left: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.contributionsChart .yourPledge{
+    text-align: left;
+    padding-left: 50px;
+}
