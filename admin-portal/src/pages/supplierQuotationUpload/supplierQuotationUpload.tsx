@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
 import "./supplierQuotationUpload.css";
-import { SupplierService } from "apis/supplierService";
+import { SupplierService } from "apis/services/SupplierService";
 
 export function SupplierQuotationUpload() {
   const [file, setFile] = useState();
