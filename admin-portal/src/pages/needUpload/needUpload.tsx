@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
-import "./needsUpload.css";
+import "./needUpload.css";
 import AdminDataServices from "apis/services";
-export function NeedsUpload() {
+export function NeedUpload() {
   const [file, setFile] = useState();
 
   function handleChange(event: any) {

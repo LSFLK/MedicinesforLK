@@ -11,7 +11,7 @@ class AdminDataServices {
   }
 
   postNeeds(formData: any) {
-    return http.post(`requirements`, formData);
+    return http.post(`requirements/medicalneeds`, formData);
   }
 }
 
