@@ -33,12 +33,12 @@
 }
 
 .uploadNeedsContainer {
-    display: flex;
-    margin-left: 10px;  
+  display: flex;
+  margin-left: 10px;
 }
 
 .uploadNeedsContainer p {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 .textField {

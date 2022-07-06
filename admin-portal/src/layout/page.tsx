@@ -51,7 +51,10 @@ export function Page(props: PageProps) {
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="/supplierQuotationUpload" className={supplierClassName}>
+                    <a
+                      href="/supplierQuotationUpload"
+                      className={supplierClassName}
+                    >
                       Suppliers
                     </a>
                   </div>
