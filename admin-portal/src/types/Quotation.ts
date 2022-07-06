@@ -1,3 +1,5 @@
+import { Supplier } from "./Supplier";
+
 export interface Quotation {
   quotationID: number;
   supplierID: number;
@@ -8,4 +10,5 @@ export interface Quotation {
   expiryDate: number;
   regulatoryInfo: string;
   unitPrice: number;
+  supplier: Supplier;
 }

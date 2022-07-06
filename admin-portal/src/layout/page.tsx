@@ -6,10 +6,11 @@ import "./page.css";
 interface PageProps {
   children: React.ReactElement;
   selection: PageSelection;
+  className?: string;
 }
 
 export function Page(props: PageProps) {
-  const { children, selection } = props;
+  const { children, selection, className } = props;
 
   let homeClassName =
     selection === PageSelection.HOME
@@ -51,14 +52,17 @@ export function Page(props: PageProps) {
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="#" className={supplierClassName}>
+                    <a
+                      href="/supplierQuotationUpload"
+                      className={supplierClassName}
+                    >
                       Suppliers
                     </a>
                   </div>
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="/needsupload" className={needsClassName}>
+                    <a href="/needUpload" className={needsClassName}>
                       Needs
                     </a>
                   </div>
@@ -79,7 +83,7 @@ export function Page(props: PageProps) {
           </nav>
         </div>
       </aside>
-      <main className="docMainContainer">{children}</main>
+      <main className={`docMainContainer ${className}`}>{children}</main>
     </div>
   );
 }

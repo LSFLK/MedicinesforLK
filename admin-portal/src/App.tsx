@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components";
 import { Home } from "./pages/home/home";
-import { NeedsUpload } from "./pages/needsupload/needsupload";
+import { NeedUpload } from "./pages/needUpload/needUpload";
 import { CreateAidPackage } from "pages/aidPackage/aidPackage";
+import { SupplierQuotationUpload } from "./pages/supplierQuotationUpload/supplierQuotationUpload";
 import { PackageDetails } from "./pages/packageDetails/packageDetails";
 import PledgeStatus from "./pages/pledgeStatus/pledgeStatus";
 import EditPledge from "./pages/editPledge/editPledge";
@@ -20,8 +21,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="creation" element={<CreateAidPackage />} />
-            <Route path="needsupload" element={<NeedsUpload />} />
+            <Route path="needUpload" element={<NeedUpload />} />
             <Route path="packages/:packageId" element={<PackageDetails />} />
+            <Route
+              path="supplierQuotationUpload"
+              element={<SupplierQuotationUpload />}
+            />
             <Route
               path="packages/:packageId/pledge-status"
               element={<PledgeStatus />}

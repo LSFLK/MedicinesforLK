@@ -24,14 +24,14 @@ export function Suppliers() {
                   text="ELIXIR provides an easy to use application to manage all your urgent supply needs. Contact us for details on how 
                         to create an account"
                   heading="Hospitals/Doctors"
-                  link=""
+                  link="#"
             ></InfoBox>
             <InfoBox 
                   iconUrl="/assets/images/pharmacy.jpg"
                   text="ELIXIR would like to partner with you to source the needs of our hospitals and doctors. Contact us to onboard your 
                         inventory."
                   heading="Pharmaceutical Suppliers"
-                  link=""
+                  link="#"
             ></InfoBox>
             <p className="inquiry">For all inquiries please emails us at  <a href="mailto: inquiries@redcross.lk">inquires@redcross.lk</a></p>
 

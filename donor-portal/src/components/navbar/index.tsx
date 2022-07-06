@@ -18,7 +18,7 @@ export function NavBar() {
           Request Medicine
         </Link>
         <span>|</span>
-        <Link to="" className="nav-link">
+        <Link to="/suppliers" className="nav-link">
           Medical Suppliers
         </Link>
         <span>|</span>

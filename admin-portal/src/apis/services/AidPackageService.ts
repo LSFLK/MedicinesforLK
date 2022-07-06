@@ -64,4 +64,8 @@ export class AidPackageService {
   static getPledges(packageID: number | string) {
     return http.get<Pledge[]>(`aidpackage/${packageID}/pledges`);
   }
+
+  static postNeeds(formData: any) {
+    return http.post(`requirements/medicalneeds`, formData);
+  }
 }

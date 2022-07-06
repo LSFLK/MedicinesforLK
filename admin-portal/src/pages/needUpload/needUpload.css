@@ -3,7 +3,7 @@
   --elixir-leading: calc(var(--elixir-leading-desktop) * 1rem);
 }
 
-.pageContent {
+.needsUpload .pageContent {
   --elixir-h1-vertical-rhythm-bottom: 1.25;
   --elixir-h1-vertical-rhythm-top: 3;
   --elixir-h2-vertical-rhythm-top: 2;
@@ -13,19 +13,19 @@
   width: 100%;
 }
 
-.pageContent:before {
+.needsUpload .pageContent:before {
   content: "";
   display: table;
 }
 
-.pageContent h1:first-child {
+.needsUpload .pageContent h1:first-child {
   --elixir-h1-font-size: 3rem;
   margin-bottom: calc(
     var(--elixir-h1-vertical-rhythm-bottom) * var(--elixir-leading)
   );
 }
 
-.pageHeader {
+.needsUpload .pageHeader {
   display: flex;
   align-self: flex-start;
   padding-top: 10px;
@@ -34,14 +34,14 @@
 
 .uploadNeedsContainer {
   display: flex;
-  justify-content: center;
+  margin-left: 10px;
 }
 
-/* tr:nth-child(even) {
-    background-color: #dddddd;
-} */
+.uploadNeedsContainer p {
+  font-size: 17px;
+}
 
-.textField {
+.needsUpload .textField {
   height: 16px;
 
   font-size: 14px;

@@ -41,7 +41,6 @@ export function AboutUs() {
           The Sri Lanka Red Cross serves to coordinate distribution activities on the ground 
           and helps perform auditing and monitoring actions to ensure donors receive 
           end-to-end visibility of shipments from suppliers  to those in need.
-
         </p>
       </div>
       <FullBleedContainer className="world-map-section">
