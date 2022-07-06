@@ -1,7 +1,3 @@
-:root {
-  --elixir-leading-desktop: 1.25;
-  --elixir-leading: calc(var(--elixir-leading-desktop) * 1rem);
-}
 
 .supplierQuotaionUpload .pageContent {
   --elixir-h1-vertical-rhythm-bottom: 1.25;
