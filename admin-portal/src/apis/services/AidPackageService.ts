@@ -8,21 +8,21 @@ export class AidPackageService {
   static getAidPackages() {
     return http.get<AidPackage[]>("aidpackages");
   }
-  
+
   static getAidPackage(packageID: number | string) {
     return http.get<AidPackage>(`aidpackages/${packageID}`);
   }
-  
+
   static updateAidPackage(aidPackage: AidPackage) {
     return http.patch<AidPackage>(`aidpackages`, aidPackage);
   }
-  
+
   static getUpdateComments(packageID: number | string) {
     return http.get<AidPackageUpdateComment[]>(
       `aidpackages/${packageID}/updatecomments`
     );
   }
-  
+
   static upsertUpdateComment(
     packageID: number | string,
     comment: AidPackageUpdateComment
@@ -32,7 +32,7 @@ export class AidPackageService {
       comment
     );
   }
-  
+
   static deleteUpdateComment(
     packageID: number | string,
     packageUpdateID: number
@@ -41,7 +41,7 @@ export class AidPackageService {
       `aidpackages/${packageID}/updatecomment/${packageUpdateID}`
     );
   }
-  
+
   static updateAidPackageItem(
     packageID: number | string,
     packageItem: AidPackageItem
@@ -51,7 +51,7 @@ export class AidPackageService {
       packageItem
     );
   }
-  
+
   static deleteAidPackageItem(
     packageID: number | string,
     packageItemID: number
@@ -60,7 +60,7 @@ export class AidPackageService {
       `aidpackages/${packageID}/aidpackageitems/${packageItemID}`
     );
   }
-  
+
   static getPledges(packageID: number | string) {
     return http.get<Pledge[]>(`aidpackage/${packageID}/pledges`);
   }
