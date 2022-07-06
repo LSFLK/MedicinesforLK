@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
 import "./needUpload.css";
-import AdminDataServices from "apis/services";
+import { AidPackageService } from "apis/services/AidPackageService";
+
 export function NeedUpload() {
   const [file, setFile] = useState();
 
@@ -15,7 +16,7 @@ export function NeedUpload() {
     const formData = new FormData();
     if (file != undefined) {
       formData.append("file", file);
-      const data = await AdminDataServices.postNeeds(formData);
+      const data = await AidPackageService.postNeeds(formData);
       console.log(data);
     } else {
       alert("Please select a file");
@@ -23,7 +24,7 @@ export function NeedUpload() {
   };
 
   return (
-    <Page selection={PageSelection.UPLOAD_NEEDS}>
+    <Page selection={PageSelection.UPLOAD_NEEDS} className="needsUpload">
       <div className="pageContent">
         <header className="pageHeader">
           <h1>Needs Upload</h1>
