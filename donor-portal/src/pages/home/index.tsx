@@ -3,7 +3,7 @@ import { HeaderImage } from "../layout/header-image";
 import { Page } from "../layout/page";
 import "./styles.css";
 
-type DonarAidPackage = {
+type DonorAidPackage = {
   packageID: number;
   name: string;
   hospital: string;
@@ -75,7 +75,7 @@ const packageList = [
 ];
 
 export function Home() {
-  const [aidPackages, setAidPackages] = useState<Array<DonarAidPackage>>();
+  const [aidPackages, setAidPackages] = useState<Array<DonorAidPackage>>();
   const [goalFilter, setGoalFilter] = useState<GoalStatus>(
     GoalStatus.GOAL_PENDING
   );
@@ -141,7 +141,7 @@ export function Home() {
   );
 }
 
-function PackageCard({ donorPackage }: { donorPackage: DonarAidPackage }) {
+function PackageCard({ donorPackage }: { donorPackage: DonorAidPackage }) {
   const {
     packageID,
     description,
