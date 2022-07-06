@@ -2,10 +2,10 @@
  * main page for displaying aid package details
  */
 import { useEffect, useState } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
+import { AidPackageService } from "../../apis/AidPackageService";
 import { SimpleProgressBar } from "../../components/progress-bar";
-//NOTE: import from actual data source helper once implemented.
-import { fetchPackageData } from "../../data/package.mock.data";
+import { AidPackage } from "../../types/AidPackage";
 import { Page } from "../layout/page";
 import "./styles.css";
 
@@ -31,23 +31,19 @@ export function AidPackageDetailsPage() {
    */
   useEffect(() => {
     if (pkgId) {
-      setIsLoading(true);
-      fetchPackageData(pkgId)
-        .then((data) => setData(data))
-        .catch((err) => {
-          setData(undefined);
-          //handle error
-        })
-        .finally(() => setIsLoading(false));
+      fetchPackageData(pkgId);
     }
   }, [pkgId]);
 
-  /**
-   * click event handler for Donate button.
-   */
-  const handleDonateClick = () => {
-    //TODO: Implement the expected behaviour
-  };
+  async function fetchPackageData(pkgId: string) {
+    setIsLoading(true);
+    try {
+      const packageDetails = await AidPackageService.getAidPackage(pkgId);
+      setData(packageDetails.data);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   /**
    * when fetch succeeds and no data is found
@@ -56,6 +52,11 @@ export function AidPackageDetailsPage() {
   if (!isLoading && data === undefined) {
     return <Navigate replace to="/404"></Navigate>;
   }
+
+  // TODO: use real data
+  const pledged = 5000;
+  const goal = 10000;
+
   /**
    * render page upon successful fetch.
    */
@@ -71,12 +72,14 @@ export function AidPackageDetailsPage() {
         <Page>
           <div className="aid-package-container">
             <div className="aid-package-title-container">
-              <h1>{data?.title}</h1>
+              <h1>{data?.name}</h1>
             </div>
             <div className="aid-package-header-container">
               <div
                 className="aid-package-header-image"
-                style={{ backgroundImage: `url(${data?.image})` }}
+                style={{
+                  backgroundImage: `url(https://picsum.photos/1200/300)`,
+                }}
               ></div>
               <div className="aid-package-description-ribbon">Description</div>
             </div>
@@ -86,41 +89,21 @@ export function AidPackageDetailsPage() {
             </div>
             <div className="aid-package-progress-container">
               <h3>
-                {/* FIXME: is currency symbol always $? */}$
-                {data.pledged.toLocaleString("en-us")} raised of $
-                {data.goal.toLocaleString("en-us")} goal.
+                {pledged.toLocaleString("en-us")} raised of $
+                {goal.toLocaleString("en-us")} goal.
               </h3>
               <SimpleProgressBar
-                current={data?.pledged as number}
-                max={data?.goal as number}
+                current={pledged as number}
+                max={goal as number}
                 className="aid-pacakge-progress-bar"
               />
-              <button
-                className="btn aid-package-donate-btn"
-                onClick={handleDonateClick}
-              >
+              <Link className="btn aid-package-donate-btn" to="/donate-now">
                 Donate
-              </button>
+              </Link>
             </div>
           </div>
         </Page>
       )}
     </>
   );
-}
-
-/**
- *
- * TODO: Discuss the exact properties of an aid package
- * and make necessary changes here or where ever such
- * types are to be defined.
- */
-export interface AidPackage {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  goal: number;
-  pledged: number;
-  items: { itemName: string; quantity: number }[];
 }

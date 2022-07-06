@@ -1,94 +1,50 @@
 import { useEffect, useState } from "react";
+import { AidPackageService } from "../../apis/AidPackageService";
 import { HeaderImage } from "../layout/header-image";
 import { Page } from "../layout/page";
+import { AidPackage } from "../../types/AidPackage";
 import "./styles.css";
-
-type DonarAidPackage = {
-  packageID: number;
-  name: string;
-  hospital: string;
-  description: string;
-  totalAmount: number;
-  pledgedPercentage: number;
-};
+import { Link } from "react-router-dom";
 
 enum GoalStatus {
   GOAL_PENDING,
   GOAL_REACHED,
 }
 
-const packageList = [
-  {
-    packageID: 1,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 78,
-  },
-  {
-    packageID: 2,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 20,
-  },
-  {
-    packageID: 3,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 100,
-  },
-  {
-    packageID: 4,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 78,
-  },
-  {
-    packageID: 5,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 2,
-  },
-  {
-    packageID: 6,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 50,
-  },
-];
-
 export function Home() {
-  const [aidPackages, setAidPackages] = useState<Array<DonarAidPackage>>();
+  const [aidPackages, setAidPackages] = useState<Array<AidPackage>>();
+  const [filteredAidPackages, setFilteredAidPackages] =
+    useState<Array<AidPackage>>();
   const [goalFilter, setGoalFilter] = useState<GoalStatus>(
     GoalStatus.GOAL_PENDING
   );
 
+  async function fetchPackages() {
+    const packages = await AidPackageService.getAidPackages();
+    setAidPackages(packages.data);
+  }
+
   useEffect(() => {
-    setAidPackages(
-      packageList.filter((donorPackage) => {
-        if (goalFilter === GoalStatus.GOAL_PENDING) {
-          return donorPackage.pledgedPercentage !== 100;
-        } else {
-          return donorPackage.pledgedPercentage === 100;
-        }
-      })
+    fetchPackages();
+  }, []);
+
+  useEffect(() => {
+    if (!aidPackages) return;
+
+    setFilteredAidPackages(
+      aidPackages.filter(
+        (donorPackage) => {
+          return donorPackage;
+
+          // TODO: add filter once the API is done
+          // if (goalFilter === GoalStatus.GOAL_PENDING) {
+          //   return donorPackage.pledgedPercentage !== 100;
+          // } else {
+          //   return donorPackage.pledgedPercentage === 100;
+          // }
+        },
+        [aidPackages]
+      )
     );
   });
 
@@ -133,7 +89,7 @@ export function Home() {
       </div>
 
       <div className="package-list">
-        {aidPackages?.map((donorPackage) => (
+        {filteredAidPackages?.map((donorPackage) => (
           <PackageCard donorPackage={donorPackage} />
         ))}
       </div>
@@ -141,15 +97,20 @@ export function Home() {
   );
 }
 
-function PackageCard({ donorPackage }: { donorPackage: DonarAidPackage }) {
+function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
   const {
     packageID,
     description,
-    totalAmount,
-    pledgedPercentage,
+    // totalAmount,
+    // pledgedPercentage,
     name,
-    hospital,
+    // hospital,
   } = donorPackage;
+
+  // TODO: replace with real values
+  const totalAmount = 10000;
+  const pledgedPercentage = 50;
+
   const currentAmount = Math.round(totalAmount * (100 / pledgedPercentage));
 
   return (
@@ -163,11 +124,10 @@ function PackageCard({ donorPackage }: { donorPackage: DonarAidPackage }) {
         <div className="card-details__heading">
           <div className="card-details__heading__text">
             <h2>{name}</h2>
-            <p>{hospital}</p>
           </div>
-          <a href="#" className="btn">
+          <Link to={`/package/${packageID}`} className="btn">
             Donate
-          </a>
+          </Link>
         </div>
         <p className="card_details__description">{description}</p>
         <div className="card_details__package_progress">
