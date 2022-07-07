@@ -14,38 +14,12 @@ import "./editPledge.css";
 import { AidPackageService } from "../../apis/services/AidPackageService";
 import { PledgeService } from "../../apis/services/PledgeService";
 
-const demoDonor: Donor = {
-  donorID: 0,
-  email: "",
-  orgLink: "",
-  orgName: "Suwasetha Charity",
-  phoneNumber: 0,
-  quotationID: 0,
-};
-
-const demoActivities: PledgeActivity[] = [
-  {
-    pledgeID: 0,
-    pledgeUpdateID: 0,
-    updateComment: "Created the invoice for this pledge",
-    dateTime: 1655720893,
-  },
-
-  {
-    pledgeID: 0,
-    pledgeUpdateID: 0,
-    updateComment: "Lorem Ipsum dollar sit amet",
-    dateTime: 1654720893,
-  },
-];
-
 export default function EditPledge() {
   const { packageId } = useParams<{ packageId: string }>();
+  const { pledgeId } = useParams<{ pledgeId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [pledge, setPledge] = useState<Pledge>();
-  const [donor, setDonor] = useState<Donor>(demoDonor);
-  const [activities, setActivities] =
-    useState<PledgeActivity[]>(demoActivities);
+  const [activities, setActivities] = useState<PledgeActivity[]>([]);
   const [isEditActivityModalVisible, setIsEditActivityModalVisible] =
     useState(false);
   const activityToBeEdited = useRef<PledgeActivity | null>(null);
@@ -53,6 +27,7 @@ export default function EditPledge() {
   useEffect(() => {
     fetchAidPackage();
     fetchPledge();
+    fetchUpdateComments();
   }, []);
 
   const fetchAidPackage = async () => {
@@ -61,8 +36,13 @@ export default function EditPledge() {
   };
 
   const fetchPledge = async () => {
-    const { data } = await PledgeService.getPledge(packageId!);
+    const { data } = await PledgeService.getPledge(pledgeId!);
     setPledge(data);
+  };
+
+  const fetchUpdateComments = async () => {
+    const { data } = await PledgeService.getUpdateComments(pledgeId!);
+    setActivities(data);
   };
 
   const handleEditActivityClick = (activity: PledgeActivity) => {
@@ -71,29 +51,45 @@ export default function EditPledge() {
   };
 
   const handleEditActivity = async (activity: PledgeActivity) => {
-    // Call the API
+    await PledgeService.upsertUpdateComment(pledgeId!, activity);
+    await fetchUpdateComments();
     setIsEditActivityModalVisible(false);
     activityToBeEdited.current = null;
   };
 
-  const handleDeleteActivity = (activity: PledgeActivity) => {
+  const handleDeleteActivity = async (activity: PledgeActivity) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this activity?"
     );
     if (confirmed) {
-      // Call the API
+      await PledgeService.deleteUpdateComment(
+        pledgeId!,
+        activity.pledgeUpdateID
+      );
+      await fetchUpdateComments();
     }
   };
 
-  const handleNewActivity = async (text: string) => {};
+  const handleNewActivity = async (text: string) => {
+    await PledgeService.upsertUpdateComment(pledgeId!, {
+      pledgeID: parseInt(pledgeId!),
+      pledgeUpdateID: 0,
+      updateComment: text,
+      dateTime: "",
+    });
+    await fetchUpdateComments();
+  };
 
-  const handleStatusChange = (status: Pledge.Status, label: string) => {
+  const handleStatusChange = async (newStatus: Pledge.Status) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete the status to ${label}?`
+      `Are you sure you want to delete the status to ${newStatus}?`
     );
     if (confirmed) {
-      // Call the API
-      setPledge((prevPledge) => ({ ...prevPledge!, status })); // Demo
+      await PledgeService.updatePledge(pledgeId!, {
+        ...pledge!,
+        status: newStatus,
+      });
+      setPledge((prevPledge) => ({ ...prevPledge!, status: newStatus }));
     }
   };
 
@@ -112,8 +108,8 @@ export default function EditPledge() {
               <Link to={`/packages/${aidPackage.packageID}/pledge-status`}>
                 Pledge Status
               </Link>
-              &nbsp;&gt;&nbsp;
-              {donor?.orgName}
+              &nbsp;&gt;&nbsp; ----
+              {/*{pledge.donor.orgName}*/}
             </div>
             <Modal
               show={isEditActivityModalVisible}
@@ -125,8 +121,8 @@ export default function EditPledge() {
               />
             </Modal>
             <PledgeSummary
-              donor={donor}
-              pledge={pledge!}
+              donor={pledge.donor}
+              pledge={pledge}
               onStatusChange={handleStatusChange}
             />
             <PledgeActivities

@@ -36,13 +36,12 @@ export default function PledgeStatus() {
 
   const handlePledgeDelete = (pledge: Pledge) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete the pledge of ${pledge.donor.orgName}?`
+      `Are you sure you want to delete the pledge of ${pledge.donor?.orgName}?`
     );
     if (confirmed) {
       // Call the api
     }
   };
-
   return (
     <Page selection={PageSelection.HOME}>
       <>
@@ -57,12 +56,15 @@ export default function PledgeStatus() {
             <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
             <div className="contributionsSummary">
               <div>
-                <ContributionsChart totalAmount={1000} pledgedPercentage={10} />
+                <ContributionsChart
+                  goalAmount={aidPackage.goalAmount}
+                  receivedAmount={aidPackage.receivedAmount}
+                />
               </div>
               <div>
-                <p>Goal: &1000</p>
-                <p>Received: $100</p>
-                <p>Status: Goal Pending</p>
+                <p>Goal: ${aidPackage.goalAmount}</p>
+                <p>Received: ${aidPackage.receivedAmount}</p>
+                <p>Status: {aidPackage.status}</p>
               </div>
             </div>
             <DonorTable

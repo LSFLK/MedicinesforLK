@@ -8,6 +8,10 @@ export class PledgeService {
     return http.get<Pledge>(`pledges/${pledgeID}`);
   }
 
+  static updatePledge(pledgeID: number | string, pledge: Pledge) {
+    return http.put<Pledge>(`pledges/${pledgeID}`, pledge);
+  }
+
   static deletePledge(pledgeID: number | string) {
     return http.delete(`pledges/${pledgeID}`);
   }

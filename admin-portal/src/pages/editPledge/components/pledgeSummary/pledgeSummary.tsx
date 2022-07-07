@@ -6,14 +6,8 @@ import { Pledge } from "../../../../types/Pledge";
 interface PledgeSummaryProps {
   donor: Donor;
   pledge: Pledge;
-  onStatusChange: (status: Pledge.Status, label: string) => void;
+  onStatusChange: (status: Pledge.Status) => void;
 }
-
-const statusToLabel: { [key in Pledge.Status]: string } = {
-  Created: "Created",
-  PaymentInitiated: "Payment Initiated",
-  PaymentConfirmed: "Payment Confirmed",
-};
 
 export default function PledgeSummary({
   donor,
@@ -23,22 +17,23 @@ export default function PledgeSummary({
   const handleStatusChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newStatus = event.currentTarget.value as Pledge.Status;
     if (newStatus !== pledge.status) {
-      onStatusChange(newStatus, statusToLabel[newStatus]);
+      onStatusChange(newStatus);
     }
   };
 
   return (
     <div className="pledgeSummary">
       <div className="heading">Donor:</div>
-      <div>{donor.orgName}</div>
+      <div>----</div>
+      {/*<div>{donor.orgName}</div>*/}
       <div className="heading">Amount:</div>
       <div>$ {pledge.amount}</div>
       <div className="heading">Status:</div>
       <div>
         <select onChange={handleStatusChange} value={pledge.status}>
-          {Object.entries(statusToLabel).map(([status, label], index) => (
-            <option key={status} value={status}>
-              {label}
+          {Object.entries(Pledge.Status).map(([key, status], index) => (
+            <option key={key} value={status}>
+              {status}
             </option>
           ))}
         </select>
