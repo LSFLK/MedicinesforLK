@@ -3,6 +3,6 @@ import { Quotation } from "types/Quotation";
 
 export class SupplierService {
   static postQuotation(quotation: any) {
-    return http.post<Quotation>(`quotations`, quotation);
+    return http.post(`quotations`, quotation);
   }
 }
