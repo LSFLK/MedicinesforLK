@@ -85,11 +85,15 @@ export default function EditPledge() {
       `Are you sure you want to delete the status to ${newStatus}?`
     );
     if (confirmed) {
-      await PledgeService.updatePledge(pledgeId!, {
-        ...pledge!,
-        status: newStatus,
-      });
-      setPledge((prevPledge) => ({ ...prevPledge!, status: newStatus }));
+      try {
+        await PledgeService.updatePledge(pledgeId!, {
+          ...pledge!,
+          status: newStatus,
+        });
+        setPledge((prevPledge) => ({ ...prevPledge!, status: newStatus }));
+      } catch (error) {
+        alert("An error occurred when trying to change the status");
+      }
     }
   };
 
