@@ -14,8 +14,13 @@ export function TableRow(props: TableRowProps) {
     <tr>
       <td>{aidPackage.name}</td>
       <td>{aidPackage.status}</td>
-      <td>75%</td>
-      <td>Brolin Pharmaceutical Suppliers</td>
+      <td>
+        {(
+          (aidPackage.receivedAmount / aidPackage.goalAmount || 0) * 100
+        ).toFixed(0)}
+        %
+      </td>
+      <td>--</td>
       <td>
         <div className="tableButtonLayer">
           <button onClick={() => navigate(`/packages/${aidPackage.packageID}`)}>

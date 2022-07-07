@@ -2,8 +2,8 @@ import React from "react";
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
 
 interface ContributionsChartProps {
-  totalAmount: number;
-  pledgedPercentage: number;
+  goalAmount: number;
+  receivedAmount: number;
 }
 
 interface PieChartLabelRendererProps {
@@ -42,8 +42,8 @@ const renderCustomizedLabel = ({
 };
 
 export default function ContributionsChart({
-  totalAmount,
-  pledgedPercentage,
+  goalAmount,
+  receivedAmount,
 }: ContributionsChartProps) {
   return (
     <PieChart width={200} height={200}>
@@ -52,9 +52,9 @@ export default function ContributionsChart({
         data={[
           {
             name: "Pending",
-            value: (totalAmount * (100 - pledgedPercentage)) / 100,
+            value: (1 - receivedAmount / goalAmount) * 100,
           },
-          { name: "Received", value: totalAmount * (pledgedPercentage / 100) },
+          { name: "Received", value: (receivedAmount / goalAmount) * 100 },
         ]}
         dataKey="value"
         labelLine={false}

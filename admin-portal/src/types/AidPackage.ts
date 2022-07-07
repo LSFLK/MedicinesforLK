@@ -6,6 +6,8 @@ export interface AidPackage {
   description: string;
   status: AidPackage.Status;
   aidPackageItems: AidPackageItem[];
+  goalAmount: number;
+  receivedAmount: number;
 }
 
 export namespace AidPackage {

@@ -47,9 +47,7 @@ export default function PledgeActivities({
       <div className="activities">
         {activities.map((activity) => (
           <div key={activity.pledgeUpdateID} className="activity">
-            <p className="activityDate">
-              {new Date(activity.dateTime * 1000).toDateString()}
-            </p>
+            <p className="activityDate">{activity.dateTime}</p>
             <div className="content">
               <span className="text">{activity.updateComment}</span>
               <div className="actions">

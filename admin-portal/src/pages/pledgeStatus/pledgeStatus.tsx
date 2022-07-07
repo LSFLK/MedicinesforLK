@@ -8,6 +8,7 @@ import "./pledgeStatus.css";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 import { AidPackageService } from "../../apis/services/AidPackageService";
 import { Pledge } from "../../types/Pledge";
+import { PledgeService } from "../../apis/services/PledgeService";
 
 export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -34,15 +35,15 @@ export default function PledgeStatus() {
     navigate(`pledges/${pledge.pledgeID}`);
   };
 
-  const handlePledgeDelete = (pledge: Pledge) => {
+  const handlePledgeDelete = async (pledge: Pledge) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete the pledge of ${pledge.donor.orgName}?`
+      `Are you sure you want to delete the pledge of ${pledge.donor?.orgName}?`
     );
     if (confirmed) {
-      // Call the api
+      await PledgeService.deletePledge(pledge.pledgeID);
+      fetchPledges();
     }
   };
-
   return (
     <Page selection={PageSelection.HOME}>
       <>
@@ -57,12 +58,15 @@ export default function PledgeStatus() {
             <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
             <div className="contributionsSummary">
               <div>
-                <ContributionsChart totalAmount={1000} pledgedPercentage={10} />
+                <ContributionsChart
+                  goalAmount={aidPackage.goalAmount}
+                  receivedAmount={aidPackage.receivedAmount}
+                />
               </div>
               <div>
-                <p>Goal: &1000</p>
-                <p>Received: $100</p>
-                <p>Status: Goal Pending</p>
+                <p>Goal: ${aidPackage.goalAmount}</p>
+                <p>Received: ${aidPackage.receivedAmount}</p>
+                <p>Status: {aidPackage.status}</p>
               </div>
             </div>
             <DonorTable

@@ -11,8 +11,8 @@ export interface Pledge {
 
 export namespace Pledge {
   export enum Status {
-    Created = "Created",
-    PaymentInitiated = "PaymentInitiated",
-    PaymentConfirmed = "PaymentConfirmed",
+    Pledged = "Pledged",
+    PaymentInitiated = "Payment Initiated",
+    PaymentConfirmed = "Payment Confirmed",
   }
 }

@@ -19,7 +19,6 @@ export function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [posts, setPosts] = useState<AidPackageUpdateComment[]>([]);
-  const [totalAmount, setTotalAmount] = useState(0);
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] =
     useState(false);
@@ -34,20 +33,11 @@ export function PackageDetails() {
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
     setAidPackage(data);
-    setTotalAmount(calculateTotalAmount(data));
   };
 
   const fetchUpdateComments = async () => {
     const { data } = await AidPackageService.getUpdateComments(packageId!);
     setPosts(data);
-  };
-
-  const calculateTotalAmount = (aidPackage: AidPackage) => {
-    let total = 0;
-    aidPackage.aidPackageItems.forEach((item) => {
-      total += item.totalAmount;
-    });
-    return total;
   };
 
   const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
@@ -171,12 +161,12 @@ export function PackageDetails() {
                 <p className="heading">Contributions</p>
                 <div className="chart">
                   <ContributionsChart
-                    totalAmount={totalAmount}
-                    pledgedPercentage={0}
+                    goalAmount={aidPackage.goalAmount}
+                    receivedAmount={aidPackage.receivedAmount}
                   />
                 </div>
-                <p>Goal: ${totalAmount}</p>
-                <p>Received: ${totalAmount}</p>
+                <p>Goal: ${aidPackage.goalAmount}</p>
+                <p>Received: ${aidPackage.receivedAmount}</p>
                 <Link to={`/packages/${packageId}/pledge-status`}>
                   See pledge status
                 </Link>
