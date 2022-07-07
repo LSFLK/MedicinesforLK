@@ -4,7 +4,7 @@ import "./styles.css";
 export function NavBar() {
   return (
     <nav className="navbar">
-      <Link to="">
+      <Link to="/">
         <div className="logo"></div>
       </Link>
       <div className="nav-links">
