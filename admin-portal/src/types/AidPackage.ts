@@ -1,4 +1,4 @@
-import {AidPackageItem} from "./DonorAidPackageOrderItem";
+import { AidPackageItem } from "./DonorAidPackageOrderItem";
 
 export interface AidPackage {
   packageID: number;
@@ -6,27 +6,18 @@ export interface AidPackage {
   description: string;
   status: AidPackage.Status;
   aidPackageItems: AidPackageItem[];
-}
-
-export interface DonorAidPackage {
-  packageId: number;
-  description: string;
-  name: string;
-  status:AidPackage.Status;
-  supplierID: number;
-  orderItems: AidPackageItem[];
-  totalAmount: number;
-  pledgedPercentage: number;
+  goalAmount: number;
+  receivedAmount: number;
 }
 
 export namespace AidPackage {
   export enum Status {
-    Draft="Draft",
-    Published="Published",
-    AwaitingPayment="AwaitingPayment",
-    Ordered= "Ordered",
+    Draft = "Draft",
+    Published = "Published",
+    AwaitingPayment = "Awaiting Payment",
+    Ordered = "Ordered",
     Shipped = "Shipped",
-    ReceivedAtMOH = "ReceivedAtMOH",
+    ReceivedAtMOH = "Received At MOH",
     Delivered = "Delivered",
   }
 }

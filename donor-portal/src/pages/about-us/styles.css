@@ -20,6 +20,7 @@
   color: var(--elixir-color-red);
   text-align: center;
   font-size: 2rem;
+  margin-bottom: 40px;
 }
 
 .about-us .video-section {
@@ -33,7 +34,7 @@
 
 .about-us .text-section {
   padding-top: 30px;
-  margin: 0 6rem 6rem;
+  margin: 0 6rem 2rem 6rem;
   line-height: 160%;
 }
 
@@ -148,15 +149,10 @@
   max-width: 300px;
 }
 
-
 .profile-card-container {
   display: flex;
   width: 100%;
   justify-content: space-around;
-}
-
-.leadership-section {
-  margin-top: 50px;
 }
 
 .profile-card {
@@ -178,7 +174,6 @@
 .profile-card a {
   text-decoration: none;
   color: black;
-
 }
 
 .profile-card p {

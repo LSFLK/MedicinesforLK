@@ -3,6 +3,6 @@ export interface Donor {
   orgName: string;
   orgLink: string;
   email: string;
-  phone: number;
+  phoneNumber: number;
   quotationID: number;
 }
