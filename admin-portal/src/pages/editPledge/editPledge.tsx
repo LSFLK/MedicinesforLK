@@ -37,7 +37,7 @@ export default function EditPledge() {
 
   const fetchPledge = async () => {
     const { data } = await PledgeService.getPledge(pledgeId!);
-    setPledge(data);
+    setPledge(data[0]); // TODO: remove the array when the API is fixed
   };
 
   const fetchUpdateComments = async () => {

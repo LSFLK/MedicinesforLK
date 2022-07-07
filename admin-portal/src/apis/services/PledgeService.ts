@@ -5,7 +5,7 @@ import { Pledge } from "../../types/Pledge";
 
 export class PledgeService {
   static getPledge(pledgeID: number | string) {
-    return http.get<Pledge>(`pledges/${pledgeID}`);
+    return http.get<Pledge[]>(`pledges/${pledgeID}`);
   }
 
   static updatePledge(pledgeID: number | string, pledge: Pledge) {
