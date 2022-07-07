@@ -72,12 +72,16 @@ export class AidPackageService {
   static postAidPackage({
     name,
     description,
-    needs,
+    aidPackageItems,
   }: {
     name: string;
     description: string;
-    needs: Array<{ id: number; quantity?: number }>;
+    aidPackageItems: Array<{
+      needID: number;
+      quantity?: number;
+      quotationID: number;
+    }>;
   }) {
-    return http.post(`aidpackages`, { name, description, needs });
+    return http.post(`aidpackages`, { name, description, aidPackageItems });
   }
 }

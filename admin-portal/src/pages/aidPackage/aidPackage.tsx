@@ -56,21 +56,16 @@ export function CreateAidPackage() {
     setCurrentFormStep(step);
   };
 
-  /**
-   * responsible for calling the post api to
-   * create an aid package
-   * @param supplier
-   */
-  const handleAidPkgPublish = async (supplier: number): Promise<any> => {
-    const aidPackage = aidPackages[supplier];
+  const handleAidPkgPublish = async (supplierID: number): Promise<any> => {
+    const aidPackage = aidPackages[supplierID];
     const needs = Object.keys(needAssignments)
       .filter((needID) => {
-        return needAssignments[needID].has(supplier);
+        return needAssignments[needID].has(supplierID);
       })
       .map((id) => {
         return {
           id: Number(id),
-          quantity: needAssignments[id].get(supplier),
+          quantity: needAssignments[id].get(supplierID),
         };
       });
 
@@ -78,7 +73,20 @@ export function CreateAidPackage() {
       return AidPackageService.postAidPackage({
         name: aidPackage.name,
         description: aidPackage.details,
-        needs,
+        aidPackageItems: needs.map((need) => {
+          const medicalNeed = medicalNeeds.find(
+            (currentNeed) => currentNeed.needID === need.id
+          );
+          const supplierQuotationID = medicalNeed?.supplierQuotes.find(
+            (quote) => quote.supplierID === supplierID
+          )?.quotationID;
+
+          return {
+            needID: need.id,
+            quantity: need.quantity,
+            quotationID: supplierQuotationID as number,
+          };
+        }),
       })
         .then(() => {
           toast(`Successfully Published ${aidPackage.name}`);
@@ -86,7 +94,7 @@ export function CreateAidPackage() {
            * flags the package to be removed from
            * table.
            */
-          aidPackages[supplier].isPublished = true;
+          aidPackages[supplierID].isPublished = true;
           setAidPackages({ ...aidPackages });
         })
         .catch((error) => {
