@@ -5,9 +5,9 @@ import { Page } from "layout/page";
 import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
 import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
 import { fetchMedicalNeeds, NeedsInfo } from "data/medical-needs.mock.data";
+import AdminDataServices from "../../apis/services";
 
 import "./aidPackage.css";
-import { AidPackageService } from "../../apis/services/AidPackageService";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,
@@ -43,7 +43,7 @@ export function CreateAidPackage() {
       );
     });
 
-    AidPackageService.getAidPackages().then((res) => {
+    AdminDataServices.getAidPackages().then((res: any) => {
       console.log(JSON.stringify(res));
     });
   }, []);

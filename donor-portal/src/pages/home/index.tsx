@@ -32,21 +32,18 @@ export function Home() {
     if (!aidPackages) return;
 
     setFilteredAidPackages(
-      aidPackages.filter(
-        (donorPackage) => {
-          return donorPackage;
+      aidPackages.filter((donorPackage) => {
+        return donorPackage;
 
-          // TODO: add filter once the API is done
-          // if (goalFilter === GoalStatus.GOAL_PENDING) {
-          //   return donorPackage.pledgedPercentage !== 100;
-          // } else {
-          //   return donorPackage.pledgedPercentage === 100;
-          // }
-        },
-        [aidPackages]
-      )
+        // TODO: add filter once the API is done
+        // if (goalFilter === GoalStatus.GOAL_PENDING) {
+        //   return donorPackage.pledgedPercentage !== 100;
+        // } else {
+        //   return donorPackage.pledgedPercentage === 100;
+        // }
+      })
     );
-  });
+  }, [aidPackages]);
 
   return (
     <Page className="home-page">
@@ -108,10 +105,9 @@ function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
   } = donorPackage;
 
   // TODO: replace with real values
-  const totalAmount = 10000;
-  const pledgedPercentage = 50;
-
-  const currentAmount = Math.round(totalAmount * (100 / pledgedPercentage));
+  const goalAmount = donorPackage.goalAmount;
+  const receivedAmount = donorPackage.receivedAmount;
+  const pledgedPercentage = Math.round((receivedAmount / goalAmount) * 100);
 
   return (
     <div className="package-card" key={packageID}>
@@ -132,7 +128,7 @@ function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
         <p className="card_details__description">{description}</p>
         <div className="card_details__package_progress">
           <p className="card_details__package_progress_text">
-            ${currentAmount} raised of ${totalAmount} goal
+            ${receivedAmount} raised of ${goalAmount} goal
           </p>
           <div className="card_details__package_progress_bar">
             <span style={{ width: pledgedPercentage + "%" }} />

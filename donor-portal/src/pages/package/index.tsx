@@ -49,61 +49,63 @@ export function AidPackageDetailsPage() {
    * when fetch succeeds and no data is found
    * redirect to 404 (if any)
    */
-  if (!isLoading && data === undefined) {
+  if (!isLoading && !data) {
     return <Navigate replace to="/404"></Navigate>;
+  } else {
+    // TODO: use real data
+    const pledged = data!.receivedAmount;
+    const goal = data!.goalAmount;
+
+    /**
+     * render page upon successful fetch.
+     */
+    return (
+      <>
+        {isLoading && (
+          <Page>
+            {/*FIXME:  Use loader here */}
+            Loading...
+          </Page>
+        )}
+        {!isLoading && data && (
+          <Page>
+            <div className="aid-package-container">
+              <div className="aid-package-title-container">
+                <h1>{data?.name}</h1>
+              </div>
+              <div className="aid-package-header-container">
+                <div
+                  className="aid-package-header-image"
+                  style={{
+                    backgroundImage: `url(https://picsum.photos/1200/300)`,
+                  }}
+                ></div>
+                <div className="aid-package-description-ribbon">
+                  Description
+                </div>
+              </div>
+              <div>
+                {/* TODO: May require rendering rich media or parsing html strings */}
+                <p>{data?.description}</p>
+              </div>
+              <div className="aid-package-progress-container">
+                <h3>
+                  {pledged.toLocaleString("en-us")} raised of $
+                  {goal.toLocaleString("en-us")} goal.
+                </h3>
+                <SimpleProgressBar
+                  current={pledged as number}
+                  max={goal as number}
+                  className="aid-pacakge-progress-bar"
+                />
+                <Link className="btn aid-package-donate-btn" to="/donate-now">
+                  Donate
+                </Link>
+              </div>
+            </div>
+          </Page>
+        )}
+      </>
+    );
   }
-
-  // TODO: use real data
-  const pledged = 5000;
-  const goal = 10000;
-
-  /**
-   * render page upon successful fetch.
-   */
-  return (
-    <>
-      {isLoading && (
-        <Page>
-          {/*FIXME:  Use loader here */}
-          Loading...
-        </Page>
-      )}
-      {!isLoading && data && (
-        <Page>
-          <div className="aid-package-container">
-            <div className="aid-package-title-container">
-              <h1>{data?.name}</h1>
-            </div>
-            <div className="aid-package-header-container">
-              <div
-                className="aid-package-header-image"
-                style={{
-                  backgroundImage: `url(https://picsum.photos/1200/300)`,
-                }}
-              ></div>
-              <div className="aid-package-description-ribbon">Description</div>
-            </div>
-            <div>
-              {/* TODO: May require rendering rich media or parsing html strings */}
-              <p>{data?.description}</p>
-            </div>
-            <div className="aid-package-progress-container">
-              <h3>
-                {pledged.toLocaleString("en-us")} raised of $
-                {goal.toLocaleString("en-us")} goal.
-              </h3>
-              <SimpleProgressBar
-                current={pledged as number}
-                max={goal as number}
-                className="aid-pacakge-progress-bar"
-              />
-              <Link className="btn aid-package-donate-btn" to="/donate-now">
-                Donate
-              </Link>
-            </div>
-          </div>
-        </Page>
-      )}
-    </>
-  );
 }
