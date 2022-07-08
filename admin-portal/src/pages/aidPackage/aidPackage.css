@@ -1,0 +1,85 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+table {
+  margin: 0;
+  width: 100%;
+}
+
+.create-aid-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.create-aid-body {
+  flex: 1;
+  max-height: calc(100vh - 26.5rem);
+  overflow: scroll;
+}
+
+.bottom-sticky-nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+.bottom-sticky-nav .btn {
+  align-self: flex-start;
+}
+
+.bottom-sticky-nav .btn.pull-right {
+  align-self: flex-end;
+}
+
+.create-aid-body th {
+  border: none;
+  border-top: 1px solid var(--elixir-color-gray-400);
+  border-bottom: 2px solid var(--elixir-color-gray-400);
+  padding: 0.75rem 0;
+}
+
+.create-aid-body td {
+  border: none;
+  border-bottom: 1px solid var(--elixir-color-gray-400);
+  padding: 0.75rem 0;
+}
+
+.needs-row {
+  background-color: var(--elixir-color-gray-100);
+}
+
+.needs-row td {
+  width: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.needs-row td .expander {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 100ms;
+}
+
+.needs-row td .expander.expanded {
+  transform: rotate(90deg);
+}
+
+.supplier-allocation-table {
+  margin: 1rem 0;
+}
+
+.create-aid-body .supplier-allocation-table-container {
+  padding: 1rem 1rem;
+}

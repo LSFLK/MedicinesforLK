@@ -1,12 +1,12 @@
-import React, {useState} from "react";
-import {PageSelection} from "../../types/pages";
-import {Page} from "../../layout/page";
-import {DonorAidPackage} from "../../types/DonarAidPackage";
-import {Link, useHistory, useParams} from "react-router-dom";
+import React, { useState } from "react";
+import { PageSelection } from "../../types/pages";
+import { Page } from "../../layout/page";
+import { AidPackage, DonorAidPackage } from "../../types/AidPackage";
+import { Link, useHistory, useParams } from "react-router-dom";
 import DonorTable from "./donorTable/donorTable";
 import './pledgeStatus.css'
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
-import {DonorAidPackagePledge} from "../../types/DonarAidPackagePledge";
+import { DonorAidPackagePledge } from "../../types/DonarAidPackagePledge";
 
 const demoPackage: DonorAidPackage = {
   packageId: 0,
@@ -17,24 +17,24 @@ const demoPackage: DonorAidPackage = {
     medicalItemName: "Paracetamol",
     quantity: 1000,
   },
-    {
-      orderItemId: 2,
-      medicalItemName: "Methotrexate",
-      quantity: 100,
-    },
-    {
-      orderItemId: 3,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    },
-    {
-      orderItemId: 4,
-      medicalItemName: "Paracetamol",
-      quantity: 500,
-    }
+  {
+    orderItemId: 2,
+    medicalItemName: "Methotrexate",
+    quantity: 100,
+  },
+  {
+    orderItemId: 3,
+    medicalItemName: "Paracetamol",
+    quantity: 500,
+  },
+  {
+    orderItemId: 4,
+    medicalItemName: "Paracetamol",
+    quantity: 500,
+  }
   ],
   pledgedPercentage: 40,
-  status: DonorAidPackage.Status.Ordered,
+  status: AidPackage.Status.Ordered,
   supplierID: 0,
   totalAmount: 2500
 }
@@ -55,7 +55,7 @@ const demoPledges: DonorAidPackagePledge[] = [
 ]
 
 export default function PledgeStatus() {
-  const {packageId} = useParams<{ packageId: string }>()
+  const { packageId } = useParams<{ packageId: string }>()
   const [aidPackage, setAidPackage] = useState<DonorAidPackage>(demoPackage);
   const [pledges, setPledges] = useState<DonorAidPackagePledge[]>(demoPledges);
   const history = useHistory();
@@ -64,7 +64,7 @@ export default function PledgeStatus() {
   };
 
   const handlePledgeEdit = (pledge: DonorAidPackagePledge) => {
-    navigate(`pledge/${pledge.id}`)
+    navigate(`pledges/${pledge.id}`)
   }
 
   const handlePledgeDelete = (pledge: DonorAidPackagePledge) => {
@@ -75,29 +75,27 @@ export default function PledgeStatus() {
   }
 
   return (
-    <Page selection={PageSelection.HOME}>
-      <div className="pledgeStatus">
-        <div>
-          <Link to='/'>Aid Packages</Link> &gt; <Link to={`/packages/${packageId}`}>{aidPackage.name}</Link> &gt; Pledge
-          Status
-        </div>
-        <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
-        <div className="contributionsSummary">
-          <div>
-            <ContributionsChart totalAmount={1000} pledgedPercentage={10}/>
-          </div>
-          <div>
-            <p>Goal: ${aidPackage.totalAmount}</p>
-            <p>Received: ${(aidPackage.totalAmount * aidPackage.pledgedPercentage / 100).toFixed()}</p>
-            <p>Status: Goal Pending</p>
-          </div>
-        </div>
-        <DonorTable
-          pledges={pledges}
-          onPledgeEdit={handlePledgeEdit}
-          onPledgeDelete={handlePledgeDelete}
-        />
+    <div className="pledgeStatus">
+      <div>
+        <Link to='/'>Aid Packages</Link> &gt; <Link to={`/packages/${packageId}`}>{aidPackage.name}</Link> &gt; Pledge
+        Status
       </div>
-    </Page>
-  )
+      <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
+      <div className="contributionsSummary">
+        <div>
+          <ContributionsChart totalAmount={1000} pledgedPercentage={10} />
+        </div>
+        <div>
+          <p>Goal: ${aidPackage.totalAmount}</p>
+          <p>Received: ${(aidPackage.totalAmount * aidPackage.pledgedPercentage / 100).toFixed()}</p>
+          <p>Status: Goal Pending</p>
+        </div>
+      </div>
+      <DonorTable
+        pledges={pledges}
+        onPledgeEdit={handlePledgeEdit}
+        onPledgeDelete={handlePledgeDelete}
+      />
+    </div>
+  );
 }

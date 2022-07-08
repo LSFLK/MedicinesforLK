@@ -1,20 +1,25 @@
 @import "../../styles/root.css";
 
 .stepper {
-  width: fit-content;
-  max-width: 60%;
   display: flex;
-  justify-content: start;
   gap: 1rem;
+  border-bottom: 1px dashed var(--elixir-color-gray-700);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .stepper .divider {
-  transform: rotate(90deg);
+  flex: 1;
+  height: 2px;
+  background-color: var(--elixir-color-black);
+  align-self: center;
 }
 
 .step {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  font-size: 1rem;
   gap: 1rem;
   padding: 0.5rem;
   background-color: transparent;
@@ -23,7 +28,7 @@
 }
 
 .step:hover {
-  background-color: var(--elixir-color-gray-100);
+  text-shadow: 0px 0px 1px var(--elixir-color-black);
   cursor: pointer;
 }
 
@@ -36,13 +41,14 @@
   cursor: not-allowed;
 }
 
-.step.step-rounded {
-  border-radius: 100vmax;
-}
-
 .step .step-number {
   width: 1rem;
   height: 1rem;
+  font-size: 1.1rem;
+  line-height: 1rem;
+  font-weight: bold;
+  outline: 2px solid var(--elixir-color-gray-900);
+  outline-offset: 2px;
   padding: 0.5rem;
   border-radius: 100vmax;
   background-color: var(--elixir-color-gray-400);
@@ -54,7 +60,7 @@
 }
 
 .step .step-number.active {
-  background-color: var(--elixir-color-primary);
+  background-color: var(--elixir-color-red);
   color: var(--elixir-color-white);
 }
 

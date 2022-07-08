@@ -24,7 +24,7 @@ export function Footer() {
       <div className="footer-black">
         <div className="footer-black-top">
           <img
-            src="https://scontent.fcmb1-2.fna.fbcdn.net/v/t39.30808-6/240158492_2945695629025346_3610627033744683282_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=eDywfgvu27cAX_sIHz3&_nc_ht=scontent.fcmb1-2.fna&oh=00_AT-BWl9jXLV9YOsC6N6-UAcumAjMaGLdvPFPDigRRy-VtA&oe=62B4E9A5"
+            src="/assets/images/about-us/sl-red-cross-logo.jpg"
             alt=""
           />
           <p>

@@ -5,7 +5,10 @@
     "signOutRedirectURL": "https://localhost:3000",
     "scope": ["openid","email","profile"],
     "stsConfig": {
-        "client_id": "Ycqh9Bk2skQXpl9KNjmqZvDxCTka",
+        "credentials": {
+            "client_id": "Ycqh9Bk2skQXpl9KNjmqZvDxCTka",
+            "client_secret": "6SvfTHcnvIS1E52uSEsaxbTH4toa"
+        },
         "orgHandle": "elixir",
         "scope": []
     },

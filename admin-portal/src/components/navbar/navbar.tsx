@@ -15,7 +15,8 @@ export function NavBar(params: NavBarProps) {
     getBasicUserInfo,
     getIDToken,
     getDecodedIDToken,
-    on
+    on,
+    trySignInSilently
   } = useAuthContext();
 
   const [derivedAuthenticationState, setDerivedAuthenticationState] =
@@ -25,17 +26,17 @@ export function NavBar(params: NavBarProps) {
   const [hasLogoutFailureError, setHasLogoutFailureError] =
     useState<boolean>();
 
-  const search = useLocation().search;
-  const stateParam = new URLSearchParams(search).get("state");
-  const errorDescParam = new URLSearchParams(search).get("error_description");
+  // const search = useLocation().search;
+  // const stateParam = new URLSearchParams(search).get("state");
+  // const errorDescParam = new URLSearchParams(search).get("error_description");
 
-  useEffect(() => {
-    if (stateParam && errorDescParam) {
-      if (errorDescParam === "End User denied the logout request") {
-        setHasLogoutFailureError(true);
-      }
-    }
-  }, [stateParam, errorDescParam]);
+  // useEffect(() => {
+  //   if (stateParam && errorDescParam) {
+  //     if (errorDescParam === "End User denied the logout request") {
+  //       setHasLogoutFailureError(true);
+  //     }
+  //   }
+  // }, [stateParam, errorDescParam]);
 
   /**
       * handles the error occurs when the logout consent page is enabled
@@ -67,6 +68,12 @@ export function NavBar(params: NavBarProps) {
       setDerivedAuthenticationState(derivedState);
     })();
   }, [state?.isAuthenticated]);
+
+  useEffect(() => {
+    if (!state.isAuthenticated) {
+      handleLogin();
+    }
+  }, []);
 
   const handleLogin = () => {
     setHasLogoutFailureError(false);
@@ -101,7 +108,7 @@ export function NavBar(params: NavBarProps) {
             <div className="navbar__logo">
               <img
                 src="/assets/images/elixirLogo4.png"
-                alt="Create React App Logo"
+                alt="Elixir Logo"
                 className="themedImage--light"
               />
             </div>
@@ -111,8 +118,8 @@ export function NavBar(params: NavBarProps) {
         <div className="navbar__items navbar__items--right">
           {
             state.isAuthenticated
-              ? (<a onClick={() => handleLogout()} className="login-btn" >Logout</a>)
-              : (<a onClick={() => handleLogin()} className="login-btn" >Login</a>)
+              ? (<a onClick={() => handleLogout()} className="navbar__item navbar__link" >Logout</a>)
+              : (<a onClick={() => handleLogin()} className="navbar__item navbar__link" >Login</a>)
           }
           <a
             target="_blank"

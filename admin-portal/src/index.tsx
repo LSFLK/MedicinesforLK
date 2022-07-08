@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider, Storage } from "@asgardeo/auth-react";
-import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
+import { TokenExchangePlugin, HttpClientInstance } from "@asgardeo/token-exchange-plugin";
 
 import { default as authConfig } from "./config.json";
 
@@ -12,14 +12,12 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <AuthProvider
-      config={{ ...authConfig, storage: "webWorker" as Storage.WebWorker }}
-      plugin={TokenExchangePlugin.getInstance()}
-    >
+  <AuthProvider
+    config={{ ...authConfig, storage: "webWorker" as Storage.WebWorker }}
+    plugin={TokenExchangePlugin.getInstance()}
+  >
     <App />
-    </AuthProvider>
-  </React.StrictMode>
+  </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
