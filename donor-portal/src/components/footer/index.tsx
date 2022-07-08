@@ -8,11 +8,7 @@ export function Footer() {
       <div className="footer-black">
         <div className="footer-black-top">
           <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud.
-          </p>
+          <p>{/* TODO: add content here */}</p>
           <div className="icons">
             <p>FOLLOW</p>
             <FaFacebookF className="icon" />
@@ -47,11 +43,7 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-gray">
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud.
-        </p>
+        <p>{/* TODO: add content here */}</p>
         <div>
           <a href="">Privacy</a>
           <span className="dot"></span>
