@@ -52,7 +52,7 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-gray">
-        <p>{/* TODO: add content here */}</p>
+        <p>Copyright © <a href="www.elixir.redcross.lk">www.elixir.redcross.lk</a>| All rights reserved</p>
         <div>
           <a href="">Privacy</a>
           <span className="dot"></span>
