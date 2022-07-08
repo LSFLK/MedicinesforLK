@@ -14,7 +14,7 @@ export function Footer() {
             <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">
             <FaFacebookF className="icon" />
             </a>
-            <a href="https://twitter.com/#!/SLRedCross">
+            <a href="https://twitter.com/SLRedCross">
             <FaTwitter className="icon" />
             </a>
             <a href="https://instagram.com/slredcross?igshid=YmMyMTA2M2Y=">
