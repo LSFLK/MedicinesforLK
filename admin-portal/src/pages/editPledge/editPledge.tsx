@@ -85,10 +85,7 @@ export default function EditPledge() {
     );
     if (confirmed) {
       try {
-        await PledgeService.updatePledge(pledgeId!, {
-          ...pledge!,
-          status: newStatus,
-        });
+        await PledgeService.updatePledgeStatus(pledgeId!, newStatus);
         setPledge((prevPledge) => ({ ...prevPledge!, status: newStatus }));
       } catch (error) {
         alert("An error occurred when trying to change the status");
