@@ -58,11 +58,11 @@ export function Footer() {
           rights reserved
         </p>
         <div>
-          <a href="">Privacy</a>
+          {/* <a href="">Privacy</a>
           <span className="dot"></span>
           <a href="">Terms</a>
           <span className="dot"></span>
-          <a href="">Cookies</a>
+          <a href="">Cookies</a> */}
         </div>
       </div>
     </footer>
