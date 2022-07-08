@@ -12,6 +12,10 @@ export class PledgeService {
     return http.put<Pledge>(`pledges/${pledgeID}`, pledge);
   }
 
+  static updatePledgeStatus(pledgeID: number | string, status: Pledge.Status) {
+    return http.patch<Pledge>(`pledges/${pledgeID}/status/${status}`);
+  }
+
   static deletePledge(pledgeID: number | string) {
     return http.delete(`pledges/${pledgeID}`);
   }
