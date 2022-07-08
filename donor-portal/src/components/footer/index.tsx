@@ -39,7 +39,7 @@ export function Footer() {
           </Link>
           <span>|</span>
           <Link to="/suppliers" className="text-link">
-            Medical Suppliers
+            Hospital and Suppliers
           </Link>
           <span>|</span>
           <Link to="/news-room" className="text-link">
