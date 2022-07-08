@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -11,9 +11,18 @@ export function Footer() {
           <p>{/* TODO: add content here */}</p>
           <div className="icons">
             <p>FOLLOW</p>
-            <FaFacebookF className="icon" />
-            <FaTwitter className="icon" />
-            <FaInstagram className="icon" />
+            <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">
+              <FaFacebookF className="icon" />
+            </a>
+            <a href="https://twitter.com/SLRedCross">
+              <FaTwitter className="icon" />
+            </a>
+            <a href="https://instagram.com/slredcross?igshid=YmMyMTA2M2Y=">
+              <FaInstagram className="icon" />
+            </a>
+            <a href="https://www.youtube.com/user/srilankanredcross">
+              <FaYoutube className="icon" />
+            </a>
           </div>
         </div>
         <div className="footer-black-bottom">
