@@ -65,3 +65,9 @@ textarea:focus,
 select:focus {
   outline: none;
 }
+
+.error-list-div {
+  margin-top: 40px;
+  font-size: 14px;
+  margin-left: 10px;
+}

@@ -5,11 +5,15 @@ import { Pledge } from "../../types/Pledge";
 
 export class PledgeService {
   static getPledge(pledgeID: number | string) {
-    return http.get<Pledge[]>(`pledges/${pledgeID}`);
+    return http.get<Pledge>(`pledges/${pledgeID}`);
   }
 
   static updatePledge(pledgeID: number | string, pledge: Pledge) {
     return http.put<Pledge>(`pledges/${pledgeID}`, pledge);
+  }
+
+  static updatePledgeStatus(pledgeID: number | string, status: Pledge.Status) {
+    return http.patch<Pledge>(`pledges/${pledgeID}/status/${status}`);
   }
 
   static deletePledge(pledgeID: number | string) {

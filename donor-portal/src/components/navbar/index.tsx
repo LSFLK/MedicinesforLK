@@ -4,7 +4,9 @@ import "./styles.css";
 export function NavBar() {
   return (
     <nav className="navbar">
-      <div className="logo"></div>
+      <Link to="/">
+        <div className="logo"></div>
+      </Link>
       <div className="nav-links">
         <Link to="/about-us" className="nav-link">
           About
@@ -14,12 +16,8 @@ export function NavBar() {
           Donors
         </Link>
         <span>|</span>
-        <Link to="" className="nav-link">
-          Request Medicine
-        </Link>
-        <span>|</span>
         <Link to="/suppliers" className="nav-link">
-          Medical Suppliers
+          Hospital and Suppliers
         </Link>
         <span>|</span>
         <Link to="/news-room" className="nav-link">

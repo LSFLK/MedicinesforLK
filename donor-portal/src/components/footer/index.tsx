@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -8,16 +8,21 @@ export function Footer() {
       <div className="footer-black">
         <div className="footer-black-top">
           <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud.
-          </p>
+          <p>{/* TODO: add content here */}</p>
           <div className="icons">
             <p>FOLLOW</p>
-            <FaFacebookF className="icon" />
-            <FaTwitter className="icon" />
-            <FaInstagram className="icon" />
+            <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">
+              <FaFacebookF className="icon" />
+            </a>
+            <a href="https://twitter.com/SLRedCross">
+              <FaTwitter className="icon" />
+            </a>
+            <a href="https://instagram.com/slredcross?igshid=YmMyMTA2M2Y=">
+              <FaInstagram className="icon" />
+            </a>
+            <a href="https://www.youtube.com/user/srilankanredcross">
+              <FaYoutube className="icon" />
+            </a>
           </div>
         </div>
         <div className="footer-black-bottom">
@@ -34,7 +39,7 @@ export function Footer() {
           </Link>
           <span>|</span>
           <Link to="/suppliers" className="text-link">
-            Medical Suppliers
+            Hospital and Suppliers
           </Link>
           <span>|</span>
           <Link to="/news-room" className="text-link">
@@ -48,16 +53,16 @@ export function Footer() {
       </div>
       <div className="footer-gray">
         <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud.
+          Copyright ©{" "}
+          <a href="www.elixir.redcross.lk">www.elixir.redcross.lk</a>| All
+          rights reserved
         </p>
         <div>
-          <a href="">Privacy</a>
+          {/* <a href="">Privacy</a>
           <span className="dot"></span>
           <a href="">Terms</a>
           <span className="dot"></span>
-          <a href="">Cookies</a>
+          <a href="">Cookies</a> */}
         </div>
       </div>
     </footer>
