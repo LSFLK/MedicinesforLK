@@ -12,13 +12,13 @@ export function Footer() {
           <div className="icons">
             <p>FOLLOW</p>
             <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">
-            <FaFacebookF className="icon" />
+              <FaFacebookF className="icon" />
             </a>
             <a href="https://twitter.com/SLRedCross">
-            <FaTwitter className="icon" />
+              <FaTwitter className="icon" />
             </a>
             <a href="https://instagram.com/slredcross?igshid=YmMyMTA2M2Y=">
-            <FaInstagram className="icon" />
+              <FaInstagram className="icon" />
             </a>
             <a href="https://www.youtube.com/user/srilankanredcross">
               <FaYoutube className="icon" />
