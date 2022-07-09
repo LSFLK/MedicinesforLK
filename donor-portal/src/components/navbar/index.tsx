@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
+import {useContext} from "react";
+import UserContext from "../../userContext";
 
 export function NavBar() {
+  const userId = useContext(UserContext);
+
   return (
     <nav className="navbar">
       <Link to="/">
@@ -23,9 +27,18 @@ export function NavBar() {
         <Link to="/news-room" className="nav-link">
           Newsroom
         </Link>
-        <Link to="/login" className="login-btn">
-          Login
-        </Link>
+        {userId != null?
+          <>
+            <span>|</span>
+            <Link to="/" className="nav-link">
+              My Profile
+            </Link>
+          </>
+          :
+          <Link to="/login" className="login-btn">
+            Login
+          </Link>
+        }
       </div>
     </nav>
   );
