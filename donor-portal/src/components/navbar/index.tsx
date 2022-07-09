@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
-import {useContext} from "react";
+import { useContext } from "react";
 import UserContext from "../../userContext";
 
 export function NavBar() {
   const userId = useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUserId");
+    window.location.href = "/";
+  };
 
   return (
     <nav className="navbar">
@@ -27,18 +32,18 @@ export function NavBar() {
         <Link to="/news-room" className="nav-link">
           Newsroom
         </Link>
-        {userId != null?
+        {userId != null ? (
           <>
             <span>|</span>
-            <Link to="/" className="nav-link">
-              My Profile
-            </Link>
+            <a className="nav-link" onClick={() => handleLogout()}>
+              Logout
+            </a>
           </>
-          :
+        ) : (
           <Link to="/login" className="login-btn">
             Login
           </Link>
-        }
+        )}
       </div>
     </nav>
   );

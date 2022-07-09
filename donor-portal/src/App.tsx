@@ -11,7 +11,7 @@ import { DonateNow } from "./pages/donate-now";
 import "./App.css";
 import { AidPackageDetailsPage } from "./pages/package";
 import { NewsRoom } from "./pages/newsroom";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import UserContext from "./userContext";
 
 function App() {
