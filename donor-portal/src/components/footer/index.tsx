@@ -34,10 +34,7 @@ export function Footer() {
             Donors
           </Link>
           <span>|</span>
-          <Link to="" className="text-link">
-            Request Medicine
-          </Link>
-          <span>|</span>
+
           <Link to="/suppliers" className="text-link">
             Hospital and Suppliers
           </Link>
