@@ -1,4 +1,5 @@
 import { SupplierQuote } from "data/medical-needs.mock.data";
+import { AidPackages } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
 import { useTable } from "react-table";
 
@@ -7,11 +8,13 @@ export function SupplierNeedAllocationTable({
   setAssignmentForSupplier,
   requiredQuantity,
   assignmentsForSupplier,
+  aidPackages,
 }: {
   supplierQuotes: SupplierQuote[];
   setAssignmentForSupplier: any;
   requiredQuantity: number;
   assignmentsForSupplier: Map<number, number>;
+  aidPackages: AidPackages;
 }) {
   supplierQuotes = supplierQuotes || [];
 
@@ -22,6 +25,7 @@ export function SupplierNeedAllocationTable({
         quantity: assignmentsForSupplier.get(quote.supplierID),
         max: Math.min(requiredQuantity, quote.availableQuantity),
         supplierID: quote.supplierID,
+        published: aidPackages?.[quote.supplierID]?.isPublished,
       })),
     [supplierQuotes, assignmentsForSupplier, requiredQuantity]
   );
@@ -86,7 +90,7 @@ export function SupplierNeedAllocationTable({
 
 function EditableCell({
   value: initialValue,
-  row: { index, values },
+  row: { index, original },
   column: { id },
   updateAssignment,
 }: any) {
@@ -101,11 +105,16 @@ function EditableCell({
     setValue(initialValue);
   }, [initialValue]);
 
-  const validationResult = validateRow(value, values["max"]);
+  const validationResult = validateRow(value, original["max"]);
 
   return (
-    <div className={validationResult.hasError ? "has-error" : ""}>
-      <input type="number" value={value} onChange={onChange} />
+    <div className={`${validationResult.hasError && "has-error"}`}>
+      <input
+        disabled={original.published}
+        type="number"
+        value={value}
+        onChange={onChange}
+      />
       <span className="validation-message">
         {validationResult.errorMessages?.[0]}
       </span>

@@ -32,7 +32,9 @@ export function TableRow(props: TableRowProps) {
                 ).toFixed(0)}
                 %
             </td>
-            <td>--</td>
+            <td>
+                {aidPackage.aidPackageItems[0]?.quotation.supplier.name}
+            </td>
             <td>
                 <button
                     onClick={() =>

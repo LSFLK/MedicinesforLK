@@ -6,7 +6,6 @@ import { AidPackage } from "../../types/AidPackage";
 import PledgeSummary from "./components/pledgeSummary/pledgeSummary";
 import PledgeActivities from "./components/pledgeActivities/pledgeActivities";
 import { Pledge } from "../../types/Pledge";
-import { Donor } from "../../types/Donor";
 import { PledgeActivity } from "../../types/PledgeActivity";
 import Modal from "../../components/modal/modal";
 import EditActivityPrompt from "./components/editActivityPrompt/editActivityPrompt";
@@ -37,7 +36,7 @@ export default function EditPledge() {
 
   const fetchPledge = async () => {
     const { data } = await PledgeService.getPledge(pledgeId!);
-    setPledge(data[0]); // TODO: remove the array when the API is fixed
+    setPledge(data); // TODO: remove the array when the API is fixed
   };
 
   const fetchUpdateComments = async () => {
@@ -82,14 +81,11 @@ export default function EditPledge() {
 
   const handleStatusChange = async (newStatus: Pledge.Status) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete the status to ${newStatus}?`
+      `Are you sure you want to change the status to ${newStatus}?`
     );
     if (confirmed) {
       try {
-        await PledgeService.updatePledge(pledgeId!, {
-          ...pledge!,
-          status: newStatus,
-        });
+        await PledgeService.updatePledgeStatus(pledgeId!, newStatus);
         setPledge((prevPledge) => ({ ...prevPledge!, status: newStatus }));
       } catch (error) {
         alert("An error occurred when trying to change the status");
@@ -111,8 +107,8 @@ export default function EditPledge() {
               <Link to={`/packages/${aidPackage.packageID}/pledge-status`}>
                 Pledge Status
               </Link>
-              &nbsp;&gt;&nbsp; ----
-              {/*{pledge.donor.orgName}*/}
+              &nbsp;&gt;&nbsp;
+              {pledge.donor.orgName}
             </div>
             <Modal
               show={isEditActivityModalVisible}

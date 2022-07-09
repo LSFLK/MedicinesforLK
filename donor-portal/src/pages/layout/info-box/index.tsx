@@ -6,11 +6,13 @@ export function InfoBox({
   link,
   heading,
   text,
+  buttonText,
 }: {
   iconUrl: string;
   link: string;
   heading: string;
   text: string;
+  buttonText?: string;
 }) {
   return (
     <div className={`info-box`}>
@@ -19,7 +21,7 @@ export function InfoBox({
       <p>{text}</p>
       {link != "#" && (
         <Link to={link}>
-          <button>Donate</button>
+          <button>{buttonText}</button>
         </Link>
       )}
     </div>

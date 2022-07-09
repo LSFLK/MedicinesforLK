@@ -23,27 +23,31 @@ export function Donors() {
       <InfoBoxContainer>
         <InfoBox
           iconUrl="assets/images/charity2.jpg"
-          text="Click the login page to begin registration."
+          text="Navigate to the login page to begin registration"
           heading="Charities"
-          link="#"
+          link="/login"
+          buttonText="Login"
         ></InfoBox>
         <InfoBox
           iconUrl="assets/images/gov.jpg"
-          text="Click the login page to begin registration."
+          text="Navigate to the login page to begin registration"
           heading="Government Embassies"
-          link="#"
+          link="/login"
+          buttonText="Login"
         ></InfoBox>
         <InfoBox
           iconUrl="/assets/images/corporation.jpg"
-          text="Click the login page to begin registration."
+          text="Navigate to the login page to begin registration"
           heading="Foundations / Corporations"
-          link="#"
+          link="/login"
+          buttonText="Login"
         ></InfoBox>
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
           text="Donate to Elixir via our partner donor organizations"
           heading="Individual Donors"
           link="/donate-now"
+          buttonText="Donate"
         ></InfoBox>
         <p className="inquiry">
           For all inquiries please emails us at{" "}

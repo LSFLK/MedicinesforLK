@@ -4,10 +4,13 @@ import { PageSelection } from "types/pages";
 import { Page } from "layout/page";
 import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
 import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
-import { fetchMedicalNeeds, NeedsInfo } from "data/medical-needs.mock.data";
+import { NeedsInfo } from "data/medical-needs.mock.data";
+
+import toast from "react-simple-toasts";
 
 import "./aidPackage.css";
-import { AidPackageService } from "../../apis/services/AidPackageService";
+import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
+import { AidPackageService } from "apis/services/AidPackageService";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,
@@ -18,7 +21,11 @@ export type NeedAssignments = {
   [needID: string]: Map<number, number>; // Map<supplierId: quantity>
 };
 
-export type AidPackage = { name: string; details: string };
+export type AidPackage = {
+  name: string;
+  details: string;
+  isPublished?: boolean;
+};
 export type AidPackages = {
   [supplierID: number]: AidPackage;
 };
@@ -30,11 +37,12 @@ export function CreateAidPackage() {
   const [aidPackages, setAidPackages] = useState<AidPackages>({});
 
   useEffect(() => {
-    fetchMedicalNeeds().then((response) => {
-      setMedicalNeeds(response.medicalNeedInfo);
+    MedicalNeedsService.getMedicalNeeds().then((response: any) => {
+      const needsArray = response.data;
+      setMedicalNeeds(needsArray);
       setNeedAssignments(
-        response.medicalNeedInfo.reduce(
-          (previousValue: NeedAssignments, currentValue) => {
+        needsArray.reduce(
+          (previousValue: NeedAssignments, currentValue: any) => {
             previousValue[currentValue.needID] = new Map();
             return previousValue;
           },
@@ -42,14 +50,59 @@ export function CreateAidPackage() {
         )
       );
     });
-
-    AidPackageService.getAidPackages().then((res) => {
-      console.log(JSON.stringify(res));
-    });
   }, []);
 
   const goToStep = (step: STEPS) => {
     setCurrentFormStep(step);
+  };
+
+  const handleAidPkgPublish = async (supplierID: number): Promise<any> => {
+    const aidPackage = aidPackages[supplierID];
+    const needs = Object.keys(needAssignments)
+      .filter((needID) => {
+        return needAssignments[needID].has(supplierID);
+      })
+      .map((id) => {
+        return {
+          id: Number(id),
+          quantity: needAssignments[id].get(supplierID),
+        };
+      });
+
+    if (aidPackage) {
+      return AidPackageService.postAidPackage({
+        name: aidPackage.name,
+        description: aidPackage.details,
+        aidPackageItems: needs.map((need) => {
+          const medicalNeed = medicalNeeds.find(
+            (currentNeed) => currentNeed.needID === need.id
+          );
+          const supplierQuotationID = medicalNeed?.supplierQuotes.find(
+            (quote) => quote.supplierID === supplierID
+          )?.quotationID;
+
+          return {
+            needID: need.id,
+            quantity: need.quantity,
+            quotationID: supplierQuotationID as number,
+          };
+        }),
+      })
+        .then(() => {
+          toast(`Successfully Published ${aidPackage.name}`);
+          /**
+           * flags the package to be removed from
+           * table.
+           */
+          aidPackages[supplierID].isPublished = true;
+          setAidPackages({ ...aidPackages });
+        })
+        .catch((error) => {
+          toast("something went wrong");
+        });
+    } else {
+      throw new Error("invalid supplier"); // or handle otherwise.
+    }
   };
 
   return (
@@ -72,6 +125,7 @@ export function CreateAidPackage() {
             medicalNeeds={medicalNeeds}
             needAssignments={needAssignments}
             setNeedAssignments={setNeedAssignments}
+            aidPackages={aidPackages}
           />
         )}
         {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
@@ -81,6 +135,7 @@ export function CreateAidPackage() {
             setNeedAssignments={setNeedAssignments}
             aidPackages={aidPackages}
             setAidPackages={setAidPackages}
+            handleAidPkgPublish={handleAidPkgPublish}
           />
         )}
       </div>

@@ -70,4 +70,20 @@ export class AidPackageService {
   static postNeeds(formData: any) {
     return AidPackageService.http.post(`requirements/medicalneeds`, formData);
   }
+
+  static postAidPackage({
+    name,
+    description,
+    aidPackageItems,
+  }: {
+    name: string;
+    description: string;
+    aidPackageItems: Array<{
+      needID: number;
+      quantity?: number;
+      quotationID: number;
+    }>;
+  }) {
+    return AidPackageService.http.post(`aidpackages`, { name, description, aidPackageItems });
+  }
 }

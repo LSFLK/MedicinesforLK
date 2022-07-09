@@ -32,7 +32,7 @@ export default class Http {
     /**
      * patch method
      */
-    public async patch<Type>(path:string, payload: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<Type, HttpRequestConfig>> {
+    public async patch<Type>(path:string, payload?: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<Type, HttpRequestConfig>> {
         const config: HttpRequestConfig = {
             headers: {
                 "accept": "application/json"

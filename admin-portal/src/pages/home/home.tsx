@@ -39,9 +39,11 @@ export function Home(params: HomePageProps) {
   function handleSearch(keyword: string) {
     keyword = keyword.trim().toLowerCase();
     const newlyFilteredPackages = aidPackages.filter((aidPackage) => {
+      const supplier = aidPackage.aidPackageItems[0]?.quotation.supplier.name;
       return (
         aidPackage.name.toLowerCase().includes(keyword) ||
-        aidPackage.status.toLowerCase().includes(keyword)
+        aidPackage.status.toLowerCase().includes(keyword) ||
+        supplier?.toLowerCase().includes(keyword)
       );
     });
     setFilteredAidPackages(newlyFilteredPackages);
@@ -69,6 +71,6 @@ export function Home(params: HomePageProps) {
           </div>
         </>
       }
-    </div>
+    </div >
   );
 }

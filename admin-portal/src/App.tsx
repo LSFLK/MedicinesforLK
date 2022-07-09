@@ -13,6 +13,11 @@ import { Page } from "layout/page";
 import { useAuthContext } from "@asgardeo/auth-react";
 import Http from "apis/httpCommon";
 import { AidPackageService } from "apis/services/AidPackageService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
+import { PledgeService } from "apis/services/PledgeService";
+import { SupplierService } from "apis/services/SupplierService";
 
 function App() {
 
@@ -31,6 +36,9 @@ function App() {
       signIn();
     });
     AidPackageService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
+    MedicalNeedsService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
+    PledgeService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
+    SupplierService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
   }, []);
 
   return (
@@ -68,9 +76,8 @@ function App() {
       <footer className="footer footer--dark">
         <div>@OpenSource.com</div>
       </footer>
-
-    </div >
+      <ToastContainer />
+    </div>
   );
 }
-
 export default App;
