@@ -39,10 +39,12 @@ export function NewsRoom() {
           <span>Mr. Naveendra SENARATHNE</span>
           <span>Media Focal Point</span>
           <span>[T] +94 71 433 3331</span>
-          <span>[E]
-          <a href="mailto:naveendra.senarathna@redcross.lk">
-            naveendra.senarathna@redcross.lk
-          </a></span>
+          <span>
+            [E]
+            <a href="mailto:naveendra.senarathna@redcross.lk">
+              naveendra.senarathna@redcross.lk
+            </a>
+          </span>
         </div>
         <div className="contact-section">
           <span>Sri Lanka Red Cross Society</span>
