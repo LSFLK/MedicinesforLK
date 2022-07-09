@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
 import "./supplierQuotationUpload.css";
 import { SupplierService } from "apis/services/SupplierService";
 import { toast } from "react-toastify";
+import axios, { AxiosError } from "axios";
 
 export function SupplierQuotationUpload() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
-  const [errorList, setErrorList] = useState([]);
+  const [errorList, setErrorList] = useState<string[]>([]);
 
-  function handleChange(event: any) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setErrorList([]);
-    setFile(event.target.files[0]);
+    if (event.target.files) {
+      setFile(event.target.files[0]);
+    }
     setFileName(event.target.value);
   }
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData();
 
-    if (file != undefined) {
+    if (file) {
       formData.append("file", file);
       try {
         const response = await SupplierService.postQuotation(formData);
@@ -31,24 +34,24 @@ export function SupplierQuotationUpload() {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined,
         });
         setFileName("");
-      } catch (e: any) {
-        toast.error("File upload unsuccessful", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-
-        const data = e.response.data
-          .split(/\r?\n/)
-          .filter((element: any) => element);
-        setErrorList(data);
+      } catch (e) {
+        if (axios.isAxiosError(e)) {
+          const error = e as AxiosError<string>;
+          toast.error("File upload unsuccessful", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+          if (error.response) {
+            const data = error.response.data.split(/\r?\n/);
+            setErrorList(data);
+          }
+        }
       }
     } else {
       toast.warn("Please select a file to upload", {
@@ -58,7 +61,6 @@ export function SupplierQuotationUpload() {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        progress: undefined,
       });
     }
   };
@@ -87,7 +89,7 @@ export function SupplierQuotationUpload() {
         </div>
         <div className="error-list-div">
           {errorList.length > 0 &&
-            errorList.map((error: string) => <p>{error}</p>)}
+            errorList.map((error: string) => <p key={error}>{error}</p>)}
         </div>
       </div>
     </Page>
