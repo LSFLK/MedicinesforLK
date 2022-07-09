@@ -36,24 +36,24 @@ export function NewsRoom() {
           </strong>
         </p>
         <div className="contact-section">
-         
           <span>Mr. Naveendra SENARATHNE</span>
           <span>Media Focal Point</span>
- <span>+94 (71) 433 3331</span>
- <a href="mailto:naveendra.senarathna@redcross.lk"><span>naveendra.senarathna@redcross.lk</span></a>
- 
+          <span>+94 (71) 433 3331</span>
+          <a href="mailto:naveendra.senarathna@redcross.lk">
+            <span>naveendra.senarathna@redcross.lk</span>
+          </a>
         </div>
         <div className="contact-section">
-        <span>Sri Lanka Red Cross Society</span>
-     <span>National Headquarters</span>
-     <span>106, Dharmapala Mawatha,</span>
-    <span>Colombo 07, Sri Lanka</span>
-  <span>[T] (94) 11 2691095 , (94) 11 2691095</span>
-   <span>[F] (94) 11 2682675</span>
-   <span>[E] <a href="mailto:info@redcross.lk">info@redcross.lk </a></span>
-          
+          <span>Sri Lanka Red Cross Society</span>
+          <span>National Headquarters</span>
+          <span>106, Dharmapala Mawatha,</span>
+          <span>Colombo 07, Sri Lanka</span>
+          <span>[T] (94) 11 2691095 , (94) 11 2691095</span>
+          <span>[F] (94) 11 2682675</span>
+          <span>
+            [E] <a href="mailto:info@redcross.lk">info@redcross.lk </a>
+          </span>
         </div>
-        
       </div>
       <div className="video-section">
         <iframe
