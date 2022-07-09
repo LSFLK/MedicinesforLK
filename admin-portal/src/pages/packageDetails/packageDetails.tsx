@@ -37,7 +37,12 @@ export function PackageDetails() {
 
   const fetchUpdateComments = async () => {
     const { data } = await AidPackageService.getUpdateComments(packageId!);
-    setPosts(data);
+    const sorteddata  = data.sort((data1, data2)=>{
+      var date1 = new Date(data1.dateTime);
+      var date2 = new Date(data2.dateTime);
+      return date2.getTime() - date1.getTime();
+    })
+    setPosts(sorteddata);
   };
 
   const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
