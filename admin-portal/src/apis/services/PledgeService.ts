@@ -12,11 +12,11 @@ export class PledgeService {
   }
 
   static updatePledge(pledgeID: number | string, pledge: Pledge) {
-    return PledgeService.http.put<Pledge>(`pledges/${pledgeID}`, pledge);
+    return PledgeService.http.put<Pledge, Pledge>(`pledges/${pledgeID}`, pledge);
   }
 
   static updatePledgeStatus(pledgeID: number | string, status: Pledge.Status) {
-    return PledgeService.http.patch<Pledge>(`pledges/${pledgeID}/status/${status}`);
+    return PledgeService.http.patch<Pledge, Pledge>(`pledges/${pledgeID}/status/${status}`);
   }
 
   static deletePledge(pledgeID: number | string) {
@@ -31,7 +31,7 @@ export class PledgeService {
     pledgeID: number | string,
     comment: PledgeActivity
   ) {
-    return PledgeService.http.put<PledgeActivity>(
+    return PledgeService.http.put<PledgeActivity, PledgeActivity>(
       `pledges/${pledgeID}/updatecomment`,
       comment
     );

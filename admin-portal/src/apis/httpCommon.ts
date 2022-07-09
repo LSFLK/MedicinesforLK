@@ -32,7 +32,7 @@ export default class Http {
     /**
      * patch method
      */
-    public async patch<Type>(path:string, payload?: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<Type, HttpRequestConfig>> {
+    public async patch<Type, DATA>(path:string, payload?: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<DATA, HttpRequestConfig>> {
         const config: HttpRequestConfig = {
             headers: {
                 "accept": "application/json"
@@ -43,14 +43,14 @@ export default class Http {
             ...requestConfig
         };
 
-        const response: AxiosResponse<Type, HttpRequestConfig> = await this.httpRequest(config);
+        const response: AxiosResponse<DATA, HttpRequestConfig> = await this.httpRequest(config);
         return response;
     }
 
     /**
      * put method
      */
-    public async put<Type>(path:string, payload: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<Type, HttpRequestConfig>> {
+    public async put<Type, DATA>(path:string, payload: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<DATA, HttpRequestConfig>> {
         const config: HttpRequestConfig = {
             headers: {
                 "accept": "application/json"
@@ -61,7 +61,7 @@ export default class Http {
             ...requestConfig
         };
 
-        const response: AxiosResponse<Type, HttpRequestConfig> = await this.httpRequest(config);
+        const response: AxiosResponse<DATA, HttpRequestConfig> = await this.httpRequest(config);
         return response;
     }
 
@@ -85,7 +85,7 @@ export default class Http {
     /**
      * post method
      */
-    public async post<Type>(path:string, payload: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<Type, HttpRequestConfig>> {
+    public async post<Type, DATA>(path:string, payload: Type,requestConfig?: HttpRequestConfig): Promise<AxiosResponse<DATA, HttpRequestConfig>> {
         const config: HttpRequestConfig = {
             headers: {
                 "accept": "application/json"
@@ -96,7 +96,7 @@ export default class Http {
             ...requestConfig
         };
 
-        const response: AxiosResponse<Type, HttpRequestConfig> = await this.httpRequest(config);
+        const response: AxiosResponse<DATA, HttpRequestConfig> = await this.httpRequest(config);
         return response;
     }
 }

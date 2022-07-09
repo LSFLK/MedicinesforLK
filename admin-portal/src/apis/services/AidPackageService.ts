@@ -16,7 +16,7 @@ export class AidPackageService {
   }
 
   static updateAidPackage(aidPackage: AidPackage) {
-    return AidPackageService.http.patch<AidPackage>(`aidpackages`, aidPackage);
+    return AidPackageService.http.patch<AidPackage, AidPackage>(`aidpackages`, aidPackage);
   }
 
   static getUpdateComments(packageID: number | string) {
@@ -29,7 +29,7 @@ export class AidPackageService {
     packageID: number | string,
     comment: AidPackageUpdateComment
   ) {
-    return AidPackageService.http.put<AidPackageUpdateComment>(
+    return AidPackageService.http.put<AidPackageUpdateComment, AidPackageUpdateComment>(
       `aidpackages/${packageID}/updatecomments`,
       comment
     );
@@ -48,7 +48,7 @@ export class AidPackageService {
     packageID: number | string,
     packageItem: AidPackageItem
   ) {
-    return AidPackageService.http.put<AidPackageItem>(
+    return AidPackageService.http.put<AidPackageItem, AidPackageItem>(
       `aidpackages/${packageID}/aidpackageitems`,
       packageItem
     );
@@ -68,7 +68,7 @@ export class AidPackageService {
   }
 
   static postNeeds(formData: any) {
-    return AidPackageService.http.post(`requirements/medicalneeds`, formData);
+    return AidPackageService.http.post<any, string>(`requirements/medicalneeds`, formData);
   }
 
   static postAidPackage({
@@ -84,6 +84,7 @@ export class AidPackageService {
       quotationID: number;
     }>;
   }) {
-    return AidPackageService.http.post(`aidpackages`, { name, description, aidPackageItems });
+    // TODO:  Define interfaces for the data types.
+    return AidPackageService.http.post<any, any>(`aidpackages`, { name, description, aidPackageItems });
   }
 }
