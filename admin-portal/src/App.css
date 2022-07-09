@@ -55,7 +55,12 @@ a:hover {
   background-color: var(--elixir-footer-background-color);
   color: var(--elixir-footer-color);
   padding: var(--elixir-footer-padding-vertical)
-    var(--elixir-footer-padding-horizontal);
+  var(--elixir-footer-padding-horizontal);
+}
+
+.footer-link{
+  color: var(--elixir-footer-color);
+  text-decoration: none;
 }
 
 .main-wrapper {
