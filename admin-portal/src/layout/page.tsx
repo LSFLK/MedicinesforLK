@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 import "./page.css";
 
 interface PageProps {
   children: React.ReactElement;
+  className?: string;
 }
 
 export function Page(props: PageProps) {
-  const { children } = props;
-
+  const { children, className } = props;
+  
   return (
     <div className="page">
       <aside className="sidebarContainer">
@@ -33,14 +34,14 @@ export function Page(props: PageProps) {
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <NavLink exact to="/suppliers" className="menu__link" activeClassName="menu__link menu__link--active">
+                    <NavLink exact to="/supplierQuotationUpload" className="menu__link" activeClassName="menu__link menu__link--active">
                       Suppliers
                     </NavLink>
                   </div>
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <NavLink exact to="/needsupload" className="menu__link" activeClassName="menu__link menu__link--active">
+                    <NavLink exact to="/needUpload" className="menu__link" activeClassName="menu__link menu__link--active">
                       Needs
                     </NavLink>
                   </div>
@@ -61,7 +62,7 @@ export function Page(props: PageProps) {
           </nav>
         </div>
       </aside>
-      <main className="docMainContainer">{children}</main>
+      <main className={`docMainContainer ${className}`}>{children}</main>
     </div>
   );
 }

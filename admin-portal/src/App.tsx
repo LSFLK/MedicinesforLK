@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { NavBar } from "./components";
 import { Home } from "./pages/home/home";
-import { NeedsUpload } from "./pages/needsupload/needsupload";
+import { NeedUpload } from "./pages/needUpload/needUpload";
 import { CreateAidPackage } from "pages/aidPackage/aidPackage";
+import { SupplierQuotationUpload } from "./pages/supplierQuotationUpload/supplierQuotationUpload";
 import { PackageDetails } from "./pages/packageDetails/packageDetails";
 import PledgeStatus from "./pages/pledgeStatus/pledgeStatus";
 import EditPledge from "./pages/editPledge/editPledge";
 import "./App.css";
 import { Page } from "layout/page";
+import { useAuthContext } from "@asgardeo/auth-react";
+import Http from "apis/httpCommon";
+import { AidPackageService } from "apis/services/AidPackageService";
 
 function App() {
+
+  const {
+    httpRequest,
+    signIn,
+    trySignInSilently
+  } = useAuthContext();
+
+  useEffect(() => {
+    trySignInSilently().then((response) => {
+      if (!response) {
+        signIn();
+      }
+    }).catch(()=> {
+      signIn();
+    });
+    AidPackageService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,20 +43,33 @@ function App() {
           <Page>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/creation" component={CreateAidPackage} />
-              <Route path="/needsupload" component={NeedsUpload} />
-              <Route path="/packages/:packageId" component={PackageDetails} />
-              <Route path="/packages/:packageId/pledge-status" component={PledgeStatus} />
-              <Route path="/packages/:packageId/pledge-status/pledges/:pledgeId" component={EditPledge} />
+              <Route exact path="/creation" component={CreateAidPackage} />
+              <Route exact path="/needsupload" component={NeedUpload} />
+              <Route exact path="/packages/:packageId" component={PackageDetails} />
+              <Route
+                exact
+                path="supplierQuotationUpload"
+                component={SupplierQuotationUpload}
+              />
+              <Route
+                exact
+                path="/packages/:packageId/pledge-status"
+                component={PledgeStatus}
+              />
+              <Route
+                exact
+                path="/packages/:packageId/pledge-status/pledges/:pledgeId"
+                component={EditPledge}
+              />
             </Switch>
           </Page>
-        </BrowserRouter>
-      </div>
+        </BrowserRouter >
+      </div >
       <footer className="footer footer--dark">
         <div>@OpenSource.com</div>
       </footer>
 
-    </div>
+    </div >
   );
 }
 

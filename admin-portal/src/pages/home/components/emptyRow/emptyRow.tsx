@@ -4,7 +4,6 @@ interface EmptyRowProps {
 }
 
 export function EmptyRow(props: EmptyRowProps) {
-
     return (
         <p>
             No Data Found

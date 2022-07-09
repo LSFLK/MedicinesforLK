@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
 import "./styles.css";
@@ -24,17 +24,17 @@ export function NavBar() {
   const [hasLogoutFailureError, setHasLogoutFailureError] =
     useState<boolean>();
 
-  const search = useLocation().search;
-  const stateParam = new URLSearchParams(search).get("state");
-  const errorDescParam = new URLSearchParams(search).get("error_description");
+  // const search = useLocation().search;
+  // const stateParam = new URLSearchParams(search).get("state");
+  // const errorDescParam = new URLSearchParams(search).get("error_description");
 
-  useEffect(() => {
-    if (stateParam && errorDescParam) {
-      if (errorDescParam === "End User denied the logout request") {
-        setHasLogoutFailureError(true);
-      }
-    }
-  }, [stateParam, errorDescParam]);
+  // useEffect(() => {
+  //   if (stateParam && errorDescParam) {
+  //     if (errorDescParam === "End User denied the logout request") {
+  //       setHasLogoutFailureError(true);
+  //     }
+  //   }
+  // }, [stateParam, errorDescParam]);
 
   /**
       * handles the error occurs when the logout consent page is enabled
@@ -78,18 +78,33 @@ export function NavBar() {
 
   return (
     <nav className="navbar">
-      <div className="logo"></div>
+      <NavLink to="/">
+        <div className="logo"></div>
+      </NavLink>
       <div className="nav-links">
-        <Link to="/about-us" className="nav-link"> About </Link><span>|</span>
-        <Link to="/donors" className="nav-link"> Donors </Link><span>|</span>
-        <Link to="" className="nav-link"> Request Medicine </Link><span>|</span>
-        <Link to="" className="nav-link"> Medical Suppliers </Link><span>|</span>
-        <Link to="" className="nav-link"> Newsroom </Link>
-        {/* <Link to="/login" className="login-btn"> Login </Link> */}
+        <NavLink to="/" className="nav-link">
+          Home
+        </NavLink>
+        <span>|</span>
+        <NavLink to="/about-us" className="nav-link">
+          About
+        </NavLink>
+        <span>|</span>
+        <NavLink to="/donors" className="nav-link">
+          Donors
+        </NavLink>
+        <span>|</span>
+        <NavLink to="/suppliers" className="nav-link">
+          Hospital and Suppliers
+        </NavLink>
+        <span>|</span>
+        <NavLink to="/news-room" className="nav-link">
+          Newsroom
+        </NavLink>
         {
           state.isAuthenticated
-            ? (<Link to="/login" onClick={() => handleLogout()} className="login-btn" >Logout</Link>)
-            : (<Link to="/login" onClick={() => handleLogin()} className="login-btn" >Login</Link>)
+            ? (<NavLink to="/login" onClick={() => handleLogout()} className="login-btn" >Logout</NavLink>)
+            : (<NavLink to="/login" onClick={() => handleLogin()} className="login-btn" >Login</NavLink>)
         }
       </div>
     </nav>

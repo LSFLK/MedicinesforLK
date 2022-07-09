@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider, Storage } from "@asgardeo/auth-react";
-import { TokenExchangePlugin, HttpClientInstance } from "@asgardeo/token-exchange-plugin";
+import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
 
 import { default as authConfig } from "./config.json";
 

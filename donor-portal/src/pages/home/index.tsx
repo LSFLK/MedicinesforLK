@@ -90,7 +90,7 @@ export function Home() {
         }
       })
     );
-  });
+  }, []);
 
   return (
     <Page className="home-page">

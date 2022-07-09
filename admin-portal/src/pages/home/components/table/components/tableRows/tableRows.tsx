@@ -23,8 +23,8 @@ export function TableRows(props: TableRowsProps) {
         setTableRows(getTableRows());
     }, [aidPackages]);
     return (
-        <>
+        <tbody>
             {tableRows}
-        </>
+        </tbody>
     );
 }

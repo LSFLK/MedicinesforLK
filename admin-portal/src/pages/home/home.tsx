@@ -1,40 +1,30 @@
 import React, { ReactElement, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { useAuthContext, HttpRequestConfig } from "@asgardeo/auth-react";
 
-import { PageSelection } from "../../types/pages";
-import { Page } from "../../layout/page";
-import AdminService from "../../apis/services";
-
 import "./home.css";
 import { AidPackage } from "types/AidPackage";
-import { TableRow } from "./tableRow/tableRow";
-import { TableRows } from "./tableRows/tableRows";
-import { EmptyRow } from "./emptyRow";
+import { EmptyRow } from "./components/emptyRow/emptyRow";
+import { Table } from "./components/table/table";
+import { AidPackageService } from "apis/services/AidPackageService";
 
 interface HomePageProps { }
 
 export function Home(params: HomePageProps) {
-
-  const [aidPackages, setAidPackages] = useState<AidPackage[]>();
+  const [aidPackages, setAidPackages] = useState<AidPackage[]>([]);
+  const [filteredAidPackages, setFilteredAidPackages] = useState<AidPackage[]>([]);
   const {
-    state,
-    httpRequest
+    state
   } = useAuthContext();
 
   useEffect(() => {
     if (state.isAuthenticated) {
       const fetchData = async () => {
-        const config: HttpRequestConfig = {
-          headers: {
-            "accept": "application/json"
-          },
-          method: "GET",
-          url: "https://9d2b57ae-4349-44f2-971c-106ae09d244d-dev.e1-us-east-azure.choreoapis.dev/qmov/admin-api/0.1.0/aidpackages"
-        };
-        const response = await httpRequest(config);
+        const response = await AidPackageService.getAidPackages();
         if (response && response.data) {
           setAidPackages(response.data);
+          setFilteredAidPackages(response.data);
         }
       }
 
@@ -46,32 +36,39 @@ export function Home(params: HomePageProps) {
     }
   }, [state?.isAuthenticated]);
 
+  function handleSearch(keyword: string) {
+    keyword = keyword.trim().toLowerCase();
+    const newlyFilteredPackages = aidPackages.filter((aidPackage) => {
+      return (
+        aidPackage.name.toLowerCase().includes(keyword) ||
+        aidPackage.status.toLowerCase().includes(keyword)
+      );
+    });
+    setFilteredAidPackages(newlyFilteredPackages);
+  }
+
   return (
     <div className="pageContent">
-      <header className="pageHeader">
-        <h1>Aid Packages</h1>
-      </header>
-      <div className="packageTableSearch">
-        <div className="searchContainer">
-          <img src="/assets/svg/search_icon.svg" />
-          <input placeholder="Search" className="textField" />
-        </div>
-      </div>
-      <div className="packageTableContainer">
-        <table>
-          <tr>
-            <th>Aid Package</th>
-            <th>Status</th>
-            <th>Pledges</th>
-            <th>Supplier</th>
-            <th></th>
-          </tr>
-          {aidPackages && aidPackages.length > 0 && <TableRows aidPackages={aidPackages} />}
-        </table>
-      </div>
-      <div className="noDataMessage">
-        {(!aidPackages || aidPackages.length <= 0) && <EmptyRow />}
-      </div>
+      {(!aidPackages || aidPackages.length <= 0) && <p>Loading Aid Packages...</p>}
+      {aidPackages && aidPackages.length > 0 &&
+        <>
+          <header className="pageHeader">
+            <h1>Aid Packages</h1>
+          </header>
+          <div className="packageTableSearch">
+            <div className="searchContainer">
+              <img src="/assets/svg/search_icon.svg" />
+              <input placeholder="Search" className="textField" onChange={(event) => handleSearch(event.target.value)} />
+            </div>
+          </div>
+          <div className="packageTableContainer">
+            <Table aidPackages={filteredAidPackages} />
+          </div>
+          <div className="noDataMessage">
+            {(!filteredAidPackages || filteredAidPackages.length <= 0) && <EmptyRow />}
+          </div>
+        </>
+      }
     </div>
   );
 }

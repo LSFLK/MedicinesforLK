@@ -12,19 +12,9 @@ export function NavBar(params: NavBarProps) {
     state,
     signIn,
     signOut,
-    getBasicUserInfo,
-    getIDToken,
-    getDecodedIDToken,
     on,
     trySignInSilently
   } = useAuthContext();
-
-  const [derivedAuthenticationState, setDerivedAuthenticationState] =
-    useState<any>(null);
-  const [hasAuthenticationErrors, setHasAuthenticationErrors] =
-    useState<boolean>(false);
-  const [hasLogoutFailureError, setHasLogoutFailureError] =
-    useState<boolean>();
 
   // const search = useLocation().search;
   // const stateParam = new URLSearchParams(search).get("state");
@@ -44,7 +34,7 @@ export function NavBar(params: NavBarProps) {
       */
   useEffect(() => {
     on(Hooks.SignOut, () => {
-      setHasLogoutFailureError(false);
+      //setHasLogoutFailureError(false);
     });
   }, [on]);
 
@@ -52,32 +42,25 @@ export function NavBar(params: NavBarProps) {
     if (!state?.isAuthenticated) {
       return;
     }
+    // (async (): Promise<void> => {
+    //   const basicUserInfo = await getBasicUserInfo();
+    //   const idToken = await getIDToken();
+    //   const decodedIDToken = await getDecodedIDToken();
 
-    (async (): Promise<void> => {
-      const basicUserInfo = await getBasicUserInfo();
-      const idToken = await getIDToken();
-      const decodedIDToken = await getDecodedIDToken();
+    //   const derivedState = {
+    //     authenticateResponse: basicUserInfo,
+    //     idToken: idToken?.split("."),
+    //     decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
+    //     decodedIDTokenPayload: decodedIDToken
+    //   };
 
-      const derivedState = {
-        authenticateResponse: basicUserInfo,
-        idToken: idToken?.split("."),
-        decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
-        decodedIDTokenPayload: decodedIDToken
-      };
-
-      setDerivedAuthenticationState(derivedState);
-    })();
+    //   setDerivedAuthenticationState(derivedState);
+    // })();
   }, [state?.isAuthenticated]);
 
-  useEffect(() => {
-    if (!state.isAuthenticated) {
-      handleLogin();
-    }
-  }, []);
-
   const handleLogin = () => {
-    setHasLogoutFailureError(false);
-    signIn().catch(() => setHasAuthenticationErrors(true));
+    //setHasLogoutFailureError(false);
+    signIn();//.catch(() => setHasAuthenticationErrors(true));
   };
 
   const handleLogout = () => {
@@ -97,9 +80,9 @@ export function NavBar(params: NavBarProps) {
             <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeMiterlimit="10"
+                strokeWidth="2"
                 d="M4 7h22M4 15h22M4 23h22"
               ></path>
             </svg>

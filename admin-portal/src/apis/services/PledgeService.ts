@@ -1,0 +1,42 @@
+import http from "../httpCommon";
+import { PledgeActivity } from "../../types/PledgeActivity";
+import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
+import { Pledge } from "../../types/Pledge";
+import Http from "../httpCommon";
+
+export class PledgeService {
+  static http: Http;
+  
+  static getPledge(pledgeID: number | string) {
+    return PledgeService.http.get<Pledge[]>(`pledges/${pledgeID}`);
+  }
+
+  static updatePledge(pledgeID: number | string, pledge: Pledge) {
+    return PledgeService.http.put<Pledge>(`pledges/${pledgeID}`, pledge);
+  }
+
+  static deletePledge(pledgeID: number | string) {
+    return PledgeService.http.delete(`pledges/${pledgeID}`);
+  }
+
+  static getUpdateComments(pledgeID: number | string) {
+    return PledgeService.http.get<PledgeActivity[]>(`pledges/${pledgeID}/updatecomments`);
+  }
+
+  static upsertUpdateComment(
+    pledgeID: number | string,
+    comment: PledgeActivity
+  ) {
+    return PledgeService.http.put<PledgeActivity>(
+      `pledges/${pledgeID}/updatecomment`,
+      comment
+    );
+  }
+
+  static deleteUpdateComment(
+    pledgeID: number | string,
+    pledgeUpdateId: number
+  ) {
+    return PledgeService.http.delete(`pledges/${pledgeID}/updatecomment/${pledgeUpdateId}`);
+  }
+}

@@ -5,28 +5,9 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 export function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-red">
-        <h1>Cant decide which aid package to support?</h1>
-        <p>
-          You don't have to! The Red Cross team in collaboration with various
-          teams on the ground are continuosly reviewing the countries needs and
-          prioritizing based on severity and criticality.
-        </p>
-        <p>Your donation will go be used to fund various aid packages</p>
-        <br />
-        <p>Donate to:</p>
-        <div>
-          <button>Sri Lankan Red Cross</button>
-          <span>or</span>
-          <button>Local Registered Charity</button>
-        </div>
-      </div>
       <div className="footer-black">
         <div className="footer-black-top">
-          <img
-            src="/assets/images/about-us/sl-red-cross-logo.jpg"
-            alt=""
-          />
+          <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
           <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
             nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
@@ -56,7 +37,7 @@ export function Footer() {
             Medical Suppliers
           </Link>
           <span>|</span>
-          <Link to="" className="text-link">
+          <Link to="/news-room" className="text-link">
             Newsroom
           </Link>
           <span>|</span>
