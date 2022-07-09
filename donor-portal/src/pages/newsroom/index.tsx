@@ -48,49 +48,16 @@ export function NewsRoom() {
           <span className="red">+94 xxxxxxxxxxx</span>
         </div>
       </div>
-      <FullBleedContainer className="news-grid">
-        <div
-          className="news-grid__large-item"
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1509099342178-e323b1717dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80")',
-          }}
-        >
-          <h3>A News Article Title</h3>
-        </div>
-        <div
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1509099342178-e323b1717dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80")',
-          }}
-        >
-          <h4>A News Article Title</h4>
-        </div>
-        <div
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1509099342178-e323b1717dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80")',
-          }}
-        >
-          <h4>A News Article Title</h4>
-        </div>
-        <div
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1509099342178-e323b1717dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80")',
-          }}
-        >
-          <h4>A News Article Title</h4>
-        </div>
-        <div
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1509099342178-e323b1717dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80")',
-          }}
-        >
-          <h4>A News Article Title</h4>
-        </div>
-      </FullBleedContainer>
+      <div className="video-section">
+        <iframe
+          className="video"
+          src="https://www.youtube.com/embed/eU9WY5fUs8w"
+          title="For us, its about serving people (Progress Video 2022)"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
       <div className="news-article-list">
         <div className="news-article-list-item">
           <strong>
