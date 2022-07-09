@@ -36,16 +36,26 @@ export function NewsRoom() {
           </strong>
         </p>
         <div className="contact-section">
-          <strong>Colombo</strong>
-          <span className="red">+94 xxxxxxxxxxx</span>
+          <span>Mr. Naveendra SENARATHNE</span>
+          <span>Media Focal Point</span>
+          <span>[T] +94 71 433 3331</span>
+          <span>
+            [E]
+            <a href="mailto:naveendra.senarathna@redcross.lk">
+              naveendra.senarathna@redcross.lk
+            </a>
+          </span>
         </div>
         <div className="contact-section">
-          <strong>Colombo</strong>
-          <span className="red">+94 xxxxxxxxxxx</span>
-        </div>
-        <div className="contact-section">
-          <strong>Colombo</strong>
-          <span className="red">+94 xxxxxxxxxxx</span>
+          <span>Sri Lanka Red Cross Society</span>
+          <span>National Headquarters</span>
+          <span>106, Dharmapala Mawatha,</span>
+          <span>Colombo 07, Sri Lanka</span>
+          <span>[T] +94 11 269 1095 , +94 11 269 1095</span>
+          <span>[F] +94 11 268 2675</span>
+          <span>
+            [E] <a href="mailto:info@redcross.lk">info@redcross.lk </a>
+          </span>
         </div>
       </div>
       <div className="video-section">
