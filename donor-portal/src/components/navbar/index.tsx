@@ -5,7 +5,6 @@ import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
 import "./styles.css";
 
-
 export function NavBar() {
   const {
     state,
@@ -14,15 +13,14 @@ export function NavBar() {
     getBasicUserInfo,
     getIDToken,
     getDecodedIDToken,
-    on
+    on,
   } = useAuthContext();
 
   const [derivedAuthenticationState, setDerivedAuthenticationState] =
     useState<any>(null);
   const [hasAuthenticationErrors, setHasAuthenticationErrors] =
     useState<boolean>(false);
-  const [hasLogoutFailureError, setHasLogoutFailureError] =
-    useState<boolean>();
+  const [hasLogoutFailureError, setHasLogoutFailureError] = useState<boolean>();
 
   // const search = useLocation().search;
   // const stateParam = new URLSearchParams(search).get("state");
@@ -37,9 +35,9 @@ export function NavBar() {
   // }, [stateParam, errorDescParam]);
 
   /**
-      * handles the error occurs when the logout consent page is enabled
-      * and the user clicks 'NO' at the logout consent page
-      */
+   * handles the error occurs when the logout consent page is enabled
+   * and the user clicks 'NO' at the logout consent page
+   */
   useEffect(() => {
     on(Hooks.SignOut, () => {
       setHasLogoutFailureError(false);
@@ -60,7 +58,7 @@ export function NavBar() {
         authenticateResponse: basicUserInfo,
         idToken: idToken?.split("."),
         decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
-        decodedIDTokenPayload: decodedIDToken
+        decodedIDTokenPayload: decodedIDToken,
       };
 
       setDerivedAuthenticationState(derivedState);
@@ -101,11 +99,23 @@ export function NavBar() {
         <NavLink to="/news-room" className="nav-link">
           Newsroom
         </NavLink>
-        {
-          state.isAuthenticated
-            ? (<NavLink to="/login" onClick={() => handleLogout()} className="login-btn" >Logout</NavLink>)
-            : (<NavLink to="/login" onClick={() => handleLogin()} className="login-btn" >Login</NavLink>)
-        }
+        {state.isAuthenticated ? (
+          <NavLink
+            to="/login"
+            onClick={() => handleLogout()}
+            className="login-btn"
+          >
+            Logout
+          </NavLink>
+        ) : (
+          <NavLink
+            to="/login"
+            onClick={() => handleLogin()}
+            className="login-btn"
+          >
+            Login
+          </NavLink>
+        )}
       </div>
     </nav>
   );

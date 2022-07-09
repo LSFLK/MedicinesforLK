@@ -20,25 +20,34 @@ import { PledgeService } from "apis/services/PledgeService";
 import { SupplierService } from "apis/services/SupplierService";
 
 function App() {
-
-  const {
-    httpRequest,
-    signIn,
-    trySignInSilently
-  } = useAuthContext();
+  const { httpRequest, signIn, trySignInSilently } = useAuthContext();
 
   useEffect(() => {
-    trySignInSilently().then((response) => {
-      if (!response) {
+    trySignInSilently()
+      .then((response) => {
+        if (!response) {
+          signIn();
+        }
+      })
+      .catch(() => {
         signIn();
-      }
-    }).catch(()=> {
-      signIn();
-    });
-    AidPackageService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
-    MedicalNeedsService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
-    PledgeService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
-    SupplierService.http = new Http(httpRequest, "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0");
+      });
+    AidPackageService.http = new Http(
+      httpRequest,
+      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
+    );
+    MedicalNeedsService.http = new Http(
+      httpRequest,
+      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
+    );
+    PledgeService.http = new Http(
+      httpRequest,
+      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
+    );
+    SupplierService.http = new Http(
+      httpRequest,
+      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
+    );
   }, []);
 
   return (
@@ -53,7 +62,11 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/creation" component={CreateAidPackage} />
               <Route exact path="/needsupload" component={NeedUpload} />
-              <Route exact path="/packages/:packageId" component={PackageDetails} />
+              <Route
+                exact
+                path="/packages/:packageId"
+                component={PackageDetails}
+              />
               <Route
                 exact
                 path="supplierQuotationUpload"
@@ -71,8 +84,8 @@ function App() {
               />
             </Switch>
           </Page>
-        </BrowserRouter >
-      </div >
+        </BrowserRouter>
+      </div>
       <footer className="footer footer--dark">
         <div>@OpenSource.com</div>
       </footer>

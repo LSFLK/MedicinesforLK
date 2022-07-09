@@ -5,16 +5,10 @@ import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 import "./navbar.css";
 import { useLocation } from "react-router-dom";
 
-interface NavBarProps { }
+interface NavBarProps {}
 
 export function NavBar(params: NavBarProps) {
-  const {
-    state,
-    signIn,
-    signOut,
-    on,
-    trySignInSilently
-  } = useAuthContext();
+  const { state, signIn, signOut, on, trySignInSilently } = useAuthContext();
 
   // const search = useLocation().search;
   // const stateParam = new URLSearchParams(search).get("state");
@@ -29,9 +23,9 @@ export function NavBar(params: NavBarProps) {
   // }, [stateParam, errorDescParam]);
 
   /**
-      * handles the error occurs when the logout consent page is enabled
-      * and the user clicks 'NO' at the logout consent page
-      */
+   * handles the error occurs when the logout consent page is enabled
+   * and the user clicks 'NO' at the logout consent page
+   */
   useEffect(() => {
     on(Hooks.SignOut, () => {
       //setHasLogoutFailureError(false);
@@ -60,7 +54,7 @@ export function NavBar(params: NavBarProps) {
 
   const handleLogin = () => {
     //setHasLogoutFailureError(false);
-    signIn();//.catch(() => setHasAuthenticationErrors(true));
+    signIn(); //.catch(() => setHasAuthenticationErrors(true));
   };
 
   const handleLogout = () => {
@@ -99,11 +93,21 @@ export function NavBar(params: NavBarProps) {
           </a>
         </div>
         <div className="navbar__items navbar__items--right">
-          {
-            state.isAuthenticated
-              ? (<a onClick={() => handleLogout()} className="navbar__item navbar__link" >Logout</a>)
-              : (<a onClick={() => handleLogin()} className="navbar__item navbar__link" >Login</a>)
-          }
+          {state.isAuthenticated ? (
+            <a
+              onClick={() => handleLogout()}
+              className="navbar__item navbar__link"
+            >
+              Logout
+            </a>
+          ) : (
+            <a
+              onClick={() => handleLogin()}
+              className="navbar__item navbar__link"
+            >
+              Login
+            </a>
+          )}
           <a
             target="_blank"
             rel="noopener noreferrer"

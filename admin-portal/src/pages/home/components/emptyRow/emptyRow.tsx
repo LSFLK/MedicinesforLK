@@ -1,12 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 
-interface EmptyRowProps {
-}
+interface EmptyRowProps {}
 
 export function EmptyRow(props: EmptyRowProps) {
-    return (
-        <p>
-            No Data Found
-        </p>
-    );
+  return <p>No Data Found</p>;
 }

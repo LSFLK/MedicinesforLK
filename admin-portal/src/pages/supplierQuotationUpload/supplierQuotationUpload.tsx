@@ -83,8 +83,7 @@ export function SupplierQuotationUpload() {
         </form>
       </div>
       <div className="error-list-div">
-        {errorList.length > 0 &&
-          errorList.map((error: any) => <p>{error}</p>)}
+        {errorList.length > 0 && errorList.map((error: any) => <p>{error}</p>)}
       </div>
     </div>
   );

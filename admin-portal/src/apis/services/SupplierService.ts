@@ -5,6 +5,9 @@ export class SupplierService {
   static http: Http;
 
   static postQuotation(quotation: any) {
-    return SupplierService.http.post<Quotation, string>(`quotations`, quotation);
+    return SupplierService.http.post<Quotation, string>(
+      `quotations`,
+      quotation
+    );
   }
 }

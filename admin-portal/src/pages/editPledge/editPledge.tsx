@@ -94,44 +94,44 @@ export default function EditPledge() {
   };
 
   return (
-      <>
-        {(!aidPackage || !pledge) && <p>Loading Aid Package...</p>}
-        {aidPackage && pledge && (
-          <div className="editPledge">
-            <div>
-              <Link to="/">Aid Packages</Link>&nbsp;&gt;&nbsp;
-              <Link to={`/packages/${aidPackage.packageID}`}>
-                {aidPackage.name}
-              </Link>
-              &nbsp;&gt;&nbsp;
-              <Link to={`/packages/${aidPackage.packageID}/pledge-status`}>
-                Pledge Status
-              </Link>
-              &nbsp;&gt;&nbsp;
-              {pledge.donor.orgName}
-            </div>
-            <Modal
-              show={isEditActivityModalVisible}
-              onClose={() => setIsEditActivityModalVisible(false)}
-            >
-              <EditActivityPrompt
-                activity={activityToBeEdited.current!}
-                onSave={handleEditActivity}
-              />
-            </Modal>
-            <PledgeSummary
-              donor={pledge.donor}
-              pledge={pledge}
-              onStatusChange={handleStatusChange}
-            />
-            <PledgeActivities
-              activities={activities}
-              onEditActivityButtonClick={handleEditActivityClick}
-              onDeleteActivityButtonClick={handleDeleteActivity}
-              onNewActivity={handleNewActivity}
-            />
+    <>
+      {(!aidPackage || !pledge) && <p>Loading Aid Package...</p>}
+      {aidPackage && pledge && (
+        <div className="editPledge">
+          <div>
+            <Link to="/">Aid Packages</Link>&nbsp;&gt;&nbsp;
+            <Link to={`/packages/${aidPackage.packageID}`}>
+              {aidPackage.name}
+            </Link>
+            &nbsp;&gt;&nbsp;
+            <Link to={`/packages/${aidPackage.packageID}/pledge-status`}>
+              Pledge Status
+            </Link>
+            &nbsp;&gt;&nbsp;
+            {pledge.donor.orgName}
           </div>
-        )}
-      </>
+          <Modal
+            show={isEditActivityModalVisible}
+            onClose={() => setIsEditActivityModalVisible(false)}
+          >
+            <EditActivityPrompt
+              activity={activityToBeEdited.current!}
+              onSave={handleEditActivity}
+            />
+          </Modal>
+          <PledgeSummary
+            donor={pledge.donor}
+            pledge={pledge}
+            onStatusChange={handleStatusChange}
+          />
+          <PledgeActivities
+            activities={activities}
+            onEditActivityButtonClick={handleEditActivityClick}
+            onDeleteActivityButtonClick={handleDeleteActivity}
+            onNewActivity={handleNewActivity}
+          />
+        </div>
+      )}
+    </>
   );
 }
