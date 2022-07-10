@@ -70,4 +70,5 @@ select:focus {
   margin-top: 40px;
   font-size: 14px;
   margin-left: 10px;
+  white-space: pre-wrap;
 }

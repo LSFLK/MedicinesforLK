@@ -9,10 +9,10 @@ import axios, { AxiosError } from "axios";
 export function SupplierQuotationUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
-  const [responseData, setResponseData] = useState<string[]>([]);
+  const [responseData, setResponseData] = useState("");
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setResponseData([]);
+    setResponseData("");
     if (event.target.files) {
       setFile(event.target.files[0]);
     }
@@ -36,7 +36,7 @@ export function SupplierQuotationUpload() {
           draggable: true,
         });
         setFileName("");
-        setResponseData(response.data.split("|"));
+        setResponseData(response.data);
       } catch (e) {
         if (axios.isAxiosError(e)) {
           const error = e as AxiosError<string>;
@@ -49,8 +49,7 @@ export function SupplierQuotationUpload() {
             draggable: true,
           });
           if (error.response) {
-            const data = error.response.data.split(/\r?\n/);
-            setResponseData(data);
+            setResponseData(error.response.data);
           }
         }
       }
@@ -88,12 +87,7 @@ export function SupplierQuotationUpload() {
             <button type="submit">Upload</button>
           </form>
         </div>
-        <div className="error-list-div">
-          {responseData.length > 0 &&
-            responseData.map((error: string, index: number) => (
-              <p key={index}>{error}</p>
-            ))}
-        </div>
+        <div className="error-list-div">{responseData}</div>
       </div>
     </Page>
   );
