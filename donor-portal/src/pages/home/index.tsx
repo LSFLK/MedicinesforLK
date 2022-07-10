@@ -105,6 +105,13 @@ export function Home() {
   );
 
   useEffect(() => {
+    if (userId != null) {
+      setActiveTabItem(TabItems.MY_PLEDGES);
+      setAlreadyPledgedAidPackages(pledgedPackages);
+    }
+  }, [userId]);
+
+  useEffect(() => {
     const aidPackages = packageList;
     setGoalReachedAidPackages(
       aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage == 100)
@@ -112,11 +119,7 @@ export function Home() {
     setGoalPendingAidPackages(
       aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage != 100)
     );
-    if (userId != null) {
-      setActiveTabItem(TabItems.MY_PLEDGES);
-      setAlreadyPledgedAidPackages(pledgedPackages);
-    }
-  }, [userId]);
+  }, [])
 
   return (
     <Page className="home-page">
