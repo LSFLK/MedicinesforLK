@@ -119,7 +119,7 @@ export function Home() {
     setGoalPendingAidPackages(
       aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage != 100)
     );
-  }, [])
+  }, []);
 
   return (
     <Page className="home-page">
