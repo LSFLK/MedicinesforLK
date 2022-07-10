@@ -90,7 +90,9 @@ export function SupplierQuotationUpload() {
         </div>
         <div className="error-list-div">
           {responseData.length > 0 &&
-            responseData.map((error: string) => <p key={error}>{error}</p>)}
+            responseData.map((error: string, index: number) => (
+              <p key={index}>{error}</p>
+            ))}
         </div>
       </div>
     </Page>
