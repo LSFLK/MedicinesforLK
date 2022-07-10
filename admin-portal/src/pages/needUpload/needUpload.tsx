@@ -9,10 +9,10 @@ import axios, { AxiosError } from "axios";
 export function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
-  const [errorList, setErrorList] = useState<string[]>([]);
+  const [responseData, setResponseData] = useState<string[]>([]);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setErrorList([]);
+    setResponseData([]);
     if (event.target.files) {
       setFile(event.target.files[0]);
     }
@@ -27,7 +27,7 @@ export function NeedUpload() {
       formData.append("file", file);
       try {
         const response = await AidPackageService.postNeeds(formData);
-        toast.success(response.data, {
+        toast.success("File uploaded successfully!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: true,
@@ -36,6 +36,7 @@ export function NeedUpload() {
           draggable: true,
         });
         setFileName("");
+        setResponseData(response.data.split("|"));
       } catch (e) {
         if (axios.isAxiosError(e)) {
           const error = e as AxiosError<string>;
@@ -49,7 +50,7 @@ export function NeedUpload() {
           });
           if (error.response) {
             const data = error.response.data.split(/\r?\n/);
-            setErrorList(data);
+            setResponseData(data);
           }
         }
       }
@@ -85,8 +86,8 @@ export function NeedUpload() {
           </form>
         </div>
         <div className="error-list-div">
-          {errorList.length > 0 &&
-            errorList.map((error: string) => <p key={error}>{error}</p>)}
+          {responseData.length > 0 &&
+            responseData.map((error: string) => <p key={error}>{error}</p>)}
         </div>
       </div>
     </Page>
