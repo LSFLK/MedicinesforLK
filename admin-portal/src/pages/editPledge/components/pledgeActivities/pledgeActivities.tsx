@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { PledgeActivity } from "../../../../types/PledgeActivity";
 import "./pledgeActivities.css";
 
-const moment = require('moment');
+const moment = require("moment");
 
 interface PledgeActivityProps {
   activities: PledgeActivity[];
@@ -49,7 +49,9 @@ export default function PledgeActivities({
       <div className="activities">
         {activities.map((activity) => (
           <div key={activity.pledgeUpdateID} className="activity">
-            <p className="activityDate">{moment(activity.dateTime).format('LLL')}</p>
+            <p className="activityDate">
+              {moment(activity.dateTime).format("LLL")}
+            </p>
             <div className="content">
               <span className="text">{activity.updateComment}</span>
               <div className="actions">

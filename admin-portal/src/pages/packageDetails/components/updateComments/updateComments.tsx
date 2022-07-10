@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./updatecomments.css";
 import { AidPackageUpdateComment } from "../../../../types/AidPackageUpdateComment";
 
-const moment = require('moment');
+const moment = require("moment");
 
 interface UpdateCommentsProps {
   posts: AidPackageUpdateComment[];
@@ -48,7 +48,7 @@ export default function UpdateComments({
       <div className="comment">
         {posts.map((post) => (
           <div key={post.packageUpdateID} className="post">
-            <p className="date" >{moment(post.dateTime).format('LLL')}</p>
+            <p className="date">{moment(post.dateTime).format("LLL")}</p>
             <div className="content">
               <span className="text">{post.updateComment}</span>
               <div className="actions">
