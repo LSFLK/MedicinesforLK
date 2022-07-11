@@ -35,6 +35,7 @@ export function CreateAidPackage() {
   const [needAssignments, setNeedAssignments] = useState<NeedAssignments>({});
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
   const [aidPackages, setAidPackages] = useState<AidPackages>({});
+  const [isValidAssignment, setIsValidAssignment] = useState(true);
 
   useEffect(() => {
     MedicalNeedsService.getMedicalNeeds().then((response) => {
@@ -108,7 +109,7 @@ export function CreateAidPackage() {
   return (
     <div className="create-aid-container">
       <h1>Create an Aid Package</h1>
-      <Stepper activeStep={currentFormStep}>
+      <Stepper activeStep={currentFormStep} disabled={!isValidAssignment}>
         <Step
           title="Assign Suppliers"
           onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
@@ -126,6 +127,7 @@ export function CreateAidPackage() {
             needAssignments={needAssignments}
             setNeedAssignments={setNeedAssignments}
             aidPackages={aidPackages}
+            setIsValidAssignment={setIsValidAssignment}
           />
         )}
         {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
@@ -153,6 +155,7 @@ export function CreateAidPackage() {
           <button
             className="btn pull-right"
             onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
+            disabled={!isValidAssignment}
           >
             Next
           </button>
