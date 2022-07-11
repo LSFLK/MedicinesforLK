@@ -57,6 +57,16 @@ export function NewsRoom() {
             [E] <a href="mailto:info@redcross.lk">info@redcross.lk </a>
           </span>
         </div>
+        <div className="contact-section">
+          <span>Zafran Packeerally</span>
+          <span>[T] +94 70 378 8685</span>
+          <span>
+            [E]{""}
+            <a href="mailto:zafran.packeerally@redcross.lk">
+              zafran.packeerally@redcross.lk
+            </a>
+          </span>
+        </div>
       </div>
       <div className="video-section">
         <iframe
