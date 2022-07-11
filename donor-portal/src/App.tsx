@@ -11,8 +11,17 @@ import { DonateNow } from "./pages/donate-now";
 import "./App.css";
 import { AidPackageDetailsPage } from "./pages/package";
 import { NewsRoom } from "./pages/newsroom";
+import { useEffect, useState } from "react";
+import UserContext from "./userContext";
 
 function App() {
+  const [loggedInUserId, setLoggedInUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("loggedInUserId");
+    if (storedUserId) setLoggedInUserId(storedUserId);
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>

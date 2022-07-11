@@ -6,6 +6,11 @@ export type MedicalNeed = {
   beneficiaryID: number;
   time: any;
   urgency: string;
+  period: {
+    year: number;
+    month: number;
+    day: number;
+  };
   neededQuantity: number;
   remainingQuantity: number;
   beneficiary?: Beneficiary;

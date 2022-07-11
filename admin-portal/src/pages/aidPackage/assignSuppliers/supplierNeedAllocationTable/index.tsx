@@ -1,7 +1,7 @@
-import { SupplierQuote } from "data/medical-needs.mock.data";
 import { AidPackages } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
 import { useTable } from "react-table";
+import { Quotation } from "../../../../types/Quotation";
 
 export function SupplierNeedAllocationTable({
   supplierQuotes,
@@ -10,7 +10,7 @@ export function SupplierNeedAllocationTable({
   assignmentsForSupplier,
   aidPackages,
 }: {
-  supplierQuotes: SupplierQuote[];
+  supplierQuotes: Quotation[];
   setAssignmentForSupplier: any;
   requiredQuantity: number;
   assignmentsForSupplier: Map<number, number>;
@@ -22,6 +22,9 @@ export function SupplierNeedAllocationTable({
     () =>
       supplierQuotes.map((quote) => ({
         supplier: quote.supplier.name,
+        brandName: quote.brandName,
+        expiryDate: `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`,
+        period: `${quote.period.day}/${quote.period.month}/${quote.period.year}`,
         quantity: assignmentsForSupplier.get(quote.supplierID),
         max: Math.min(requiredQuantity, quote.availableQuantity),
         supplierID: quote.supplierID,
@@ -35,6 +38,18 @@ export function SupplierNeedAllocationTable({
       {
         Header: "Supplier",
         accessor: "supplier",
+      },
+      {
+        Header: "Brand Name",
+        accessor: "brandName",
+      },
+      {
+        Header: "Period",
+        accessor: "period",
+      },
+      {
+        Header: "Expiry Date",
+        accessor: "expiryDate",
       },
       {
         Header: "Max",

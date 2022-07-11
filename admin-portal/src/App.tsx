@@ -32,22 +32,14 @@ function App() {
       .catch(() => {
         signIn();
       });
-    AidPackageService.http = new Http(
+    const http: Http = new Http(
       httpRequest,
       "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
     );
-    MedicalNeedsService.http = new Http(
-      httpRequest,
-      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
-    );
-    PledgeService.http = new Http(
-      httpRequest,
-      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
-    );
-    SupplierService.http = new Http(
-      httpRequest,
-      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
-    );
+    AidPackageService.http = http;
+    MedicalNeedsService.http = http;
+    PledgeService.http = http;
+    SupplierService.http = http;
   }, []);
 
   return (

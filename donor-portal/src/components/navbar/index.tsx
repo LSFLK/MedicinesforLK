@@ -4,6 +4,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
 import "./styles.css";
+import { useContext } from "react";
+import UserContext from "../../userContext";
 
 export function NavBar() {
   const {

@@ -4,13 +4,13 @@ import { PageSelection } from "types/pages";
 import { Page } from "layout/page";
 import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
 import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
-import { NeedsInfo } from "data/medical-needs.mock.data";
 
 import toast from "react-simple-toasts";
 
 import "./aidPackage.css";
 import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
 import { AidPackageService } from "apis/services/AidPackageService";
+import { MedicalNeed } from "../../types/MedicalNeeds";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,
@@ -33,11 +33,11 @@ export type AidPackages = {
 export function CreateAidPackage() {
   const [currentFormStep, setCurrentFormStep] = useState(0);
   const [needAssignments, setNeedAssignments] = useState<NeedAssignments>({});
-  const [medicalNeeds, setMedicalNeeds] = useState<Array<NeedsInfo>>([]);
+  const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
   const [aidPackages, setAidPackages] = useState<AidPackages>({});
 
   useEffect(() => {
-    MedicalNeedsService.getMedicalNeeds().then((response: any) => {
+    MedicalNeedsService.getMedicalNeeds().then((response) => {
       const needsArray = response.data;
       setMedicalNeeds(needsArray);
       setNeedAssignments(
