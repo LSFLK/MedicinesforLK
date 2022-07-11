@@ -1,9 +1,9 @@
-import { NeedsInfo } from "data/medical-needs.mock.data";
 import { useEffect, useMemo } from "react";
-import { useTable, useExpanded } from "react-table";
+import { useTable, useExpanded, Row } from "react-table";
 import { AidPackages, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import "./assignSuppliers.css";
+import { MedicalNeed } from "../../../types/MedicalNeeds";
 
 export function AssignSuppliers({
   needAssignments,
@@ -13,14 +13,14 @@ export function AssignSuppliers({
 }: {
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
-  medicalNeeds: Array<NeedsInfo>;
+  medicalNeeds: MedicalNeed[];
   aidPackages: AidPackages;
 }) {
   const getAssignedCount = (
-    need: NeedsInfo,
+    need: MedicalNeed,
     needAssignments: NeedAssignments
   ) => {
-    return Array.from(needAssignments[need.needID].values()).reduce(
+    return Array.from(needAssignments[need.needID!].values()).reduce(
       (currentSum, value) => currentSum + value,
       0
     );
@@ -36,9 +36,12 @@ export function AssignSuppliers({
         );
         return {
           needID: need.needID,
-          needName: need.name,
+          needName: need.medicalItem.name,
+          unit: need.medicalItem.unit,
+          beneficiary: need.beneficiary?.name,
+          urgency: need.urgency,
           period: periodDate.toLocaleDateString(),
-          requiredQuantity: need.remainingQuantity,
+          requiredQuantity: need.neededQuantity,
           remainingQuantity:
             need.remainingQuantity - getAssignedCount(need, needAssignments),
           supplierQuotes: need.supplierQuotes || [],
@@ -74,7 +77,11 @@ export function AssignSuppliers({
       },
       {
         Header: "Need",
-        accessor: "need",
+        accessor: "needName",
+      },
+      {
+        Header: "Beneficiary",
+        accessor: "beneficiary",
       },
       {
         Header: "Unit",
@@ -92,6 +99,10 @@ export function AssignSuppliers({
         Header: "Remaining Need",
         accessor: "remainingQuantity",
       },
+      {
+        Header: "Urgency",
+        accessor: "urgency",
+      },
     ],
     []
   );
@@ -103,8 +114,6 @@ export function AssignSuppliers({
     rows,
     prepareRow,
     visibleColumns,
-    // @ts-ignore
-    toggleAllRowsExpanded,
   } = useTable(
     {
       columns,
@@ -114,10 +123,6 @@ export function AssignSuppliers({
     },
     useExpanded
   );
-
-  useEffect(() => {
-    toggleAllRowsExpanded();
-  }, [medicalNeeds, toggleAllRowsExpanded]);
 
   return (
     <table {...getTableProps()}>

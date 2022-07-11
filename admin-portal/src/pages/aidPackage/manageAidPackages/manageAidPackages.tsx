@@ -1,9 +1,9 @@
-import { NeedsInfo } from "data/medical-needs.mock.data";
 import { useEffect, useState } from "react";
 import { AidPackage, AidPackages, NeedAssignments } from "../aidPackage";
 import { AidPackageDetailsTable } from "./aidPackageDetailsTable";
 import { AidPackageTable } from "./aidPackagesTable";
 import "./manageAidPackages.css";
+import { MedicalNeed } from "../../../types/MedicalNeeds";
 
 export function ManageAidPackages({
   medicalNeeds,
@@ -13,7 +13,7 @@ export function ManageAidPackages({
   setAidPackages,
   handleAidPkgPublish,
 }: {
-  medicalNeeds: Array<NeedsInfo>;
+  medicalNeeds: MedicalNeed[];
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
   aidPackages: AidPackages;
