@@ -10,7 +10,6 @@ export function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [responseData, setResponseData] = useState("");
-  const [g, setG] = useState("");
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setResponseData("");
