@@ -78,8 +78,8 @@ export function AboutUs() {
         <h2>Partners</h2>
         <div className="partner-card-container">
           <div className="partner-section-card">
-            <a href="https://www.redcross.lk/">
-              <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
+            <a href="https://opensource.lk/">
+              <img src="/assets/images/about-us/lsf-logo.png" alt="" />
             </a>
             <p>
               LSF has been building large-scale open source systems for more
@@ -90,7 +90,7 @@ export function AboutUs() {
           </div>
           <div className="partner-section-card">
             <a href="https://longform.watchdog.team/about-us">
-              <img src="/assets/images/about-us/lsf-logo.png" alt="" />
+              <img src="/assets/images/about-us/watchdog-logo.png" alt="" />
             </a>
             <p>
               Watchdog is a multidisciplinary team of fact checkers,
@@ -107,8 +107,8 @@ export function AboutUs() {
               />
             </a>
             <p>
-              We are creatives and brand strategists whose work spans the
-              breadth of brand architecture, design, digital marketing
+              The Last Word are creatives and brand strategists whose work spans
+              the breadth of brand architecture, design, digital marketing
               communications and user experience.
             </p>
           </div>
