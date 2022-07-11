@@ -23,21 +23,21 @@ export function Donors() {
       <InfoBoxContainer>
         <InfoBox
           iconUrl="assets/images/charity2.jpg"
-          text="Navigate to the login page to begin registration."
+          text="Navigate to the login page to begin registration"
           heading="Charities"
           link="/login"
           buttonText="Login"
         ></InfoBox>
         <InfoBox
           iconUrl="assets/images/gov.jpg"
-          text="Navigate to the login page to begin registration."
+          text="Navigate to the login page to begin registration"
           heading="Government Embassies"
           link="/login"
           buttonText="Login"
         ></InfoBox>
         <InfoBox
           iconUrl="/assets/images/corporation.jpg"
-          text="Navigate to the login page to begin registration."
+          text="Navigate to the login page to begin registration"
           heading="Foundations / Corporations"
           link="/login"
           buttonText="Login"

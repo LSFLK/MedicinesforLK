@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HeaderImage } from "../layout/header-image";
 import { Page } from "../layout/page";
 import "./styles.css";
+import UserContext from "../../userContext";
+import { Link } from "react-router-dom";
 
-type DonarAidPackage = {
+type DonorAidPackage = {
   packageID: number;
   name: string;
   hospital: string;
@@ -12,9 +14,10 @@ type DonarAidPackage = {
   pledgedPercentage: number;
 };
 
-enum GoalStatus {
+enum TabItems {
   GOAL_PENDING,
   GOAL_REACHED,
+  MY_PLEDGES,
 }
 
 const packageList = [
@@ -74,23 +77,49 @@ const packageList = [
   },
 ];
 
+const pledgedPackages = [
+  {
+    packageID: 2,
+    name: "Medical Supplies | Anuradpura",
+    hospital: "General Hospital : Fight for their Lives in Anuradapura",
+    description:
+      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
+    totalAmount: 150000,
+    pledgedPercentage: 20,
+  },
+];
+
 export function Home() {
-  const [aidPackages, setAidPackages] = useState<Array<DonarAidPackage>>();
-  const [goalFilter, setGoalFilter] = useState<GoalStatus>(
-    GoalStatus.GOAL_PENDING
+  const userId = useContext(UserContext);
+  const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
+    DonorAidPackage[]
+  >([]);
+  const [alreadyPledgedAidPackages, setAlreadyPledgedAidPackages] = useState<
+    DonorAidPackage[]
+  >([]);
+  const [goalReachedAidPackages, setGoalReachedAidPackages] = useState<
+    DonorAidPackage[]
+  >([]);
+  const [activeTabItem, setActiveTabItem] = useState<TabItems>(
+    TabItems.GOAL_PENDING
   );
 
   useEffect(() => {
-    setAidPackages(
-      packageList.filter((donorPackage) => {
-        if (goalFilter === GoalStatus.GOAL_PENDING) {
-          return donorPackage.pledgedPercentage !== 100;
-        } else {
-          return donorPackage.pledgedPercentage === 100;
-        }
-      })
+    if (userId != null) {
+      setActiveTabItem(TabItems.MY_PLEDGES);
+      setAlreadyPledgedAidPackages(pledgedPackages);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    const aidPackages = packageList;
+    setGoalReachedAidPackages(
+      aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage == 100)
     );
-  });
+    setGoalPendingAidPackages(
+      aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage != 100)
+    );
+  }, []);
 
   return (
     <Page className="home-page">
@@ -109,22 +138,34 @@ export function Home() {
         <h1>Aid Packages</h1>
 
         <div className="goal-filter">
+          {userId && (
+            <button
+              className={`btn ${
+                activeTabItem !== TabItems.MY_PLEDGES && "secondary"
+              }`}
+              onClick={() => {
+                setActiveTabItem(TabItems.MY_PLEDGES);
+              }}
+            >
+              My Pledges
+            </button>
+          )}
           <button
             className={`btn ${
-              goalFilter !== GoalStatus.GOAL_PENDING && "secondary"
+              activeTabItem !== TabItems.GOAL_PENDING && "secondary"
             }`}
             onClick={() => {
-              setGoalFilter(GoalStatus.GOAL_PENDING);
+              setActiveTabItem(TabItems.GOAL_PENDING);
             }}
           >
             Goal Pending
           </button>
           <button
             className={`btn ${
-              goalFilter !== GoalStatus.GOAL_REACHED && "secondary"
+              activeTabItem !== TabItems.GOAL_REACHED && "secondary"
             }`}
             onClick={() => {
-              setGoalFilter(GoalStatus.GOAL_REACHED);
+              setActiveTabItem(TabItems.GOAL_REACHED);
             }}
           >
             Goal Reached
@@ -133,15 +174,31 @@ export function Home() {
       </div>
 
       <div className="package-list">
-        {aidPackages?.map((donorPackage) => (
-          <PackageCard donorPackage={donorPackage} />
-        ))}
+        <>
+          {activeTabItem == TabItems.GOAL_PENDING &&
+            goalPendingAidPackages.map((aidPackage) => {
+              return <PackageCard donorPackage={aidPackage} />;
+            })}
+        </>
+        <>
+          {activeTabItem == TabItems.GOAL_REACHED &&
+            goalReachedAidPackages.map((aidPackage) => {
+              return <PackageCard donorPackage={aidPackage} />;
+            })}
+        </>
+        <>
+          {userId &&
+            activeTabItem == TabItems.MY_PLEDGES &&
+            alreadyPledgedAidPackages.map((aidPackage) => {
+              return <PackageCard donorPackage={aidPackage} />;
+            })}
+        </>
       </div>
     </Page>
   );
 }
 
-function PackageCard({ donorPackage }: { donorPackage: DonarAidPackage }) {
+function PackageCard({ donorPackage }: { donorPackage: DonorAidPackage }) {
   const {
     packageID,
     description,
@@ -154,20 +211,15 @@ function PackageCard({ donorPackage }: { donorPackage: DonarAidPackage }) {
 
   return (
     <div className="package-card" key={packageID}>
-      <img
-        src="https://images.unsplash.com/photo-1562243061-204550d8a2c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80"
-        alt=""
-        className="package-card__image"
-      />
       <div className="card-details">
         <div className="card-details__heading">
           <div className="card-details__heading__text">
             <h2>{name}</h2>
             <p>{hospital}</p>
           </div>
-          <a href="#" className="btn">
+          <Link to={`/package/${packageID}`} className="btn">
             Donate
-          </a>
+          </Link>
         </div>
         <p className="card_details__description">{description}</p>
         <div className="card_details__package_progress">
