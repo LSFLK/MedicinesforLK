@@ -53,7 +53,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/creation" component={CreateAidPackage} />
-              <Route exact path="/needsupload" component={NeedUpload} />
+              <Route exact path="/needUpload" component={NeedUpload} />
               <Route
                 exact
                 path="/packages/:packageId"
@@ -61,7 +61,7 @@ function App() {
               />
               <Route
                 exact
-                path="supplierQuotationUpload"
+                path="/supplierQuotationUpload"
                 component={SupplierQuotationUpload}
               />
               <Route
