@@ -27,7 +27,7 @@ export default function PledgeSummary({
       <div>{donor.orgName}</div>
       <div className="heading">Amount:</div>
       <div>
-        ${" "}
+        $
         {pledge.amount.toLocaleString(undefined, {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
