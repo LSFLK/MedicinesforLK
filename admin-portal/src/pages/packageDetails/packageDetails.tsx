@@ -181,17 +181,6 @@ export function PackageDetails() {
                 See pledge status
               </Link>
             </div>
-            <p>Goal: ${aidPackage.totalAmount}</p>
-            <p>
-              Received: $
-              {(
-                aidPackage.totalAmount *
-                (aidPackage.pledgedPercentage / 100)
-              ).toFixed()}
-            </p>
-            <Link to={`/packages/${packageId}/pledge-status`}>
-              See pledge status
-            </Link>
           </div>
           <PackageStatus
             currentStatus={aidPackage.status}
