@@ -64,8 +64,20 @@ export default function PledgeStatus() {
               />
             </div>
             <div>
-              <p>Goal: ${aidPackage.goalAmount}</p>
-              <p>Received: ${aidPackage.receivedAmount}</p>
+              <p>
+                Goal: $
+                {aidPackage.goalAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+              <p>
+                Received: $
+                {aidPackage.receivedAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
               <p>Status: {aidPackage.status}</p>
             </div>
           </div>

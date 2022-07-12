@@ -163,8 +163,20 @@ export function PackageDetails() {
                   receivedAmount={aidPackage.receivedAmount}
                 />
               </div>
-              <p>Goal: ${aidPackage.goalAmount}</p>
-              <p>Received: ${aidPackage.receivedAmount}</p>
+              <p>
+                Goal: $
+                {aidPackage.goalAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+              <p>
+                Received: $
+                {aidPackage.receivedAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
               <Link to={`/packages/${packageId}/pledge-status`}>
                 See pledge status
               </Link>
