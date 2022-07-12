@@ -65,7 +65,7 @@ export function AidPackageTable({
         accessor: "description",
       },
       {
-        Header: "period",
+        Header: "Period",
         accessor: "period",
       },
       {
