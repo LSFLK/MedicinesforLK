@@ -51,7 +51,7 @@ export function Donors() {
         ></InfoBox>
         <p className="inquiry">
           For all inquiries, please email us at{" "}
-          <a href="mailto: inquires@redcross.lk">inquires@redcross.lk</a>
+          <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a>
         </p>
       </InfoBoxContainer>
     </Page>
