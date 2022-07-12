@@ -17,8 +17,10 @@ enum STEPS {
   MANAGE_AID_PACKAGES,
 }
 
+export type NeedAssignment = Map<number, number | null>; // Map<supplierId: quantity>
+
 export type NeedAssignments = {
-  [needID: string]: Map<number, number>; // Map<supplierId: quantity>
+  [needID: string]: NeedAssignment;
 };
 
 export type AidPackage = {
@@ -84,7 +86,7 @@ export function CreateAidPackage() {
 
           return {
             needID: need.id,
-            quantity: need.quantity,
+            quantity: need.quantity || 0,
             quotationID: supplierQuotationID as number,
           };
         }),

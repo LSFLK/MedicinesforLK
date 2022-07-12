@@ -1,9 +1,9 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useTable, useExpanded, Row } from "react-table";
 import { AidPackages, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
-import "./assignSuppliers.css";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
+import "./assignSuppliers.css";
 
 export function AssignSuppliers({
   needAssignments,
@@ -23,9 +23,9 @@ export function AssignSuppliers({
     needAssignments: NeedAssignments
   ) => {
     return Array.from(needAssignments[need.needID!].values()).reduce(
-      (currentSum, value) => currentSum + value,
+      (currentSum, value) => (currentSum as number) + (value || 0),
       0
-    );
+    ) as number;
   };
 
   const data = useMemo<Array<{ [key: string]: any }>>(() => {
@@ -44,11 +44,16 @@ export function AssignSuppliers({
         isValidSupplierAssignments = false;
       }
 
-      // all assignments must be less than supplier max
+      // all assignments must be less than supplier max and more than 0
       const assignmentForNeed = needAssignments[need.needID!];
       need.supplierQuotes.forEach((quote) => {
         const assignedFromQuote = assignmentForNeed.get(quote.supplierID);
-        if (!assignedFromQuote) return;
+        if (!assignedFromQuote) {
+          if (assignedFromQuote === 0) {
+            isValidSupplierAssignments = false;
+          }
+          return;
+        }
 
         if (assignedFromQuote > quote.availableQuantity) {
           isValidSupplierAssignments = false;
@@ -200,11 +205,11 @@ export function AssignSuppliers({
                       aidPackages={aidPackages}
                       setAssignmentForSupplier={(
                         supplierID: number,
-                        quantity: number
+                        quantity: string
                       ) => {
                         const updatedAssignments = currentAssignments.set(
                           supplierID,
-                          Number(quantity)
+                          quantity === "" ? null : Number(quantity)
                         );
 
                         setNeedAssignments({
