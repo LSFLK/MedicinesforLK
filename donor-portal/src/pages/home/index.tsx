@@ -40,7 +40,7 @@ export function Home() {
   }, []);
 
   const fetchAidPackages = async () => {
-    const { data } = await AidPackageService.getAidPackages();
+    const { data } : { data: AidPackage[] } = await AidPackageService.getAidPackages();
     setGoalReachedAidPackages(
       data.filter(
         (aidPackage) => aidPackage.goalAmount === aidPackage.receivedAmount
@@ -109,20 +109,24 @@ export function Home() {
         <>
           {activeTabItem == TabItems.GOAL_PENDING &&
             goalPendingAidPackages.map((aidPackage) => {
-              return <PackageCard donorPackage={aidPackage} />;
+              return <PackageCard
+                key={aidPackage.packageID}
+                donorPackage={aidPackage}
+                buttonText={userId != null? 'Donate': 'Pledge'}
+              />;
             })}
         </>
         <>
           {activeTabItem == TabItems.GOAL_REACHED &&
             goalReachedAidPackages.map((aidPackage) => {
-              return <PackageCard donorPackage={aidPackage} />;
+              return <PackageCard key={aidPackage.packageID} donorPackage={aidPackage} buttonText={'Details'} />;
             })}
         </>
         <>
           {userId &&
             activeTabItem == TabItems.MY_PLEDGES &&
             alreadyPledgedAidPackages.map((aidPackage) => {
-              return <PackageCard donorPackage={aidPackage} />;
+              return <PackageCard key={aidPackage.packageID} donorPackage={aidPackage} buttonText={'Details'} />;
             })}
         </>
       </div>
@@ -130,7 +134,7 @@ export function Home() {
   );
 }
 
-function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
+function PackageCard({ donorPackage, buttonText }: { donorPackage: AidPackage, buttonText: string }) {
   const { packageID, description, receivedAmount, goalAmount, name } =
     donorPackage;
 
@@ -142,7 +146,7 @@ function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
             <h2>{name}</h2>
           </div>
           <Link to={`/package/${packageID}`} className="btn">
-            Donate
+            {buttonText}
           </Link>
         </div>
         <p className="card_details__description">{description}</p>
