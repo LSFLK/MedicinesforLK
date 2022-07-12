@@ -12,9 +12,7 @@ export function NewsRoom() {
         </div>
       </HeaderImage>
       <div className="text-section">
-        <h1>Media &amp; News</h1>
-
-        <h2>Media Contacts</h2>
+        <h1>Media Contacts</h1>
 
         <p>
           <strong>
@@ -78,7 +76,9 @@ export function NewsRoom() {
           allowFullScreen
         ></iframe>
       </div>
+
       <div className="news-article-list">
+        <h2> News </h2>
         <div className="news-article-list-item">
           <strong>
             Pension Fund Coalition for Inclusive Capitalism Releases Resource to
