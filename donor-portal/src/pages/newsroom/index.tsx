@@ -36,13 +36,23 @@ export function NewsRoom() {
           </strong>
         </p>
         <div className="contact-section">
-          <span>Mr. Naveendra SENARATHNE</span>
+          <span>Mr. Naveendra Senarathne</span>
           <span>Media Focal Point</span>
           <span>[T] +94 71 433 3331</span>
           <span>
             [E]{" "}
             <a href="mailto:naveendra.senarathna@redcross.lk">
               naveendra.senarathna@redcross.lk
+            </a>
+          </span>
+        </div>
+        <div className="contact-section">
+          <span>Zafran Packeerally</span>
+          <span>[T] +94 70 378 8685</span>
+          <span>
+            [E]{""}
+            <a href="mailto:zafran.packeerally@redcross.lk">
+              zafran.packeerally@redcross.lk
             </a>
           </span>
         </div>
