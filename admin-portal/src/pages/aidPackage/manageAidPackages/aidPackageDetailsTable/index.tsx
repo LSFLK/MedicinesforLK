@@ -1,5 +1,8 @@
+import { formatMoney, formatNumber } from "helpers/formatter";
+import { getNeedFromId, getSupplierQuoteForNeed } from "helpers/needsHelper";
 import { useMemo } from "react";
 import { useTable } from "react-table";
+import { MedicalNeed } from "types/MedicalNeeds";
 import { AidPackage, NeedAssignments } from "../../aidPackage";
 
 export function AidPackageDetailsTable({
@@ -7,11 +10,13 @@ export function AidPackageDetailsTable({
   supplierID,
   needAssignments,
   updateAidPackage,
+  medicalNeeds,
 }: {
   selectedPackage: { name: string; details: string };
   supplierID: number;
   needAssignments: NeedAssignments;
   updateAidPackage: (updatedAidPackages: AidPackage) => void;
+  medicalNeeds: MedicalNeed[];
 }) {
   const data = useMemo(
     () =>
@@ -20,14 +25,24 @@ export function AidPackageDetailsTable({
           return needAssignments[needID].has(supplierID);
         })
         .map((needID) => {
+          const need = getNeedFromId(medicalNeeds, Number(needID));
+          const supplierQuote = getSupplierQuoteForNeed({
+            medicalNeeds,
+            needID: Number(needID),
+            supplierID,
+          });
+
+          const quantity = needAssignments[needID].get(supplierID) || 0;
+          const totalCost = (supplierQuote?.unitPrice || 0) * quantity;
+
           return {
-            need: needID,
-            unit: "",
-            quantity: needAssignments[needID].get(supplierID),
-            totalCost: 0,
+            need: need?.medicalItem.name,
+            unit: need?.medicalItem.unit,
+            quantity: formatNumber(quantity),
+            totalCost: formatMoney(totalCost),
           };
         }),
-    [needAssignments, supplierID]
+    [needAssignments, medicalNeeds, supplierID]
   );
 
   const columns = useMemo(
