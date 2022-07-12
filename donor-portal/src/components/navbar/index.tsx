@@ -14,7 +14,7 @@ export function NavBar() {
   const handleLogin = () => {
     localStorage.setItem("loggedInUserId", "2");
     window.location.href = "/";
-  }
+  };
 
   return (
     <nav className="navbar">

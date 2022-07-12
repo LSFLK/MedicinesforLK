@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={loggedInUserId} >
+      <UserContext.Provider value={loggedInUserId}>
         <BrowserRouter>
           <header className="App-header">
             <NavBar />
