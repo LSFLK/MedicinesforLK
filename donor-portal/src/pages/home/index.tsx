@@ -40,7 +40,8 @@ export function Home() {
   }, []);
 
   const fetchPledgedAidPackages = async (donorId: string) => {
-    const returnedPledgedPackages = await AidPackageService.getPledgedAidPackages(donorId);
+    const returnedPledgedPackages =
+      await AidPackageService.getPledgedAidPackages(donorId);
     setAlreadyPledgedAidPackages(returnedPledgedPackages.data);
   };
 
@@ -137,13 +138,20 @@ export function Home() {
             })}
         </>
         <>
-          {userId && activeTabItem == TabItems.MY_PLEDGES && alreadyPledgedAidPackages.length === 0 && (
-            <p>
-              No pledged packages found. Check {' '}
-              <a className="text-blue" onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}>goal pending tab</a> {' '}
-              to find pledge-able aid packages.
-            </p>
-          )}
+          {userId &&
+            activeTabItem == TabItems.MY_PLEDGES &&
+            alreadyPledgedAidPackages.length === 0 && (
+              <p>
+                No pledged packages found. Check{" "}
+                <a
+                  className="text-blue"
+                  onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+                >
+                  goal pending tab
+                </a>{" "}
+                to find pledge-able aid packages.
+              </p>
+            )}
           {userId &&
             activeTabItem == TabItems.MY_PLEDGES &&
             alreadyPledgedAidPackages.map((aidPackage) => {
