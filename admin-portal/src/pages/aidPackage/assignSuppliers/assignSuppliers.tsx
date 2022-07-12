@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTable, useExpanded, Row } from "react-table";
+import { useTable, useExpanded } from "react-table";
 import { AidPackages, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
@@ -214,7 +214,7 @@ export function AssignSuppliers({
 
                         setNeedAssignments({
                           ...needAssignments,
-                          [needsID]: updatedAssignments,
+                          [needsID]: new Map(updatedAssignments),
                         });
                       }}
                       requiredQuantity={requiredQuantity}
