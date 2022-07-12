@@ -1,4 +1,4 @@
-import Http, {temporaryClient} from "../httpCommon";
+import Http, { temporaryClient } from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
@@ -73,10 +73,7 @@ export class AidPackageService {
   }
 
   static postNeeds(formData: any) {
-    return temporaryClient.post<string>(
-      `requirements/medicalneeds`,
-      formData
-    );
+    return temporaryClient.post<string>(`requirements/medicalneeds`, formData);
   }
 
   static postAidPackage({
