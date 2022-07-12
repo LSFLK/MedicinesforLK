@@ -20,11 +20,12 @@ export function AboutUs() {
           efficiency for medical providers.
         </p>
         <p>
-          In partnership with the Lanka Software Foundation, Watchdog, The Last
-          Word, the Ministry of Health, and the Medical Supply Division we are
-          developing an online platform to match financial contributions from
-          the Sri Lankan diaspora, charity organizations and businesses with the
-          pharmaceutical demand needs from hospitals across the nation.
+          In partnership with the Lanka Software Foundation, Sustainable
+          Education Foundation, Watchdog, The Last Word, the Ministry of Health,
+          and the Medical Supply Division we are developing an online platform
+          to match financial contributions from the Sri Lankan diaspora, charity
+          organizations and businesses with the pharmaceutical demand needs from
+          hospitals across the nation.
         </p>
         <p>
           The Sri Lanka Red Cross serves to coordinate distribution activities
@@ -86,6 +87,18 @@ export function AboutUs() {
               than 15 years, with government and communities, to address a range
               of challenges from disaster management to elections, education to
               the environment.
+            </p>
+          </div>
+          <div className="partner-section-card">
+            <a href="https://sefglobal.org/?fbclid=IwAR2USvqUpwQjcTeo2mQrHAdaXdOgBiowyc4-V3IJvS3KDw0hwUOfOHVK8bE">
+              <img src="/assets/images/about-us/SEF_Logo.png" alt="" />
+            </a>
+            <p>
+              Sustainable Education Foundation (SEF) helps local students
+              connect with industry experts and academics around the world for
+              mentoring and career opportunities. SEF also supports Sri Lankan
+              researchers by popularising their work and connecting them with
+              undergraduate researchers for collaborations.
             </p>
           </div>
           <div className="partner-section-card">
