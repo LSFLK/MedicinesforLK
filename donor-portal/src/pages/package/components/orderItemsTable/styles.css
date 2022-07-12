@@ -1,0 +1,18 @@
+.orderItemsTable {
+  margin-top: 36px;
+}
+.orderItemsTable table {
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.orderItemsTable .heading {
+  font-weight: 600;
+}
+
+.orderItemsTable th,
+.orderItemsTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
