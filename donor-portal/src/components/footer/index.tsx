@@ -51,7 +51,7 @@ export function Footer() {
       <div className="footer-gray">
         <p>
           Copyright ©{" "}
-          <a href="www.elixir.redcross.lk">www.elixir.redcross.lk</a>| All
+          <a href="www.elixir.redcross.lk">elixir.redcross.lk </a>| All
           rights reserved
         </p>
         <div>

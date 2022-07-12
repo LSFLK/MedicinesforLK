@@ -41,7 +41,10 @@ export default function EditPledge() {
 
   const fetchUpdateComments = async () => {
     const { data } = await PledgeService.getUpdateComments(pledgeId!);
-    setActivities(data);
+    const sorteddata  = data.sort((data1, data2)=>{
+      return new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime();
+    })
+    setActivities(sorteddata);
   };
 
   const handleEditActivityClick = (activity: PledgeActivity) => {
