@@ -61,9 +61,12 @@ th {
   margin-bottom: 20px;
 }
 
-.searchContainer {
-  box-sizing: border-box;
+.noDataMessage {
+  display: flex;
+  justify-content: center;
+}
 
+.searchContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;

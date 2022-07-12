@@ -1,41 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
-import { PageSelection } from "../../types/pages";
-import { Page } from "../../layout/page";
-import "./home.css";
-import { AidPackageService } from "../../apis/services/AidPackageService";
-import { AidPackage } from "../../types/AidPackage";
-import { useNavigate } from "react-router-dom";
+import React, { ReactElement, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-export function Home() {
-  const aidPackages = useRef<AidPackage[]>([]);
+import { useAuthContext, HttpRequestConfig } from "@asgardeo/auth-react";
+
+import "./home.css";
+import { AidPackage } from "types/AidPackage";
+import { EmptyRow } from "./components/emptyRow/emptyRow";
+import { Table } from "./components/table/table";
+import { AidPackageService } from "apis/services/AidPackageService";
+
+interface HomePageProps {}
+
+export function Home(params: HomePageProps) {
+  const [aidPackages, setAidPackages] = useState<AidPackage[]>([]);
   const [filteredAidPackages, setFilteredAidPackages] = useState<AidPackage[]>(
     []
   );
-  const navigate = useNavigate();
+  const { state } = useAuthContext();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await AidPackageService.getAidPackages();
-      if (response.data) {
-        aidPackages.current = response.data;
-        setFilteredAidPackages(response.data);
-      }
-    };
+    if (state.isAuthenticated) {
+      const fetchData = async () => {
+        const response = await AidPackageService.getAidPackages();
+        if (response && response.data) {
+          setAidPackages(response.data);
+          setFilteredAidPackages(response.data);
+        }
+      };
 
-    fetchData().catch(console.error);
-  }, []);
-
-  function handlePledgesButton(packageId: number) {
-    navigate(`/packages/${packageId}`);
-  }
-
-  function handleDetailsButton(packageId: number) {
-    navigate(`/packages/${packageId}/pledge-status`);
-  }
+      fetchData().catch((reason: any) => {
+        if (reason) {
+          console.error(reason);
+        }
+      });
+    }
+  }, [state?.isAuthenticated]);
 
   function handleSearch(keyword: string) {
     keyword = keyword.trim().toLowerCase();
-    const newlyFilteredPackages = aidPackages.current.filter((aidPackage) => {
+    const newlyFilteredPackages = aidPackages.filter((aidPackage) => {
       const supplier = aidPackage.aidPackageItems[0]?.quotation.supplier.name;
       return (
         aidPackage.name.toLowerCase().includes(keyword) ||
@@ -47,76 +50,35 @@ export function Home() {
   }
 
   return (
-    <Page selection={PageSelection.HOME}>
-      <div className="pageContent">
-        <header className="pageHeader">
-          <h1>Aid Packages</h1>
-        </header>
-        <div className="packageTableSearch">
-          <div className="searchContainer">
-            <img src="/assets/svg/search_icon.svg" />
-            <input
-              placeholder="Search"
-              className="textField"
-              onChange={(event) => handleSearch(event.target.value)}
-            />
+    <div className="pageContent">
+      {(!aidPackages || aidPackages.length <= 0) && (
+        <p>Loading Aid Packages...</p>
+      )}
+      {aidPackages && aidPackages.length > 0 && (
+        <>
+          <header className="pageHeader">
+            <h1>Aid Packages</h1>
+          </header>
+          <div className="packageTableSearch">
+            <div className="searchContainer">
+              <img src="/assets/svg/search_icon.svg" />
+              <input
+                placeholder="Search"
+                className="textField"
+                onChange={(event) => handleSearch(event.target.value)}
+              />
+            </div>
           </div>
-        </div>
-        <div className="packageTableContainer">
-          <table>
-            <thead>
-              <tr>
-                <th>Aid Package</th>
-                <th>Status</th>
-                <th>Pledges</th>
-                <th>Supplier</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredAidPackages.length == 0 && (
-                <tr>
-                  <td colSpan={5}>No data found</td>
-                </tr>
-              )}
-              {filteredAidPackages.map((aidPackage) => {
-                return (
-                  <tr key={aidPackage.packageID}>
-                    <td>{aidPackage.name}</td>
-                    <td>{aidPackage.status}</td>
-                    <td>
-                      {(
-                        (aidPackage.receivedAmount / aidPackage.goalAmount ||
-                          0) * 100
-                      ).toFixed(0)}
-                      %
-                    </td>
-                    <td>
-                      {aidPackage.aidPackageItems[0]?.quotation.supplier.name}
-                    </td>
-                    <td>
-                      <button
-                        onClick={() =>
-                          handleDetailsButton(aidPackage.packageID)
-                        }
-                      >
-                        Details
-                      </button>
-                      <button
-                        onClick={() =>
-                          handlePledgesButton(aidPackage.packageID)
-                        }
-                      >
-                        Pledges
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </Page>
+          <div className="packageTableContainer">
+            <Table aidPackages={filteredAidPackages} />
+          </div>
+          <div className="noDataMessage">
+            {(!filteredAidPackages || filteredAidPackages.length <= 0) && (
+              <EmptyRow />
+            )}
+          </div>
+        </>
+      )}
+    </div>
   );
 }

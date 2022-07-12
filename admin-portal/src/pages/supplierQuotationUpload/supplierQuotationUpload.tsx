@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useHistory } from "react-router";
 import { PageSelection } from "../../types/pages";
 import { Page } from "layout/page";
 import "./supplierQuotationUpload.css";
@@ -10,6 +11,10 @@ export function SupplierQuotationUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [responseData, setResponseData] = useState("");
+  const history = useHistory();
+  const navigate = (path: string) => {
+    history.push(path);
+  };
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setResponseData("");
@@ -66,29 +71,24 @@ export function SupplierQuotationUpload() {
   };
 
   return (
-    <Page
-      selection={PageSelection.UPLOAD_SUPPLIERS}
-      className="supplierQuotaionUpload"
-    >
-      <div className="pageContent">
-        <header className="pageHeader">
-          <h1>Supplier Quotation Upload</h1>
-        </header>
+    <div className="pageContent">
+      <header className="pageHeader">
+        <h1>Supplier Quotation Upload</h1>
+      </header>
 
-        <div className="uploadSupplierQuotationContainer">
-          <form onSubmit={handleSubmit}>
-            <p>Select the needs csv file that you want to upload.</p>
-            <input
-              type="file"
-              accept=".csv"
-              onChange={handleChange}
-              value={fileName}
-            />
-            <button type="submit">Upload</button>
-          </form>
-        </div>
-        <div className="error-list-div">{responseData}</div>
+      <div className="uploadSupplierQuotationContainer">
+        <form onSubmit={handleSubmit}>
+          <p>Select the needs csv file that you want to upload.</p>
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleChange}
+            value={fileName}
+          />
+          <button type="submit">Upload</button>
+        </form>
       </div>
-    </Page>
+      <div className="error-list-div">{responseData}</div>
+    </div>
   );
 }

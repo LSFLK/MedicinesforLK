@@ -106,60 +106,58 @@ export function CreateAidPackage() {
   };
 
   return (
-    <Page selection={PageSelection.PACKAGE_CREATION}>
-      <div className="create-aid-container">
-        <h1>Create an Aid Package</h1>
-        <Stepper activeStep={currentFormStep}>
-          <Step
-            title="Assign Suppliers"
-            onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
-          />
-          <Step
-            title="Manage Aid Packages"
-            onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
-          />
-        </Stepper>
+    <div className="create-aid-container">
+      <h1>Create an Aid Package</h1>
+      <Stepper activeStep={currentFormStep}>
+        <Step
+          title="Assign Suppliers"
+          onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
+        />
+        <Step
+          title="Manage Aid Packages"
+          onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
+        />
+      </Stepper>
 
-        <div className="create-aid-body">
-          {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
-            <AssignSuppliers
-              medicalNeeds={medicalNeeds}
-              needAssignments={needAssignments}
-              setNeedAssignments={setNeedAssignments}
-              aidPackages={aidPackages}
-            />
-          )}
-          {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
-            <ManageAidPackages
-              medicalNeeds={medicalNeeds}
-              needAssignments={needAssignments}
-              setNeedAssignments={setNeedAssignments}
-              aidPackages={aidPackages}
-              setAidPackages={setAidPackages}
-              handleAidPkgPublish={handleAidPkgPublish}
-            />
-          )}
-        </div>
-
-        <div className="bottom-sticky-nav">
-          {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
-            <button
-              className="btn secondary"
-              onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
-            >
-              Back
-            </button>
-          )}
-          {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
-            <button
-              className="btn pull-right"
-              onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
-            >
-              Next
-            </button>
-          )}
-        </div>
+      <div className="create-aid-body">
+        {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
+          <AssignSuppliers
+            medicalNeeds={medicalNeeds}
+            needAssignments={needAssignments}
+            setNeedAssignments={setNeedAssignments}
+            aidPackages={aidPackages}
+          />
+        )}
+        {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
+          <ManageAidPackages
+            medicalNeeds={medicalNeeds}
+            needAssignments={needAssignments}
+            setNeedAssignments={setNeedAssignments}
+            aidPackages={aidPackages}
+            setAidPackages={setAidPackages}
+            handleAidPkgPublish={handleAidPkgPublish}
+          />
+        )}
       </div>
-    </Page>
+
+      <div className="bottom-sticky-nav">
+        {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
+          <button
+            className="btn secondary"
+            onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
+          >
+            Back
+          </button>
+        )}
+        {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
+          <button
+            className="btn pull-right"
+            onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
+          >
+            Next
+          </button>
+        )}
+      </div>
+    </div>
   );
 }

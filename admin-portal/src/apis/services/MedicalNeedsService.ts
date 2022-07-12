@@ -1,8 +1,9 @@
 import { MedicalNeed } from "types/MedicalNeeds";
-import http from "../httpCommon";
+import Http from "../httpCommon";
 
 export class MedicalNeedsService {
+  static http: Http;
   static getMedicalNeeds() {
-    return http.get<MedicalNeed[]>(`/medicalneeds`);
+    return MedicalNeedsService.http.get<MedicalNeed[]>(`medicalneeds`);
   }
 }

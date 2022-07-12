@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 export function InfoBox({
@@ -19,9 +20,9 @@ export function InfoBox({
       <h2>{heading}</h2>
       <p>{text}</p>
       {link != "#" && (
-        <a href={link}>
+        <Link to={link}>
           <button>{buttonText}</button>
-        </a>
+        </Link>
       )}
     </div>
   );

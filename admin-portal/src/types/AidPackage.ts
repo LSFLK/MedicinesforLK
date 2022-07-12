@@ -8,6 +8,8 @@ export interface AidPackage {
   aidPackageItems: AidPackageItem[];
   goalAmount: number;
   receivedAmount: number;
+  totalAmount: number;
+  pledgedPercentage: number;
 }
 
 export namespace AidPackage {

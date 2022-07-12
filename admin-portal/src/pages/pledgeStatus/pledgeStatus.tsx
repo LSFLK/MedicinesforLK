@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { PageSelection } from "../../types/pages";
-import { Page } from "../../layout/page";
 import { AidPackage } from "../../types/AidPackage";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import DonorTable from "./donorTable/donorTable";
 import "./pledgeStatus.css";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
@@ -14,7 +12,10 @@ export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [pledges, setPledges] = useState<Pledge[]>([]);
-  const navigate = useNavigate();
+  const history = useHistory();
+  const navigate = (path: string) => {
+    history.push(path);
+  };
 
   useEffect(() => {
     fetchAidPackage();
@@ -45,38 +46,36 @@ export default function PledgeStatus() {
     }
   };
   return (
-    <Page selection={PageSelection.HOME}>
-      <>
-        {!aidPackage && <p>Loading Aid Package...</p>}
-        {aidPackage && (
-          <div className="pledgeStatus">
-            <div>
-              <Link to="/">Aid Packages</Link> &gt;{" "}
-              <Link to={`/packages/${packageId}`}>{aidPackage.name}</Link> &gt;
-              Pledge Status
-            </div>
-            <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
-            <div className="contributionsSummary">
-              <div>
-                <ContributionsChart
-                  goalAmount={aidPackage.goalAmount}
-                  receivedAmount={aidPackage.receivedAmount}
-                />
-              </div>
-              <div>
-                <p>Goal: ${aidPackage.goalAmount}</p>
-                <p>Received: ${aidPackage.receivedAmount}</p>
-                <p>Status: {aidPackage.status}</p>
-              </div>
-            </div>
-            <DonorTable
-              pledges={pledges}
-              onPledgeEdit={handlePledgeEdit}
-              onPledgeDelete={handlePledgeDelete}
-            />
+    <>
+      {!aidPackage && <p>Loading Pledge Status...</p>}
+      {aidPackage && (
+        <div className="pledgeStatus">
+          <div>
+            <Link to="/">Aid Packages</Link> &gt;{" "}
+            <Link to={`/packages/${packageId}`}>{aidPackage.name}</Link> &gt;
+            Pledge Status
           </div>
-        )}
-      </>
-    </Page>
+          <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
+          <div className="contributionsSummary">
+            <div>
+              <ContributionsChart
+                goalAmount={aidPackage.goalAmount}
+                receivedAmount={aidPackage.receivedAmount}
+              />
+            </div>
+            <div>
+              <p>Goal: ${aidPackage.goalAmount}</p>
+              <p>Received: ${aidPackage.receivedAmount}</p>
+              <p>Status: {aidPackage.status}</p>
+            </div>
+          </div>
+          <DonorTable
+            pledges={pledges}
+            onPledgeEdit={handlePledgeEdit}
+            onPledgeDelete={handlePledgeDelete}
+          />
+        </div>
+      )}
+    </>
   );
 }

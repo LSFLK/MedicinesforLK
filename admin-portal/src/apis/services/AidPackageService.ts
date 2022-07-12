@@ -1,24 +1,29 @@
-import http from "../httpCommon";
+import Http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
 
 export class AidPackageService {
+  static http: Http;
+
   static getAidPackages() {
-    return http.get<AidPackage[]>("aidpackages");
+    return AidPackageService.http.get<AidPackage[]>("aidpackages");
   }
 
   static getAidPackage(packageID: number | string) {
-    return http.get<AidPackage>(`aidpackages/${packageID}`);
+    return AidPackageService.http.get<AidPackage>(`aidpackages/${packageID}`);
   }
 
   static updateAidPackage(aidPackage: AidPackage) {
-    return http.patch<AidPackage>(`aidpackages`, aidPackage);
+    return AidPackageService.http.patch<AidPackage, AidPackage>(
+      `aidpackages`,
+      aidPackage
+    );
   }
 
   static getUpdateComments(packageID: number | string) {
-    return http.get<AidPackageUpdateComment[]>(
+    return AidPackageService.http.get<AidPackageUpdateComment[]>(
       `aidpackages/${packageID}/updatecomments`
     );
   }
@@ -27,17 +32,17 @@ export class AidPackageService {
     packageID: number | string,
     comment: AidPackageUpdateComment
   ) {
-    return http.put<AidPackageUpdateComment>(
-      `aidpackages/${packageID}/updatecomments`,
-      comment
-    );
+    return AidPackageService.http.put<
+      AidPackageUpdateComment,
+      AidPackageUpdateComment
+    >(`aidpackages/${packageID}/updatecomments`, comment);
   }
 
   static deleteUpdateComment(
     packageID: number | string,
     packageUpdateID: number
   ) {
-    return http.delete(
+    return AidPackageService.http.delete(
       `aidpackages/${packageID}/updatecomment/${packageUpdateID}`
     );
   }
@@ -46,7 +51,7 @@ export class AidPackageService {
     packageID: number | string,
     packageItem: AidPackageItem
   ) {
-    return http.put<AidPackageItem>(
+    return AidPackageService.http.put<AidPackageItem, AidPackageItem>(
       `aidpackages/${packageID}/aidpackageitems`,
       packageItem
     );
@@ -56,17 +61,22 @@ export class AidPackageService {
     packageID: number | string,
     packageItemID: number
   ) {
-    return http.delete(
+    return AidPackageService.http.delete(
       `aidpackages/${packageID}/aidpackageitems/${packageItemID}`
     );
   }
 
   static getPledges(packageID: number | string) {
-    return http.get<Pledge[]>(`aidpackage/${packageID}/pledges`);
+    return AidPackageService.http.get<Pledge[]>(
+      `aidpackage/${packageID}/pledges`
+    );
   }
 
   static postNeeds(formData: any) {
-    return http.post(`requirements/medicalneeds`, formData);
+    return AidPackageService.http.post<any, string>(
+      `requirements/medicalneeds`,
+      formData
+    );
   }
 
   static postAidPackage({
@@ -82,6 +92,11 @@ export class AidPackageService {
       quotationID: number;
     }>;
   }) {
-    return http.post(`aidpackages`, { name, description, aidPackageItems });
+    // TODO:  Define interfaces for the data types.
+    return AidPackageService.http.post<any, any>(`aidpackages`, {
+      name,
+      description,
+      aidPackageItems,
+    });
   }
 }
