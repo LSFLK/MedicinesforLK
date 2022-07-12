@@ -26,7 +26,13 @@ export default function PledgeSummary({
       <div className="heading">Donor:</div>
       <div>{donor.orgName}</div>
       <div className="heading">Amount:</div>
-      <div>$ {pledge.amount}</div>
+      <div>
+        ${" "}
+        {pledge.amount.toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
+      </div>
       <div className="heading">Status:</div>
       <div>
         <select onChange={handleStatusChange} value={pledge.status}>
