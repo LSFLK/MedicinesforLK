@@ -1,54 +1,82 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useTable, useExpanded, Row } from "react-table";
 import { AidPackages, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
-import "./assignSuppliers.css";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
+import "./assignSuppliers.css";
 
 export function AssignSuppliers({
   needAssignments,
   setNeedAssignments,
   medicalNeeds,
   aidPackages,
+  setIsValidAssignment,
 }: {
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
   medicalNeeds: MedicalNeed[];
   aidPackages: AidPackages;
+  setIsValidAssignment: (isValid: boolean) => void;
 }) {
   const getAssignedCount = (
     need: MedicalNeed,
     needAssignments: NeedAssignments
   ) => {
     return Array.from(needAssignments[need.needID!].values()).reduce(
-      (currentSum, value) => currentSum + value,
+      (currentSum, value) => (currentSum as number) + (value || 0),
       0
-    );
+    ) as number;
   };
 
-  const data = useMemo<Array<{ [key: string]: any }>>(
-    () =>
-      medicalNeeds.map((need) => {
-        const periodDate = new Date(
-          need.period.year,
-          need.period.month - 1,
-          need.period.day
-        );
-        return {
-          needID: need.needID,
-          needName: need.medicalItem.name,
-          unit: need.medicalItem.unit,
-          beneficiary: need.beneficiary?.name,
-          urgency: need.urgency,
-          period: periodDate.toLocaleDateString(),
-          requiredQuantity: need.neededQuantity,
-          remainingQuantity:
-            need.remainingQuantity - getAssignedCount(need, needAssignments),
-          supplierQuotes: need.supplierQuotes || [],
-        };
-      }),
-    [medicalNeeds, needAssignments]
-  );
+  const data = useMemo<Array<{ [key: string]: any }>>(() => {
+    let isValidSupplierAssignments = true;
+    const needs = medicalNeeds.map((need) => {
+      const remainingQuantity =
+        need.remainingQuantity - getAssignedCount(need, needAssignments);
+      const periodDate = new Date(
+        need.period.year,
+        need.period.month - 1,
+        need.period.day
+      );
+
+      // all remaining quantities must be zero or positive
+      if (remainingQuantity < 0) {
+        isValidSupplierAssignments = false;
+      }
+
+      // all assignments must be less than supplier max and more than 0
+      const assignmentForNeed = needAssignments[need.needID!];
+      need.supplierQuotes.forEach((quote) => {
+        const assignedFromQuote = assignmentForNeed.get(quote.supplierID);
+        if (!assignedFromQuote) {
+          if (assignedFromQuote === 0) {
+            isValidSupplierAssignments = false;
+          }
+          return;
+        }
+
+        if (assignedFromQuote > quote.availableQuantity) {
+          isValidSupplierAssignments = false;
+        }
+      });
+
+      return {
+        needID: need.needID,
+        needName: need.medicalItem.name,
+        unit: need.medicalItem.unit,
+        beneficiary: need.beneficiary?.name,
+        urgency: need.urgency,
+        period: periodDate.toLocaleDateString(),
+        requiredQuantity: need.neededQuantity,
+        remainingQuantity,
+        supplierQuotes: need.supplierQuotes || [],
+      };
+    });
+
+    setIsValidAssignment(isValidSupplierAssignments);
+
+    return needs;
+  }, [medicalNeeds, setIsValidAssignment, needAssignments]);
 
   const columns = useMemo(
     () => [
@@ -159,7 +187,7 @@ export function AssignSuppliers({
               </tr>
               {remainingQuantity < 0 && (
                 <tr>
-                  <td className="need-validation-row" colSpan={6}>
+                  <td className="need-validation-row" colSpan={8}>
                     Total assigned quantity must be less than quantity needed
                   </td>
                 </tr>
@@ -177,11 +205,11 @@ export function AssignSuppliers({
                       aidPackages={aidPackages}
                       setAssignmentForSupplier={(
                         supplierID: number,
-                        quantity: number
+                        quantity: string
                       ) => {
                         const updatedAssignments = currentAssignments.set(
                           supplierID,
-                          Number(quantity)
+                          quantity === "" ? null : Number(quantity)
                         );
 
                         setNeedAssignments({
