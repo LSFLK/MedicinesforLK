@@ -30,14 +30,19 @@ export function Home() {
 
   useEffect(() => {
     if (userId != null) {
+      fetchPledgedAidPackages(userId);
       setActiveTabItem(TabItems.MY_PLEDGES);
-      setAlreadyPledgedAidPackages([]);
     }
   }, [userId]);
 
   useEffect(() => {
     fetchAidPackages();
   }, []);
+
+  const fetchPledgedAidPackages = async (donorId: string) => {
+    const returnedPledgedPackages = await AidPackageService.getPledgedAidPackages(donorId);
+    setAlreadyPledgedAidPackages(returnedPledgedPackages.data);
+  };
 
   const fetchAidPackages = async () => {
     const { data }: { data: AidPackage[] } =
