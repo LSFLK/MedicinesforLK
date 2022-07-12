@@ -71,7 +71,7 @@ function App() {
               />
               <Route
                 exact
-                path="/packages/:packageId/pledge-status/pledges/:pledgeId"
+                path="/packages/:packageId/pledges/:pledgeId"
                 component={EditPledge}
               />
             </Switch>
