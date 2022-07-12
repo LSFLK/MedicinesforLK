@@ -68,7 +68,7 @@ export class AidPackageService {
 
   static getPledges(packageID: number | string) {
     return AidPackageService.http.get<Pledge[]>(
-      `aidpackage/${packageID}/pledges`
+      `aidpackages/${packageID}/pledges`
     );
   }
 
