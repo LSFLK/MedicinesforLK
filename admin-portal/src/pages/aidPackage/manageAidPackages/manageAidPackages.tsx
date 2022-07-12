@@ -62,6 +62,8 @@ export function ManageAidPackages({
         aidPackages={aidPackages}
         setSelectedPackage={setSelectedPackage}
         handleAidPkgPublish={handleAidPkgPublish}
+        medicalNeeds={medicalNeeds}
+        needAssignments={needAssignments}
       />
       {selectedPackage && (
         <AidPackageDetailsTable
@@ -74,6 +76,7 @@ export function ManageAidPackages({
           }}
           supplierID={selectedPackage}
           needAssignments={needAssignments}
+          medicalNeeds={medicalNeeds}
         />
       )}
     </>
