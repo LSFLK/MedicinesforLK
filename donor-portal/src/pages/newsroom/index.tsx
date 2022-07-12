@@ -47,6 +47,16 @@ export function NewsRoom() {
           </span>
         </div>
         <div className="contact-section">
+          <span>Zafran Packeerally</span>
+          <span>[T] +94 70 378 8685</span>
+          <span>
+            [E]{""}
+            <a href="mailto:zafran.packeerally@redcross.lk">
+              zafran.packeerally@redcross.lk
+            </a>
+          </span>
+        </div>
+        <div className="contact-section">
           <span>Sri Lanka Red Cross Society</span>
           <span>National Headquarters</span>
           <span>106, Dharmapala Mawatha,</span>
@@ -55,16 +65,6 @@ export function NewsRoom() {
           <span>[F] +94 11 268 2675</span>
           <span>
             [E] <a href="mailto:info@redcross.lk">info@redcross.lk </a>
-          </span>
-        </div>
-        <div className="contact-section">
-          <span>Zafran Packeerally</span>
-          <span>[T] +94 70 378 8685</span>
-          <span>
-            [E]{""}
-            <a href="mailto:zafran.packeerally@redcross.lk">
-              zafran.packeerally@redcross.lk
-            </a>
           </span>
         </div>
       </div>
