@@ -24,44 +24,46 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <header className="App-header">
-          <NavBar />
-        </header>
-        <Switch>
-          <Route exact path="/">
-            {" "}
-            <Home />{" "}
-          </Route>
-          <Route exact path="/about-us">
-            {" "}
-            <AboutUs />{" "}
-          </Route>
-          <Route exact path="/donors">
-            {" "}
-            <Donors />{" "}
-          </Route>
-          <Route exact path="/suppliers">
-            {" "}
-            <Suppliers />{" "}
-          </Route>
-          <Route exact path="/package/:id">
-            {" "}
-            <AidPackageDetailsPage />{" "}
-          </Route>
-          <Route exact path="/donate-now">
-            {" "}
-            <DonateNow />{" "}
-          </Route>
-          <Route exact path="/news-room">
-            {" "}
-            <NewsRoom />{" "}
-          </Route>
-        </Switch>
-        <FullBleedContainer>
-          <Footer />
-        </FullBleedContainer>
-      </BrowserRouter>
+      <UserContext.Provider value={loggedInUserId}>
+        <BrowserRouter>
+          <header className="App-header">
+            <NavBar />
+          </header>
+          <Switch>
+            <Route exact path="/">
+              {" "}
+              <Home />{" "}
+            </Route>
+            <Route exact path="/about-us">
+              {" "}
+              <AboutUs />{" "}
+            </Route>
+            <Route exact path="/donors">
+              {" "}
+              <Donors />{" "}
+            </Route>
+            <Route exact path="/suppliers">
+              {" "}
+              <Suppliers />{" "}
+            </Route>
+            <Route exact path="/package/:id">
+              {" "}
+              <AidPackageDetailsPage />{" "}
+            </Route>
+            <Route exact path="/donate-now">
+              {" "}
+              <DonateNow />{" "}
+            </Route>
+            <Route exact path="/news-room">
+              {" "}
+              <NewsRoom />{" "}
+            </Route>
+          </Switch>
+          <FullBleedContainer>
+            <Footer />
+          </FullBleedContainer>
+        </BrowserRouter>
+      </UserContext.Provider>
     </div>
   );
 }
