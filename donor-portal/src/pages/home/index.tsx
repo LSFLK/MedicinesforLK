@@ -30,14 +30,20 @@ export function Home() {
 
   useEffect(() => {
     if (userId != null) {
+      fetchPledgedAidPackages(userId);
       setActiveTabItem(TabItems.MY_PLEDGES);
-      setAlreadyPledgedAidPackages([]);
     }
   }, [userId]);
 
   useEffect(() => {
     fetchAidPackages();
   }, []);
+
+  const fetchPledgedAidPackages = async (donorId: string) => {
+    const returnedPledgedPackages =
+      await AidPackageService.getPledgedAidPackages(donorId);
+    setAlreadyPledgedAidPackages(returnedPledgedPackages.data);
+  };
 
   const fetchAidPackages = async () => {
     const { data }: { data: AidPackage[] } =
@@ -114,7 +120,7 @@ export function Home() {
                 <PackageCard
                   key={aidPackage.packageID}
                   donorPackage={aidPackage}
-                  buttonText={userId != null ? "Donate" : "Pledge"}
+                  buttonText={userId != null ? "Pledge" : "Donate"}
                 />
               );
             })}
@@ -132,6 +138,20 @@ export function Home() {
             })}
         </>
         <>
+          {userId &&
+            activeTabItem == TabItems.MY_PLEDGES &&
+            alreadyPledgedAidPackages.length === 0 && (
+              <p>
+                No pledged packages found. Check{" "}
+                <a
+                  className="text-blue"
+                  onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+                >
+                  goal pending tab
+                </a>{" "}
+                to find pledge-able aid packages.
+              </p>
+            )}
           {userId &&
             activeTabItem == TabItems.MY_PLEDGES &&
             alreadyPledgedAidPackages.map((aidPackage) => {
