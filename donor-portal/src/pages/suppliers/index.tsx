@@ -35,7 +35,7 @@ export function Suppliers() {
           link="#"
         ></InfoBox>
         <p className="inquiry">
-          For all inquiries please emails us at{" "}
+          For all inquiries, please email us at{" "}
           <a href="mailto: inquiries@redcross.lk">inquires@redcross.lk</a>
         </p>
       </InfoBoxContainer>
