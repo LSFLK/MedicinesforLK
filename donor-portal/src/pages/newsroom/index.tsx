@@ -36,7 +36,7 @@ export function NewsRoom() {
           </strong>
         </p>
         <div className="contact-section">
-          <span>Mr. Naveendra SENARATHNE</span>
+          <span>Mr. Naveendra Senarathne</span>
           <span>Media Focal Point</span>
           <span>[T] +94 71 433 3331</span>
           <span>
