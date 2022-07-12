@@ -119,7 +119,7 @@ export function AidPackageTable({
           return (
             <button
               onClick={() =>
-                handlePublish(row.original.supplier, setIsUploading)
+                handlePublish(row.original.supplierID, setIsUploading)
               }
               disabled={isUploading}
             >
