@@ -13,12 +13,12 @@ export function TableRow(props: TableRowProps) {
     history.push(path);
   };
 
-  function handlePledgesButton(packageId: number) {
-    navigate(`/packages/${packageId}/pledge-status`);
+  function handlePledgesButtonClick(packageId: number) {
+    navigate(`/packages/${packageId}`);
   }
 
-  function handleDetailsButton(packageId: number) {
-    navigate(`/packages/${packageId}`);
+  function handleDetailsButtonClick(packageId: number) {
+    navigate(`/packages/${packageId}/pledge-status`);
   }
 
   return (
@@ -33,10 +33,10 @@ export function TableRow(props: TableRowProps) {
       </td>
       <td>{aidPackage.aidPackageItems[0]?.quotation.supplier.name}</td>
       <td>
-        <button onClick={() => handleDetailsButton(aidPackage.packageID)}>
+        <button onClick={() => handleDetailsButtonClick(aidPackage.packageID)}>
           Details
         </button>
-        <button onClick={() => handlePledgesButton(aidPackage.packageID)}>
+        <button onClick={() => handlePledgesButtonClick(aidPackage.packageID)}>
           Pledges
         </button>
       </td>
