@@ -50,9 +50,8 @@ export function Footer() {
       </div>
       <div className="footer-gray">
         <p>
-          Copyright ©{" "}
-          <a href="www.elixir.redcross.lk">elixir.redcross.lk </a>| All
-          rights reserved
+          Copyright © <a href="www.elixir.redcross.lk">elixir.redcross.lk </a>|
+          All rights reserved
         </p>
         <div>
           {/* <a href="">Privacy</a>
