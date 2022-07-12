@@ -27,7 +27,13 @@ export default function DonorTable({
           {pledges.map((pledge) => (
             <tr key={pledge.pledgeID}>
               <td>{pledge.donor.orgName}</td>
-              <td>{pledge.amount}</td>
+              <td>
+                $
+                {pledge.amount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </td>
               <td>{pledge.status}</td>
               <td>
                 <button onClick={() => onPledgeEdit(pledge)}>Edit</button>
