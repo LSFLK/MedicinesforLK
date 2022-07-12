@@ -5,11 +5,16 @@ import "./needUpload.css";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
+import { useHistory } from "react-router-dom";
 
 export function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [responseData, setResponseData] = useState("");
+  const history = useHistory();
+  const navigate = (path: string) => {
+    history.push(path);
+  };
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setResponseData("");
@@ -66,26 +71,24 @@ export function NeedUpload() {
   };
 
   return (
-    <Page selection={PageSelection.UPLOAD_NEEDS} className="needsUpload">
-      <div className="pageContent">
-        <header className="pageHeader">
-          <h1>Needs Upload</h1>
-        </header>
+    <div className="pageContent">
+      <header className="pageHeader">
+        <h1>Needs Upload</h1>
+      </header>
 
-        <div className="uploadNeedsContainer">
-          <form onSubmit={handleSubmit}>
-            <p>Select the needs csv file that you want to upload.</p>
-            <input
-              type="file"
-              accept=".csv"
-              onChange={handleChange}
-              value={fileName}
-            />
-            <button type="submit">Upload</button>
-          </form>
-        </div>
-        <div className="error-list-div">{responseData}</div>
+      <div className="uploadNeedsContainer">
+        <form onSubmit={handleSubmit}>
+          <p>Select the needs csv file that you want to upload.</p>
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleChange}
+            value={fileName}
+          />
+          <button type="submit">Upload</button>
+        </form>
       </div>
-    </Page>
+      <div className="error-list-div">{responseData}</div>
+    </div>
   );
 }

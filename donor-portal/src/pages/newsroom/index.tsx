@@ -12,9 +12,7 @@ export function NewsRoom() {
         </div>
       </HeaderImage>
       <div className="text-section">
-        <h1>Media &amp; News</h1>
-
-        <h2>Media Contacts</h2>
+        <h1>Media Contacts</h1>
 
         <p>
           <strong>
@@ -36,13 +34,23 @@ export function NewsRoom() {
           </strong>
         </p>
         <div className="contact-section">
-          <span>Mr. Naveendra SENARATHNE</span>
+          <span>Mr. Naveendra Senarathne</span>
           <span>Media Focal Point</span>
           <span>[T] +94 71 433 3331</span>
           <span>
             [E]{" "}
             <a href="mailto:naveendra.senarathna@redcross.lk">
               naveendra.senarathna@redcross.lk
+            </a>
+          </span>
+        </div>
+        <div className="contact-section">
+          <span>Zafran Packeerally</span>
+          <span>[T] +94 70 378 8685</span>
+          <span>
+            [E]{""}
+            <a href="mailto:zafran.packeerally@redcross.lk">
+              zafran.packeerally@redcross.lk
             </a>
           </span>
         </div>
@@ -68,7 +76,9 @@ export function NewsRoom() {
           allowFullScreen
         ></iframe>
       </div>
+
       <div className="news-article-list">
+        <h2> News </h2>
         <div className="news-article-list-item">
           <strong>
             Pension Fund Coalition for Inclusive Capitalism Releases Resource to

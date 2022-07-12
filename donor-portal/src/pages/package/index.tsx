@@ -2,7 +2,7 @@
  * main page for displaying aid package details
  */
 import { useEffect, useState } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { SimpleProgressBar } from "../../components/progress-bar";
 //NOTE: import from actual data source helper once implemented.
 import { fetchPackageData } from "../../data/package.mock.data";
@@ -13,7 +13,7 @@ export function AidPackageDetailsPage() {
   /**
    * id of the package to load.
    */
-  const { id: pkgId } = useParams();
+  const { id: pkgId } = useParams<{ id: string }>();
 
   /**
    * holds package data when valid
@@ -54,7 +54,7 @@ export function AidPackageDetailsPage() {
    * redirect to 404 (if any)
    */
   if (!isLoading && data === undefined) {
-    return <Navigate replace to="/404"></Navigate>;
+    return <Redirect to="/404"></Redirect>;
   }
   /**
    * render page upon successful fetch.

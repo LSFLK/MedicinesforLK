@@ -2,33 +2,43 @@ import http from "../httpCommon";
 import { PledgeActivity } from "../../types/PledgeActivity";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { Pledge } from "../../types/Pledge";
+import Http from "../httpCommon";
 
 export class PledgeService {
+  static http: Http;
+
   static getPledge(pledgeID: number | string) {
-    return http.get<Pledge>(`pledges/${pledgeID}`);
+    return PledgeService.http.get<Pledge>(`pledges/${pledgeID}`);
   }
 
   static updatePledge(pledgeID: number | string, pledge: Pledge) {
-    return http.put<Pledge>(`pledges/${pledgeID}`, pledge);
+    return PledgeService.http.put<Pledge, Pledge>(
+      `pledges/${pledgeID}`,
+      pledge
+    );
   }
 
   static updatePledgeStatus(pledgeID: number | string, status: Pledge.Status) {
-    return http.patch<Pledge>(`pledges/${pledgeID}/status/${status}`);
+    return PledgeService.http.patch<Pledge, Pledge>(
+      `pledges/${pledgeID}/status/${status}`
+    );
   }
 
   static deletePledge(pledgeID: number | string) {
-    return http.delete(`pledges/${pledgeID}`);
+    return PledgeService.http.delete(`pledges/${pledgeID}`);
   }
 
   static getUpdateComments(pledgeID: number | string) {
-    return http.get<PledgeActivity[]>(`pledges/${pledgeID}/updatecomments`);
+    return PledgeService.http.get<PledgeActivity[]>(
+      `pledges/${pledgeID}/updatecomments`
+    );
   }
 
   static upsertUpdateComment(
     pledgeID: number | string,
     comment: PledgeActivity
   ) {
-    return http.put<AidPackageUpdateComment>(
+    return PledgeService.http.put<PledgeActivity, PledgeActivity>(
       `pledges/${pledgeID}/updatecomment`,
       comment
     );
@@ -38,6 +48,8 @@ export class PledgeService {
     pledgeID: number | string,
     pledgeUpdateId: number
   ) {
-    return http.delete(`pledges/${pledgeID}/updatecomment/${pledgeUpdateId}`);
+    return PledgeService.http.delete(
+      `pledges/${pledgeID}/updatecomment/${pledgeUpdateId}`
+    );
   }
 }

@@ -100,7 +100,6 @@ export function PackageDetails() {
       "Are you sure you want to delete this post?"
     );
     if (confirmed) {
-      debugger;
       await AidPackageService.deleteUpdateComment(
         packageId!,
         updateComment.packageUpdateID
@@ -121,73 +120,82 @@ export function PackageDetails() {
   };
 
   return (
-    <Page selection={PageSelection.HOME}>
-      <>
-        {!aidPackage && <p>Loading Aid Package...</p>}
-        {aidPackage && (
-          <div className="packageDetails">
-            <Modal
-              show={isEditOrderItemModalVisible}
-              onClose={() => setIsEditOrderItemModalVisible(false)}
-            >
-              <EditOrderItemPrompt
-                orderItem={orderItemToBeEdited.current!}
-                onSave={handleOrderItemEdit}
-              />
-            </Modal>
-            <Modal
-              show={isEditPostModalVisible}
-              onClose={() => setIsEditPostModalVisible(false)}
-            >
-              <EditUpdateCommentPrompt
-                comment={postToBeEdited.current!}
-                onSave={handleStatusPostEdit}
-              />
-            </Modal>
-            <div>
-              <Link to="/">Aid Packages</Link> &gt; {aidPackage.name}
-            </div>
-            <h1 className="packageName">{aidPackage.name}</h1>
-            <div className="topContainer">
-              <div className="descriptionArea">
-                <p className="heading">Description</p>
-                <p>{aidPackage.description}</p>
-                <div>
-                  <OrderItemsTable
-                    items={aidPackage?.aidPackageItems}
-                    onEditItemButtonClick={handleEditOrderItemButtonClick}
-                    onDeleteButtonClick={handlePackageItemDelete}
-                  />
-                </div>
-              </div>
-              <div className="contributionsChart">
-                <p className="heading">Contributions</p>
-                <div className="chart">
-                  <ContributionsChart
-                    goalAmount={aidPackage.goalAmount}
-                    receivedAmount={aidPackage.receivedAmount}
-                  />
-                </div>
-                <p>Goal: ${aidPackage.goalAmount}</p>
-                <p>Received: ${aidPackage.receivedAmount}</p>
-                <Link to={`/packages/${packageId}/pledge-status`}>
-                  See pledge status
-                </Link>
-              </div>
-            </div>
-            <PackageStatus
-              currentStatus={aidPackage.status}
-              onStatusChange={handleStatusChange}
+    <>
+      {!aidPackage && <p>Loading Aid Package...</p>}
+      {aidPackage && (
+        <div className="packageDetails">
+          <Modal
+            show={isEditOrderItemModalVisible}
+            onClose={() => setIsEditOrderItemModalVisible(false)}
+          >
+            <EditOrderItemPrompt
+              orderItem={orderItemToBeEdited.current!}
+              onSave={handleOrderItemEdit}
             />
-            <UpdateComments
-              posts={posts}
-              onNewComment={handleNewComment}
-              onEditPostButtonClick={handleEditPostButtonClick}
-              onDeletePostButtonClick={handleDeleteCommentButtonClick}
+          </Modal>
+          <Modal
+            show={isEditPostModalVisible}
+            onClose={() => setIsEditPostModalVisible(false)}
+          >
+            <EditUpdateCommentPrompt
+              comment={postToBeEdited.current!}
+              onSave={handleStatusPostEdit}
             />
+          </Modal>
+          <div>
+            <Link to="/">Aid Packages</Link> &gt; {aidPackage.name}
           </div>
-        )}
-      </>
-    </Page>
+          <h1 className="packageName">{aidPackage.name}</h1>
+          <div className="topContainer">
+            <div className="descriptionArea">
+              <p className="heading">Description</p>
+              <p>{aidPackage.description}</p>
+              <div>
+                <OrderItemsTable
+                  items={aidPackage?.aidPackageItems}
+                  onEditItemButtonClick={handleEditOrderItemButtonClick}
+                  onDeleteButtonClick={handlePackageItemDelete}
+                />
+              </div>
+            </div>
+            <div className="contributionsChart">
+              <p className="heading">Contributions</p>
+              <div className="chart">
+                <ContributionsChart
+                  goalAmount={aidPackage.goalAmount}
+                  receivedAmount={aidPackage.receivedAmount}
+                />
+              </div>
+              <p>Goal: ${aidPackage.goalAmount}</p>
+              <p>Received: ${aidPackage.receivedAmount}</p>
+              <Link to={`/packages/${packageId}/pledge-status`}>
+                See pledge status
+              </Link>
+            </div>
+            <p>Goal: ${aidPackage.totalAmount}</p>
+            <p>
+              Received: $
+              {(
+                aidPackage.totalAmount *
+                (aidPackage.pledgedPercentage / 100)
+              ).toFixed()}
+            </p>
+            <Link to={`/packages/${packageId}/pledge-status`}>
+              See pledge status
+            </Link>
+          </div>
+          <PackageStatus
+            currentStatus={aidPackage.status}
+            onStatusChange={handleStatusChange}
+          />
+          <UpdateComments
+            posts={posts}
+            onNewComment={handleNewComment}
+            onEditPostButtonClick={handleEditPostButtonClick}
+            onDeletePostButtonClick={handleDeleteCommentButtonClick}
+          />
+        </div>
+      )}
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { FullBleedContainer } from "./pages/layout/full-bleed-container";
 import { NavBar } from "./components/navbar";
 import { Footer } from "./components/footer";
@@ -24,26 +24,44 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={loggedInUserId}>
-        <BrowserRouter>
-          <header className="App-header">
-            <NavBar />
-          </header>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="about-us" element={<AboutUs />} />
-            <Route path="donors" element={<Donors />} />
-            <Route path="suppliers" element={<Suppliers />} />
-            <Route path="/package/:id" element={<AidPackageDetailsPage />} />
-            <Route path="donate-now" element={<DonateNow />} />
-            <Route path="news-room" element={<NewsRoom />} />
-          </Routes>
-          <FullBleedContainer>
-            <Footer />
-          </FullBleedContainer>
-        </BrowserRouter>
-      </UserContext.Provider>
+      <BrowserRouter>
+        <header className="App-header">
+          <NavBar />
+        </header>
+        <Switch>
+          <Route exact path="/">
+            {" "}
+            <Home />{" "}
+          </Route>
+          <Route exact path="/about-us">
+            {" "}
+            <AboutUs />{" "}
+          </Route>
+          <Route exact path="/donors">
+            {" "}
+            <Donors />{" "}
+          </Route>
+          <Route exact path="/suppliers">
+            {" "}
+            <Suppliers />{" "}
+          </Route>
+          <Route exact path="/package/:id">
+            {" "}
+            <AidPackageDetailsPage />{" "}
+          </Route>
+          <Route exact path="/donate-now">
+            {" "}
+            <DonateNow />{" "}
+          </Route>
+          <Route exact path="/news-room">
+            {" "}
+            <NewsRoom />{" "}
+          </Route>
+        </Switch>
+        <FullBleedContainer>
+          <Footer />
+        </FullBleedContainer>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,33 +1,15 @@
 import React from "react";
-import { PageSelection } from "../types/pages";
+import { NavLink } from "react-router-dom";
 
 import "./page.css";
 
 interface PageProps {
   children: React.ReactElement;
-  selection: PageSelection;
   className?: string;
 }
 
 export function Page(props: PageProps) {
-  const { children, selection, className } = props;
-
-  let homeClassName =
-    selection === PageSelection.HOME
-      ? "menu__link menu__link--active"
-      : "menu__link";
-  let packagesClassName =
-    selection === PageSelection.PACKAGE_CREATION
-      ? "menu__link menu__link--active"
-      : "menu__link";
-  let supplierClassName =
-    selection === PageSelection.UPLOAD_SUPPLIERS
-      ? "menu__link menu__link--active"
-      : "menu__link";
-  let needsClassName =
-    selection === PageSelection.UPLOAD_NEEDS
-      ? "menu__link menu__link--active"
-      : "menu__link";
+  const { children, className } = props;
 
   return (
     <div className="page">
@@ -38,33 +20,50 @@ export function Page(props: PageProps) {
               <ul className="menu__list">
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="/" className={homeClassName}>
+                    <NavLink
+                      exact
+                      to="/"
+                      className="menu__link"
+                      activeClassName="menu__link menu__link--active"
+                    >
                       Home
-                    </a>
+                    </NavLink>
                   </div>
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="/creation" className={packagesClassName}>
+                    <NavLink
+                      exact
+                      to={"/creation"}
+                      className="menu__link"
+                      activeClassName="menu__link menu__link--active"
+                    >
                       Aid Packages
-                    </a>
+                    </NavLink>
                   </div>
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a
-                      href="/supplierQuotationUpload"
-                      className={supplierClassName}
+                    <NavLink
+                      exact
+                      to="/supplierQuotationUpload"
+                      className="menu__link"
+                      activeClassName="menu__link menu__link--active"
                     >
                       Suppliers
-                    </a>
+                    </NavLink>
                   </div>
                 </li>
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="/needUpload" className={needsClassName}>
+                    <NavLink
+                      exact
+                      to="/needUpload"
+                      className="menu__link"
+                      activeClassName="menu__link menu__link--active"
+                    >
                       Needs
-                    </a>
+                    </NavLink>
                   </div>
                 </li>
               </ul>
@@ -73,9 +72,14 @@ export function Page(props: PageProps) {
               <ul className="menu__list">
                 <li className="menu__list-item">
                   <div className="menu__list-item-container">
-                    <a href="#" className="menu__link">
+                    <NavLink
+                      exact
+                      to="/analytics"
+                      className="menu__link"
+                      activeClassName="menu__link menu__link--active"
+                    >
                       Analytics
-                    </a>
+                    </NavLink>
                   </div>
                 </li>
               </ul>
