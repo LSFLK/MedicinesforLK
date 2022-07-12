@@ -14,11 +14,11 @@ export function TableRow(props: TableRowProps) {
   };
 
   function handlePledgesButtonClick(packageId: number) {
-    navigate(`/packages/${packageId}`);
+    navigate(`/packages/${packageId}/pledge-status`);
   }
 
   function handleDetailsButtonClick(packageId: number) {
-    navigate(`/packages/${packageId}/pledge-status`);
+    navigate(`/packages/${packageId}`);
   }
 
   return (
