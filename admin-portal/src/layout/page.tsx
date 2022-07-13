@@ -26,7 +26,7 @@ export function Page(props: PageProps) {
                       className="menu__link"
                       activeClassName="menu__link menu__link--active"
                     >
-                      Home
+                      Aid Packages
                     </NavLink>
                   </div>
                 </li>
@@ -38,7 +38,7 @@ export function Page(props: PageProps) {
                       className="menu__link"
                       activeClassName="menu__link menu__link--active"
                     >
-                      Aid Packages
+                      Create Aid Package
                     </NavLink>
                   </div>
                 </li>
