@@ -1,9 +1,8 @@
-import Http, { temporaryClient } from "../httpCommon";
+import Http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
-import { HttpRequestConfig } from "@asgardeo/auth-spa";
 
 export class AidPackageService {
   static http: Http;
