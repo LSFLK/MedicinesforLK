@@ -1,26 +1,28 @@
 /**
  * main page for displaying aid package details
  */
-import React, {FormEvent, useContext, useEffect, useState} from "react";
-import {useHistory, useParams} from "react-router-dom";
-import {SimpleProgressBar} from "../../components/progress-bar";
-import {Page} from "../layout/page";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { SimpleProgressBar } from "../../components/progress-bar";
+import { Page } from "../layout/page";
 import "./styles.css";
-import {AidPackageService} from "../../apis/services/AidPackageService";
-import {AidPackage} from "../../types/AidPackage";
+import { AidPackageService } from "../../apis/services/AidPackageService";
+import { AidPackage } from "../../types/AidPackage";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import PackageStatus from "./components/packageStatus";
 import UpdateComments from "./components/updateComments";
-import {AidPackageUpdateComment} from "../../types/AidPackageUpdateComment";
+import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import UserContext from "../../userContext";
-import {Pledge} from "../../types/Pledge";
+import { Pledge } from "../../types/Pledge";
 
 export function AidPackageDetailsPage() {
-  const {id: packageId} = useParams<{ id: string }>();
+  const { id: packageId } = useParams<{ id: string }>();
   const userId = useContext(UserContext);
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [pledge, setPledge] = useState<Pledge | null>(null);
-  const [updateComments, setUpdateComments] = useState<AidPackageUpdateComment[]>([]);
+  const [updateComments, setUpdateComments] = useState<
+    AidPackageUpdateComment[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
   const navigate = (path: string) => {
@@ -34,27 +36,30 @@ export function AidPackageDetailsPage() {
 
   useEffect(() => {
     if (userId != null) fetchPledge(userId, packageId);
-  }, [userId])
+  }, [userId]);
 
   const fetchAidPackage = async () => {
     setIsLoading(true);
-    const {data} = await AidPackageService.getAidPackage(packageId);
+    const { data } = await AidPackageService.getAidPackage(packageId);
     setAidPackage(data);
     setIsLoading(false);
   };
 
   const fetchUpdateComments = async () => {
-    const {data} = await AidPackageService.getUpdateComments(packageId);
+    const { data } = await AidPackageService.getUpdateComments(packageId);
     setUpdateComments(data);
   };
 
   const fetchPledge = async (donorId: string, packageId: string) => {
-    const { data } = await AidPackageService.getDonorPledgesByAidPackage(donorId, packageId);
+    const { data } = await AidPackageService.getDonorPledgesByAidPackage(
+      donorId,
+      packageId
+    );
     if (data.length != 0) setPledge(data[0]);
-  }
+  };
 
   const handleDonateClick = () => {
-    navigate('/donate-now');
+    navigate("/donate-now");
   };
 
   const handlePledgeSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -69,7 +74,7 @@ export function AidPackageDetailsPage() {
       packageID: parseInt(packageId),
       amount: parseInt(amount),
       status: Pledge.Status.Pledged,
-      donor: null
+      donor: null,
     };
     await AidPackageService.postPledge(userId, packageId, newPledge);
     fetchPledge(userId, packageId);
@@ -88,12 +93,17 @@ export function AidPackageDetailsPage() {
       packageID: parseInt(packageId),
       amount: parseInt(amount),
       status: pledge.status,
-      donor: null
+      donor: null,
     };
-    await AidPackageService.updatePledge(userId, packageId, pledge.pledgeID, updatedPledge);
+    await AidPackageService.updatePledge(
+      userId,
+      packageId,
+      pledge.pledgeID,
+      updatedPledge
+    );
     fetchPledge(userId, packageId);
     fetchAidPackage();
-  }
+  };
 
   return (
     <>
@@ -131,7 +141,7 @@ export function AidPackageDetailsPage() {
                 max={aidPackage.goalAmount as number}
                 className="aid-pacakge-progress-bar"
               />
-              { userId == null && (
+              {userId == null && (
                 <button
                   className="btn aid-package-donate-btn"
                   onClick={handleDonateClick}
@@ -141,56 +151,60 @@ export function AidPackageDetailsPage() {
               )}
             </div>
             <div>
-              {userId != null &&
-                (
-                  <>
-                    {pledge != null ? (
-                      <>
-                        <p>
-                          You've pledged $ {pledge.amount.toLocaleString("en-us", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })} on this package
-                        </p>
-                        {aidPackage.status == AidPackage.Status.Published && (
-                            <form onSubmit={handlePledgeUpdate}>
-                              <p>Enter amount (in usd)</p>
-                              <input
-                                type="number"
-                                name="amount"
-                                className="pledge-amount-input"
-                                defaultValue={pledge.amount}
-                                min={1}
-                                max={aidPackage.goalAmount - aidPackage.receivedAmount}
-                              />
-                              <button className="btn">Update</button>
-                            </form>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        {aidPackage.status == AidPackage.Status.Published && (
-                          <form onSubmit={handlePledgeSubmit}>
-                            <p>Enter amount (in usd)</p>
-                            <input
-                              type="number"
-                              name="amount"
-                              className="pledge-amount-input"
-                              min={1}
-                              max={aidPackage.goalAmount - aidPackage.receivedAmount}
-                            />
-                            <button className="btn">Pledge</button>
-                          </form>
-                        )}
-                      </>
-                    )}
-                  </>
-                )
-              }
+              {userId != null && (
+                <>
+                  {pledge != null ? (
+                    <>
+                      <p>
+                        You've pledged ${" "}
+                        {pledge.amount.toLocaleString("en-us", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}{" "}
+                        on this package
+                      </p>
+                      {aidPackage.status == AidPackage.Status.Published && (
+                        <form onSubmit={handlePledgeUpdate}>
+                          <p>Enter amount (in usd)</p>
+                          <input
+                            type="number"
+                            name="amount"
+                            className="pledge-amount-input"
+                            defaultValue={pledge.amount}
+                            min={1}
+                            max={
+                              aidPackage.goalAmount - aidPackage.receivedAmount
+                            }
+                          />
+                          <button className="btn">Update</button>
+                        </form>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {aidPackage.status == AidPackage.Status.Published && (
+                        <form onSubmit={handlePledgeSubmit}>
+                          <p>Enter amount (in usd)</p>
+                          <input
+                            type="number"
+                            name="amount"
+                            className="pledge-amount-input"
+                            min={1}
+                            max={
+                              aidPackage.goalAmount - aidPackage.receivedAmount
+                            }
+                          />
+                          <button className="btn">Pledge</button>
+                        </form>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
             </div>
-            <OrderItemsTable items={aidPackage.aidPackageItems}/>
-            <PackageStatus currentStatus={aidPackage.status}/>
-            <UpdateComments comments={updateComments}/>
+            <OrderItemsTable items={aidPackage.aidPackageItems} />
+            <PackageStatus currentStatus={aidPackage.status} />
+            <UpdateComments comments={updateComments} />
           </div>
         </Page>
       )}

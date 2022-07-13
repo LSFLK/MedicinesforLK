@@ -51,7 +51,8 @@ export function Home() {
     setGoalReachedAidPackages(
       data.filter(
         (aidPackage) =>
-          aidPackage.status != AidPackage.Status.Published && aidPackage.status != AidPackage.Status.Draft
+          aidPackage.status != AidPackage.Status.Published &&
+          aidPackage.status != AidPackage.Status.Draft
       )
     );
     setGoalPendingAidPackages(
@@ -208,7 +209,11 @@ function PackageCard({
           </p>
           <div className="card_details__package_progress_bar">
             <span
-              style={{ width: (Math.min(receivedAmount, goalAmount) / goalAmount) * 100 + "%" }}
+              style={{
+                width:
+                  (Math.min(receivedAmount, goalAmount) / goalAmount) * 100 +
+                  "%",
+              }}
             />
           </div>
         </div>
