@@ -1,13 +1,9 @@
-import { Quotation } from "types/Quotation";
-import Http from "../httpCommon";
+import Http, { temporaryClient } from "../httpCommon";
 
 export class SupplierService {
   static http: Http;
 
   static postQuotation(quotation: any) {
-    return SupplierService.http.post<Quotation, string>(
-      `quotations`,
-      quotation
-    );
+    return temporaryClient.post<string>(`quotations`, quotation);
   }
 }

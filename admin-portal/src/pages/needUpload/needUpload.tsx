@@ -28,7 +28,6 @@ export function NeedUpload() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData();
-
     if (file) {
       formData.append("file", file);
       try {

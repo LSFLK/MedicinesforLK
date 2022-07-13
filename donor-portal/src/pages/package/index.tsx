@@ -4,61 +4,44 @@
 import { useEffect, useState } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import { SimpleProgressBar } from "../../components/progress-bar";
-//NOTE: import from actual data source helper once implemented.
-import { fetchPackageData } from "../../data/package.mock.data";
 import { Page } from "../layout/page";
 import "./styles.css";
+import { AidPackageService } from "../../apis/services/AidPackageService";
+import { AidPackage } from "../../types/AidPackage";
+import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
+import PackageStatus from "./components/packageStatus";
+import UpdateComments from "./components/updateComments";
+import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 
 export function AidPackageDetailsPage() {
-  /**
-   * id of the package to load.
-   */
-  const { id: pkgId } = useParams<{ id: string }>();
-
-  /**
-   * holds package data when valid
-   * pkgId is present and fetch succeeds
-   */
-  const [data, setData] = useState<AidPackage>();
-
-  /**
-   * flags when data fetching for package is in progress.
-   * initialize to true to avoid 404 redirection.
-   */
+  const { id: packageId } = useParams<{ id: string }>();
+  const [aidPackage, setAidPackage] = useState<AidPackage>();
+  const [updateComments, setUpdateComments] = useState<
+    AidPackageUpdateComment[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
-  /**
-   * handle data fetch for package details here.
-   */
-  useEffect(() => {
-    if (pkgId) {
-      setIsLoading(true);
-      fetchPackageData(pkgId)
-        .then((data) => setData(data))
-        .catch((err) => {
-          setData(undefined);
-          //handle error
-        })
-        .finally(() => setIsLoading(false));
-    }
-  }, [pkgId]);
 
-  /**
-   * click event handler for Donate button.
-   */
+  useEffect(() => {
+    fetchAidPackage();
+    fetchUpdateComments();
+  }, []);
+
+  const fetchAidPackage = async () => {
+    setIsLoading(true);
+    const { data } = await AidPackageService.getAidPackage(packageId);
+    setAidPackage(data);
+    setIsLoading(false);
+  };
+
+  const fetchUpdateComments = async () => {
+    const { data } = await AidPackageService.getUpdateComments(packageId);
+    setUpdateComments(data);
+  };
+
   const handleDonateClick = () => {
     //TODO: Implement the expected behaviour
   };
 
-  /**
-   * when fetch succeeds and no data is found
-   * redirect to 404 (if any)
-   */
-  if (!isLoading && data === undefined) {
-    return <Redirect to="/404"></Redirect>;
-  }
-  /**
-   * render page upon successful fetch.
-   */
   return (
     <>
       {isLoading && (
@@ -67,32 +50,32 @@ export function AidPackageDetailsPage() {
           Loading...
         </Page>
       )}
-      {!isLoading && data && (
+      {aidPackage && (
         <Page>
           <div className="aid-package-container">
             <div className="aid-package-title-container">
-              <h1>{data?.title}</h1>
-            </div>
-            <div className="aid-package-header-container">
-              <div
-                className="aid-package-header-image"
-                style={{ backgroundImage: `url(${data?.image})` }}
-              ></div>
-              <div className="aid-package-description-ribbon">Description</div>
+              <h1>{aidPackage.name}</h1>
             </div>
             <div>
-              {/* TODO: May require rendering rich media or parsing html strings */}
-              <p>{data?.description}</p>
+              <p>{aidPackage.description}</p>
             </div>
             <div className="aid-package-progress-container">
               <h3>
-                {/* FIXME: is currency symbol always $? */}$
-                {data.pledged.toLocaleString("en-us")} raised of $
-                {data.goal.toLocaleString("en-us")} goal.
+                $
+                {aidPackage.receivedAmount.toLocaleString("en-us", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                raised of $
+                {aidPackage.goalAmount.toLocaleString("en-us", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                goal.
               </h3>
               <SimpleProgressBar
-                current={data?.pledged as number}
-                max={data?.goal as number}
+                current={aidPackage.receivedAmount as number}
+                max={aidPackage.goalAmount as number}
                 className="aid-pacakge-progress-bar"
               />
               <button
@@ -102,25 +85,12 @@ export function AidPackageDetailsPage() {
                 Donate
               </button>
             </div>
+            <OrderItemsTable items={aidPackage.aidPackageItems} />
+            <PackageStatus currentStatus={aidPackage.status} />
+            <UpdateComments comments={updateComments} />
           </div>
         </Page>
       )}
     </>
   );
-}
-
-/**
- *
- * TODO: Discuss the exact properties of an aid package
- * and make necessary changes here or where ever such
- * types are to be defined.
- */
-export interface AidPackage {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  goal: number;
-  pledged: number;
-  items: { itemName: string; quantity: number }[];
 }
