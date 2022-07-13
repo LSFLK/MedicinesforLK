@@ -1,64 +1,110 @@
 /**
  * main page for displaying aid package details
  */
-import { useEffect, useState } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { SimpleProgressBar } from "../../components/progress-bar";
-//NOTE: import from actual data source helper once implemented.
-import { fetchPackageData } from "../../data/package.mock.data";
 import { Page } from "../layout/page";
 import "./styles.css";
+import { AidPackageService } from "../../apis/services/AidPackageService";
+import { AidPackage } from "../../types/AidPackage";
+import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
+import PackageStatus from "./components/packageStatus";
+import UpdateComments from "./components/updateComments";
+import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
+import UserContext from "../../userContext";
+import { Pledge } from "../../types/Pledge";
 
 export function AidPackageDetailsPage() {
-  /**
-   * id of the package to load.
-   */
-  const { id: pkgId } = useParams<{ id: string }>();
-
-  /**
-   * holds package data when valid
-   * pkgId is present and fetch succeeds
-   */
-  const [data, setData] = useState<AidPackage>();
-
-  /**
-   * flags when data fetching for package is in progress.
-   * initialize to true to avoid 404 redirection.
-   */
+  const { id: packageId } = useParams<{ id: string }>();
+  const userId = useContext(UserContext);
+  const [aidPackage, setAidPackage] = useState<AidPackage>();
+  const [pledge, setPledge] = useState<Pledge | null>(null);
+  const [updateComments, setUpdateComments] = useState<
+    AidPackageUpdateComment[]
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
-  /**
-   * handle data fetch for package details here.
-   */
-  useEffect(() => {
-    if (pkgId) {
-      setIsLoading(true);
-      fetchPackageData(pkgId)
-        .then((data) => setData(data))
-        .catch((err) => {
-          setData(undefined);
-          //handle error
-        })
-        .finally(() => setIsLoading(false));
-    }
-  }, [pkgId]);
-
-  /**
-   * click event handler for Donate button.
-   */
-  const handleDonateClick = () => {
-    //TODO: Implement the expected behaviour
+  const history = useHistory();
+  const navigate = (path: string) => {
+    history.push(path);
   };
 
-  /**
-   * when fetch succeeds and no data is found
-   * redirect to 404 (if any)
-   */
-  if (!isLoading && data === undefined) {
-    return <Redirect to="/404"></Redirect>;
-  }
-  /**
-   * render page upon successful fetch.
-   */
+  useEffect(() => {
+    fetchAidPackage();
+    fetchUpdateComments();
+  }, []);
+
+  useEffect(() => {
+    if (userId != null) fetchPledge(userId, packageId);
+  }, [userId]);
+
+  const fetchAidPackage = async () => {
+    setIsLoading(true);
+    const { data } = await AidPackageService.getAidPackage(packageId);
+    setAidPackage(data);
+    setIsLoading(false);
+  };
+
+  const fetchUpdateComments = async () => {
+    const { data } = await AidPackageService.getUpdateComments(packageId);
+    setUpdateComments(data);
+  };
+
+  const fetchPledge = async (donorId: string, packageId: string) => {
+    const { data } = await AidPackageService.getDonorPledgesByAidPackage(
+      donorId,
+      packageId
+    );
+    if (data.length != 0) setPledge(data[0]);
+  };
+
+  const handleDonateClick = () => {
+    navigate("/donate-now");
+  };
+
+  const handlePledgeSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const amount = form.get("amount")?.toString();
+    if (amount == undefined || userId == null || amount === "") return;
+    if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
+    const newPledge: Pledge = {
+      pledgeID: 0,
+      donorID: parseInt(userId),
+      packageID: parseInt(packageId),
+      amount: parseInt(amount),
+      status: Pledge.Status.Pledged,
+      donor: null,
+    };
+    await AidPackageService.postPledge(userId, packageId, newPledge);
+    fetchPledge(userId, packageId);
+    fetchAidPackage();
+  };
+
+  const handlePledgeUpdate = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const amount = form.get("amount")?.toString();
+    if (amount == undefined || userId == null || pledge == null) return;
+    if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
+    const updatedPledge: Pledge = {
+      pledgeID: pledge.pledgeID,
+      donorID: parseInt(userId),
+      packageID: parseInt(packageId),
+      amount: parseInt(amount),
+      status: pledge.status,
+      donor: null,
+    };
+    await AidPackageService.updatePledge(
+      userId,
+      packageId,
+      pledge.pledgeID,
+      updatedPledge
+    );
+    fetchPledge(userId, packageId);
+    fetchAidPackage();
+  };
+
   return (
     <>
       {isLoading && (
@@ -67,60 +113,101 @@ export function AidPackageDetailsPage() {
           Loading...
         </Page>
       )}
-      {!isLoading && data && (
+      {aidPackage && (
         <Page>
           <div className="aid-package-container">
             <div className="aid-package-title-container">
-              <h1>{data?.title}</h1>
-            </div>
-            <div className="aid-package-header-container">
-              <div
-                className="aid-package-header-image"
-                style={{ backgroundImage: `url(${data?.image})` }}
-              ></div>
-              <div className="aid-package-description-ribbon">Description</div>
+              <h1>{aidPackage.name}</h1>
             </div>
             <div>
-              {/* TODO: May require rendering rich media or parsing html strings */}
-              <p>{data?.description}</p>
+              <p>{aidPackage.description}</p>
             </div>
             <div className="aid-package-progress-container">
               <h3>
-                {/* FIXME: is currency symbol always $? */}$
-                {data.pledged.toLocaleString("en-us")} raised of $
-                {data.goal.toLocaleString("en-us")} goal.
+                $
+                {aidPackage.receivedAmount.toLocaleString("en-us", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                raised of $
+                {aidPackage.goalAmount.toLocaleString("en-us", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                goal.
               </h3>
               <SimpleProgressBar
-                current={data?.pledged as number}
-                max={data?.goal as number}
+                current={aidPackage.receivedAmount as number}
+                max={aidPackage.goalAmount as number}
                 className="aid-pacakge-progress-bar"
               />
-              <button
-                className="btn aid-package-donate-btn"
-                onClick={handleDonateClick}
-              >
-                Donate
-              </button>
+              {userId == null && (
+                <button
+                  className="btn aid-package-donate-btn"
+                  onClick={handleDonateClick}
+                >
+                  Donate
+                </button>
+              )}
             </div>
+            <div>
+              {userId != null && (
+                <>
+                  {pledge != null ? (
+                    <>
+                      <p>
+                        You've pledged ${" "}
+                        {pledge.amount.toLocaleString("en-us", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}{" "}
+                        on this package
+                      </p>
+                      {aidPackage.status == AidPackage.Status.Published && (
+                        <form onSubmit={handlePledgeUpdate}>
+                          <p>Enter amount (in usd)</p>
+                          <input
+                            type="number"
+                            name="amount"
+                            className="pledge-amount-input"
+                            defaultValue={pledge.amount}
+                            min={1}
+                            max={
+                              aidPackage.goalAmount - aidPackage.receivedAmount
+                            }
+                          />
+                          <button className="btn">Update</button>
+                        </form>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {aidPackage.status == AidPackage.Status.Published && (
+                        <form onSubmit={handlePledgeSubmit}>
+                          <p>Enter amount (in usd)</p>
+                          <input
+                            type="number"
+                            name="amount"
+                            className="pledge-amount-input"
+                            min={1}
+                            max={
+                              aidPackage.goalAmount - aidPackage.receivedAmount
+                            }
+                          />
+                          <button className="btn">Pledge</button>
+                        </form>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+            <OrderItemsTable items={aidPackage.aidPackageItems} />
+            <PackageStatus currentStatus={aidPackage.status} />
+            <UpdateComments comments={updateComments} />
           </div>
         </Page>
       )}
     </>
   );
-}
-
-/**
- *
- * TODO: Discuss the exact properties of an aid package
- * and make necessary changes here or where ever such
- * types are to be defined.
- */
-export interface AidPackage {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  goal: number;
-  pledged: number;
-  items: { itemName: string; quantity: number }[];
 }

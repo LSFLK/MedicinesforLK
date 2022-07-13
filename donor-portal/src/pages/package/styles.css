@@ -1,8 +1,4 @@
 .aid-package-container {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
   padding: 2rem;
 }
 
@@ -16,7 +12,6 @@
 
 .aid-package-header-container {
   width: 100%;
-  height: calc(300px + 3rem);
   margin-bottom: 1rem;
 }
 .aid-package-header-image {
@@ -36,15 +31,19 @@
 }
 
 .aid-package-progress-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: var(--elixir-color-red);
 }
 .aid-pacakge-progress-bar {
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .aid-package-donate-btn {
   cursor: pointer;
   border: none;
+}
+
+.pledge-amount-input {
+  width: 200px;
+  margin-right: 10px;
+  height: 34px;
 }

@@ -30,8 +30,8 @@ export function Home() {
 
   useEffect(() => {
     if (userId != null) {
+      fetchPledgedAidPackages(userId);
       setActiveTabItem(TabItems.MY_PLEDGES);
-      setAlreadyPledgedAidPackages([]);
     }
   }, [userId]);
 
@@ -39,16 +39,25 @@ export function Home() {
     fetchAidPackages();
   }, []);
 
+  const fetchPledgedAidPackages = async (donorId: string) => {
+    const returnedPledgedPackages =
+      await AidPackageService.getPledgedAidPackages(donorId);
+    setAlreadyPledgedAidPackages(returnedPledgedPackages.data);
+  };
+
   const fetchAidPackages = async () => {
-    const { data } = await AidPackageService.getAidPackages();
+    const { data }: { data: AidPackage[] } =
+      await AidPackageService.getAidPackages();
     setGoalReachedAidPackages(
       data.filter(
-        (aidPackage) => aidPackage.goalAmount === aidPackage.receivedAmount
+        (aidPackage) =>
+          aidPackage.status != AidPackage.Status.Published &&
+          aidPackage.status != AidPackage.Status.Draft
       )
     );
     setGoalPendingAidPackages(
       data.filter(
-        (aidPackage) => aidPackage.goalAmount > aidPackage.receivedAmount
+        (aidPackage) => aidPackage.status == AidPackage.Status.Published
       )
     );
   };
@@ -109,20 +118,52 @@ export function Home() {
         <>
           {activeTabItem == TabItems.GOAL_PENDING &&
             goalPendingAidPackages.map((aidPackage) => {
-              return <PackageCard donorPackage={aidPackage} />;
+              return (
+                <PackageCard
+                  key={aidPackage.packageID}
+                  donorPackage={aidPackage}
+                  buttonText={userId != null ? "Pledge" : "Donate"}
+                />
+              );
             })}
         </>
         <>
           {activeTabItem == TabItems.GOAL_REACHED &&
             goalReachedAidPackages.map((aidPackage) => {
-              return <PackageCard donorPackage={aidPackage} />;
+              return (
+                <PackageCard
+                  key={aidPackage.packageID}
+                  donorPackage={aidPackage}
+                  buttonText={"Details"}
+                />
+              );
             })}
         </>
         <>
           {userId &&
             activeTabItem == TabItems.MY_PLEDGES &&
+            alreadyPledgedAidPackages.length === 0 && (
+              <p>
+                No pledged packages found. Check{" "}
+                <a
+                  className="text-blue"
+                  onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+                >
+                  goal pending tab
+                </a>{" "}
+                to find pledge-able aid packages.
+              </p>
+            )}
+          {userId &&
+            activeTabItem == TabItems.MY_PLEDGES &&
             alreadyPledgedAidPackages.map((aidPackage) => {
-              return <PackageCard donorPackage={aidPackage} />;
+              return (
+                <PackageCard
+                  key={aidPackage.packageID}
+                  donorPackage={aidPackage}
+                  buttonText={"Details"}
+                />
+              );
             })}
         </>
       </div>
@@ -130,7 +171,13 @@ export function Home() {
   );
 }
 
-function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
+function PackageCard({
+  donorPackage,
+  buttonText,
+}: {
+  donorPackage: AidPackage;
+  buttonText: string;
+}) {
   const { packageID, description, receivedAmount, goalAmount, name } =
     donorPackage;
 
@@ -142,7 +189,7 @@ function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
             <h2>{name}</h2>
           </div>
           <Link to={`/package/${packageID}`} className="btn">
-            Donate
+            {buttonText}
           </Link>
         </div>
         <p className="card_details__description">{description}</p>
@@ -162,7 +209,11 @@ function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
           </p>
           <div className="card_details__package_progress_bar">
             <span
-              style={{ width: (receivedAmount / goalAmount) * 100 + "%" }}
+              style={{
+                width:
+                  (Math.min(receivedAmount, goalAmount) / goalAmount) * 100 +
+                  "%",
+              }}
             />
           </div>
         </div>
