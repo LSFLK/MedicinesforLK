@@ -208,7 +208,7 @@ function PackageCard({
           </p>
           <div className="card_details__package_progress_bar">
             <span
-              style={{ width: (receivedAmount / goalAmount) * 100 + "%" }}
+              style={{ width: (Math.min(receivedAmount, goalAmount) / goalAmount) * 100 + "%" }}
             />
           </div>
         </div>
