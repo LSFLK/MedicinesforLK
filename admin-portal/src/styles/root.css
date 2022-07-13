@@ -65,3 +65,10 @@
   font-size: 0.8rem;
   padding: 0.2rem 0.5rem;
 }
+
+.btn:disabled,
+.btn[disabled] {
+  border-color: var(--elixir-color-gray-800);
+  background-color: var(--elixir-color-gray-300);
+  color: var(--elixir-color-gray-700);
+}

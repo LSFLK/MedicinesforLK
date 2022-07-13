@@ -58,6 +58,11 @@ a:hover {
     var(--elixir-footer-padding-horizontal);
 }
 
+.footer-link {
+  color: var(--elixir-footer-color);
+  text-decoration: none;
+}
+
 .main-wrapper {
   flex: 1 0 auto;
   box-sizing: border-box;

@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <AuthProvider
-    config={{ ...authConfig, storage: "webWorker" as Storage.WebWorker }}
+    config={{ ...authConfig, storage: "localStorage" as Storage.LocalStorage }}
     plugin={TokenExchangePlugin.getInstance()}
   >
     <App />

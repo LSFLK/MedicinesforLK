@@ -79,7 +79,15 @@ function App() {
         </BrowserRouter>
       </div>
       <footer className="footer footer--dark">
-        <div>@OpenSource.com</div>
+        <div>
+          <p>
+            Copyright ©{" "}
+            <a href="www.elixir.redcross.lk" className="footer-link">
+              elixir.redcross.lk{" "}
+            </a>
+            | All rights reserved
+          </p>
+        </div>
       </footer>
       <ToastContainer />
     </div>

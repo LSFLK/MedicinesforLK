@@ -6,6 +6,7 @@ import { AidPackageService } from "apis/services/AidPackageService";
 import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
 import { useHistory } from "react-router-dom";
+import { HttpRequestConfig } from "@asgardeo/auth-spa";
 
 export function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
@@ -31,7 +32,13 @@ export function NeedUpload() {
     if (file) {
       formData.append("file", file);
       try {
-        const response = await AidPackageService.postNeeds(formData);
+        const config: HttpRequestConfig = {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Accept': '*/*',
+          }
+        };
+        const response = await AidPackageService.postNeeds(formData, config);
         toast.success("File uploaded successfully!", {
           position: "top-right",
           autoClose: 5000,

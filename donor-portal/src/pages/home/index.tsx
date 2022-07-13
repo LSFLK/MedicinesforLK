@@ -4,15 +4,8 @@ import { Page } from "../layout/page";
 import "./styles.css";
 import UserContext from "../../userContext";
 import { Link } from "react-router-dom";
-
-type DonorAidPackage = {
-  packageID: number;
-  name: string;
-  hospital: string;
-  description: string;
-  totalAmount: number;
-  pledgedPercentage: number;
-};
+import { AidPackage } from "../../types/AidPackage";
+import { AidPackageService } from "../../apis/services/AidPackageService";
 
 enum TabItems {
   GOAL_PENDING,
@@ -20,85 +13,16 @@ enum TabItems {
   MY_PLEDGES,
 }
 
-const packageList = [
-  {
-    packageID: 1,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 78,
-  },
-  {
-    packageID: 2,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 20,
-  },
-  {
-    packageID: 3,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 100,
-  },
-  {
-    packageID: 4,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 78,
-  },
-  {
-    packageID: 5,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 2,
-  },
-  {
-    packageID: 6,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 50,
-  },
-];
-
-const pledgedPackages = [
-  {
-    packageID: 2,
-    name: "Medical Supplies | Anuradpura",
-    hospital: "General Hospital : Fight for their Lives in Anuradapura",
-    description:
-      "Kole Intellectual Forum intends to influence the ideas of policy makers at all levels, educationists, community and youth in Uganda to inclu... read more",
-    totalAmount: 150000,
-    pledgedPercentage: 20,
-  },
-];
-
 export function Home() {
   const userId = useContext(UserContext);
   const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
-    DonorAidPackage[]
+    AidPackage[]
   >([]);
   const [alreadyPledgedAidPackages, setAlreadyPledgedAidPackages] = useState<
-    DonorAidPackage[]
+    AidPackage[]
   >([]);
   const [goalReachedAidPackages, setGoalReachedAidPackages] = useState<
-    DonorAidPackage[]
+    AidPackage[]
   >([]);
   const [activeTabItem, setActiveTabItem] = useState<TabItems>(
     TabItems.GOAL_PENDING
@@ -107,19 +31,27 @@ export function Home() {
   useEffect(() => {
     if (userId != null) {
       setActiveTabItem(TabItems.MY_PLEDGES);
-      setAlreadyPledgedAidPackages(pledgedPackages);
+      setAlreadyPledgedAidPackages([]);
     }
   }, [userId]);
 
   useEffect(() => {
-    const aidPackages = packageList;
+    fetchAidPackages();
+  }, []);
+
+  const fetchAidPackages = async () => {
+    const { data } = await AidPackageService.getAidPackages();
     setGoalReachedAidPackages(
-      aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage == 100)
+      data.filter(
+        (aidPackage) => aidPackage.goalAmount === aidPackage.receivedAmount
+      )
     );
     setGoalPendingAidPackages(
-      aidPackages.filter((aidPackage) => aidPackage.pledgedPercentage != 100)
+      data.filter(
+        (aidPackage) => aidPackage.goalAmount > aidPackage.receivedAmount
+      )
     );
-  }, []);
+  };
 
   return (
     <Page className="home-page">
@@ -198,16 +130,9 @@ export function Home() {
   );
 }
 
-function PackageCard({ donorPackage }: { donorPackage: DonorAidPackage }) {
-  const {
-    packageID,
-    description,
-    totalAmount,
-    pledgedPercentage,
-    name,
-    hospital,
-  } = donorPackage;
-  const currentAmount = Math.round(totalAmount * (100 / pledgedPercentage));
+function PackageCard({ donorPackage }: { donorPackage: AidPackage }) {
+  const { packageID, description, receivedAmount, goalAmount, name } =
+    donorPackage;
 
   return (
     <div className="package-card" key={packageID}>
@@ -215,7 +140,6 @@ function PackageCard({ donorPackage }: { donorPackage: DonorAidPackage }) {
         <div className="card-details__heading">
           <div className="card-details__heading__text">
             <h2>{name}</h2>
-            <p>{hospital}</p>
           </div>
           <Link to={`/package/${packageID}`} className="btn">
             Donate
@@ -224,10 +148,22 @@ function PackageCard({ donorPackage }: { donorPackage: DonorAidPackage }) {
         <p className="card_details__description">{description}</p>
         <div className="card_details__package_progress">
           <p className="card_details__package_progress_text">
-            ${currentAmount} raised of ${totalAmount} goal
+            $
+            {receivedAmount.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{" "}
+            raised of $
+            {goalAmount.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{" "}
+            goal
           </p>
           <div className="card_details__package_progress_bar">
-            <span style={{ width: pledgedPercentage + "%" }} />
+            <span
+              style={{ width: (receivedAmount / goalAmount) * 100 + "%" }}
+            />
           </div>
         </div>
       </div>

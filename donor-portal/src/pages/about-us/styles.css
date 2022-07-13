@@ -115,11 +115,12 @@
 
 .partner-section-card {
   text-align: center;
-  width: 30%;
+  margin: 20px;
 }
 
 .partner-section-card img {
   margin-bottom: 1.5rem;
+  max-width: 12rem;
 }
 
 .full-width-section {

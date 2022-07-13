@@ -37,7 +37,12 @@ export function PackageDetails() {
 
   const fetchUpdateComments = async () => {
     const { data } = await AidPackageService.getUpdateComments(packageId!);
-    setPosts(data);
+    const sorteddata = data.sort((data1, data2) => {
+      return (
+        new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime()
+      );
+    });
+    setPosts(sorteddata);
   };
 
   const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
@@ -163,23 +168,24 @@ export function PackageDetails() {
                   receivedAmount={aidPackage.receivedAmount}
                 />
               </div>
-              <p>Goal: ${aidPackage.goalAmount}</p>
-              <p>Received: ${aidPackage.receivedAmount}</p>
+              <p>
+                Goal: $
+                {aidPackage.goalAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+              <p>
+                Received: $
+                {aidPackage.receivedAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
               <Link to={`/packages/${packageId}/pledge-status`}>
                 See pledge status
               </Link>
             </div>
-            <p>Goal: ${aidPackage.totalAmount}</p>
-            <p>
-              Received: $
-              {(
-                aidPackage.totalAmount *
-                (aidPackage.pledgedPercentage / 100)
-              ).toFixed()}
-            </p>
-            <Link to={`/packages/${packageId}/pledge-status`}>
-              See pledge status
-            </Link>
           </div>
           <PackageStatus
             currentStatus={aidPackage.status}

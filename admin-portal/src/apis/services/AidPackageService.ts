@@ -3,6 +3,7 @@ import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
+import { HttpRequestConfig } from "@asgardeo/auth-spa";
 
 export class AidPackageService {
   static http: Http;
@@ -68,14 +69,15 @@ export class AidPackageService {
 
   static getPledges(packageID: number | string) {
     return AidPackageService.http.get<Pledge[]>(
-      `aidpackage/${packageID}/pledges`
+      `aidpackages/${packageID}/pledges`
     );
   }
 
-  static postNeeds(formData: any) {
-    return AidPackageService.http.post<any, string>(
+  static postNeeds(formData: FormData, config?: HttpRequestConfig) {
+    return AidPackageService.http.post<FormData, string>(
       `requirements/medicalneeds`,
-      formData
+      formData,
+      config
     );
   }
 

@@ -1,4 +1,4 @@
-import { AidPackages } from "pages/aidPackage/aidPackage";
+import { AidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
 import { useTable } from "react-table";
 import { Quotation } from "../../../../types/Quotation";
@@ -13,7 +13,7 @@ export function SupplierNeedAllocationTable({
   supplierQuotes: Quotation[];
   setAssignmentForSupplier: any;
   requiredQuantity: number;
-  assignmentsForSupplier: Map<number, number>;
+  assignmentsForSupplier: NeedAssignment;
   aidPackages: AidPackages;
 }) {
   supplierQuotes = supplierQuotes || [];
@@ -138,16 +138,21 @@ function EditableCell({
 }
 
 function validateRow(
-  value: number,
+  value: string,
   maxValue: number
 ): { hasError: boolean; errorMessages?: Array<string> } {
-  const exceedsMaxAmount = maxValue < value;
-  if (exceedsMaxAmount) {
-    return {
-      hasError: true,
-      errorMessages: ["Assigned quantity must be lower than the supplier max"],
-    };
+  let hasError = false;
+  const errorMessages = [];
+
+  if (maxValue < Number(value)) {
+    hasError = true;
+    errorMessages.push("Assigned quantity must be lower than the supplier max");
   }
 
-  return { hasError: false, errorMessages: [] };
+  if (value === "0") {
+    hasError = true;
+    errorMessages.push("Assigned quantity must be more than zero");
+  }
+
+  return { hasError, errorMessages };
 }
