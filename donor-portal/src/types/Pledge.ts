@@ -6,7 +6,7 @@ export interface Pledge {
   donorID: number;
   amount: number;
   status: Pledge.Status;
-  donor: Donor;
+  donor: Donor | null;
 }
 
 export namespace Pledge {
