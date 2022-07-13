@@ -1,12 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { PageSelection } from "../../types/pages";
-import { Page } from "layout/page";
 import "./needUpload.css";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
 import { useHistory } from "react-router-dom";
-import { HttpRequestConfig } from "@asgardeo/auth-spa";
 
 export function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
