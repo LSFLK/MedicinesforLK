@@ -173,7 +173,7 @@ export function AidPackageDetailsPage() {
                             defaultValue={pledge.amount}
                             min={1}
                             max={
-                              aidPackage.goalAmount - aidPackage.receivedAmount
+                              aidPackage.goalAmount - aidPackage.receivedAmount + pledge.amount
                             }
                           />
                           <button className="btn">Update</button>
