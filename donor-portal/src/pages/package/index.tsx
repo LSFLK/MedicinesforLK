@@ -146,11 +146,24 @@ export function AidPackageDetailsPage() {
                   <>
                     {pledge != null ? (
                       <>
-                        <p>You've pledged {pledge.amount} on this package</p>
+                        <p>
+                          You've pledged $ {pledge.amount.toLocaleString("en-us", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })} on this package
+                        </p>
                         {aidPackage.status == AidPackage.Status.Published && (
                             <form onSubmit={handlePledgeUpdate}>
-                              <input type="number" name="amount" defaultValue={pledge.amount}/>
-                              <button>Update pledge</button>
+                              <p>Enter amount (in usd)</p>
+                              <input
+                                type="number"
+                                name="amount"
+                                className="pledge-amount-input"
+                                defaultValue={pledge.amount}
+                                min={1}
+                                max={aidPackage.goalAmount - aidPackage.receivedAmount}
+                              />
+                              <button className="btn">Update</button>
                             </form>
                         )}
                       </>
@@ -158,8 +171,15 @@ export function AidPackageDetailsPage() {
                       <>
                         {aidPackage.status == AidPackage.Status.Published && (
                           <form onSubmit={handlePledgeSubmit}>
-                            <input type="number" name="amount" placeholder="1000"/>
-                            <button>Pledge</button>
+                            <p>Enter amount (in usd)</p>
+                            <input
+                              type="number"
+                              name="amount"
+                              className="pledge-amount-input"
+                              min={1}
+                              max={aidPackage.goalAmount - aidPackage.receivedAmount}
+                            />
+                            <button className="btn">Pledge</button>
                           </form>
                         )}
                       </>

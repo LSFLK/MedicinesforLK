@@ -41,3 +41,9 @@
   cursor: pointer;
   border: none;
 }
+
+.pledge-amount-input {
+  width: 200px;
+  margin-right: 10px;
+  height: 34px;
+}
