@@ -1,6 +1,4 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { PageSelection } from "../../types/pages";
-import { Page } from "layout/page";
 import "./needUpload.css";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { toast } from "react-toastify";
