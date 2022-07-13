@@ -39,3 +39,7 @@
 .aid-package-details th:first-child {
   padding-left: 0.5rem;
 }
+
+.aid-package-table {
+  font-size: 14px;
+}

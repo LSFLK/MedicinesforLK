@@ -153,7 +153,7 @@ export function AssignSuppliers({
   );
 
   return (
-    <table {...getTableProps()}>
+    <table {...getTableProps()} className="aid-package-table">
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -179,9 +179,17 @@ export function AssignSuppliers({
           return (
             <>
               <tr {...row.getRowProps()} className="needs-row">
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                {row.cells.map((cell, index) => {
+                  return index == 5 || index == 6 ? (
+                    <td
+                      {...cell.getCellProps({
+                        style: { textAlign: "right", paddingRight: 30 },
+                      })}
+                    >
+                      {cell.value.toLocaleString()}
+                    </td>
+                  ) : (
+                    <td {...cell.getCellProps({})}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>

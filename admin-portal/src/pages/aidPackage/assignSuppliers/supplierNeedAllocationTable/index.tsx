@@ -92,8 +92,14 @@ export function SupplierNeedAllocationTable({
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+              {row.cells.map((cell, index) => {
+                return index != 4 ? (
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                ) : (
+                  <td {...cell.getCellProps()}>
+                    {cell.value.toLocaleString()}
+                  </td>
+                );
               })}
             </tr>
           );
