@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { PageSelection } from "../../types/pages";
 import "./packageDetails.css";
-import { Page } from "../../layout/page";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import { AidPackage } from "../../types/AidPackage";
 import UpdateComments from "./components/updateComments/updateComments";
