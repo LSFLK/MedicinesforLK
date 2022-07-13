@@ -33,6 +33,10 @@
   gap: 1rem;
 }
 
+.text-blue {
+  color: blue;
+}
+
 .package-list {
   margin: 0 2rem;
 }

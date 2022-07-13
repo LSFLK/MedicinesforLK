@@ -1,6 +1,4 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { PageSelection } from "../../types/pages";
-import { Page } from "layout/page";
 import "./needUpload.css";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { toast } from "react-toastify";
@@ -27,7 +25,6 @@ export function NeedUpload() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData();
-
     if (file) {
       formData.append("file", file);
       try {
