@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { NavBar } from "./components";
 import { Home } from "./pages/home/home";
@@ -21,6 +21,7 @@ import { SupplierService } from "apis/services/SupplierService";
 
 function App() {
   const { httpRequest, signIn, trySignInSilently } = useAuthContext();
+  const [isSigningIn, setIsSigningIn] = useState(true);
 
   useEffect(() => {
     trySignInSilently()
@@ -31,6 +32,9 @@ function App() {
       })
       .catch(() => {
         signIn();
+      })
+      .finally(() => {
+        setIsSigningIn(false);
       });
     const http: Http = new Http(
       httpRequest,
@@ -42,6 +46,9 @@ function App() {
     SupplierService.http = http;
   }, []);
 
+  if (isSigningIn) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className="App">
       <header className="App-header">

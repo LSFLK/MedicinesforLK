@@ -50,12 +50,14 @@ export function Home() {
       await AidPackageService.getAidPackages();
     setGoalReachedAidPackages(
       data.filter(
-        (aidPackage) => aidPackage.goalAmount === aidPackage.receivedAmount
+        (aidPackage) =>
+          aidPackage.status != AidPackage.Status.Published &&
+          aidPackage.status != AidPackage.Status.Draft
       )
     );
     setGoalPendingAidPackages(
       data.filter(
-        (aidPackage) => aidPackage.goalAmount > aidPackage.receivedAmount
+        (aidPackage) => aidPackage.status == AidPackage.Status.Published
       )
     );
   };
@@ -207,7 +209,11 @@ function PackageCard({
           </p>
           <div className="card_details__package_progress_bar">
             <span
-              style={{ width: (receivedAmount / goalAmount) * 100 + "%" }}
+              style={{
+                width:
+                  (Math.min(receivedAmount, goalAmount) / goalAmount) * 100 +
+                  "%",
+              }}
             />
           </div>
         </div>
