@@ -31,13 +31,7 @@ export function NeedUpload() {
     if (file) {
       formData.append("file", file);
       try {
-        const config: HttpRequestConfig = {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Accept': '*/*',
-          }
-        };
-        const response = await AidPackageService.postNeeds(formData, config);
+        const response = await AidPackageService.postNeeds(formData);
         toast.success("File uploaded successfully!", {
           position: "top-right",
           autoClose: 5000,

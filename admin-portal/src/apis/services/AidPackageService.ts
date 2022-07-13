@@ -73,11 +73,10 @@ export class AidPackageService {
     );
   }
 
-  static postNeeds(formData: FormData, config?: HttpRequestConfig) {
+  static postNeeds(formData: FormData) {
     return AidPackageService.http.post<FormData, string>(
       `requirements/medicalneeds`,
-      formData,
-      config
+      formData
     );
   }
 
