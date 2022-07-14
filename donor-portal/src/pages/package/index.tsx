@@ -165,7 +165,7 @@ export function AidPackageDetailsPage() {
                       </p>
                       {aidPackage.status == AidPackage.Status.Published && (
                         <form onSubmit={handlePledgeUpdate}>
-                          <p>Enter amount (in usd)</p>
+                          <p>Enter amount (in USD)</p>
                           <input
                             type="number"
                             name="amount"
@@ -186,7 +186,7 @@ export function AidPackageDetailsPage() {
                     <>
                       {aidPackage.status == AidPackage.Status.Published && (
                         <form onSubmit={handlePledgeSubmit}>
-                          <p>Enter amount (in usd)</p>
+                          <p>Enter amount (in USD)</p>
                           <input
                             type="number"
                             name="amount"
