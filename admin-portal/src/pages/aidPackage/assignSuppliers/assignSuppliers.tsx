@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTable, useExpanded } from "react-table";
+import { useTable, useExpanded, CellValue } from "react-table";
 import { AidPackages, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
@@ -122,10 +122,16 @@ export function AssignSuppliers({
       {
         Header: "Quantity Needed",
         accessor: "requiredQuantity",
+        Cell: ({ value }: { value: CellValue }) => (
+          <div className="aid-package-quantity">{value.toLocaleString()}</div>
+        ),
       },
       {
         Header: "Remaining Need",
         accessor: "remainingQuantity",
+        Cell: ({ value }: { value: CellValue }) => (
+          <div className="aid-package-quantity">{value.toLocaleString()}</div>
+        ),
       },
       {
         Header: "Urgency",
@@ -179,16 +185,8 @@ export function AssignSuppliers({
           return (
             <>
               <tr {...row.getRowProps()} className="needs-row">
-                {row.cells.map((cell, index) => {
-                  return index == 5 || index == 6 ? (
-                    <td
-                      {...cell.getCellProps({
-                        style: { textAlign: "right", paddingRight: 30 },
-                      })}
-                    >
-                      {cell.value.toLocaleString()}
-                    </td>
-                  ) : (
+                {row.cells.map((cell) => {
+                  return (
                     <td {...cell.getCellProps({})}>{cell.render("Cell")}</td>
                   );
                 })}
