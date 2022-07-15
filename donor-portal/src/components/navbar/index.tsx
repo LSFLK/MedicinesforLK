@@ -1,9 +1,9 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { useContext } from "react";
 import UserContext from "../../userContext";
 
-export function NavBar() {
+export default function NavBar() {
   const userId = useContext(UserContext);
 
   const handleLogout = () => {
@@ -19,7 +19,7 @@ export function NavBar() {
   return (
     <nav className="navbar">
       <Link to="/">
-        <div className="logo"></div>
+        <div className="logo" />
       </Link>
       <div className="nav-links">
         <Link to="/about-us" className="nav-link">
@@ -40,14 +40,18 @@ export function NavBar() {
         {userId != null ? (
           <>
             <span>|</span>
-            <a className="nav-link" onClick={() => handleLogout()}>
+            <a href="/" className="nav-link" onClick={() => handleLogout()}>
               Logout
             </a>
           </>
         ) : (
-          <a className="login-btn" onClick={() => handleLogin()}>
+          <button
+            type="button"
+            className="login-btn"
+            onClick={() => handleLogin()}
+          >
             Login
-          </a>
+          </button>
         )}
       </div>
     </nav>

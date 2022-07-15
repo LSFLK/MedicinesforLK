@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { HeaderImage } from "../layout/header-image";
-import { Page } from "../layout/page";
+import React, { useEffect, useState } from "react";
+import HeaderImage from "../layout/header-image";
+import Page from "../layout/page";
 import "./styles.css";
 
 type DonorOrganization = {
@@ -9,7 +9,7 @@ type DonorOrganization = {
   orgDescription: string;
 };
 
-export function DonateNow() {
+export default function DonateNow() {
   const [donorOrgs, setDonorOrgs] =
     useState<
       Array<{ continent: string; organizations: Array<DonorOrganization> }>
