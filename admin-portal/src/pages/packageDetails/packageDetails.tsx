@@ -152,6 +152,7 @@ export function PackageDetails() {
               <p>{aidPackage.description}</p>
               <div>
                 <OrderItemsTable
+                  status={aidPackage?.status}
                   items={aidPackage?.aidPackageItems}
                   onEditItemButtonClick={handleEditOrderItemButtonClick}
                   onDeleteButtonClick={handlePackageItemDelete}

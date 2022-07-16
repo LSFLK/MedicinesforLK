@@ -6,12 +6,14 @@ interface PackageItemsTableProps {
   items: AidPackageItem[];
   onEditItemButtonClick: (item: AidPackageItem) => void;
   onDeleteButtonClick: (item: AidPackageItem) => void;
+  status: string;
 }
 
 export default function OrderItemsTable({
   items,
   onEditItemButtonClick,
   onDeleteButtonClick,
+  status,
 }: PackageItemsTableProps) {
   return (
     <table className="orderItemsTable">
@@ -19,7 +21,7 @@ export default function OrderItemsTable({
         <tr>
           <th>Item Name</th>
           <th>Quantity</th>
-          <th />
+          {status == "Draft" && <th />}
         </tr>
       </thead>
       <tbody>
@@ -27,15 +29,19 @@ export default function OrderItemsTable({
           <tr key={item.packageItemID}>
             <td>{item.quotation.brandName}</td>
             <td>{item.quantity}</td>
-            <td className="actions">
-              <button onClick={() => onEditItemButtonClick(item)}>Edit</button>
-              <button
-                className="deleteButton"
-                onClick={() => onDeleteButtonClick(item)}
-              >
-                delete
-              </button>
-            </td>
+            {status == "Draft" && (
+              <td className="actions">
+                <button onClick={() => onEditItemButtonClick(item)}>
+                  Edit
+                </button>
+                <button
+                  className="deleteButton"
+                  onClick={() => onDeleteButtonClick(item)}
+                >
+                  delete
+                </button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
