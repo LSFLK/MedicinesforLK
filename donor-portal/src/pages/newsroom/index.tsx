@@ -45,7 +45,7 @@ export function NewsRoom() {
           </span>
         </div>
         <div className="contact-section">
-          <span>Zafran Packeerally</span>
+          <span>Mr. Zafran Packeerally</span>
           <span>[T] +94 70 378 8685</span>
           <span>
             [E]{""}

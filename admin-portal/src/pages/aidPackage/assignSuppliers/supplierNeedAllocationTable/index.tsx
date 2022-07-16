@@ -1,3 +1,4 @@
+import { formatMoney } from "helpers/formatter";
 import { AidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
 import { useTable } from "react-table";
@@ -20,17 +21,23 @@ export function SupplierNeedAllocationTable({
 
   const data = useMemo<Array<{ [key: string]: any }>>(
     () =>
-      supplierQuotes.map((quote) => ({
-        supplier: quote.supplier.name,
-        brandName: quote.brandName,
-        expiryDate: `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`,
-        period: `${quote.period.day}/${quote.period.month}/${quote.period.year}`,
-        quantity: assignmentsForSupplier.get(quote.supplierID),
-        max: Math.min(requiredQuantity, quote.availableQuantity),
-        supplierID: quote.supplierID,
-        published: aidPackages?.[quote.supplierID]?.isPublished,
-      })),
-    [supplierQuotes, assignmentsForSupplier, requiredQuantity]
+      supplierQuotes.map((quote) => {
+        const quantity = assignmentsForSupplier.get(quote.supplierID);
+
+        return {
+          supplier: quote.supplier.name,
+          brandName: quote.brandName,
+          expiryDate: `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`,
+          period: `${quote.period.day}/${quote.period.month}/${quote.period.year}`,
+          quantity,
+          max: Math.min(requiredQuantity, quote.availableQuantity),
+          supplierID: quote.supplierID,
+          published: aidPackages?.[quote.supplierID]?.isPublished,
+          unitPrice: formatMoney(quote.unitPrice),
+          total: formatMoney((quantity || 0) * quote.unitPrice),
+        };
+      }),
+    [supplierQuotes, assignmentsForSupplier, requiredQuantity, aidPackages]
   );
 
   const columns = useMemo(
@@ -52,6 +59,10 @@ export function SupplierNeedAllocationTable({
         accessor: "expiryDate",
       },
       {
+        Header: "Unit Price",
+        accessor: "unitPrice",
+      },
+      {
         Header: "Max",
         accessor: "max",
       },
@@ -59,6 +70,10 @@ export function SupplierNeedAllocationTable({
         Header: "Order Quantity",
         accessor: "quantity",
         Cell: EditableCell,
+      },
+      {
+        Header: "Total Price",
+        accessor: "total",
       },
     ],
     []
