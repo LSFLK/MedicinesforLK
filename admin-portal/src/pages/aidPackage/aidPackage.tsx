@@ -38,9 +38,13 @@ export function CreateAidPackage() {
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
   const [aidPackages, setAidPackages] = useState<AidPackages>({});
   const [isValidAssignment, setIsValidAssignment] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    MedicalNeedsService.getMedicalNeeds().then((response) => {
+    setIsLoading(true);
+
+    MedicalNeedsService.getMedicalNeeds()
+      .then((response) => {
       const needsArray = response.data;
       setMedicalNeeds(needsArray);
       setNeedAssignments(
@@ -52,6 +56,9 @@ export function CreateAidPackage() {
           {}
         )
       );
+      })
+      .finally(() => {
+        setIsLoading(false);
     });
   }, []);
 
@@ -123,6 +130,10 @@ export function CreateAidPackage() {
       </Stepper>
 
       <div className="create-aid-body">
+        {isLoading ? (
+          <p>Loading Aid Packages...</p>
+        ) : (
+          <>
         {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
           <AssignSuppliers
             medicalNeeds={medicalNeeds}
@@ -141,6 +152,8 @@ export function CreateAidPackage() {
             setAidPackages={setAidPackages}
             handleAidPkgPublish={handleAidPkgPublish}
           />
+        )}
+          </>
         )}
       </div>
 
