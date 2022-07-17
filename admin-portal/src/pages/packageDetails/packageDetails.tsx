@@ -23,6 +23,16 @@ export function PackageDetails() {
   const postToBeEdited = useRef<AidPackageUpdateComment | null>(null);
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
 
+  const statusLevel = {
+    Draft: 1,
+    Published: 2,
+    "Awaiting Payment": 3,
+    Ordered: 4,
+    Shipped: 5,
+    "Received At MOH": 6,
+    Delivered: 7,
+  };
+
   useEffect(() => {
     fetchAidPackage();
     fetchUpdateComments();
@@ -57,6 +67,12 @@ export function PackageDetails() {
   const handleStatusChange = async (statusToBeChanged: AidPackage.Status) => {
     if (statusToBeChanged === aidPackage?.status) {
       return;
+    }
+    if (aidPackage?.status) {
+      if (statusLevel[statusToBeChanged] < statusLevel[aidPackage.status]) {
+        alert("Sorry, you cannot change back to a previous status");
+        return;
+      }
     }
     const confirmed = window.confirm(
       `Are you sure you want to change the status to ${statusToBeChanged}?`
