@@ -69,6 +69,9 @@ export function AssignSuppliers({
         period: periodDate.toLocaleDateString(),
         requiredQuantity: need.neededQuantity,
         remainingQuantity,
+        suppliers: need.supplierQuotes
+          .map((quote) => quote.supplier.name)
+          .join(", "),
         supplierQuotes: need.supplierQuotes || [],
       };
     });
@@ -137,6 +140,11 @@ export function AssignSuppliers({
         Header: "Urgency",
         accessor: "urgency",
       },
+      {
+        Header: "Suppliers",
+        accessor: "suppliers",
+        className: "suppliers-cell",
+      },
     ],
     []
   );
@@ -197,7 +205,13 @@ export function AssignSuppliers({
                 <tr {...row.getRowProps()} className="needs-row">
                   {row.cells.map((cell) => {
                     return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      <td
+                        {...cell.getCellProps()}
+                        // @ts-ignore
+                        className={cell.column?.className}
+                      >
+                        {cell.render("Cell")}
+                      </td>
                     );
                   })}
                 </tr>
