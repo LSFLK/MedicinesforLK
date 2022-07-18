@@ -7,6 +7,7 @@ export interface AidPackageItem {
   packageID: number;
   quotationID: number;
   quantity: number;
+  initialQuantity: number;
   totalAmount: number;
   needID: number;
   quotation: Quotation;
