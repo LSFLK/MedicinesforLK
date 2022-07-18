@@ -45,6 +45,13 @@ export default function PledgeStatus() {
       fetchPledges();
     }
   };
+
+  const donerStatus = (status: String) => {
+    if (status === "Draft") return "Draft";
+    if (status === "Published") return "Pledged";
+    if (status === "Awaiting Payment") return "Payment initiated";
+    return "Payment confirmed";
+  }
   return (
     <>
       {!aidPackage && <p>Loading Pledge Status...</p>}
@@ -78,7 +85,7 @@ export default function PledgeStatus() {
                   maximumFractionDigits: 2,
                 })}
               </p>
-              <p>Status: {aidPackage.status}</p>
+              <p>Status: {donerStatus(aidPackage.status)}</p>
             </div>
           </div>
           <DonorTable
