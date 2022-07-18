@@ -6,6 +6,7 @@ import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { MedicalNeed } from "../../types/MedicalNeeds";
 import { useAsyncDebounce } from "react-table";
+import { AidPackage as Package } from "types/AidPackage";
 import toast from "react-simple-toasts";
 import "./aidPackage.css";
 
@@ -63,7 +64,10 @@ export function CreateAidPackage() {
     setCurrentFormStep(step);
   };
 
-  const handleAidPkgPublish = async (supplierID: number): Promise<any> => {
+  const handleAidPkgPublish = async (
+    supplierID: number,
+    status: Package.Status = Package.Status.Draft
+  ): Promise<any> => {
     const aidPackage = aidPackages[supplierID];
     const needs = Object.keys(needAssignments)
       .filter((needID) => {
@@ -80,6 +84,7 @@ export function CreateAidPackage() {
       return AidPackageService.postAidPackage({
         name: aidPackage.name,
         description: aidPackage.details,
+        status,
         aidPackageItems: needs.map((need) => {
           const medicalNeed = medicalNeeds.find(
             (currentNeed) => currentNeed.needID === need.id
