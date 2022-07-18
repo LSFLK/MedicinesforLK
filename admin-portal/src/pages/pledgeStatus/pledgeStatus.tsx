@@ -51,7 +51,7 @@ export default function PledgeStatus() {
     if (status === "Published") return "Pledged";
     if (status === "Awaiting Payment") return "Payment initiated";
     return "Payment confirmed";
-  }
+  };
   return (
     <>
       {!aidPackage && <p>Loading Pledge Status...</p>}
