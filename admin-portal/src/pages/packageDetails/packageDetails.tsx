@@ -12,6 +12,8 @@ import { Link, useParams } from "react-router-dom";
 import PackageStatus from "./components/packageStatus/packageStatus";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 import { AidPackageService } from "../../apis/services/AidPackageService";
+import EditDescriptionPrompt from "./components/editDescriptionPrompt/editDescriptionPrompt";
+import { FiEdit3 } from "react-icons/fi";
 
 export function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -20,8 +22,11 @@ export function PackageDetails() {
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] =
     useState(false);
+  const [isEditDescriptionModalVisible, setIsEditDescriptionModalVisible] =
+    useState(false);
   const postToBeEdited = useRef<AidPackageUpdateComment | null>(null);
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
+  const aidPackageToBeEdited = useRef<AidPackage | null>(null);
 
   useEffect(() => {
     fetchAidPackage();
@@ -70,6 +75,15 @@ export function PackageDetails() {
     }
   };
 
+  const handleDescriptionEdit = async (editedAidPackage: AidPackage) => {
+    const { data } = await AidPackageService.updateAidPackage({
+      ...aidPackage!,
+      description: editedAidPackage.description,
+    });
+    setAidPackage(data);
+    setIsEditDescriptionModalVisible(false);
+  };
+
   const handleNewComment = async (comment: string) => {
     await AidPackageService.upsertUpdateComment(packageId!, {
       packageUpdateID: 0,
@@ -113,6 +127,11 @@ export function PackageDetails() {
     setIsEditPostModalVisible(true);
   };
 
+  const handleEditDescriptionButtonClick = (aidPackage: AidPackage) => {
+    aidPackageToBeEdited.current = aidPackage;
+    setIsEditDescriptionModalVisible(true);
+  };
+
   const handleStatusPostEdit = async (comment: AidPackageUpdateComment) => {
     await AidPackageService.upsertUpdateComment(packageId!, comment);
     await fetchUpdateComments();
@@ -142,13 +161,30 @@ export function PackageDetails() {
               onSave={handleStatusPostEdit}
             />
           </Modal>
+          <Modal
+            show={isEditDescriptionModalVisible}
+            onClose={() => setIsEditDescriptionModalVisible(false)}
+          >
+            <EditDescriptionPrompt
+              aidPackage={aidPackageToBeEdited.current!}
+              onSave={handleDescriptionEdit}
+            />
+          </Modal>
           <div>
             <Link to="/">Aid Packages</Link> &gt; {aidPackage.name}
           </div>
           <h1 className="packageName">{aidPackage.name}</h1>
           <div className="topContainer">
             <div className="descriptionArea">
-              <p className="heading">Description</p>
+              <div className="edit-desc">
+                <p className="heading">Description</p>
+
+                <FiEdit3
+                  className="desc-edit-icon"
+                  onClick={() => handleEditDescriptionButtonClick(aidPackage)}
+                />
+              </div>
+
               <p>{aidPackage.description}</p>
               <div>
                 <OrderItemsTable
