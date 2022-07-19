@@ -33,7 +33,7 @@ export default function EditOrderItemPrompt({
       await onSave(editedItem);
     } catch (e: any) {
       setErrorText(
-        e.response.data || "Something went wrong. Couldn't edit the post."
+        e.response.data || "Something went wrong. Couldn't edit the item."
       );
     }
     setIsSaving(false);
