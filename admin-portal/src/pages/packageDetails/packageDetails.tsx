@@ -23,7 +23,7 @@ export function PackageDetails() {
   const postToBeEdited = useRef<AidPackageUpdateComment | null>(null);
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
 
-  const statusLevel = {
+  const statusToLevel = {
     Draft: 1,
     Published: 2,
     "Awaiting Payment": 3,
@@ -69,7 +69,7 @@ export function PackageDetails() {
       return;
     }
     if (aidPackage?.status) {
-      if (statusLevel[statusToBeChanged] < statusLevel[aidPackage.status]) {
+      if (statusToLevel[statusToBeChanged] < statusToLevel[aidPackage.status]) {
         alert("Sorry, you cannot change back to a previous status");
         return;
       }
