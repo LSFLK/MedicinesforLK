@@ -31,8 +31,13 @@ export default function EditOrderItemPrompt({
         quantity,
       };
       await onSave(editedItem);
-    } catch (e) {
-      setErrorText("Something went wrong. Couldn' edit the post.");
+    } catch (e: any) {
+      if (
+        e.response.data ==
+        "Medical Need Remaining Amount Exceeds Aid Package Item Amount"
+      )
+        setErrorText(e.response.data);
+      else setErrorText("Something went wrong. Couldn't edit the post.");
     }
     setIsSaving(false);
   };
@@ -41,6 +46,15 @@ export default function EditOrderItemPrompt({
     <div className="editOrderItemPrompt">
       <h4>Edit Order Item</h4>
       <div className="input">
+        <label htmlFor="orderItemQty">Initial Quantity</label>
+        <div>
+          <input
+            id="orderItemInitialQty"
+            value={orderItem.initialQuantity}
+            type="number"
+            readOnly
+          />
+        </div>
         <label htmlFor="orderItemQty">Quantity</label>
         <div>
           <input
