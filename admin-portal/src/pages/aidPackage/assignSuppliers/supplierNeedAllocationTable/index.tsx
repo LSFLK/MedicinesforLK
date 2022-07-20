@@ -1,7 +1,7 @@
 import { formatMoney } from "helpers/formatter";
 import { AidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
-import { useTable } from "react-table";
+import { useTable, CellValue } from "react-table";
 import { Quotation } from "../../../../types/Quotation";
 
 export function SupplierNeedAllocationTable({
@@ -65,6 +65,9 @@ export function SupplierNeedAllocationTable({
       {
         Header: "Max",
         accessor: "max",
+        Cell: ({ value }: { value: CellValue }) => (
+          <div>{value.toLocaleString()}</div>
+        ),
       },
       {
         Header: "Order Quantity",
@@ -107,8 +110,14 @@ export function SupplierNeedAllocationTable({
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+              {row.cells.map((cell, index) => {
+                return index != 4 ? (
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                ) : (
+                  <td {...cell.getCellProps()}>
+                    {cell.value.toLocaleString()}
+                  </td>
+                );
               })}
             </tr>
           );
