@@ -45,13 +45,9 @@ export default function NavBar() {
             </a>
           </>
         ) : (
-          <button
-            type="button"
-            className="login-btn"
-            onClick={() => handleLogin()}
-          >
+          <a href="/" className="login-btn" onClick={() => handleLogin()}>
             Login
-          </button>
+          </a>
         )}
       </div>
     </nav>
