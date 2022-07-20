@@ -1,0 +1,9 @@
+.editDescPrompt textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.editDescPrompt .errorText {
+  margin-bottom: 10px;
+  color: red;
+}
