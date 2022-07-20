@@ -3,7 +3,7 @@ import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { Pledge } from "../../types/Pledge";
 
-export class AidPackageService {
+export default class AidPackageService {
   static getAidPackages() {
     return adminHttp.get<AidPackage[]>("aidpackages");
   }

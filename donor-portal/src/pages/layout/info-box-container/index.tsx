@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-export function InfoBoxContainer({
+export default function InfoBoxContainer({
   children,
   style = {},
   className,

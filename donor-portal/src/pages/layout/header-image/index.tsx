@@ -1,7 +1,8 @@
-import { FullBleedContainer } from "../full-bleed-container";
+import React from "react";
+import FullBleedContainer from "../full-bleed-container";
 import "./styles.css";
 
-export function HeaderImage({
+export default function HeaderImage({
   imageUrl,
   children,
   style = {},
