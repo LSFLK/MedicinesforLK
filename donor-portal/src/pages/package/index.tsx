@@ -170,7 +170,7 @@ export default function AidPackageDetailsPage() {
                         name="amount"
                         className="pledge-amount-input"
                         defaultValue={pledge.amount}
-                        min={1}
+                        min={0}
                         max={
                           aidPackage.goalAmount -
                           aidPackage.receivedAmount +
