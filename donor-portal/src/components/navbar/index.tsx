@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
 import UserContext from "../../userContext";
 
@@ -22,18 +22,18 @@ export default function NavBar() {
         <div className="logo" />
       </Link>
       <div className="nav-links">
-        <Link to="/" className="nav-link">
+        <NavLink to="/" className="nav-link" exact>
           Home
-        </Link>
-        <Link to="/about-us" className="nav-link">
+        </NavLink>
+        <NavLink to="/about-us" className="nav-link">
           About
-        </Link>
-        <Link to="/donors" className="nav-link">
+        </NavLink>
+        <NavLink to="/donors" className="nav-link">
           Donors
-        </Link>
-        <Link to="/suppliers" className="nav-link">
+        </NavLink>
+        <NavLink to="/suppliers" className="nav-link">
           Hospital & Suppliers
-        </Link>
+        </NavLink>
         <Link to="/news-room" className="nav-link">
           Newsroom
         </Link>

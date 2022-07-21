@@ -161,7 +161,8 @@
   background-color: #fff;
 }
 
-.nav-link:hover::before {
+.nav-link:hover::before,
+.nav-link.active::before {
   bottom: 0;
   transform: rotate3d(1, 0, 0, 0deg);
 }
@@ -170,6 +171,7 @@
   border-right: 1px solid white;
 }
 
+.nav-link.active,
 .nav-link:hover {
   color: var(--elixir-color-gray-900);
   /* padding: 2rem; */
@@ -186,9 +188,9 @@
   font-weight: 700;
   text-decoration: none;
   position: relative;
-  top: 10px;
-  width: 75px;
-  height: 75px;
+  top: 30%;
+  width: 80px;
+  height: 80px;
   z-index: 1;
   text-align: center;
   line-height: 70px;
