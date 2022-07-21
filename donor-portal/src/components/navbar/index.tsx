@@ -22,32 +22,33 @@ export default function NavBar() {
         <div className="logo" />
       </Link>
       <div className="nav-links">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
         <Link to="/about-us" className="nav-link">
           About
         </Link>
-        <span>|</span>
         <Link to="/donors" className="nav-link">
           Donors
         </Link>
-        <span>|</span>
         <Link to="/suppliers" className="nav-link">
-          Hospital and Suppliers
+          Hospital & Suppliers
         </Link>
-        <span>|</span>
         <Link to="/news-room" className="nav-link">
           Newsroom
         </Link>
         {userId != null ? (
-          <>
-            <span>|</span>
-            <a href="/" className="nav-link" onClick={() => handleLogout()}>
-              Logout
-            </a>
-          </>
-        ) : (
-          <a href="/" className="login-btn" onClick={() => handleLogin()}>
-            Login
+          <a href="/" className="nav-link" onClick={() => handleLogout()}>
+            Logout
           </a>
+        ) : (
+          <button
+            className="login-btn"
+            type="button"
+            onClick={() => handleLogin()}
+          >
+            Login
+          </button>
         )}
       </div>
     </nav>
