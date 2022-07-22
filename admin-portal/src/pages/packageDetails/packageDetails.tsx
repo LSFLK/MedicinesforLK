@@ -96,7 +96,7 @@ export function PackageDetails() {
       ...aidPackage!,
       description: editedAidPackage.description,
     });
-    setAidPackage(data);
+    await fetchAidPackage();
     setIsEditDescriptionModalVisible(false);
   };
 
