@@ -82,10 +82,12 @@ export class AidPackageService {
   static postAidPackage({
     name,
     description,
+    status,
     aidPackageItems,
   }: {
     name: string;
     description: string;
+    status: AidPackage.Status;
     aidPackageItems: Array<{
       needID: number;
       quantity?: number;
@@ -97,6 +99,7 @@ export class AidPackageService {
       name,
       description,
       aidPackageItems,
+      status,
     });
   }
 }

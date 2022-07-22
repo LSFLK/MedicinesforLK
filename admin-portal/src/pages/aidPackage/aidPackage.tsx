@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { Stepper, Step } from "components/stepper";
-import { PageSelection } from "types/pages";
-import { Page } from "layout/page";
 import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
 import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
-
-import toast from "react-simple-toasts";
-
-import "./aidPackage.css";
 import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { MedicalNeed } from "../../types/MedicalNeeds";
+import { useAsyncDebounce } from "react-table";
+import { AidPackage as Package } from "types/AidPackage";
+import toast from "react-simple-toasts";
+import "./aidPackage.css";
 
 enum STEPS {
   ASSIGN_SUPPLIERS,
@@ -38,28 +36,38 @@ export function CreateAidPackage() {
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
   const [aidPackages, setAidPackages] = useState<AidPackages>({});
   const [isValidAssignment, setIsValidAssignment] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    MedicalNeedsService.getMedicalNeeds().then((response) => {
-      const needsArray = response.data;
-      setMedicalNeeds(needsArray);
-      setNeedAssignments(
-        needsArray.reduce(
-          (previousValue: NeedAssignments, currentValue: any) => {
-            previousValue[currentValue.needID] = new Map();
-            return previousValue;
-          },
-          {}
-        )
-      );
-    });
+    setIsLoading(true);
+
+    MedicalNeedsService.getMedicalNeeds()
+      .then((response) => {
+        const needsArray = response.data;
+        setMedicalNeeds(needsArray);
+        setNeedAssignments(
+          needsArray.reduce(
+            (previousValue: NeedAssignments, currentValue: any) => {
+              previousValue[currentValue.needID] = new Map();
+              return previousValue;
+            },
+            {}
+          )
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const goToStep = (step: STEPS) => {
     setCurrentFormStep(step);
   };
 
-  const handleAidPkgPublish = async (supplierID: number): Promise<any> => {
+  const handleAidPkgPublish = async (
+    supplierID: number,
+    status: Package.Status = Package.Status.Draft
+  ): Promise<any> => {
     const aidPackage = aidPackages[supplierID];
     const needs = Object.keys(needAssignments)
       .filter((needID) => {
@@ -76,6 +84,7 @@ export function CreateAidPackage() {
       return AidPackageService.postAidPackage({
         name: aidPackage.name,
         description: aidPackage.details,
+        status,
         aidPackageItems: needs.map((need) => {
           const medicalNeed = medicalNeeds.find(
             (currentNeed) => currentNeed.needID === need.id
@@ -123,24 +132,30 @@ export function CreateAidPackage() {
       </Stepper>
 
       <div className="create-aid-body">
-        {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
-          <AssignSuppliers
-            medicalNeeds={medicalNeeds}
-            needAssignments={needAssignments}
-            setNeedAssignments={setNeedAssignments}
-            aidPackages={aidPackages}
-            setIsValidAssignment={setIsValidAssignment}
-          />
-        )}
-        {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
-          <ManageAidPackages
-            medicalNeeds={medicalNeeds}
-            needAssignments={needAssignments}
-            setNeedAssignments={setNeedAssignments}
-            aidPackages={aidPackages}
-            setAidPackages={setAidPackages}
-            handleAidPkgPublish={handleAidPkgPublish}
-          />
+        {isLoading ? (
+          <p>Loading Aid Packages...</p>
+        ) : (
+          <>
+            {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
+              <AssignSuppliers
+                medicalNeeds={medicalNeeds}
+                needAssignments={needAssignments}
+                setNeedAssignments={setNeedAssignments}
+                aidPackages={aidPackages}
+                setIsValidAssignment={setIsValidAssignment}
+              />
+            )}
+            {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
+              <ManageAidPackages
+                medicalNeeds={medicalNeeds}
+                needAssignments={needAssignments}
+                setNeedAssignments={setNeedAssignments}
+                aidPackages={aidPackages}
+                setAidPackages={setAidPackages}
+                handleAidPkgPublish={handleAidPkgPublish}
+              />
+            )}
+          </>
         )}
       </div>
 
@@ -162,6 +177,44 @@ export function CreateAidPackage() {
             Next
           </button>
         )}
+      </div>
+    </div>
+  );
+}
+
+export function GlobalFilter({
+  globalFilter,
+  setGlobalFilter,
+}: {
+  globalFilter: any;
+  setGlobalFilter: any;
+}) {
+  const [value, setValue] = useState(globalFilter);
+  const onChange = useAsyncDebounce((value) => {
+    setGlobalFilter(value || undefined);
+  }, 50);
+
+  return (
+    <div
+      className="packageTableSearch"
+      style={{
+        position: "sticky",
+        top: 0,
+        background: "white",
+        paddingBottom: "1rem",
+      }}
+    >
+      <div className="searchContainer">
+        <img src="/assets/svg/search_icon.svg" />
+        <input
+          placeholder="Search"
+          className="textField"
+          value={value || ""}
+          onChange={(e) => {
+            setValue(e.target.value);
+            onChange(e.target.value);
+          }}
+        />
       </div>
     </div>
   );

@@ -18,6 +18,10 @@
   border: 1px solid var(--elixir-color-red);
 }
 
+.create-aid-container .suppliers-cell {
+  font-size: 0.75rem;
+}
+
 .create-aid-body .need-validation-row {
   background-color: var(--elixir-color-red);
   color: var(--elixir-color-white);

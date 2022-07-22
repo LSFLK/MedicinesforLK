@@ -1,9 +1,9 @@
-import { FullBleedContainer } from "../layout/full-bleed-container";
-import { HeaderImage } from "../layout/header-image";
-import { Page } from "../layout/page";
+import React from "react";
+import HeaderImage from "../layout/header-image";
+import Page from "../layout/page";
 import "./styles.css";
 
-export function NewsRoom() {
+export default function NewsRoom() {
   return (
     <Page className="news-room">
       <HeaderImage imageUrl="https://images.unsplash.com/photo-1544991936-9464fa9919d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
@@ -48,7 +48,7 @@ export function NewsRoom() {
           <span>Mr. Zafran Packeerally</span>
           <span>[T] +94 70 378 8685</span>
           <span>
-            [E]{""}
+            [E]
             <a href="mailto:zafran.packeerally@redcross.lk">
               zafran.packeerally@redcross.lk
             </a>
@@ -74,7 +74,7 @@ export function NewsRoom() {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        />
       </div>
 
       <div className="news-article-list">
