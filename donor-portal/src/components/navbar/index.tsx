@@ -34,9 +34,9 @@ export default function NavBar() {
         <NavLink to="/suppliers" className="nav-link">
           Hospital & Suppliers
         </NavLink>
-        <Link to="/news-room" className="nav-link">
+        <NavLink to="/news-room" className="nav-link">
           Newsroom
-        </Link>
+        </NavLink>
         {userId != null ? (
           <a href="/" className="nav-link" onClick={() => handleLogout()}>
             Logout
