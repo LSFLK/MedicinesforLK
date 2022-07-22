@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
 import UserContext from "../../userContext";
 
@@ -22,32 +22,33 @@ export default function NavBar() {
         <div className="logo" />
       </Link>
       <div className="nav-links">
-        <Link to="/about-us" className="nav-link">
+        <NavLink to="/" className="nav-link" exact>
+          Home
+        </NavLink>
+        <NavLink to="/about-us" className="nav-link">
           About
-        </Link>
-        <span>|</span>
-        <Link to="/donors" className="nav-link">
+        </NavLink>
+        <NavLink to="/donors" className="nav-link">
           Donors
-        </Link>
-        <span>|</span>
-        <Link to="/suppliers" className="nav-link">
-          Hospital and Suppliers
-        </Link>
-        <span>|</span>
-        <Link to="/news-room" className="nav-link">
+        </NavLink>
+        <NavLink to="/suppliers" className="nav-link">
+          Hospital & Suppliers
+        </NavLink>
+        <NavLink to="/news-room" className="nav-link">
           Newsroom
-        </Link>
+        </NavLink>
         {userId != null ? (
-          <>
-            <span>|</span>
-            <a href="/" className="nav-link" onClick={() => handleLogout()}>
-              Logout
-            </a>
-          </>
-        ) : (
-          <a href="/" className="login-btn" onClick={() => handleLogin()}>
-            Login
+          <a href="/" className="nav-link" onClick={() => handleLogout()}>
+            Logout
           </a>
+        ) : (
+          <button
+            className="login-btn"
+            type="button"
+            onClick={() => handleLogin()}
+          >
+            Login
+          </button>
         )}
       </div>
     </nav>
