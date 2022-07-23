@@ -110,13 +110,22 @@
   font-weight: 600;
 }
 
+.footer-black-bottom:hover a {
+  padding: 0 18px;
+}
+
 .footer-black-bottom span {
   color: white;
 }
 
 .text-link {
   color: white;
-  padding: 0 2rem;
+  padding: 0 25px;
+  transition: all 0.5s;
+}
+
+a.text-link:hover {
+  padding: 0 60px;
 }
 
 .text-link:not(:last-child) {
