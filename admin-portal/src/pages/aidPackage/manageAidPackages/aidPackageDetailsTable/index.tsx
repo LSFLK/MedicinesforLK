@@ -1,28 +1,43 @@
+import {
+  getDraftAidPackageKey,
+  getSupplierIdFromAidPackageKey,
+} from "helpers/aidPackageHelper";
 import { formatMoney, formatNumber } from "helpers/formatter";
 import { getNeedFromId, getSupplierQuoteForNeed } from "helpers/needsHelper";
 import { useMemo } from "react";
 import { useTable } from "react-table";
 import { MedicalNeed } from "types/MedicalNeeds";
-import { AidPackage, NeedAssignments } from "../../aidPackage";
+import { DraftAidPackage, NeedAssignments } from "../../aidPackage";
 
 export function AidPackageDetailsTable({
   selectedPackage,
-  supplierID,
+  selectedPackageKey,
   needAssignments,
   updateAidPackage,
   medicalNeeds,
 }: {
-  selectedPackage: { name: string; details: string };
-  supplierID: number;
+  selectedPackage: DraftAidPackage;
+  selectedPackageKey: string;
   needAssignments: NeedAssignments;
-  updateAidPackage: (updatedAidPackages: AidPackage) => void;
+  updateAidPackage: (updatedAidPackages: DraftAidPackage) => void;
   medicalNeeds: MedicalNeed[];
 }) {
+  const supplierID = getSupplierIdFromAidPackageKey(selectedPackageKey);
+
   const data = useMemo(
     () =>
       Object.keys(needAssignments)
         .filter((needID) => {
           return needAssignments[needID].has(supplierID);
+        })
+        .filter((needID) => {
+          const supplierQuote = getSupplierQuoteForNeed({
+            medicalNeeds,
+            needID: Number(needID),
+            supplierID,
+          });
+
+          return selectedPackageKey == getDraftAidPackageKey(supplierQuote!);
         })
         .map((needID) => {
           const need = getNeedFromId(medicalNeeds, Number(needID));
@@ -42,7 +57,7 @@ export function AidPackageDetailsTable({
             totalCost: formatMoney(totalCost),
           };
         }),
-    [needAssignments, medicalNeeds, supplierID]
+    [needAssignments, medicalNeeds, selectedPackageKey, supplierID]
   );
 
   const columns = useMemo(

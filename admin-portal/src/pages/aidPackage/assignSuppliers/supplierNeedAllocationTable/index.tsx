@@ -1,5 +1,6 @@
+import { getDraftAidPackageKey } from "helpers/aidPackageHelper";
 import { formatMoney } from "helpers/formatter";
-import { AidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
+import { DraftAidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
 import { useTable, CellValue } from "react-table";
 import { Quotation } from "../../../../types/Quotation";
@@ -15,7 +16,7 @@ export function SupplierNeedAllocationTable({
   setAssignmentForSupplier: any;
   requiredQuantity: number;
   assignmentsForSupplier: NeedAssignment;
-  aidPackages: AidPackages;
+  aidPackages: DraftAidPackages;
 }) {
   supplierQuotes = supplierQuotes || [];
 
@@ -32,7 +33,7 @@ export function SupplierNeedAllocationTable({
           quantity,
           max: Math.min(requiredQuantity, quote.availableQuantity),
           supplierID: quote.supplierID,
-          published: aidPackages?.[quote.supplierID]?.isPublished,
+          published: aidPackages?.[getDraftAidPackageKey(quote)]?.isPublished,
           unitPrice: formatMoney(quote.unitPrice),
           total: formatMoney((quantity || 0) * quote.unitPrice),
         };

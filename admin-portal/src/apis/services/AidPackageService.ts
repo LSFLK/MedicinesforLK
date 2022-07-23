@@ -3,6 +3,7 @@ import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
+import { Quotation } from "types/Quotation";
 
 export class AidPackageService {
   static http: Http;
@@ -88,6 +89,7 @@ export class AidPackageService {
     name: string;
     description: string;
     status: AidPackage.Status;
+    period: Quotation["period"];
     aidPackageItems: Array<{
       needID: number;
       quantity?: number;
