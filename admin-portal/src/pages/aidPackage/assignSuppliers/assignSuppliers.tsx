@@ -4,6 +4,7 @@ import { AidPackages, GlobalFilter, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
 import "./assignSuppliers.css";
+import moment from "moment";
 
 export function AssignSuppliers({
   needAssignments,
@@ -66,7 +67,7 @@ export function AssignSuppliers({
         unit: need.medicalItem.unit,
         beneficiary: need.beneficiary?.name,
         urgency: need.urgency,
-        period: periodDate.toLocaleDateString(),
+        period: moment(periodDate).format("DD/MM/YYYY"),
         requiredQuantity: need.neededQuantity,
         remainingQuantity,
         suppliers: need.supplierQuotes
@@ -119,7 +120,12 @@ export function AssignSuppliers({
         accessor: "unit",
       },
       {
-        Header: "Period",
+        Header: () => (
+          <>
+            <p>Period</p>
+            <small className="table-sub-header">DD/MM/YY</small>
+          </>
+        ),
         accessor: "period",
       },
       {

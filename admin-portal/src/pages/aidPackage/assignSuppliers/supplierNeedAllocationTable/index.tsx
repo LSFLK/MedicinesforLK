@@ -1,4 +1,5 @@
 import { formatMoney } from "helpers/formatter";
+import moment from "moment";
 import { AidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
 import { useTable, CellValue } from "react-table";
@@ -27,8 +28,12 @@ export function SupplierNeedAllocationTable({
         return {
           supplier: quote.supplier.name,
           brandName: quote.brandName,
-          expiryDate: `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`,
-          period: `${quote.period.day}/${quote.period.month}/${quote.period.year}`,
+          expiryDate: moment(
+            `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`
+          ).format("MM/DD/YYYY"),
+          period: moment(
+            `${quote.period.day}/${quote.period.month}/${quote.period.year}`
+          ).format("MM/DD/YYYY"),
           quantity,
           max: Math.min(requiredQuantity, quote.availableQuantity),
           supplierID: quote.supplierID,
@@ -51,11 +56,21 @@ export function SupplierNeedAllocationTable({
         accessor: "brandName",
       },
       {
-        Header: "Period",
+        Header: () => (
+          <>
+            <p>Period</p>
+            <small className="table-sub-header">DD/MM/YY</small>
+          </>
+        ),
         accessor: "period",
       },
       {
-        Header: "Expiry Date",
+        Header: () => (
+          <>
+            <p>Expiry Date</p>
+            <small className="table-sub-header">DD/MM/YY</small>
+          </>
+        ),
         accessor: "expiryDate",
       },
       {
