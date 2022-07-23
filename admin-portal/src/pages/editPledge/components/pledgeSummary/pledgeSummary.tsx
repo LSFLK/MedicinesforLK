@@ -3,6 +3,7 @@ import "./pledgeSummary.css";
 import { Donor } from "../../../../types/Donor";
 import { Pledge } from "../../../../types/Pledge";
 import { AidPackage } from "types/AidPackage";
+import { stat } from "fs";
 
 interface PledgeSummaryProps {
   donor: Donor;
@@ -32,35 +33,34 @@ export default function PledgeSummary({
   const [paymentInitatedActive, setPatmetInitiatedActive] = useState<boolean>();
   const [paymentComfirm, setPaymentConfirActive] = useState<boolean>();
 
+  const statusToAllowedPackages = {
+    pulished: [AidPackage.Status.Published],
+    awaitPayment: [AidPackage.Status.AwaitingPayment],
+    paymentConfirm: [
+      AidPackage.Status.Delivered,
+      AidPackage.Status.Ordered,
+      AidPackage.Status.ReceivedAtMOH,
+      AidPackage.Status.Shipped,
+    ],
+  };
+
   function getPledgeStatus(status: AidPackage.Status) {
-    switch (status) {
-      case AidPackage.Status.Draft:
-        setPledgeActice(false);
-        setPatmetInitiatedActive(false);
-        setPaymentConfirActive(false);
-        break;
-      case AidPackage.Status.Published:
-        setPledgeActice(false);
-        setPatmetInitiatedActive(true);
-        setPaymentConfirActive(true);
-        break;
-      case AidPackage.Status.AwaitingPayment:
-        setPledgeActice(true);
-        setPatmetInitiatedActive(false);
-        setPaymentConfirActive(false);
-        break;
-      case AidPackage.Status.ReceivedAtMOH:
-      case AidPackage.Status.Shipped:
-      case AidPackage.Status.Ordered:
-      case AidPackage.Status.Delivered:
-        setPledgeActice(true);
-        setPatmetInitiatedActive(true);
-        setPaymentConfirActive(false);
-        break;
-      default:
-        setPledgeActice(true);
-        setPatmetInitiatedActive(true);
-        setPaymentConfirActive(false);
+    if (statusToAllowedPackages.pulished.includes(status)) {
+      setPledgeActice(false);
+      setPatmetInitiatedActive(true);
+      setPaymentConfirActive(true);
+    }
+
+    if (statusToAllowedPackages.awaitPayment.includes(status)) {
+      setPledgeActice(true);
+      setPatmetInitiatedActive(false);
+      setPaymentConfirActive(false);
+    }
+
+    if (statusToAllowedPackages.paymentConfirm.includes(status)) {
+      setPledgeActice(true);
+      setPatmetInitiatedActive(true);
+      setPaymentConfirActive(false);
     }
   }
 
