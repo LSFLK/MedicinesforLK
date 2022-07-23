@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTable, useExpanded, useGlobalFilter, CellValue } from "react-table";
-import { AidPackages, GlobalFilter, NeedAssignments } from "../aidPackage";
+import { DraftAidPackages, GlobalFilter, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
 import "./assignSuppliers.css";
@@ -16,7 +16,7 @@ export function AssignSuppliers({
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
   medicalNeeds: MedicalNeed[];
-  aidPackages: AidPackages;
+  aidPackages: DraftAidPackages;
   setIsValidAssignment: (isValid: boolean) => void;
 }) {
   const getAssignedCount = (

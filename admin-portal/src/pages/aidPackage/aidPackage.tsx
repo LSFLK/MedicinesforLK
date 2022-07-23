@@ -6,8 +6,9 @@ import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
 import { AidPackageService } from "apis/services/AidPackageService";
 import { MedicalNeed } from "../../types/MedicalNeeds";
 import { useAsyncDebounce } from "react-table";
-import { AidPackage as Package } from "types/AidPackage";
+import { AidPackage } from "types/AidPackage";
 import toast from "react-simple-toasts";
+import { Quotation } from "types/Quotation";
 import "./aidPackage.css";
 
 enum STEPS {
@@ -21,20 +22,22 @@ export type NeedAssignments = {
   [needID: string]: NeedAssignment;
 };
 
-export type AidPackage = {
+export type DraftAidPackage = {
+  supplierID: number;
+  period: Quotation["period"];
   name: string;
   details: string;
   isPublished?: boolean;
 };
-export type AidPackages = {
-  [supplierID: number]: AidPackage;
+export type DraftAidPackages = {
+  [key: string]: DraftAidPackage;
 };
 
 export function CreateAidPackage() {
   const [currentFormStep, setCurrentFormStep] = useState(0);
   const [needAssignments, setNeedAssignments] = useState<NeedAssignments>({});
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
-  const [aidPackages, setAidPackages] = useState<AidPackages>({});
+  const [aidPackages, setAidPackages] = useState<DraftAidPackages>({});
   const [isValidAssignment, setIsValidAssignment] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -66,10 +69,12 @@ export function CreateAidPackage() {
 
   const handleAidPkgPublish = async (
     supplierID: number,
-    status: Package.Status = Package.Status.Draft
+    packageKey: string,
+    status: AidPackage.Status = AidPackage.Status.Draft
   ): Promise<any> => {
-    const aidPackage = aidPackages[supplierID];
+    const aidPackage = aidPackages[packageKey];
     const needs = Object.keys(needAssignments)
+      .map(Number)
       .filter((needID) => {
         return needAssignments[needID].has(supplierID);
       })
@@ -85,6 +90,7 @@ export function CreateAidPackage() {
         name: aidPackage.name,
         description: aidPackage.details,
         status,
+        period: aidPackage.period,
         aidPackageItems: needs.map((need) => {
           const medicalNeed = medicalNeeds.find(
             (currentNeed) => currentNeed.needID === need.id
@@ -106,7 +112,7 @@ export function CreateAidPackage() {
            * flags the package to be removed from
            * table.
            */
-          aidPackages[supplierID].isPublished = true;
+          aidPackages[packageKey].isPublished = true;
           setAidPackages({ ...aidPackages });
         })
         .catch((error) => {

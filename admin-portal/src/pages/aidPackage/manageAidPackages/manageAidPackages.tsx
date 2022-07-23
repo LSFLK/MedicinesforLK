@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
-import { AidPackage, AidPackages, NeedAssignments } from "../aidPackage";
+import {
+  DraftAidPackage,
+  DraftAidPackages,
+  NeedAssignments,
+} from "../aidPackage";
 import { AidPackageDetailsTable } from "./aidPackageDetailsTable";
 import { AidPackageTable } from "./aidPackagesTable";
 import "./manageAidPackages.css";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
+import { getSupplierQuoteForNeed } from "helpers/needsHelper";
+import {
+  getDraftAidPackageKey,
+  getPeriodFromAidPackageKey,
+  getSupplierIdFromAidPackageKey,
+} from "helpers/aidPackageHelper";
 
 export function ManageAidPackages({
   medicalNeeds,
@@ -16,42 +26,54 @@ export function ManageAidPackages({
   medicalNeeds: MedicalNeed[];
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
-  aidPackages: AidPackages;
-  setAidPackages: (aidPackages: AidPackages) => void;
-  handleAidPkgPublish: (supplier: number) => Promise<void>;
+  aidPackages: DraftAidPackages;
+  setAidPackages: (aidPackages: DraftAidPackages) => void;
+  handleAidPkgPublish: (supplier: number, packageKey: string) => Promise<void>;
 }) {
-  const [selectedPackage, setSelectedPackage] = useState<number | null>();
+  const [selectedPackageKey, setSelectedPackageKey] = useState<string | null>();
 
   useEffect(() => {
-    // get the list of suppliers assigned to a need
-    const suppliers = new Set<number>();
+    // get the list of need assignment keys
+    const draftAidPackageKeys = new Set<string>();
     Object.keys(needAssignments).forEach((needID) => {
       needAssignments[needID].forEach((qty, supplierID) => {
-        suppliers.add(supplierID);
+        const quote = getSupplierQuoteForNeed({
+          medicalNeeds,
+          needID: Number(needID),
+          supplierID,
+        });
+
+        draftAidPackageKeys.add(getDraftAidPackageKey(quote!));
       });
     });
 
     // return early if suppliers have not changed
-    const sortedCurrentSupplierIds = Object.keys(aidPackages)
-      .map(Number)
-      .sort();
-    const sortedSupplierIds = Array.from(suppliers.keys()).sort();
+    const sortedCurrentSupplierIds = Object.keys(aidPackages).sort();
+    const sortedSupplierIds = Array.from(draftAidPackageKeys.keys()).sort();
     if (
       JSON.stringify(sortedCurrentSupplierIds) !==
       JSON.stringify(sortedSupplierIds)
     ) {
       // create aid package for each supplier (aid package + #)
-      const syncedAidPackages: AidPackages = {};
-      Array.from(suppliers).forEach((supplierID, index) => {
-        if (aidPackages[supplierID]) {
-          syncedAidPackages[supplierID] = aidPackages[supplierID];
+      const syncedAidPackages: DraftAidPackages = {};
+
+      Array.from(draftAidPackageKeys).forEach((draftAidPackageKey) => {
+        const period = getPeriodFromAidPackageKey(draftAidPackageKey);
+        const supplierID = getSupplierIdFromAidPackageKey(draftAidPackageKey);
+
+        if (aidPackages[draftAidPackageKey]) {
+          syncedAidPackages[draftAidPackageKey] =
+            aidPackages[draftAidPackageKey];
         } else {
-          syncedAidPackages[supplierID] = {
-            name: `AidPackage ${index + 1}`,
+          syncedAidPackages[draftAidPackageKey] = {
+            name: `Supplier - ${supplierID} Package - ${period.year}/${period.month}/${period.day}`,
             details: "",
+            period,
+            supplierID,
           };
         }
       });
+
       setAidPackages(syncedAidPackages);
     }
   }, [setAidPackages, aidPackages, needAssignments]);
@@ -60,21 +82,21 @@ export function ManageAidPackages({
     <>
       <AidPackageTable
         aidPackages={aidPackages}
-        setSelectedPackage={setSelectedPackage}
+        setSelectedPackage={setSelectedPackageKey}
         handleAidPkgPublish={handleAidPkgPublish}
         medicalNeeds={medicalNeeds}
         needAssignments={needAssignments}
       />
-      {selectedPackage && (
+      {selectedPackageKey && (
         <AidPackageDetailsTable
-          selectedPackage={aidPackages[selectedPackage]}
-          updateAidPackage={(updatedPackage: AidPackage) => {
+          selectedPackage={aidPackages[selectedPackageKey]}
+          updateAidPackage={(updatedPackage: DraftAidPackage) => {
             setAidPackages({
               ...aidPackages,
-              [selectedPackage]: updatedPackage,
+              [selectedPackageKey]: updatedPackage,
             });
           }}
-          supplierID={selectedPackage}
+          selectedPackageKey={selectedPackageKey}
           needAssignments={needAssignments}
           medicalNeeds={medicalNeeds}
         />
