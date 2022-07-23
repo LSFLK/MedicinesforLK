@@ -128,6 +128,7 @@ export default function EditPledge() {
             donor={pledge.donor}
             pledge={pledge}
             onStatusChange={handleStatusChange}
+            aidStatus={aidPackage.status}
           />
           <PledgeActivities
             activities={activities}
