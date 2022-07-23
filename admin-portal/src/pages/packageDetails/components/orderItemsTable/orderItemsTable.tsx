@@ -19,6 +19,8 @@ export default function OrderItemsTable({
         <tr>
           <th>Item Name</th>
           <th>Quantity</th>
+          <th>Supplier</th>
+          <th>Period</th>
           <th />
         </tr>
       </thead>
@@ -27,6 +29,10 @@ export default function OrderItemsTable({
           <tr key={item.packageItemID}>
             <td>{item.quotation.brandName}</td>
             <td>{item.quantity}</td>
+            <td>{item.quotation.supplier.name}</td>
+            <td>
+              {item.period.day}/{item.period.month}/{item.period.year}
+            </td>
             <td className="actions">
               <button onClick={() => onEditItemButtonClick(item)}>Edit</button>
               <button
