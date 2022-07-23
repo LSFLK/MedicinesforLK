@@ -11,7 +11,6 @@ interface PledgeSummaryProps {
   aidStatus: AidPackage.Status;
 }
 
-
 export default function PledgeSummary({
   donor,
   pledge,
@@ -62,7 +61,6 @@ export default function PledgeSummary({
         setPledgeActice(true);
         setPatmetInitiatedActive(true);
         setPaymentConfirActive(false);
-        
     }
   }
 
@@ -80,10 +78,26 @@ export default function PledgeSummary({
       </div>
       <div className="heading">Status:</div>
       <div>
-        <select value={pledge.status} placeholder={pledge.status} onChange={handleStatusChange} >
-            <option  value={Pledge.Status.Pledged} disabled={pledgeActive}>{Pledge.Status.Pledged}</option>
-            <option  value={Pledge.Status.PaymentInitiated} disabled={paymentInitatedActive}>{Pledge.Status.PaymentInitiated}</option>
-            <option  value={Pledge.Status.PaymentConfirmed} disabled={paymentComfirm}>{Pledge.Status.PaymentConfirmed}</option>
+        <select
+          value={pledge.status}
+          placeholder={pledge.status}
+          onChange={handleStatusChange}
+        >
+          <option value={Pledge.Status.Pledged} disabled={pledgeActive}>
+            {Pledge.Status.Pledged}
+          </option>
+          <option
+            value={Pledge.Status.PaymentInitiated}
+            disabled={paymentInitatedActive}
+          >
+            {Pledge.Status.PaymentInitiated}
+          </option>
+          <option
+            value={Pledge.Status.PaymentConfirmed}
+            disabled={paymentComfirm}
+          >
+            {Pledge.Status.PaymentConfirmed}
+          </option>
         </select>
       </div>
     </div>
