@@ -1,9 +1,12 @@
-import { adminHttp, donorHttp } from "../httpCommon";
+import Http, { adminHttp } from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { Pledge } from "../../types/Pledge";
 
 export class AidPackageService {
+  static adminHttp: Http;
+  static donorHttp: Http;
+
   static getAidPackages() {
     return adminHttp.get<AidPackage[]>("aidpackages");
   }
@@ -13,23 +16,28 @@ export class AidPackageService {
   }
 
   static getPledgedAidPackages(donorId: string) {
-    return donorHttp.get<AidPackage[]>(`${donorId}/aidpackages`);
+    return AidPackageService.donorHttp.get<AidPackage[]>(
+      `${donorId}/aidpackages`
+    );
   }
 
   static getUpdateComments(packageID: number | string) {
-    return adminHttp.get<AidPackageUpdateComment[]>(
+    return AidPackageService.adminHttp.get<AidPackageUpdateComment[]>(
       `aidpackages/${packageID}/updatecomments`
     );
   }
 
   static getDonorPledgesByAidPackage(donorId: string, packageId: string) {
-    return donorHttp.get<Pledge[]>(
+    return AidPackageService.donorHttp.get<Pledge[]>(
       `${donorId}/aidpackages/${packageId}/pledges`
     );
   }
 
   static postPledge(donorId: string, packageId: string, pledge: Pledge) {
-    return donorHttp.post(`${donorId}/aidpackages/${packageId}/pledge`, pledge);
+    return AidPackageService.donorHttp.post<Pledge, Pledge>(
+      `${donorId}/aidpackages/${packageId}/pledge`,
+      pledge
+    );
   }
 
   static updatePledge(
@@ -38,7 +46,7 @@ export class AidPackageService {
     pledgeID: number,
     updatedPledge: Pledge
   ) {
-    return donorHttp.put(
+    return AidPackageService.donorHttp.put<Pledge, Pledge>(
       `${donorId}/aidpackages/${packageId}/pledges/${pledgeID}`,
       updatedPledge
     );

@@ -6,6 +6,7 @@ import UserContext from "../../userContext";
 import { Link } from "react-router-dom";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageService } from "../../apis/services/AidPackageService";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 enum TabItems {
   GOAL_PENDING,
@@ -15,6 +16,7 @@ enum TabItems {
 
 export function Home() {
   const userId = useContext(UserContext);
+  const { state } = useAuthContext();
   const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
     AidPackage[]
   >([]);
@@ -29,11 +31,11 @@ export function Home() {
   );
 
   useEffect(() => {
-    if (userId != null) {
+    if (userId !== null && state.isAuthenticated) {
       fetchPledgedAidPackages(userId);
       setActiveTabItem(TabItems.MY_PLEDGES);
     }
-  }, [userId]);
+  }, [userId, state.isAuthenticated]);
 
   useEffect(() => {
     fetchAidPackages();
@@ -79,7 +81,7 @@ export function Home() {
         <h1>Aid Packages</h1>
 
         <div className="goal-filter">
-          {userId && (
+          {state.isAuthenticated && userId && (
             <button
               className={`btn ${
                 activeTabItem !== TabItems.MY_PLEDGES && "secondary"
@@ -140,7 +142,8 @@ export function Home() {
             })}
         </>
         <>
-          {userId &&
+          {state.isAuthenticated &&
+            userId &&
             activeTabItem == TabItems.MY_PLEDGES &&
             alreadyPledgedAidPackages.length === 0 && (
               <p>
@@ -154,7 +157,8 @@ export function Home() {
                 to find pledge-able aid packages.
               </p>
             )}
-          {userId &&
+          {state.isAuthenticated &&
+            userId &&
             activeTabItem == TabItems.MY_PLEDGES &&
             alreadyPledgedAidPackages.map((aidPackage) => {
               return (

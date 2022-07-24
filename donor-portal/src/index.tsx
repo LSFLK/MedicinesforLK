@@ -6,14 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProvider, Storage } from "@asgardeo/auth-react";
 import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
 
-import { default as authConfig } from "./config.json";
+import { default as authConfig } from "./config";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <AuthProvider
-    config={{ ...authConfig, storage: "webWorker" as Storage.WebWorker }}
+    config={{ ...authConfig, storage: "sessionStorage" as Storage.SessionStorage }}
     plugin={TokenExchangePlugin.getInstance()}
   >
     <App />

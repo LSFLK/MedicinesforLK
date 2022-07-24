@@ -14,10 +14,12 @@ import UpdateComments from "./components/updateComments";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import UserContext from "../../userContext";
 import { Pledge } from "../../types/Pledge";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 export function AidPackageDetailsPage() {
   const { id: packageId } = useParams<{ id: string }>();
   const userId = useContext(UserContext);
+  const { state } = useAuthContext();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [pledge, setPledge] = useState<Pledge | null>(null);
   const [updateComments, setUpdateComments] = useState<
@@ -35,8 +37,9 @@ export function AidPackageDetailsPage() {
   }, []);
 
   useEffect(() => {
-    if (userId != null) fetchPledge(userId, packageId);
-  }, [userId]);
+    if (userId !== null && state.isAuthenticated)
+      fetchPledge(userId, packageId);
+  }, [userId, state.isAuthenticated]);
 
   const fetchAidPackage = async () => {
     setIsLoading(true);
@@ -141,7 +144,7 @@ export function AidPackageDetailsPage() {
                 max={aidPackage.goalAmount as number}
                 className="aid-pacakge-progress-bar"
               />
-              {userId == null && (
+              {userId === null && !state.isAuthenticated && (
                 <button
                   className="btn aid-package-donate-btn"
                   onClick={handleDonateClick}
@@ -151,7 +154,7 @@ export function AidPackageDetailsPage() {
               )}
             </div>
             <div>
-              {userId != null && (
+              {userId !== null && state.isAuthenticated && (
                 <>
                   {pledge != null ? (
                     <>

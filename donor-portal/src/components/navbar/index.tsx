@@ -1,19 +1,48 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { useContext } from "react";
 import UserContext from "../../userContext";
+import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
 export function NavBar() {
-  const userId = useContext(UserContext);
+  // const userId = useContext(UserContext);
+  const { state, signIn, signOut, on } = useAuthContext();
+
+  useEffect(() => {
+    on(Hooks.SignOut, () => {
+      //setHasLogoutFailureError(false);
+    });
+  }, [on]);
+
+  useEffect(() => {
+    if (!state?.isAuthenticated) {
+      return;
+    }
+    // (async (): Promise<void> => {
+    //   const basicUserInfo = await getBasicUserInfo();
+    //   const idToken = await getIDToken();
+    //   const decodedIDToken = await getDecodedIDToken();
+
+    //   const derivedState = {
+    //     authenticateResponse: basicUserInfo,
+    //     idToken: idToken?.split("."),
+    //     decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
+    //     decodedIDTokenPayload: decodedIDToken
+    //   };
+
+    //   setDerivedAuthenticationState(derivedState);
+    // })();
+  }, [state?.isAuthenticated]);
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedInUserId");
-    window.location.href = "/";
+    // localStorage.removeItem("loggedInUserId");
+    // window.location.href = "/";
+    signOut();
   };
 
   const handleLogin = () => {
-    localStorage.setItem("loggedInUserId", "2");
-    window.location.href = "/";
+    signIn();
   };
 
   return (
@@ -37,7 +66,7 @@ export function NavBar() {
         <Link to="/news-room" className="nav-link">
           Newsroom
         </Link>
-        {userId != null ? (
+        {state.isAuthenticated ? (
           <>
             <span>|</span>
             <a className="nav-link" onClick={() => handleLogout()}>
