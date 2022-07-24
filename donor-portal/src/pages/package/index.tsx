@@ -3,6 +3,7 @@
  */
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
 import SimpleProgressBar from "../../components/progress-bar";
 import Page from "../layout/page";
 import "./styles.css";
@@ -14,7 +15,6 @@ import UpdateComments from "./components/updateComments";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import UserContext from "../../userContext";
 import { Pledge } from "../../types/Pledge";
-import { useAuthContext } from "@asgardeo/auth-react";
 
 export default function AidPackageDetailsPage() {
   const { id: packageId } = useParams<{ id: string }>();
@@ -30,29 +30,12 @@ export default function AidPackageDetailsPage() {
   const navigate = (path: string) => {
     history.push(path);
   };
-
-  useEffect(() => {
-    fetchAidPackage();
-    fetchUpdateComments();
-  }, []);
-
-  useEffect(() => {
-    if (userId !== null && state.isAuthenticated)
-      fetchPledge(userId, packageId);
-  }, [userId, state.isAuthenticated]);
-
   const fetchAidPackage = async () => {
     setIsLoading(true);
     const { data } = await AidPackageService.getAidPackage(packageId);
     setAidPackage(data);
     setIsLoading(false);
   };
-
-  const fetchUpdateComments = async () => {
-    const { data } = await AidPackageService.getUpdateComments(packageId);
-    setUpdateComments(data);
-  };
-
   const fetchPledge = async (donorId: string, pledgePackageId: string) => {
     const { data } = await AidPackageService.getDonorPledgesByAidPackage(
       donorId,
@@ -107,6 +90,21 @@ export default function AidPackageDetailsPage() {
     fetchPledge(userId, packageId);
     fetchAidPackage();
   };
+
+  const fetchUpdateComments = async () => {
+    const { data } = await AidPackageService.getUpdateComments(packageId);
+    setUpdateComments(data);
+  };
+
+  useEffect(() => {
+    fetchAidPackage();
+    fetchUpdateComments();
+  }, []);
+
+  useEffect(() => {
+    if (userId !== null && state.isAuthenticated)
+      fetchPledge(userId, packageId);
+  }, [userId, state.isAuthenticated]);
 
   return (
     <>

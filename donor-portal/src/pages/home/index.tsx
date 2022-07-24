@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
 import HeaderImage from "../layout/header-image";
 import Page from "../layout/page";
 import "./styles.css";
 import UserContext from "../../userContext";
 import { AidPackage } from "../../types/AidPackage";
 import AidPackageService from "../../apis/services/AidPackageService";
-import { useAuthContext } from "@asgardeo/auth-react";
 
 enum TabItems {
   GOAL_PENDING,
@@ -81,17 +81,6 @@ export default function Home() {
     TabItems.GOAL_PENDING
   );
 
-  useEffect(() => {
-    if (userId !== null && state.isAuthenticated) {
-      fetchPledgedAidPackages(userId);
-      setActiveTabItem(TabItems.MY_PLEDGES);
-    }
-  }, [userId, state.isAuthenticated]);
-
-  useEffect(() => {
-    fetchAidPackages();
-  }, []);
-
   const fetchPledgedAidPackages = async (donorId: string) => {
     const returnedPledgedPackages =
       await AidPackageService.getPledgedAidPackages(donorId);
@@ -114,6 +103,17 @@ export default function Home() {
       )
     );
   };
+
+  useEffect(() => {
+    if (userId !== null && state.isAuthenticated) {
+      fetchPledgedAidPackages(userId);
+      setActiveTabItem(TabItems.MY_PLEDGES);
+    }
+  }, [userId, state.isAuthenticated]);
+
+  useEffect(() => {
+    fetchAidPackages();
+  }, []);
 
   return (
     <Page className="home-page">

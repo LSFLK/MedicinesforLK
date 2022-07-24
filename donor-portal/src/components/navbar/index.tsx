@@ -1,42 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
-import UserContext from "../../userContext";
-import { Hooks, useAuthContext } from "@asgardeo/auth-react";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 export default function NavBar() {
-  // const userId = useContext(UserContext);
-  const { state, signIn, signOut, on } = useAuthContext();
-
-  useEffect(() => {
-    on(Hooks.SignOut, () => {
-      //setHasLogoutFailureError(false);
-    });
-  }, [on]);
-
-  useEffect(() => {
-    if (!state?.isAuthenticated) {
-      return;
-    }
-    // (async (): Promise<void> => {
-    //   const basicUserInfo = await getBasicUserInfo();
-    //   const idToken = await getIDToken();
-    //   const decodedIDToken = await getDecodedIDToken();
-
-    //   const derivedState = {
-    //     authenticateResponse: basicUserInfo,
-    //     idToken: idToken?.split("."),
-    //     decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
-    //     decodedIDTokenPayload: decodedIDToken
-    //   };
-
-    //   setDerivedAuthenticationState(derivedState);
-    // })();
-  }, [state?.isAuthenticated]);
+  const { state, signIn, signOut } = useAuthContext();
 
   const handleLogout = () => {
-    // localStorage.removeItem("loggedInUserId");
-    // window.location.href = "/";
     signOut();
   };
 

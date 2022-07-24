@@ -5,6 +5,7 @@ import { Pledge } from "../../types/Pledge";
 
 export default class AidPackageService {
   static adminHttp: Http;
+
   static donorHttp: Http;
 
   static getAidPackages() {

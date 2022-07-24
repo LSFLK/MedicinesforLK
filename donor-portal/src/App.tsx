@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
 import FullBleedContainer from "./pages/layout/full-bleed-container";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
@@ -12,12 +13,11 @@ import "./App.css";
 import AidPackageDetailsPage from "./pages/package";
 import NewsRoom from "./pages/newsroom";
 import UserContext from "./userContext";
-import { useAuthContext } from "@asgardeo/auth-react";
 import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
 
 function App() {
-  const { httpRequest, signIn, trySignInSilently } = useAuthContext();
+  const { httpRequest, trySignInSilently } = useAuthContext();
   const [loggedInUserId, setLoggedInUserId] = useState<string | null>(null);
 
   // useEffect(() => {
