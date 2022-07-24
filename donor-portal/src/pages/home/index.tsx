@@ -187,7 +187,8 @@ export default function Home() {
               buttonText="Details"
             />
           ))}
-        {userId && state.isAuthenticated &&
+        {userId &&
+          state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.length === 0 && (
             <p>
@@ -202,7 +203,8 @@ export default function Home() {
               to find pledge-able aid packages.
             </p>
           )}
-        {userId && state.isAuthenticated &&
+        {userId &&
+          state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.map((aidPackage) => (
             <PackageCard
