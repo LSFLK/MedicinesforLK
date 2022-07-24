@@ -13,7 +13,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <AuthProvider
-    config={{ ...authConfig, storage: "sessionStorage" as Storage.SessionStorage }}
+    config={{
+      ...authConfig,
+      storage: "sessionStorage" as Storage.SessionStorage,
+    }}
     plugin={TokenExchangePlugin.getInstance()}
   >
     <App />
