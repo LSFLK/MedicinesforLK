@@ -1,8 +1,8 @@
 export default {
   "clientID": "W_ZaTLGR20OKy0HTYPqSAJvuS5Ia",
   "baseUrl": "https://api.asgardeo.io/t/elixir",
-  "signInRedirectURL": `${process.env.REACT_APP_SIGNIN_REDIRECT_URL}`,
-  "signOutRedirectURL": `${process.env.REACT_APP_SIGNOUT_REDIRECT_URL}`,
+  "signInRedirectURL": `${process.env.VERCEL_URL}`,
+  "signOutRedirectURL": `${process.env.VERCEL_URL}`,
   "scope": ["openid", "email", "profile"],
   "stsConfig": {
     "credentials": {
