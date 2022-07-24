@@ -32,11 +32,12 @@ const Step = ({
       className={clsx(
         "step",
         rounded && "step-rounded",
-        !onClick && "no-hover"
+        !onClick && "no-hover",
+        isActive && "active"
       )}
       disabled={disabled}
     >
-      <span className={clsx("step-number", isActive && "active")}>{index}</span>
+      <span className="step-number">{index}</span>
       <span>{title}</span>
     </button>
   );
