@@ -14,7 +14,7 @@ import NewsRoom from "./pages/newsroom";
 import UserContext from "./userContext";
 import { useAuthContext } from "@asgardeo/auth-react";
 import Http from "./apis/httpCommon";
-import { AidPackageService } from "./apis/services/AidPackageService";
+import AidPackageService from "./apis/services/AidPackageService";
 
 function App() {
   const { httpRequest, signIn, trySignInSilently } = useAuthContext();
