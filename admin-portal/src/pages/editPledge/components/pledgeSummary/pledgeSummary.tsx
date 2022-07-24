@@ -25,44 +25,17 @@ export default function PledgeSummary({
     }
   };
 
-  useEffect(() => {
-    getPledgeStatus(aidStatus);
-  }, []);
-
-  const [pledgeActive, setPledgeActice] = useState<boolean>();
-  const [paymentInitatedActive, setPatmetInitiatedActive] = useState<boolean>();
-  const [paymentComfirm, setPaymentConfirActive] = useState<boolean>();
-
   const statusToAllowedPackages = {
     pulished: [AidPackage.Status.Published],
     awaitPayment: [AidPackage.Status.AwaitingPayment],
     paymentConfirm: [
+      AidPackage.Status.AwaitingPayment,
       AidPackage.Status.Delivered,
       AidPackage.Status.Ordered,
       AidPackage.Status.ReceivedAtMOH,
       AidPackage.Status.Shipped,
     ],
   };
-
-  function getPledgeStatus(status: AidPackage.Status) {
-    if (statusToAllowedPackages.pulished.includes(status)) {
-      setPledgeActice(false);
-      setPatmetInitiatedActive(true);
-      setPaymentConfirActive(true);
-    }
-
-    if (statusToAllowedPackages.awaitPayment.includes(status)) {
-      setPledgeActice(true);
-      setPatmetInitiatedActive(false);
-      setPaymentConfirActive(false);
-    }
-
-    if (statusToAllowedPackages.paymentConfirm.includes(status)) {
-      setPledgeActice(true);
-      setPatmetInitiatedActive(true);
-      setPaymentConfirActive(false);
-    }
-  }
 
   return (
     <div className="pledgeSummary">
@@ -83,18 +56,23 @@ export default function PledgeSummary({
           placeholder={pledge.status}
           onChange={handleStatusChange}
         >
-          <option value={Pledge.Status.Pledged} disabled={pledgeActive}>
+          <option
+            value={Pledge.Status.Pledged}
+            disabled={!statusToAllowedPackages.pulished.includes(aidStatus)}
+          >
             {Pledge.Status.Pledged}
           </option>
           <option
             value={Pledge.Status.PaymentInitiated}
-            disabled={paymentInitatedActive}
+            disabled={!statusToAllowedPackages.awaitPayment.includes(aidStatus)}
           >
             {Pledge.Status.PaymentInitiated}
           </option>
           <option
             value={Pledge.Status.PaymentConfirmed}
-            disabled={paymentComfirm}
+            disabled={
+              !statusToAllowedPackages.paymentConfirm.includes(aidStatus)
+            }
           >
             {Pledge.Status.PaymentConfirmed}
           </option>
