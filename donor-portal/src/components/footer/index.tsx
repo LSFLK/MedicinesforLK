@@ -1,8 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-black">

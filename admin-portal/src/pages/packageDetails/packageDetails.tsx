@@ -28,6 +28,16 @@ export function PackageDetails() {
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
   const aidPackageToBeEdited = useRef<AidPackage | null>(null);
 
+  const statusToLevel = {
+    Draft: 1,
+    Published: 2,
+    "Awaiting Payment": 3,
+    Ordered: 4,
+    Shipped: 5,
+    "Received At MOH": 6,
+    Delivered: 7,
+  };
+
   useEffect(() => {
     fetchAidPackage();
     fetchUpdateComments();
@@ -63,6 +73,12 @@ export function PackageDetails() {
     if (statusToBeChanged === aidPackage?.status) {
       return;
     }
+    if (aidPackage?.status) {
+      if (statusToLevel[statusToBeChanged] < statusToLevel[aidPackage.status]) {
+        alert("Sorry, you cannot change back to a previous status");
+        return;
+      }
+    }
     const confirmed = window.confirm(
       `Are you sure you want to change the status to ${statusToBeChanged}?`
     );
@@ -72,6 +88,9 @@ export function PackageDetails() {
         status: statusToBeChanged,
       });
       setAidPackage(data);
+      if (statusToBeChanged === AidPackage.Status.Published) {
+        AidPackageService.commentPublishedAidPackage(data);
+      }
     }
   };
 
@@ -80,7 +99,7 @@ export function PackageDetails() {
       ...aidPackage!,
       description: editedAidPackage.description,
     });
-    setAidPackage(data);
+    await fetchAidPackage();
     setIsEditDescriptionModalVisible(false);
   };
 

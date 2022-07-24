@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-export function FullBleedContainer({
+export default function FullBleedContainer({
   children,
   style = {},
   className,

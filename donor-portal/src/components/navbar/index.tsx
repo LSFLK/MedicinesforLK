@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./styles.css";
-import { useContext } from "react";
 import UserContext from "../../userContext";
 import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
-export function NavBar() {
+export default function NavBar() {
   // const userId = useContext(UserContext);
   const { state, signIn, signOut, on } = useAuthContext();
 
@@ -48,35 +47,36 @@ export function NavBar() {
   return (
     <nav className="navbar">
       <Link to="/">
-        <div className="logo"></div>
+        <div className="logo" />
       </Link>
       <div className="nav-links">
-        <Link to="/about-us" className="nav-link">
+        <NavLink to="/" className="nav-link" exact>
+          Home
+        </NavLink>
+        <NavLink to="/about-us" className="nav-link">
           About
-        </Link>
-        <span>|</span>
-        <Link to="/donors" className="nav-link">
+        </NavLink>
+        <NavLink to="/donors" className="nav-link">
           Donors
-        </Link>
-        <span>|</span>
-        <Link to="/suppliers" className="nav-link">
-          Hospital and Suppliers
-        </Link>
-        <span>|</span>
-        <Link to="/news-room" className="nav-link">
+        </NavLink>
+        <NavLink to="/suppliers" className="nav-link">
+          Medical Suppliers
+        </NavLink>
+        <NavLink to="/news-room" className="nav-link">
           Newsroom
-        </Link>
+        </NavLink>
         {state.isAuthenticated ? (
-          <>
-            <span>|</span>
-            <a className="nav-link" onClick={() => handleLogout()}>
-              Logout
-            </a>
-          </>
-        ) : (
-          <a className="login-btn" onClick={() => handleLogin()}>
-            Login
+          <a href="/" className="nav-link" onClick={() => handleLogout()}>
+            Logout
           </a>
+        ) : (
+          <button
+            className="login-btn"
+            type="button"
+            onClick={() => handleLogin()}
+          >
+            Login
+          </button>
         )}
       </div>
     </nav>

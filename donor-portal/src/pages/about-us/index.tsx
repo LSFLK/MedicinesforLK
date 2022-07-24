@@ -1,9 +1,10 @@
-import { FullBleedContainer } from "../layout/full-bleed-container";
-import { HeaderImage } from "../layout/header-image";
-import { Page } from "../layout/page";
+import React from "react";
+import FullBleedContainer from "../layout/full-bleed-container";
+import HeaderImage from "../layout/header-image";
+import Page from "../layout/page";
 import "./styles.css";
 
-export function AboutUs() {
+export default function AboutUs() {
   return (
     <Page className="about-us">
       <HeaderImage imageUrl="https://images.unsplash.com/photo-1566140967404-b8b3932483f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
@@ -73,7 +74,10 @@ export function AboutUs() {
         </div>
       </div>
       <FullBleedContainer className="leadership-image-section">
-        <img src="/assets/images/about-us/leadership-images.jpg" />
+        <img
+          src="/assets/images/about-us/leadership-images.jpg"
+          alt="leadership"
+        />
       </FullBleedContainer>
       <div className="partner-section">
         <h2>Partners</h2>
@@ -128,21 +132,5 @@ export function AboutUs() {
         </div>
       </div>
     </Page>
-  );
-}
-
-function InfoCard({ imageUrl, link }: { imageUrl: string; link: string }) {
-  return (
-    <a
-      href={link}
-      className="info-link-card"
-      style={{ backgroundImage: `url(${imageUrl})` }}
-    >
-      <div className="info-link-card__link-text">
-        <span className="info-link-card__link-text__heading">How it</span>
-        <span className="info-link-card__link-text__sub-heading">Works</span>
-      </div>
-      <span className="info-card__circle-arrow">&gt;</span>
-    </a>
   );
 }
