@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { Stepper, Step } from "components/stepper";
-import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
-import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
-import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
-import { AidPackageService } from "apis/services/AidPackageService";
-import { MedicalNeed } from "../../types/MedicalNeeds";
+import React, { useEffect, useState } from "react";
 import { useAsyncDebounce } from "react-table";
-import { AidPackage } from "types/AidPackage";
 import toast from "react-simple-toasts";
-import { Quotation } from "types/Quotation";
+import { Stepper, Step } from "../../components/stepper";
+import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
+import AidPackageService from "../../apis/services/AidPackageService";
+import { AidPackage } from "../../types/AidPackage";
+import { Quotation } from "../../types/Quotation";
+import { MedicalNeed } from "../../types/MedicalNeeds";
+import ManageAidPackages from "./manageAidPackages/manageAidPackages";
+import AssignSuppliers from "./assignSuppliers/assignSuppliers";
 import "./aidPackage.css";
 
 enum STEPS {
@@ -33,7 +33,7 @@ export type DraftAidPackages = {
   [key: string]: DraftAidPackage;
 };
 
-export function CreateAidPackage() {
+export default function CreateAidPackage() {
   const [currentFormStep, setCurrentFormStep] = useState(0);
   const [needAssignments, setNeedAssignments] = useState<NeedAssignments>({});
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
@@ -51,8 +51,9 @@ export function CreateAidPackage() {
         setNeedAssignments(
           needsArray.reduce(
             (previousValue: NeedAssignments, currentValue: any) => {
-              previousValue[currentValue.needID] = new Map();
-              return previousValue;
+              let prevVal: NeedAssignments = previousValue[currentValue.needID];
+              prevVal = new Map();
+              return prevVal;
             },
             {}
           )
@@ -115,12 +116,11 @@ export function CreateAidPackage() {
           aidPackages[packageKey].isPublished = true;
           setAidPackages({ ...aidPackages });
         })
-        .catch((error) => {
+        .catch(() => {
           toast("something went wrong");
         });
-    } else {
-      throw new Error("invalid supplier"); // or handle otherwise.
     }
+    throw new Error("invalid supplier"); // or handle otherwise.
   };
 
   return (
@@ -168,6 +168,7 @@ export function CreateAidPackage() {
       <div className="bottom-sticky-nav">
         {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
           <button
+            type="button"
             className="btn secondary"
             onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
           >
@@ -176,6 +177,7 @@ export function CreateAidPackage() {
         )}
         {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
           <button
+            type="button"
             className="btn pull-right"
             onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
             disabled={!isValidAssignment}
@@ -196,7 +198,7 @@ export function GlobalFilter({
   setGlobalFilter: any;
 }) {
   const [value, setValue] = useState(globalFilter);
-  const onChange = useAsyncDebounce((value) => {
+  const onChange = useAsyncDebounce(() => {
     setGlobalFilter(value || undefined);
   }, 50);
 
@@ -211,7 +213,7 @@ export function GlobalFilter({
       }}
     >
       <div className="searchContainer">
-        <img src="/assets/svg/search_icon.svg" />
+        <img src="/assets/svg/search_icon.svg" alt="search-icon" />
         <input
           placeholder="Search"
           className="textField"

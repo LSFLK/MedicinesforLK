@@ -1,11 +1,11 @@
+import { Quotation } from "../../types/Quotation";
 import Http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
-import { Quotation } from "types/Quotation";
 
-export class AidPackageService {
+export default class AidPackageService {
   static http: Http;
 
   static getAidPackages() {

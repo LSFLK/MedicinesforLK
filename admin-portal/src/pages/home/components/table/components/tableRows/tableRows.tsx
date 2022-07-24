@@ -1,12 +1,12 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { AidPackage } from "types/AidPackage";
-import { TableRow } from "../tableRow/tableRow";
+import { AidPackage } from "../../../../../../types/AidPackage";
+import TableRow from "../tableRow/tableRow";
 
 interface TableRowsProps {
   aidPackages?: AidPackage[];
 }
 
-export function TableRows(props: TableRowsProps) {
+export default function TableRows(props: TableRowsProps) {
   const { aidPackages } = props;
   const [tableRows, setTableRows] = useState<ReactElement[]>();
 

@@ -1,6 +1,6 @@
 import Http, { temporaryClient } from "../httpCommon";
 
-export class SupplierService {
+export default class SupplierService {
   static http: Http;
 
   static postQuotation(quotation: any) {

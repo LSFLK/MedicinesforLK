@@ -28,7 +28,7 @@ export default function EditUpdateCommentPrompt({
     try {
       const editedComment: AidPackageUpdateComment = {
         ...comment,
-        updateComment: updateComment,
+        updateComment,
       };
       await onSave(editedComment);
     } catch (e) {
@@ -49,7 +49,11 @@ export default function EditUpdateCommentPrompt({
       />
       {errorText && <div className="errorText">{errorText}</div>}
       <div>
-        <button disabled={isSaving} onClick={handleSaveButtonClick}>
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={handleSaveButtonClick}
+        >
           {isSaving ? "Saving..." : "Save"}
         </button>
       </div>
