@@ -59,12 +59,12 @@
   background-color: var(--elixir-color-gray-400);
 }
 
-.step .step-number.active {
+.step.active .step-number {
   background-color: var(--elixir-color-red);
   color: var(--elixir-color-white);
 }
 
-.step:disabled .step-number.active {
+.step:disabled.active .step-number {
   background-color: var(--elixir-color-gray-800);
   color: var(--elixir-color-white);
 }
