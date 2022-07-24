@@ -2,19 +2,19 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { CreateAidPackage } from "./aidPackage";
 import { MemoryRouter } from "react-router-dom";
 import { AidPackageService } from "apis/services/AidPackageService";
-import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
+import { default as authConfig } from "../../config.json";
+import { AuthProvider } from "@asgardeo/auth-react";
 
 test("renders package detail header", async () => {
   AidPackageService.getAidPackage = jest.fn().mockReturnValue({});
   AidPackageService.getAidPackages = jest.fn().mockReturnValue({});
   AidPackageService.getUpdateComments = jest.fn().mockReturnValue({ data: [] });
-  MedicalNeedsService.getMedicalNeeds = jest
-    .fn()
-    .mockResolvedValue({ data: [] });
 
   render(
     <MemoryRouter>
-      <CreateAidPackage />
+      <AuthProvider config={authConfig}>
+        <CreateAidPackage />
+      </AuthProvider>
     </MemoryRouter>
   );
 
