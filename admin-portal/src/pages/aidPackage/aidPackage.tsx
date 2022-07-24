@@ -106,7 +106,7 @@ export function CreateAidPackage() {
           };
         }),
       })
-        .then(() => {
+        .then(({ data }) => {
           toast(`Successfully Published ${aidPackage.name}`);
           /**
            * flags the package to be removed from
@@ -114,6 +114,7 @@ export function CreateAidPackage() {
            */
           aidPackages[packageKey].isPublished = true;
           setAidPackages({ ...aidPackages });
+          AidPackageService.commentPublishedAidPackage(data);
         })
         .catch((error) => {
           toast("something went wrong");
