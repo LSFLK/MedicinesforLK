@@ -88,6 +88,9 @@ export default function PackageDetails() {
         status: statusToBeChanged,
       });
       setAidPackage(data);
+      if (statusToBeChanged === AidPackage.Status.Published) {
+        AidPackageService.commentPublishedAidPackage(data);
+      }
     }
   };
 

@@ -97,11 +97,33 @@ export default class AidPackageService {
     }>;
   }) {
     // TODO:  Define interfaces for the data types.
-    return AidPackageService.http.post<any, any>(`aidpackages`, {
+    return AidPackageService.http.post<any, AidPackage>(`aidpackages`, {
       name,
       description,
       aidPackageItems,
       status,
     });
   }
+
+  static commentPublishedAidPackage(aidPackage: AidPackage) {
+    const comment =
+      "Aid package published with the following items:\n" +
+      aidPackage.aidPackageItems.map(getAidPackageItemComment).join("\n");
+
+    AidPackageService.upsertUpdateComment(aidPackage.packageID, {
+      packageUpdateID: 0,
+      packageID: aidPackage.packageID,
+      updateComment: comment,
+      dateTime: "",
+    });
+  }
+}
+
+function getAidPackageItemComment(item: AidPackageItem, index: number) {
+  index = index + 1;
+  const name = item.quotation.brandName;
+  const count = item.quantity;
+  const cost = item.totalAmount;
+
+  return `${index}. ${name} - Count: ${count} - Cost: $${cost}`;
 }

@@ -36,6 +36,7 @@
 
 .updateComments .comment .content .text {
   flex-grow: 1;
+  white-space: pre-line;
 }
 
 .updateComments .comment .content .actions button {

@@ -8,8 +8,8 @@ import "./styles.css";
 export default function Suppliers() {
   return (
     <Page className="suppliers">
-      <HeaderImage imageUrl="http://www.thebetterindia.com/wp-content/uploads/2017/06/15392982_1463889036969736_4194093088591265874_o.jpg">
-        <h1>Hospitals and Suppliers</h1>
+      <HeaderImage imageUrl="/assets/images/medical-suppliers-pills.jpg">
+        <h1>Doctors and Suppliers</h1>
       </HeaderImage>
       <div className="text-section">
         <p>
