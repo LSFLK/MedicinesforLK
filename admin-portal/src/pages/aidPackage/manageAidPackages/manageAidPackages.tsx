@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  DraftAidPackage,
-  DraftAidPackages,
-  NeedAssignments,
-} from "../aidPackage";
 import AidPackageDetailsTable from "./aidPackageDetailsTable";
 import AidPackageTable from "./aidPackagesTable";
 import "./manageAidPackages.css";
@@ -14,6 +9,11 @@ import {
   getPeriodFromAidPackageKey,
   getSupplierIdFromAidPackageKey,
 } from "../../../helpers/aidPackageHelper";
+import {
+  NeedAssignments,
+  DraftAidPackages,
+  DraftAidPackage,
+} from "../../../types/AidPackage";
 
 export default function ManageAidPackages({
   medicalNeeds,

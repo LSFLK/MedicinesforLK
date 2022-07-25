@@ -2,14 +2,17 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useTable, useRowSelect } from "react-table";
 import { getSupplierQuoteForNeed } from "../../../../helpers/needsHelper";
-import { AidPackage } from "../../../../types/AidPackage";
+import {
+  AidPackage,
+  DraftAidPackages,
+  NeedAssignments,
+} from "../../../../types/AidPackage";
 import { MedicalNeed } from "../../../../types/MedicalNeeds";
 import { formatDate, formatMoney } from "../../../../helpers/formatter";
 import {
   getDraftAidPackageKey,
   getSupplierIdFromAidPackageKey,
 } from "../../../../helpers/aidPackageHelper";
-import { DraftAidPackages, NeedAssignments } from "../../aidPackage";
 
 function PublishAidPackageButton({
   handlePublish,

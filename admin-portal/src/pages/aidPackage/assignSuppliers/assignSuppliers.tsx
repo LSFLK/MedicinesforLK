@@ -1,10 +1,54 @@
-import React, { useMemo } from "react";
-import { useTable, useExpanded, useGlobalFilter, CellValue } from "react-table";
+import React, { useMemo, useState } from "react";
+import {
+  useTable,
+  useExpanded,
+  useGlobalFilter,
+  CellValue,
+  useAsyncDebounce,
+} from "react-table";
 import moment from "moment";
-import { DraftAidPackages, GlobalFilter, NeedAssignments } from "../aidPackage";
 import SupplierNeedAllocationTable from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
 import "./assignSuppliers.css";
+import { NeedAssignments, DraftAidPackages } from "../../../types/AidPackage";
+
+export function GlobalFilter({
+  globalFilter,
+  setGlobalFilter,
+}: {
+  globalFilter: any;
+  setGlobalFilter: any;
+}) {
+  const [value, setValue] = useState(globalFilter);
+  const onChange = useAsyncDebounce((filter) => {
+    setGlobalFilter(filter || undefined);
+  }, 50);
+
+  return (
+    <div
+      className="packageTableSearch"
+      style={{
+        position: "sticky",
+        top: 0,
+        background: "white",
+        paddingBottom: "1rem",
+      }}
+    >
+      <div className="searchContainer">
+        <img src="/assets/svg/search_icon.svg" alt="search-icon" />
+        <input
+          placeholder="Search"
+          className="textField"
+          value={value || ""}
+          onChange={(e) => {
+            setValue(e.target.value);
+            onChange(e.target.value);
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function AssignSuppliers({
   needAssignments,

@@ -2,9 +2,9 @@ import React, { useMemo, useState, useEffect } from "react";
 import moment from "moment";
 import { useTable, CellValue } from "react-table";
 import { formatMoney } from "../../../../helpers/formatter";
-import { DraftAidPackages, NeedAssignment } from "../../aidPackage";
 import { getDraftAidPackageKey } from "../../../../helpers/aidPackageHelper";
 import { Quotation } from "../../../../types/Quotation";
+import { NeedAssignment, DraftAidPackages } from "../../../../types/AidPackage";
 
 function validateRow(
   value: string,
@@ -75,8 +75,6 @@ export default function SupplierNeedAllocationTable({
   assignmentsForSupplier,
   aidPackages,
 }: SupplierNeedAllocationTableProps) {
-  // supplierQuotes = supplierQuotes || [];
-
   const data = useMemo<Array<{ [key: string]: any }>>(
     () =>
       supplierQuotes.map((quote) => {

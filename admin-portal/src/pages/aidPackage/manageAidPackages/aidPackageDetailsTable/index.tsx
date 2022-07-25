@@ -9,8 +9,8 @@ import {
   getNeedFromId,
   getSupplierQuoteForNeed,
 } from "../../../../helpers/needsHelper";
+import { DraftAidPackage, NeedAssignments } from "../../../../types/AidPackage";
 import { MedicalNeed } from "../../../../types/MedicalNeeds";
-import { DraftAidPackage, NeedAssignments } from "../../aidPackage";
 
 export default function AidPackageDetailsTable({
   selectedPackage,
