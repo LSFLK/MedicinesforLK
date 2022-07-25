@@ -1,31 +1,29 @@
-import { useEffect, useState } from "react";
-import {
-  DraftAidPackage,
-  DraftAidPackages,
-  NeedAssignments,
-} from "../aidPackage";
-import { AidPackageDetailsTable } from "./aidPackageDetailsTable";
-import { AidPackageTable } from "./aidPackagesTable";
+import React, { useEffect, useState } from "react";
+import AidPackageDetailsTable from "./aidPackageDetailsTable";
+import AidPackageTable from "./aidPackagesTable";
 import "./manageAidPackages.css";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
-import { getSupplierQuoteForNeed } from "helpers/needsHelper";
+import { getSupplierQuoteForNeed } from "../../../helpers/needsHelper";
 import {
   getDraftAidPackageKey,
   getPeriodFromAidPackageKey,
   getSupplierIdFromAidPackageKey,
-} from "helpers/aidPackageHelper";
+} from "../../../helpers/aidPackageHelper";
+import {
+  NeedAssignments,
+  DraftAidPackages,
+  DraftAidPackage,
+} from "../../../types/AidPackage";
 
-export function ManageAidPackages({
+export default function ManageAidPackages({
   medicalNeeds,
   needAssignments,
-  setNeedAssignments,
   aidPackages,
   setAidPackages,
   handleAidPkgPublish,
 }: {
   medicalNeeds: MedicalNeed[];
   needAssignments: NeedAssignments;
-  setNeedAssignments: (needAssignments: NeedAssignments) => void;
   aidPackages: DraftAidPackages;
   setAidPackages: (aidPackages: DraftAidPackages) => void;
   handleAidPkgPublish: (supplier: number, packageKey: string) => Promise<void>;

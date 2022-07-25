@@ -49,7 +49,11 @@ export default function EditActivityPrompt({
       />
       {errorText && <div className="errorText">{errorText}</div>}
       <div>
-        <button disabled={isSaving} onClick={handleSaveButtonClick}>
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={handleSaveButtonClick}
+        >
           {isSaving ? "Saving..." : "Save"}
         </button>
       </div>

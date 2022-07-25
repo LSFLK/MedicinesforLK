@@ -22,7 +22,7 @@ export default function PackageStatus({
                 type="checkbox"
                 id={key}
                 checked={status === currentStatus}
-                onChange={(event) => {
+                onChange={() => {
                   onStatusChange(status as AidPackage.Status);
                 }}
               />

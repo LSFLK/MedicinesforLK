@@ -1,4 +1,4 @@
-import { Quotation } from "types/Quotation";
+import { Quotation } from "../types/Quotation";
 
 export function getDraftAidPackageKey(quote: Quotation) {
   return `${quote.supplierID}#${quote.period.year}-${quote.period.month}-${quote.period.day}`;

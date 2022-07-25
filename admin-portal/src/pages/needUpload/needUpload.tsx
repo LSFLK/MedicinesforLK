@@ -1,18 +1,13 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import "./needUpload.css";
-import { AidPackageService } from "apis/services/AidPackageService";
 import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
-import { useHistory } from "react-router-dom";
+import AidPackageService from "../../apis/services/AidPackageService";
 
-export function NeedUpload() {
+export default function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [responseData, setResponseData] = useState("");
-  const history = useHistory();
-  const navigate = (path: string) => {
-    history.push(path);
-  };
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setResponseData("");

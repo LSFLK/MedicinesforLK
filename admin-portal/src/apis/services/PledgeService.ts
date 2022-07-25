@@ -1,10 +1,8 @@
-import http from "../httpCommon";
 import { PledgeActivity } from "../../types/PledgeActivity";
-import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { Pledge } from "../../types/Pledge";
 import Http from "../httpCommon";
 
-export class PledgeService {
+export default class PledgeService {
   static http: Http;
 
   static getPledge(pledgeID: number | string) {

@@ -1,11 +1,20 @@
+import { Quotation } from "../../types/Quotation";
 import Http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
-import { Quotation } from "types/Quotation";
 
-export class AidPackageService {
+function getAidPackageItemComment(item: AidPackageItem, index: number) {
+  const id = index + 1;
+  const name = item.quotation.brandName;
+  const count = item.quantity;
+  const cost = item.totalAmount;
+
+  return `${id}. ${name} - Count: ${count} - Cost: $${cost}`;
+}
+
+export default class AidPackageService {
   static http: Http;
 
   static getAidPackages() {
@@ -106,9 +115,9 @@ export class AidPackageService {
   }
 
   static commentPublishedAidPackage(aidPackage: AidPackage) {
-    const comment =
-      "Aid package published with the following items:\n" +
-      aidPackage.aidPackageItems.map(getAidPackageItemComment).join("\n");
+    const comment = `Aid package published with the following items:\n${aidPackage.aidPackageItems
+      .map(getAidPackageItemComment)
+      .join("\n")}`;
 
     AidPackageService.upsertUpdateComment(aidPackage.packageID, {
       packageUpdateID: 0,
@@ -117,13 +126,4 @@ export class AidPackageService {
       dateTime: "",
     });
   }
-}
-
-function getAidPackageItemComment(item: AidPackageItem, index: number) {
-  index = index + 1;
-  const name = item.quotation.brandName;
-  const count = item.quantity;
-  const cost = item.totalAmount;
-
-  return `${index}. ${name} - Count: ${count} - Cost: $${cost}`;
 }

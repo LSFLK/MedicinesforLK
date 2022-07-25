@@ -32,9 +32,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prettier-format": "prettier --write .",
-    "prettier-check": "prettier --check ."
+    "lint": "eslint src --ext js,jsx,ts,tsx",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +56,15 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "@types/react-table": "^7.7.12",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "2.7.1"
   }
 }
