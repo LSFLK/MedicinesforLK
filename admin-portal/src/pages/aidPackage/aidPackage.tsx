@@ -51,9 +51,9 @@ export default function CreateAidPackage() {
         setNeedAssignments(
           needsArray.reduce(
             (previousValue: NeedAssignments, currentValue: any) => {
-              let prevVal: NeedAssignments = previousValue[currentValue.needID];
-              prevVal = new Map();
-              return prevVal;
+              // eslint-disable-next-line no-param-reassign
+              previousValue[currentValue.needID] = new Map();
+              return previousValue;
             },
             {}
           )
@@ -155,7 +155,6 @@ export default function CreateAidPackage() {
               <ManageAidPackages
                 medicalNeeds={medicalNeeds}
                 needAssignments={needAssignments}
-                setNeedAssignments={setNeedAssignments}
                 aidPackages={aidPackages}
                 setAidPackages={setAidPackages}
                 handleAidPkgPublish={handleAidPkgPublish}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useCallback, useMemo, useState } from "react";
 import { useTable, useRowSelect } from "react-table";
 import { getSupplierQuoteForNeed } from "../../../../helpers/needsHelper";
@@ -9,17 +10,6 @@ import {
   getSupplierIdFromAidPackageKey,
 } from "../../../../helpers/aidPackageHelper";
 import { DraftAidPackages, NeedAssignments } from "../../aidPackage";
-
-interface Row {
-  key: string;
-  name: string;
-  supplierID: number;
-  supplier: string;
-  description: string;
-  period: string;
-  totalCost: string;
-  isPublished: boolean | undefined;
-}
 
 function PublishAidPackageButton({
   handlePublish,
@@ -240,7 +230,7 @@ export default function AidPackageTable({
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row: Row) => {
+        {rows.map((row) => {
           prepareRow(row);
 
           return (
@@ -253,6 +243,7 @@ export default function AidPackageTable({
                 row.toggleRowSelected(true);
               }}
               className={`manage-package-row ${
+                // @ts-ignore
                 row.isSelected && "manage-package-row--selected"
               }`}
             >

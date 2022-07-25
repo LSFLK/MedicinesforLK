@@ -58,21 +58,28 @@ function App() {
         <BrowserRouter>
           <Page>
             <Switch>
-              <Route path="/" element={<Home />} />
-              <Route path="/creation" element={<CreateAidPackage />} />
-              <Route path="/needUpload" element={<NeedUpload />} />
-              <Route path="/packages/:packageId" element={<PackageDetails />} />
+              <Route path="/" exact component={Home} />
+              <Route path="/creation" exact component={CreateAidPackage} />
+              <Route path="/needUpload" exact component={NeedUpload} />
               <Route
+                path="/packages/:packageId"
+                exact
+                component={PackageDetails}
+              />
+              <Route
+                exact
                 path="/supplierQuotationUpload"
-                element={<SupplierQuotationUpload />}
+                component={SupplierQuotationUpload}
               />
               <Route
+                exact
                 path="/packages/:packageId/pledge-status"
-                element={<PledgeStatus />}
+                component={PledgeStatus}
               />
               <Route
+                exact
                 path="/packages/:packageId/pledges/:pledgeId"
-                element={<EditPledge />}
+                component={EditPledge}
               />
             </Switch>
           </Page>
