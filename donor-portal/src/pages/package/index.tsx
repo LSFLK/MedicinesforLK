@@ -184,6 +184,7 @@ export default function AidPackageDetailsPage() {
                   )}
                 </>
               ) : (
+                userId !== null &&
                 aidPackage.status === AidPackage.Status.Published && (
                   <form onSubmit={handlePledgeSubmit}>
                     <p>Enter amount (in USD)</p>
