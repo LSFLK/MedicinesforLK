@@ -1,8 +1,8 @@
 {
   "clientID": "W_ZaTLGR20OKy0HTYPqSAJvuS5Ia",
   "baseUrl": "https://api.asgardeo.io/t/elixir",
-  "signInRedirectURL": "https://admin-portal-rouge.vercel.app",
-  "signOutRedirectURL": "https://admin-portal-rouge.vercel.app",
+  "signInRedirectURL": "https://localhost:3000",
+  "signOutRedirectURL": "https://localhost:3000",
   "scope": ["openid", "email", "profile"],
   "stsConfig": {
     "credentials": {
