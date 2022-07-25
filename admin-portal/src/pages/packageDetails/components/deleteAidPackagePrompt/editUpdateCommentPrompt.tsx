@@ -31,7 +31,11 @@ export default function DeleteAidPackagePrompt({
       <p>Are you sure you want to delete {aidPackage.name}</p>
       {errorText && <div className="errorText">{errorText}</div>}
       <div>
-        <button disabled={isSaving} onClick={handleSaveButtonClick}>
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={handleSaveButtonClick}
+        >
           {isSaving ? "Saving..." : "Confirm"}
         </button>
       </div>
