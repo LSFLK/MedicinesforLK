@@ -1,7 +1,9 @@
+import { getDraftAidPackageKey } from "helpers/aidPackageHelper";
 import { formatMoney } from "helpers/formatter";
-import { AidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
+import moment from "moment";
+import { DraftAidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
 import { useMemo, useState, useEffect } from "react";
-import { useTable } from "react-table";
+import { useTable, CellValue } from "react-table";
 import { Quotation } from "../../../../types/Quotation";
 
 export function SupplierNeedAllocationTable({
@@ -15,7 +17,7 @@ export function SupplierNeedAllocationTable({
   setAssignmentForSupplier: any;
   requiredQuantity: number;
   assignmentsForSupplier: NeedAssignment;
-  aidPackages: AidPackages;
+  aidPackages: DraftAidPackages;
 }) {
   supplierQuotes = supplierQuotes || [];
 
@@ -27,12 +29,16 @@ export function SupplierNeedAllocationTable({
         return {
           supplier: quote.supplier.name,
           brandName: quote.brandName,
-          expiryDate: `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`,
-          period: `${quote.period.day}/${quote.period.month}/${quote.period.year}`,
+          expiryDate: moment(
+            `${quote.expiryDate.day}/${quote.expiryDate.month}/${quote.expiryDate.year}`
+          ).format("MM/DD/YYYY"),
+          period: moment(
+            `${quote.period.day}/${quote.period.month}/${quote.period.year}`
+          ).format("MM/DD/YYYY"),
           quantity,
           max: Math.min(requiredQuantity, quote.availableQuantity),
           supplierID: quote.supplierID,
-          published: aidPackages?.[quote.supplierID]?.isPublished,
+          published: aidPackages?.[getDraftAidPackageKey(quote)]?.isPublished,
           unitPrice: formatMoney(quote.unitPrice),
           total: formatMoney((quantity || 0) * quote.unitPrice),
         };
@@ -51,11 +57,21 @@ export function SupplierNeedAllocationTable({
         accessor: "brandName",
       },
       {
-        Header: "Period",
+        Header: () => (
+          <>
+            <p>Period</p>
+            <small className="table-sub-header">DD/MM/YY</small>
+          </>
+        ),
         accessor: "period",
       },
       {
-        Header: "Expiry Date",
+        Header: () => (
+          <>
+            <p>Expiry Date</p>
+            <small className="table-sub-header">DD/MM/YY</small>
+          </>
+        ),
         accessor: "expiryDate",
       },
       {
@@ -65,6 +81,9 @@ export function SupplierNeedAllocationTable({
       {
         Header: "Max",
         accessor: "max",
+        Cell: ({ value }: { value: CellValue }) => (
+          <div>{value.toLocaleString()}</div>
+        ),
       },
       {
         Header: "Order Quantity",
@@ -107,8 +126,14 @@ export function SupplierNeedAllocationTable({
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+              {row.cells.map((cell, index) => {
+                return index != 4 ? (
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                ) : (
+                  <td {...cell.getCellProps()}>
+                    {cell.value.toLocaleString()}
+                  </td>
+                );
               })}
             </tr>
           );

@@ -1,7 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-export function InfoBox({
+export default function InfoBox({
   iconUrl,
   link,
   heading,
@@ -15,13 +16,13 @@ export function InfoBox({
   buttonText?: string;
 }) {
   return (
-    <div className={`info-box`}>
+    <div className="info-box">
       <img src={iconUrl} alt="" />
       <h2>{heading}</h2>
       <p>{text}</p>
-      {link != "#" && (
+      {link !== "#" && (
         <Link to={link}>
-          <button>{buttonText}</button>
+          <button type="button">{buttonText}</button>
         </Link>
       )}
     </div>

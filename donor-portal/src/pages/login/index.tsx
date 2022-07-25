@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { HeaderImage } from "../layout/header-image";
-import { Page } from "../layout/page";
+import React, { useState } from "react";
+import HeaderImage from "../layout/header-image";
+import Page from "../layout/page";
 import "./styles.css";
 
-export function Login() {
+export default function Login() {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
@@ -15,31 +15,31 @@ export function Login() {
           <a href="/login" className="btn">
             Login
           </a>
-          <a href="" className="btn secondary">
+          <a href="/" className="btn secondary">
             Register
           </a>
         </div>
 
         <h1>Login</h1>
         <p className="already-registered">
-          Are you a Registered charity? <a>Register for an account</a>
+          Are you a Registered charity? <a href="/">Register for an account</a>
         </p>
         <form action="">
           <label className="input-label" htmlFor="email">
             EMAIL
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
           </label>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
           <label className="input-label" htmlFor="password">
             PASSWORD
+            <input type="password" name="password" />{" "}
           </label>
-          <input type="password" name="password" />
           <div className="form-row">
-            <label>
+            <label htmlFor="remember-me">
               <input
                 type="checkbox"
                 name="remember-me"
@@ -51,7 +51,9 @@ export function Login() {
             </label>
             <a href="/reset-password">Forgot Password?</a>
           </div>
-          <button className="btn">LOGIN</button>
+          <button className="btn" type="submit">
+            LOGIN
+          </button>
         </form>
       </div>
     </Page>

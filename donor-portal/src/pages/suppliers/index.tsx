@@ -1,15 +1,15 @@
-import { FullBleedContainer } from "../layout/full-bleed-container";
-import { HeaderImage } from "../layout/header-image";
-import { Page } from "../layout/page";
-import { InfoBoxContainer } from "../layout/info-box-container";
-import { InfoBox } from "../layout/info-box";
+import React from "react";
+import HeaderImage from "../layout/header-image";
+import Page from "../layout/page";
+import InfoBoxContainer from "../layout/info-box-container";
+import InfoBox from "../layout/info-box";
 import "./styles.css";
 
-export function Suppliers() {
+export default function Suppliers() {
   return (
     <Page className="suppliers">
-      <HeaderImage imageUrl="http://www.thebetterindia.com/wp-content/uploads/2017/06/15392982_1463889036969736_4194093088591265874_o.jpg">
-        <h1>Hospitals and Suppliers</h1>
+      <HeaderImage imageUrl="/assets/images/medical-suppliers-pills.jpg">
+        <h1>Doctors and Suppliers</h1>
       </HeaderImage>
       <div className="text-section">
         <p>
@@ -22,18 +22,18 @@ export function Suppliers() {
       <InfoBoxContainer>
         <InfoBox
           iconUrl="/assets/images/doctor.jpg"
-          text="ELIXIR provides an easy to use application to manage all your urgent supply needs. Contact us for details on how 
+          text="ELIXIR provides an easy to use application to manage all your urgent supply needs. Contact us for details on how
                         to create an account"
           heading="Hospitals/Doctors"
           link="#"
-        ></InfoBox>
+        />
         <InfoBox
           iconUrl="/assets/images/pharmacy.jpg"
-          text="ELIXIR would like to partner with you to source the needs of our hospitals and doctors. Contact us to onboard your 
+          text="ELIXIR would like to partner with you to source the needs of our hospitals and doctors. Contact us to onboard your
                         inventory."
           heading="Pharmaceutical Suppliers"
           link="#"
-        ></InfoBox>
+        />
         <p className="inquiry">
           For all inquiries, please email us at{" "}
           <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a>

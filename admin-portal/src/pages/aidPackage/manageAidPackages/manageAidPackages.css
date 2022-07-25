@@ -24,3 +24,7 @@
   padding: 0.5rem;
   width: 22rem;
 }
+
+.table-action-button:not(:last-of-type) {
+  margin-right: 0.5rem;
+}

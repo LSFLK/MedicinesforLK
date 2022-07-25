@@ -1,11 +1,11 @@
-import { FullBleedContainer } from "../layout/full-bleed-container";
-import { HeaderImage } from "../layout/header-image";
-import { Page } from "../layout/page";
-import { InfoBoxContainer } from "../layout/info-box-container";
-import { InfoBox } from "../layout/info-box";
+import React from "react";
+import HeaderImage from "../layout/header-image";
+import Page from "../layout/page";
+import InfoBoxContainer from "../layout/info-box-container";
+import InfoBox from "../layout/info-box";
 import "./styles.css";
 
-export function Donors() {
+export default function Donors() {
   return (
     <Page className="donors">
       <HeaderImage imageUrl="https://media.capc.org/images/AdobeStock_274131656.original.original.jpg">
@@ -27,28 +27,28 @@ export function Donors() {
           heading="Charities"
           link="/login"
           buttonText="Login"
-        ></InfoBox>
+        />
         <InfoBox
           iconUrl="assets/images/gov.jpg"
           text="Navigate to the login page to begin registration"
           heading="Government Embassies"
           link="/login"
           buttonText="Login"
-        ></InfoBox>
+        />
         <InfoBox
           iconUrl="/assets/images/corporation.jpg"
           text="Navigate to the login page to begin registration"
           heading="Foundations / Corporations"
           link="/login"
           buttonText="Login"
-        ></InfoBox>
+        />
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
           text="Donate to Elixir via our partner donor organizations"
           heading="Individual Donors"
           link="/donate-now"
           buttonText="Donate"
-        ></InfoBox>
+        />
         <p className="inquiry">
           For all inquiries, please email us at{" "}
           <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a>

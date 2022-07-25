@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.table-sub-header {
+  color: var(--elixir-color-gray-600);
+}
+
 .supplier-allocation-table .validation-message {
   display: none;
   margin-top: 5px;
@@ -16,6 +20,10 @@
 
 .supplier-allocation-table .has-error input {
   border: 1px solid var(--elixir-color-red);
+}
+
+.create-aid-container .suppliers-cell {
+  font-size: 0.75rem;
 }
 
 .create-aid-body .need-validation-row {
@@ -38,4 +46,14 @@
 
 .aid-package-details th:first-child {
   padding-left: 0.5rem;
+}
+
+.aid-package-table {
+  font-size: 14px;
+}
+
+.aid-package-quantity {
+  text-align: right;
+  padding-right: 20px;
+  width: 70px;
 }

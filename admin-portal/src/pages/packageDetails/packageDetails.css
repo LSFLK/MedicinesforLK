@@ -30,9 +30,23 @@
 }
 
 .packageDetails .contributionsChart {
-  width: 500px;
+  width: 350px;
   border: solid #cccccc;
   margin-left: 10px;
   text-align: center;
   padding-bottom: 10px;
+}
+
+.edit-desc {
+  display: flex;
+  align-items: center;
+  margin-bottom: -30px;
+}
+
+.edit-desc p {
+  margin-right: 8px;
+}
+
+.desc-edit-icon {
+  cursor: pointer;
 }

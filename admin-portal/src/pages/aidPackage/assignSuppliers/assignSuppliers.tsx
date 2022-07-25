@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { useTable, useExpanded } from "react-table";
-import { AidPackages, NeedAssignments } from "../aidPackage";
+import { useTable, useExpanded, useGlobalFilter, CellValue } from "react-table";
+import { DraftAidPackages, GlobalFilter, NeedAssignments } from "../aidPackage";
 import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
 import "./assignSuppliers.css";
+import moment from "moment";
 
 export function AssignSuppliers({
   needAssignments,
@@ -15,7 +16,7 @@ export function AssignSuppliers({
   needAssignments: NeedAssignments;
   setNeedAssignments: (needAssignments: NeedAssignments) => void;
   medicalNeeds: MedicalNeed[];
-  aidPackages: AidPackages;
+  aidPackages: DraftAidPackages;
   setIsValidAssignment: (isValid: boolean) => void;
 }) {
   const getAssignedCount = (
@@ -66,9 +67,12 @@ export function AssignSuppliers({
         unit: need.medicalItem.unit,
         beneficiary: need.beneficiary?.name,
         urgency: need.urgency,
-        period: periodDate.toLocaleDateString(),
+        period: moment(periodDate).format("DD/MM/YYYY"),
         requiredQuantity: need.neededQuantity,
         remainingQuantity,
+        suppliers: need.supplierQuotes
+          .map((quote) => quote.supplier.name)
+          .join(", "),
         supplierQuotes: need.supplierQuotes || [],
       };
     });
@@ -116,20 +120,36 @@ export function AssignSuppliers({
         accessor: "unit",
       },
       {
-        Header: "Period",
+        Header: () => (
+          <>
+            <p>Period</p>
+            <small className="table-sub-header">DD/MM/YY</small>
+          </>
+        ),
         accessor: "period",
       },
       {
         Header: "Quantity Needed",
         accessor: "requiredQuantity",
+        Cell: ({ value }: { value: CellValue }) => (
+          <div className="aid-package-quantity">{value.toLocaleString()}</div>
+        ),
       },
       {
         Header: "Remaining Need",
         accessor: "remainingQuantity",
+        Cell: ({ value }: { value: CellValue }) => (
+          <div className="aid-package-quantity">{value.toLocaleString()}</div>
+        ),
       },
       {
         Header: "Urgency",
         accessor: "urgency",
+      },
+      {
+        Header: "Suppliers",
+        accessor: "suppliers",
+        className: "suppliers-cell",
       },
     ],
     []
@@ -140,8 +160,11 @@ export function AssignSuppliers({
     getTableBodyProps,
     headerGroups,
     rows,
+    state,
     prepareRow,
     visibleColumns,
+    // @ts-ignore
+    setGlobalFilter,
   } = useTable(
     {
       columns,
@@ -149,83 +172,97 @@ export function AssignSuppliers({
       // @ts-ignore
       autoResetExpanded: false,
     },
+    useGlobalFilter,
     useExpanded
   );
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()} style={{}}>
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
+    <>
+      <GlobalFilter
+        // @ts-ignore
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
+      <table {...getTableProps()} className="aid-package-table">
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()} style={{}}>
+                  {column.render("Header")}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
 
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, index) => {
-          prepareRow(row);
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, index) => {
+            prepareRow(row);
 
-          const needsID = row.original["needID"];
-          const currentAssignments = needAssignments[needsID];
-          const requiredQuantity = row.values["requiredQuantity"];
+            const needsID = row.original["needID"];
+            const currentAssignments = needAssignments[needsID];
+            const requiredQuantity = row.values["requiredQuantity"];
 
-          const remainingQuantity = row.values["remainingQuantity"];
+            const remainingQuantity = row.values["remainingQuantity"];
 
-          return (
-            <>
-              <tr {...row.getRowProps()} className="needs-row">
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-              {remainingQuantity < 0 && (
-                <tr>
-                  <td className="need-validation-row" colSpan={8}>
-                    Total assigned quantity must be less than quantity needed
-                  </td>
+            return (
+              <>
+                <tr {...row.getRowProps()} className="needs-row">
+                  {row.cells.map((cell) => {
+                    return (
+                      <td
+                        {...cell.getCellProps()}
+                        // @ts-ignore
+                        className={cell.column?.className}
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
                 </tr>
-              )}
+                {remainingQuantity < 0 && (
+                  <tr>
+                    <td className="need-validation-row" colSpan={8}>
+                      Total assigned quantity must be less than quantity needed
+                    </td>
+                  </tr>
+                )}
 
-              {(row as any).isExpanded ? (
-                <tr>
-                  <td
-                    className="supplier-allocation-table-container"
-                    colSpan={visibleColumns.length}
-                  >
-                    <SupplierNeedAllocationTable
-                      supplierQuotes={row.original.supplierQuotes}
-                      assignmentsForSupplier={needAssignments[needsID]}
-                      aidPackages={aidPackages}
-                      setAssignmentForSupplier={(
-                        supplierID: number,
-                        quantity: string
-                      ) => {
-                        const updatedAssignments = currentAssignments.set(
-                          supplierID,
-                          quantity === "" ? null : Number(quantity)
-                        );
+                {(row as any).isExpanded ? (
+                  <tr>
+                    <td
+                      className="supplier-allocation-table-container"
+                      colSpan={visibleColumns.length}
+                    >
+                      <SupplierNeedAllocationTable
+                        supplierQuotes={row.original.supplierQuotes}
+                        assignmentsForSupplier={needAssignments[needsID]}
+                        aidPackages={aidPackages}
+                        setAssignmentForSupplier={(
+                          supplierID: number,
+                          quantity: string
+                        ) => {
+                          const updatedAssignments = currentAssignments.set(
+                            supplierID,
+                            quantity === "" ? null : Number(quantity)
+                          );
 
-                        setNeedAssignments({
-                          ...needAssignments,
-                          [needsID]: new Map(updatedAssignments),
-                        });
-                      }}
-                      requiredQuantity={requiredQuantity}
-                    />
-                  </td>
-                </tr>
-              ) : null}
-            </>
-          );
-        })}
-      </tbody>
-    </table>
+                          setNeedAssignments({
+                            ...needAssignments,
+                            [needsID]: new Map(updatedAssignments),
+                          });
+                        }}
+                        requiredQuantity={requiredQuantity}
+                      />
+                    </td>
+                  </tr>
+                ) : null}
+              </>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 }
