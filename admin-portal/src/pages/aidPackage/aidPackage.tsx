@@ -197,8 +197,8 @@ export function GlobalFilter({
   setGlobalFilter: any;
 }) {
   const [value, setValue] = useState(globalFilter);
-  const onChange = useAsyncDebounce(() => {
-    setGlobalFilter(value || undefined);
+  const onChange = useAsyncDebounce((filter) => {
+    setGlobalFilter(filter || undefined);
   }, 50);
 
   return (
