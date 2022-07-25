@@ -41,7 +41,7 @@ export default function PledgeActivities({
           }}
         />
         <div>
-          <button onClick={handleSave}>
+          <button type="button" onClick={handleSave}>
             {isCommenting ? "Commenting..." : "Comment"}
           </button>
         </div>
@@ -55,17 +55,23 @@ export default function PledgeActivities({
             <div className="content">
               <span className="text">{activity.updateComment}</span>
               <div className="actions">
-                <button onClick={() => onEditActivityButtonClick(activity)}>
+                <button
+                  type="button"
+                  onClick={() => onEditActivityButtonClick(activity)}
+                >
                   Edit
                 </button>
-                <button onClick={() => onDeleteActivityButtonClick(activity)}>
+                <button
+                  type="button"
+                  onClick={() => onDeleteActivityButtonClick(activity)}
+                >
                   Delete
                 </button>
               </div>
             </div>
           </div>
         ))}
-        <div></div>
+        <div />
       </div>
     </div>
   );

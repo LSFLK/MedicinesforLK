@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./packageDetails.css";
+import { Link, useParams } from "react-router-dom";
+import { FiEdit3 } from "react-icons/fi";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import { AidPackage } from "../../types/AidPackage";
 import UpdateComments from "./components/updateComments/updateComments";
@@ -8,15 +10,13 @@ import Modal from "../../components/modal/modal";
 import EditUpdateCommentPrompt from "./components/editUpdateCommentPrompt/editUpdateCommentPrompt";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import EditOrderItemPrompt from "./components/editOrderItemPrompt/editOrderItemPrompts";
-import { Link, useParams } from "react-router-dom";
 import PackageStatus from "./components/packageStatus/packageStatus";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
-import { AidPackageService } from "../../apis/services/AidPackageService";
+import AidPackageService from "../../apis/services/AidPackageService";
 import EditDescriptionPrompt from "./components/editDescriptionPrompt/editDescriptionPrompt";
-import { FiEdit3 } from "react-icons/fi";
 import DeleteAidPackagePrompt from "./components/deleteAidPackagePrompt/editUpdateCommentPrompt";
 
-export function PackageDetails() {
+export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [posts, setPosts] = useState<AidPackageUpdateComment[]>([]);
@@ -41,11 +41,6 @@ export function PackageDetails() {
     Delivered: 7,
   };
 
-  useEffect(() => {
-    fetchAidPackage();
-    fetchUpdateComments();
-  }, []);
-
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
     setAidPackage(data);
@@ -64,6 +59,11 @@ export function PackageDetails() {
   const handleAidPackageDelete = async () => {
     await AidPackageService.deleteAidPackage(packageId!);
   };
+
+  useEffect(() => {
+    fetchAidPackage();
+    fetchUpdateComments();
+  }, []);
 
   const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
     orderItemToBeEdited.current = item;
@@ -95,22 +95,25 @@ export function PackageDetails() {
         status: statusToBeChanged,
       });
       setAidPackage(data);
+      if (statusToBeChanged === AidPackage.Status.Published) {
+        AidPackageService.commentPublishedAidPackage(data);
+      }
     }
   };
 
   const handleDescriptionEdit = async (editedAidPackage: AidPackage) => {
-    const { data } = await AidPackageService.updateAidPackage({
+    await AidPackageService.updateAidPackage({
       ...aidPackage!,
       description: editedAidPackage.description,
     });
-    setAidPackage(data);
+    await fetchAidPackage();
     setIsEditDescriptionModalVisible(false);
   };
 
   const handleNewComment = async (comment: string) => {
     await AidPackageService.upsertUpdateComment(packageId!, {
       packageUpdateID: 0,
-      packageID: parseInt(packageId!),
+      packageID: parseInt(packageId!, 10),
       updateComment: comment,
       dateTime: "",
     });
@@ -150,8 +153,8 @@ export function PackageDetails() {
     setIsEditPostModalVisible(true);
   };
 
-  const handleEditDescriptionButtonClick = (aidPackage: AidPackage) => {
-    aidPackageToBeEdited.current = aidPackage;
+  const handleEditDescriptionButtonClick = (selectedAidPackage: AidPackage) => {
+    aidPackageToBeEdited.current = selectedAidPackage;
     setIsEditDescriptionModalVisible(true);
   };
 

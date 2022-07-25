@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { NavBar } from "./components";
-import { Home } from "./pages/home/home";
-import { NeedUpload } from "./pages/needUpload/needUpload";
-import { CreateAidPackage } from "pages/aidPackage/aidPackage";
-import { SupplierQuotationUpload } from "./pages/supplierQuotationUpload/supplierQuotationUpload";
-import { PackageDetails } from "./pages/packageDetails/packageDetails";
-import PledgeStatus from "./pages/pledgeStatus/pledgeStatus";
-import EditPledge from "./pages/editPledge/editPledge";
-import "./App.css";
-import { Page } from "layout/page";
 import { useAuthContext } from "@asgardeo/auth-react";
-import Http from "apis/httpCommon";
-import { AidPackageService } from "apis/services/AidPackageService";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import CreateAidPackage from "./pages/aidPackage/aidPackage";
+import "./App.css";
+import Page from "./layout/page";
+import Http from "./apis/httpCommon";
+import AidPackageService from "./apis/services/AidPackageService";
 import "react-toastify/dist/ReactToastify.css";
-import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
-import { PledgeService } from "apis/services/PledgeService";
-import { SupplierService } from "apis/services/SupplierService";
+import PledgeService from "./apis/services/PledgeService";
+import SupplierService from "./apis/services/SupplierService";
+import MedicalNeedsService from "./apis/services/MedicalNeedsService";
+import EditPledge from "./pages/editPledge/editPledge";
+import PledgeStatus from "./pages/pledgeStatus/pledgeStatus";
+import PackageDetails from "./pages/packageDetails/packageDetails";
+import SupplierQuotationUpload from "./pages/supplierQuotationUpload/supplierQuotationUpload";
+import NeedUpload from "./pages/needUpload/needUpload";
+import Home from "./pages/home/home";
+import NavBar from "./components/navbar/navbar";
 
 function App() {
   const { httpRequest, signIn, trySignInSilently } = useAuthContext();
@@ -58,12 +58,12 @@ function App() {
         <BrowserRouter>
           <Page>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/creation" component={CreateAidPackage} />
-              <Route exact path="/needUpload" component={NeedUpload} />
+              <Route path="/" exact component={Home} />
+              <Route path="/creation" exact component={CreateAidPackage} />
+              <Route path="/needUpload" exact component={NeedUpload} />
               <Route
-                exact
                 path="/packages/:packageId"
+                exact
                 component={PackageDetails}
               />
               <Route

@@ -20,7 +20,7 @@ export default function DonorTable({
             <th>Donor</th>
             <th>Amount</th>
             <th>Status</th>
-            <th />
+            <th> </th>
           </tr>
         </thead>
         <tbody>
@@ -36,8 +36,12 @@ export default function DonorTable({
               </td>
               <td>{pledge.status}</td>
               <td>
-                <button onClick={() => onPledgeEdit(pledge)}>Edit</button>
-                <button onClick={() => onPledgeDelete(pledge)}>Delete</button>
+                <button type="button" onClick={() => onPledgeEdit(pledge)}>
+                  Edit
+                </button>
+                <button type="button" onClick={() => onPledgeDelete(pledge)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { AidPackage } from "../../types/AidPackage";
 import { Link, useHistory, useParams } from "react-router-dom";
+import { AidPackage } from "../../types/AidPackage";
 import DonorTable from "./donorTable/donorTable";
 import "./pledgeStatus.css";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
-import { AidPackageService } from "../../apis/services/AidPackageService";
+import AidPackageService from "../../apis/services/AidPackageService";
 import { Pledge } from "../../types/Pledge";
-import { PledgeService } from "../../apis/services/PledgeService";
+import PledgeService from "../../apis/services/PledgeService";
 
 export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -17,11 +17,6 @@ export default function PledgeStatus() {
     history.push(path);
   };
 
-  useEffect(() => {
-    fetchAidPackage();
-    fetchPledges();
-  }, []);
-
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
     setAidPackage(data);
@@ -31,6 +26,11 @@ export default function PledgeStatus() {
     const { data } = await AidPackageService.getPledges(packageId!);
     setPledges(data);
   };
+
+  useEffect(() => {
+    fetchAidPackage();
+    fetchPledges();
+  }, []);
 
   const handlePledgeEdit = (pledge: Pledge) => {
     navigate(`pledges/${pledge.pledgeID}`);

@@ -13,7 +13,9 @@ export default function Modal({ show, onClose, children }: ModalProps) {
       <div className="modal">
         <div className="content">
           <div className="closeButton">
-            <button onClick={onClose}>x</button>
+            <button type="button" onClick={onClose}>
+              x
+            </button>
           </div>
           <div>{children}</div>
         </div>

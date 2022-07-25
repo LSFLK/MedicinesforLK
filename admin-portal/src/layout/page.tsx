@@ -8,7 +8,7 @@ interface PageProps {
   className?: string;
 }
 
-export function Page(props: PageProps) {
+export default function Page(props: PageProps) {
   const { children, className } = props;
 
   return (
@@ -34,7 +34,7 @@ export function Page(props: PageProps) {
                   <div className="menu__list-item-container">
                     <NavLink
                       exact
-                      to={"/creation"}
+                      to="/creation"
                       className="menu__link"
                       activeClassName="menu__link menu__link--active"
                     >

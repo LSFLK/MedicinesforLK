@@ -1,17 +1,14 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
-import { useAuthContext, HttpRequestConfig } from "@asgardeo/auth-react";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 import "./home.css";
-import { AidPackage } from "types/AidPackage";
-import { EmptyRow } from "./components/emptyRow/emptyRow";
-import { Table } from "./components/table/table";
-import { AidPackageService } from "apis/services/AidPackageService";
+import { AidPackage } from "../../types/AidPackage";
+import AidPackageService from "../../apis/services/AidPackageService";
+import EmptyRow from "./components/emptyRow/emptyRow";
+import Table from "./components/table/table";
 
-interface HomePageProps {}
-
-export function Home(params: HomePageProps) {
+export default function Home() {
   const [aidPackages, setAidPackages] = useState<AidPackage[]>([]);
   const [filteredAidPackages, setFilteredAidPackages] = useState<AidPackage[]>(
     []
@@ -37,13 +34,13 @@ export function Home(params: HomePageProps) {
   }, [state?.isAuthenticated]);
 
   function handleSearch(keyword: string) {
-    keyword = keyword.trim().toLowerCase();
+    const searchText = keyword.trim().toLowerCase();
     const newlyFilteredPackages = aidPackages.filter((aidPackage) => {
       const supplier = aidPackage.aidPackageItems[0]?.quotation.supplier.name;
       return (
-        aidPackage.name.toLowerCase().includes(keyword) ||
-        aidPackage.status.toLowerCase().includes(keyword) ||
-        supplier?.toLowerCase().includes(keyword)
+        aidPackage.name.toLowerCase().includes(searchText) ||
+        aidPackage.status.toLowerCase().includes(searchText) ||
+        supplier?.toLowerCase().includes(searchText)
       );
     });
     setFilteredAidPackages(newlyFilteredPackages);
@@ -61,7 +58,7 @@ export function Home(params: HomePageProps) {
           </header>
           <div className="packageTableSearch">
             <div className="searchContainer">
-              <img src="/assets/svg/search_icon.svg" />
+              <img src="/assets/svg/search_icon.svg" alt="search-icon" />
               <input
                 placeholder="Search"
                 className="textField"
