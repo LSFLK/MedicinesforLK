@@ -59,7 +59,7 @@ export default function AidPackageDetailsPage() {
   }, [userId]);
 
   const handleDonateClick = () => {
-    navigate("/donate-now");
+    navigate("/donors");
   };
 
   const handlePledgeSubmit = async (event: FormEvent<HTMLFormElement>) => {
