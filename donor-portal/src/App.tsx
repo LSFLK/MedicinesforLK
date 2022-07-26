@@ -12,6 +12,7 @@ import "./App.css";
 import AidPackageDetailsPage from "./pages/package";
 import NewsRoom from "./pages/newsroom";
 import UserContext from "./userContext";
+import IndividualDonors from "./pages/donors/individual-donors";
 
 function App() {
   const [loggedInUserId, setLoggedInUserId] = useState<string | null>(null);
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route exact path="/donors">
               <Donors />
+            </Route>
+            <Route exact path="/donors/individual">
+              <IndividualDonors />
             </Route>
             <Route exact path="/suppliers">
               <Suppliers />

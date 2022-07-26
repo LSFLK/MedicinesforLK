@@ -27,7 +27,10 @@ export default function Footer() {
       </div>
       <div className="footer-black">
         <div className="footer-black-top">
-          <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
+          <img
+            src="/assets/images/about-us/sl-red-cross-logo.jpg"
+            alt="SL Red Cross Logo"
+          />
           <p>
             {/* TODO: add content here */}
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
