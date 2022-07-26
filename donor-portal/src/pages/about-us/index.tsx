@@ -25,8 +25,8 @@ export default function AboutUs() {
       <h2>Our Approach</h2>
       <img src="/assets/images/about-us/our-approach.png" alt="our-approach" />
 
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
+      <div className="container">
+        <div className="accountability-and-transparency">
           <h2>Accountability</h2>
           <p>
             The Elixir team is motivated by the singular goal of alleviating the
@@ -38,7 +38,10 @@ export default function AboutUs() {
             maximize the utility of your donations.
           </p>
         </div>
-        <div style={{ width: "50%" }}>
+        <div className="middle-text-container">
+          <span className="middle-text">&</span>
+        </div>
+        <div className="accountability-and-transparency">
           <h2>Transparency</h2>
           <p>
             Elixir’s primary design goal is transparency. While the Sri Lanka
@@ -150,13 +153,57 @@ export default function AboutUs() {
       </div>
       <div>
         <h2>Volunteers</h2>
-        <div>
-          <div>
+        <div className="container">
+          <div className="volunteer-names">
+            <p>Jayasanka Weerasinghe </p>
+            <p>Nipuna Gunathilake</p>
+            <p>Kalsha Samarajeewa</p>
+            <p>Heshvan Andrews</p>
+            <p>Manoj Lakshan</p>
+            <p>Randila Premarathne</p>
+            <p>Anupama Pathirage</p>
+            <p>Amila Jayasekara</p>
+            <p>Marcus Chandradasa</p>
+            <p>Ryan Kuruppu</p>
+            <p>Shehan Kulathilake</p>
+            <p>Ratnajothy Sangeethanan</p>
+            <p>Sherazad Hamit</p>
+            <p>Srinath Perera</p>
+            <p>Samisa Abeysinghe</p>
+            <p>Sanjiva Weerawarana</p>
+            <p>Yujith Isura</p>
+            <p>Kavishka Timashan</p>
+            <p>Thisaru Guruge</p>
+            <p>Tharindu Udupitiya</p>
+          </div>
+          <div className="volunteer-img-container">
             <img
-              style={{ width: "40%" }}
+              className="volunteer-img"
               src="/assets/images/about-us/volunteers.jpg"
               alt="our-approach"
             />
+          </div>
+          <div className="volunteer-names">
+            <p>Ayesh Almeida</p>
+            <p>Dinuka Piyadigama</p>
+            <p>Ramindu Deshapriya</p>
+            <p>Kajendran Alagaratnam</p>
+            <p>Kanushka Gayan</p>
+            <p>Madusha Gunasekara</p>
+            <p>Charuka Karunanayake</p>
+            <p>Nipun Sampath</p>
+            <p>Manuranga Perera</p>
+            <p>Sameera Jayasoma</p>
+            <p>Ruhaim Izmeth</p>
+            <p>Arosha Bandara</p>
+            <p>Joys Chokatte</p>
+            <p>Deepal Mody</p>
+            <p>Yatin Mody</p>
+            <p>Madri Perera</p>
+            <p>Harindra Rajapakse</p>
+            <p>Donny Surtani</p>
+            <p>Priya Vasa</p>
+            <p>Sanith Wijesinghe</p>
           </div>
         </div>
       </div>

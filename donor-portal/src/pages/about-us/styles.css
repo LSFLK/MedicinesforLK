@@ -16,6 +16,42 @@
   z-index: 1;
 }
 
+.volunteer-names {
+  width: 20%;
+  text-align: center;
+}
+
+.accountability-and-transparency {
+  width: 40%;
+  text-align: center;
+}
+
+.middle-text-container {
+  width: 20%;
+}
+
+.container {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.middle-text {
+  color: var(--elixir-color-red);
+  font-size: 10rem;
+}
+
+.volunteer-img {
+  width: 100%;
+}
+
+.volunteer-img-container {
+  width: 60%;
+}
+
+.leadership-section {
+  margin-top: 2rem;
+}
+
 .about-us h2 {
   color: var(--elixir-color-red);
   text-align: center;
@@ -23,11 +59,8 @@
   margin-bottom: 40px;
 }
 
-.about-us .video-section {
-  margin: 2rem auto;
-}
-
 .about-us .video-section .video {
+  padding: 1rem;
   aspect-ratio: 16 / 9;
   width: 100%;
 }
