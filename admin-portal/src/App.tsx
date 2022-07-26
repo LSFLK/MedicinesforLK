@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, CSSProperties } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { ToastContainer } from "react-toastify";
@@ -18,10 +18,21 @@ import SupplierQuotationUpload from "./pages/supplierQuotationUpload/supplierQuo
 import NeedUpload from "./pages/needUpload/needUpload";
 import Home from "./pages/home/home";
 import NavBar from "./components/navbar/navbar";
+import HashLoader from "react-spinners/HashLoader";
+import LoadingOverlay from 'react-loading-overlay-ts';  
+
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+};
 
 function App() {
-  const { httpRequest, signIn, trySignInSilently } = useAuthContext();
-  const [isSigningIn, setIsSigningIn] = useState(true);
+  const { state, httpRequest, signIn, trySignInSilently } = useAuthContext();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     trySignInSilently()
@@ -33,9 +44,6 @@ function App() {
       .catch(() => {
         signIn();
       })
-      .finally(() => {
-        setIsSigningIn(false);
-      });
     const http: Http = new Http(
       httpRequest,
       "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
@@ -46,11 +54,16 @@ function App() {
     SupplierService.http = http;
   }, []);
 
-  if (isSigningIn) {
-    return <p>Loading...</p>;
-  }
+  useEffect(() => {
+    if(state.isAuthenticated){
+      setLoading(false);
+    }
+  });
+  
   return (
     <div className="App">
+      {loading === false ? (
+      <>
       <header className="App-header">
         <NavBar />
       </header>
@@ -97,6 +110,12 @@ function App() {
         </div>
       </footer>
       <ToastContainer />
+      </>
+      ) : (
+        <LoadingOverlay active={loading} spinner={<HashLoader color={'#09d3ac'} loading={loading} cssOverride={override} size={50} />} >
+          <p style={{height: '100vh'}}></p>
+        </LoadingOverlay>
+      )}
     </div>
   );
 }
