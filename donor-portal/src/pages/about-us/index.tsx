@@ -11,33 +11,50 @@ export default function AboutUs() {
         <h1>About Us</h1>
       </HeaderImage>
 
-      <div className="text-section">
-        <p>
-          We are a group of volunteers from around the world supporting the Sri
-          Lanka Red Cross to address the acute medical supply shortage in our
-          motherland. Collectively we bring our skills in software development,
-          pharmaceutical supply chain logistics and disaster aid management to
-          develop a unique solution that can provide transparency for donors and
-          efficiency for medical providers.
-        </p>
-        <p>
-          In partnership with the Lanka Software Foundation, Sustainable
-          Education Foundation, Watchdog, The Last Word, the Ministry of Health,
-          and the Medical Supply Division we are developing an online platform
-          to match financial contributions from the Sri Lankan diaspora, charity
-          organizations and businesses with the pharmaceutical demand needs from
-          hospitals across the nation.
-        </p>
-        <p>
-          The Sri Lanka Red Cross serves to coordinate distribution activities
-          on the ground and helps perform auditing and monitoring actions to
-          ensure donors receive end-to-end visibility of shipments from
-          suppliers to those in need.
-        </p>
+      <div className="video-section">
+        <iframe
+          className="video"
+          src="https://www.youtube.com/embed/eU9WY5fUs8w"
+          title="For us, its about serving people (Progress Video 2022)"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+
+      <h2>Our Approach</h2>
+      <img src="/assets/images/about-us/our-approach.png" alt="our-approach" />
+
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "50%" }}>
+          <h2>Accountability</h2>
+          <p>
+            The Elixir team is motivated by the singular goal of alleviating the
+            medical crisis in Sri Lanka. We are accountable internally, to one
+            another and our partner organizations and to a multitude of
+            volunteers who have invested considerable time and effort to create
+            Elixir. We are also accountable to you, our donors, both individuals
+            and organizations alike in executing our fiduciary responsibility to
+            maximize the utility of your donations.
+          </p>
+        </div>
+        <div style={{ width: "50%" }}>
+          <h2>Transparency</h2>
+          <p>
+            Elixir’s primary design goal is transparency. While the Sri Lanka
+            Red Cross will monitor the flow of aid packages and provide daily
+            status updates, we have also contracted the services of KPMG Sri
+            Lanka, to perform an end-to-end audit of the Elixir process and
+            finances. Our financial team will also publish the monthly statement
+            of accounts on the Elixir website. We are committed to continuously
+            improving our processes. Please contact us at elixir@redcross.lk
+            should you have any questions or have for feedback for us.
+          </p>
+        </div>
       </div>
 
       <div className="leadership-section">
-        <h2>Leadership</h2>
+        <h2>Leadership Team</h2>
         <div className="profile-card-container">
           <div className="profile-card">
             <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
@@ -94,7 +111,7 @@ export default function AboutUs() {
             </p>
           </div>
           <div className="partner-section-card">
-            <a href="https://sefglobal.org/?fbclid=IwAR2USvqUpwQjcTeo2mQrHAdaXdOgBiowyc4-V3IJvS3KDw0hwUOfOHVK8bE">
+            <a href="https://sefglobal.org/">
               <img src="/assets/images/about-us/SEF_Logo.png" alt="" />
             </a>
             <p>
@@ -128,6 +145,18 @@ export default function AboutUs() {
               the breadth of brand architecture, design, digital marketing
               communications and user experience.
             </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Volunteers</h2>
+        <div>
+          <div>
+            <img
+              style={{ width: "40%" }}
+              src="/assets/images/about-us/volunteers.jpg"
+              alt="our-approach"
+            />
           </div>
         </div>
       </div>
