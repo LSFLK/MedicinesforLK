@@ -1,7 +1,7 @@
 .simple-progressbar {
   position: relative;
   width: 100%;
-  height: 30px;
+  min-height: 30px;
   min-width: 300px;
   background-color: var(--elixir-color-gray-200);
   border-radius: 10px;
