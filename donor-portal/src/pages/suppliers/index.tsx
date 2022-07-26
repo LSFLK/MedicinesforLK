@@ -8,7 +8,7 @@ import "./styles.css";
 export default function Suppliers() {
   return (
     <Page className="suppliers">
-      <HeaderImage imageUrl="/assets/images/medical-suppliers-pills.jpg">
+      <HeaderImage imageUrl="/assets/images/header-imgs/medical-suppliers-pills.jpg">
         <h1>Doctors and Suppliers</h1>
       </HeaderImage>
       <div className="text-section">
