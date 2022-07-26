@@ -25,11 +25,14 @@ const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
   borderColor: "red",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
 };
 
 function App() {
   const { state, httpRequest, signIn, trySignInSilently } = useAuthContext();
-  let [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     trySignInSilently()
@@ -59,7 +62,8 @@ function App() {
   
   return (
     <div className="App">
-      <LoadingOverlay active={loading} spinner={<HashLoader color={'#09d3ac'} loading={loading} cssOverride={override} size={50} />}   >
+      {loading === false ? (
+      <>
       <header className="App-header">
         <NavBar />
       </header>
@@ -106,7 +110,12 @@ function App() {
         </div>
       </footer>
       <ToastContainer />
-      </LoadingOverlay>
+      </>
+      ) : (
+        <LoadingOverlay active={loading} spinner={<HashLoader color={'#09d3ac'} loading={loading} cssOverride={override} size={50} />} >
+          <p style={{height: '100vh'}}></p>
+        </LoadingOverlay>
+      )}
     </div>
   );
 }
