@@ -22,9 +22,6 @@ export default function NavBar() {
         <div className="logo" />
       </Link>
       <div className="nav-links">
-        {/* <NavLink to="/" className="nav-link" exact>
-          Home
-        </NavLink> */}
         <NavLink to="/about-us" className="nav-link">
           About
         </NavLink>

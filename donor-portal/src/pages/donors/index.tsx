@@ -28,20 +28,6 @@ export default function Donors() {
           link="/login"
           buttonText="Login"
         />
-        {/* <InfoBox
-          iconUrl="assets/images/gov.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Government Embassies"
-          link="/login"
-          buttonText="Login"
-        />
-        <InfoBox
-          iconUrl="/assets/images/corporation.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Foundations / Corporations"
-          link="/login"
-          buttonText="Login"
-        /> */}
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
           text="Donate to Elixir via our partner donor organizations"

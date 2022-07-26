@@ -6,7 +6,6 @@ import "./styles.css";
 export default function IndividualDonors() {
   return (
     <Page className="donors">
-      {/* <div>IndividualDonors</div> */}
       <HeaderImage imageUrl="/assets/images/header-imgs/donors.jpg">
         <h1>Medicines for Sri Lanka</h1>
       </HeaderImage>
