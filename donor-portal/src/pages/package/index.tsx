@@ -56,7 +56,7 @@ export default function AidPackageDetailsPage() {
     if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
     const newPledge: Pledge = {
       pledgeID: 0,
-      donorID: parseInt(userId, 10),
+      donorID: userId,
       packageID: parseInt(packageId, 10),
       amount: parseInt(amount, 10),
       status: Pledge.Status.Pledged,
@@ -75,7 +75,7 @@ export default function AidPackageDetailsPage() {
     if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
     const updatedPledge: Pledge = {
       pledgeID: pledge.pledgeID,
-      donorID: parseInt(userId, 10),
+      donorID: userId,
       packageID: parseInt(packageId, 10),
       amount: parseInt(amount, 10),
       status: pledge.status,
