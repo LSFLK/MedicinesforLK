@@ -36,7 +36,7 @@ export default function PledgeSummary({
       <div className="heading">Status:</div>
       <div>
         <select onChange={handleStatusChange} value={pledge.status}>
-          {Object.entries(Pledge.Status).map(([key, status], index) => (
+          {Object.entries(Pledge.Status).map(([key, status]) => (
             <option key={key} value={status}>
               {status}
             </option>

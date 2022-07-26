@@ -1,7 +1,5 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React from "react";
 
-interface EmptyRowProps {}
-
-export function EmptyRow(props: EmptyRowProps) {
+export default function EmptyRow() {
   return <p>No Data Found</p>;
 }

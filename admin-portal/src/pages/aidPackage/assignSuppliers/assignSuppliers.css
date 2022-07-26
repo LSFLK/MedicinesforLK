@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.table-sub-header {
+  color: var(--elixir-color-gray-600);
+}
+
 .supplier-allocation-table .validation-message {
   display: none;
   margin-top: 5px;

@@ -6,27 +6,39 @@
 
 .footer .footer-red {
   background-color: var(--elixir-color-red);
-  height: 210px;
-  padding: 40px;
+  min-height: 210px;
+  padding: 40px 0 20px 0;
 }
 
 .footer .footer-red h1 {
   color: rgb(255, 255, 255);
+  margin-bottom: 25px;
+}
+
+.footer-red .actions .btn {
+  min-width: 250px;
+  font-weight: 600;
+  padding: 12px;
+  height: auto;
 }
 
 .footer p {
   color: white;
   font-size: 18px;
-  width: 60%;
+  width: 30%;
   margin: auto;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .footer .footer-black {
-  height: 70px;
+  /* height: 70px; */
+  position: relative;
+  padding: 2rem 0;
   background-color: black;
   /* padding: 40px; */
-  padding-top: 100px;
-  padding-bottom: 40px;
+  /* padding-top: 100px; */
+  /* padding-bottom: 40px; */
 }
 
 .footer .footer-red button {
@@ -46,7 +58,9 @@
 }
 
 .footer .footer-black img {
-  height: 100px;
+  position: absolute;
+  top: -50%;
+  height: 150px;
   border-radius: 50%;
 }
 
@@ -59,11 +73,16 @@
 .footer .footer-black .footer-black-top {
   display: flex;
   align-items: center;
-  margin-top: -70px;
+  width: 50%;
+  margin: 0 auto;
+  /* margin-top: -70px; */
   width: 60%;
-  margin-left: 250px;
+  /* margin-left: 250px; */
   margin-bottom: 30px;
 }
+
+/* .footer-black-top p {
+} */
 
 .icons {
   display: flex;
@@ -76,20 +95,41 @@
   margin: 10px;
 }
 
+.icons p {
+  letter-spacing: 3px;
+  color: var(--elixir-color-gray-600);
+}
+
 .footer-black-bottom {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   text-decoration: none;
   font-size: 18px;
   margin: auto;
   width: 65%;
+  font-weight: 600;
+}
+
+.footer-black-bottom:hover a {
+  padding: 0 18px;
 }
 
 .footer-black-bottom span {
   color: white;
 }
+
 .text-link {
   color: white;
+  padding: 0 25px;
+  transition: all 0.5s;
+}
+
+a.text-link:hover {
+  padding: 0 60px;
+}
+
+.text-link:not(:last-child) {
+  border-right: 1px solid white;
 }
 
 .footer-gray {
@@ -115,11 +155,17 @@
   font-weight: 500;
 }
 
+.footer-gray .nav {
+  display: flex;
+  align-items: center;
+}
+
 .dot {
   height: 5px;
   width: 5px;
   background-color: black;
   border-radius: 50%;
-  display: inline-block;
+  /* display: inline-flex;
+  align-items: center; */
   margin: 0 8px;
 }

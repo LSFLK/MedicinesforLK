@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
 import "./navbar.css";
-import { useLocation } from "react-router-dom";
 
-interface NavBarProps {}
-
-export function NavBar(params: NavBarProps) {
-  const { state, signIn, signOut, on, trySignInSilently } = useAuthContext();
+export default function NavBar() {
+  const { state, signIn, signOut, on } = useAuthContext();
 
   // const search = useLocation().search;
   // const stateParam = new URLSearchParams(search).get("state");
@@ -28,33 +25,28 @@ export function NavBar(params: NavBarProps) {
    */
   useEffect(() => {
     on(Hooks.SignOut, () => {
-      //setHasLogoutFailureError(false);
+      // setHasLogoutFailureError(false);
     });
   }, [on]);
 
   useEffect(() => {
-    if (!state?.isAuthenticated) {
-      return;
-    }
     // (async (): Promise<void> => {
     //   const basicUserInfo = await getBasicUserInfo();
     //   const idToken = await getIDToken();
     //   const decodedIDToken = await getDecodedIDToken();
-
     //   const derivedState = {
     //     authenticateResponse: basicUserInfo,
     //     idToken: idToken?.split("."),
     //     decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
     //     decodedIDTokenPayload: decodedIDToken
     //   };
-
     //   setDerivedAuthenticationState(derivedState);
     // })();
   }, [state?.isAuthenticated]);
 
   const handleLogin = () => {
-    //setHasLogoutFailureError(false);
-    signIn(); //.catch(() => setHasAuthenticationErrors(true));
+    // setHasLogoutFailureError(false);
+    signIn(); // .catch(() => setHasAuthenticationErrors(true));
   };
 
   const handleLogout = () => {
@@ -78,7 +70,7 @@ export function NavBar(params: NavBarProps) {
                 strokeMiterlimit="10"
                 strokeWidth="2"
                 d="M4 7h22M4 15h22M4 23h22"
-              ></path>
+              />
             </svg>
           </button>
           <a className="navbar__brand" href="/">
@@ -95,6 +87,7 @@ export function NavBar(params: NavBarProps) {
         <div className="navbar__items navbar__items--right">
           {state.isAuthenticated ? (
             <a
+              href="/"
               onClick={() => handleLogout()}
               className="navbar__item navbar__link"
             >
@@ -102,33 +95,13 @@ export function NavBar(params: NavBarProps) {
             </a>
           ) : (
             <a
+              href="/"
               onClick={() => handleLogin()}
               className="navbar__item navbar__link"
             >
               Login
             </a>
           )}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="navbar__item navbar__link"
-          >
-            <span>
-              Help
-              <svg
-                width="13.5"
-                height="13.5"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="iconExternalLink_gzkf"
-              >
-                <path
-                  fill="currentColor"
-                  d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
-                ></path>
-              </svg>
-            </span>
-          </a>
         </div>
       </div>
     </nav>

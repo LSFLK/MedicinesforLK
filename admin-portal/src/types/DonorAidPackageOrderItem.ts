@@ -10,4 +10,9 @@ export interface AidPackageItem {
   totalAmount: number;
   needID: number;
   quotation: Quotation;
+  period: {
+    year: number;
+    month: number;
+    day: number;
+  };
 }
