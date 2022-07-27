@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
-import { Stepper, Step } from "components/stepper";
-import { AssignSuppliers } from "./assignSuppliers/assignSuppliers";
-import { ManageAidPackages } from "./manageAidPackages/manageAidPackages";
-import { MedicalNeedsService } from "apis/services/MedicalNeedsService";
-import { AidPackageService } from "apis/services/AidPackageService";
-import { MedicalNeed } from "../../types/MedicalNeeds";
-import { useAsyncDebounce } from "react-table";
-import { AidPackage } from "types/AidPackage";
+import React, { useEffect, useState } from "react";
 import toast from "react-simple-toasts";
-import { Quotation } from "types/Quotation";
+import { Stepper, Step } from "../../components/stepper";
+import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
+import AidPackageService from "../../apis/services/AidPackageService";
+import {
+  AidPackage,
+  DraftAidPackages,
+  NeedAssignments,
+} from "../../types/AidPackage";
+import { MedicalNeed } from "../../types/MedicalNeeds";
+import ManageAidPackages from "./manageAidPackages/manageAidPackages";
+import AssignSuppliers from "./assignSuppliers/assignSuppliers";
 import "./aidPackage.css";
 
 enum STEPS {
@@ -16,24 +18,7 @@ enum STEPS {
   MANAGE_AID_PACKAGES,
 }
 
-export type NeedAssignment = Map<number, number | null>; // Map<supplierId: quantity>
-
-export type NeedAssignments = {
-  [needID: string]: NeedAssignment;
-};
-
-export type DraftAidPackage = {
-  supplierID: number;
-  period: Quotation["period"];
-  name: string;
-  details: string;
-  isPublished?: boolean;
-};
-export type DraftAidPackages = {
-  [key: string]: DraftAidPackage;
-};
-
-export function CreateAidPackage() {
+export default function CreateAidPackage() {
   const [currentFormStep, setCurrentFormStep] = useState(0);
   const [needAssignments, setNeedAssignments] = useState<NeedAssignments>({});
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed[]>([]);
@@ -51,6 +36,7 @@ export function CreateAidPackage() {
         setNeedAssignments(
           needsArray.reduce(
             (previousValue: NeedAssignments, currentValue: any) => {
+              // eslint-disable-next-line no-param-reassign
               previousValue[currentValue.needID] = new Map();
               return previousValue;
             },
@@ -116,12 +102,11 @@ export function CreateAidPackage() {
           setAidPackages({ ...aidPackages });
           AidPackageService.commentPublishedAidPackage(data);
         })
-        .catch((error) => {
+        .catch(() => {
           toast("something went wrong");
         });
-    } else {
-      throw new Error("invalid supplier"); // or handle otherwise.
     }
+    throw new Error("invalid supplier"); // or handle otherwise.
   };
 
   return (
@@ -156,7 +141,6 @@ export function CreateAidPackage() {
               <ManageAidPackages
                 medicalNeeds={medicalNeeds}
                 needAssignments={needAssignments}
-                setNeedAssignments={setNeedAssignments}
                 aidPackages={aidPackages}
                 setAidPackages={setAidPackages}
                 handleAidPkgPublish={handleAidPkgPublish}
@@ -169,6 +153,7 @@ export function CreateAidPackage() {
       <div className="bottom-sticky-nav">
         {currentFormStep === STEPS.MANAGE_AID_PACKAGES && (
           <button
+            type="button"
             className="btn secondary"
             onClick={() => goToStep(STEPS.ASSIGN_SUPPLIERS)}
           >
@@ -177,6 +162,7 @@ export function CreateAidPackage() {
         )}
         {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (
           <button
+            type="button"
             className="btn pull-right"
             onClick={() => goToStep(STEPS.MANAGE_AID_PACKAGES)}
             disabled={!isValidAssignment}
@@ -184,44 +170,6 @@ export function CreateAidPackage() {
             Next
           </button>
         )}
-      </div>
-    </div>
-  );
-}
-
-export function GlobalFilter({
-  globalFilter,
-  setGlobalFilter,
-}: {
-  globalFilter: any;
-  setGlobalFilter: any;
-}) {
-  const [value, setValue] = useState(globalFilter);
-  const onChange = useAsyncDebounce((value) => {
-    setGlobalFilter(value || undefined);
-  }, 50);
-
-  return (
-    <div
-      className="packageTableSearch"
-      style={{
-        position: "sticky",
-        top: 0,
-        background: "white",
-        paddingBottom: "1rem",
-      }}
-    >
-      <div className="searchContainer">
-        <img src="/assets/svg/search_icon.svg" />
-        <input
-          placeholder="Search"
-          className="textField"
-          value={value || ""}
-          onChange={(e) => {
-            setValue(e.target.value);
-            onChange(e.target.value);
-          }}
-        />
       </div>
     </div>
   );

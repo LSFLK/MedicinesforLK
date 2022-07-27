@@ -1,3 +1,4 @@
+import React from "react";
 import clsx from "clsx";
 import "./stepper.css";
 
@@ -10,14 +11,14 @@ interface Props {
   disabled?: boolean;
 }
 
-const Step = ({
+function Step({
   title,
   rounded = true,
   index,
   isActive = false,
   disabled = false,
   onClick,
-}: Props) => {
+}: Props) {
   function handleClick() {
     if (!onClick || disabled) {
       return undefined;
@@ -28,6 +29,7 @@ const Step = ({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       className={clsx(
         "step",
@@ -40,6 +42,6 @@ const Step = ({
       <span>{title}</span>
     </button>
   );
-};
+}
 
 export default Step;

@@ -8,8 +8,8 @@ import "./styles.css";
 export default function Donors() {
   return (
     <Page className="donors">
-      <HeaderImage imageUrl="https://media.capc.org/images/AdobeStock_274131656.original.original.jpg">
-        <h1>Donors</h1>
+      <HeaderImage imageUrl="/assets/images/header-imgs/donors.jpg">
+        <h1>How to Donate</h1>
       </HeaderImage>
       <div className="text-section">
         <p>
@@ -24,21 +24,7 @@ export default function Donors() {
         <InfoBox
           iconUrl="assets/images/charity2.jpg"
           text="Navigate to the login page to begin registration"
-          heading="Charities"
-          link="/login"
-          buttonText="Login"
-        />
-        <InfoBox
-          iconUrl="assets/images/gov.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Government Embassies"
-          link="/login"
-          buttonText="Login"
-        />
-        <InfoBox
-          iconUrl="/assets/images/corporation.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Foundations / Corporations"
+          heading="Charities, Foundations and Corporations"
           link="/login"
           buttonText="Login"
         />
@@ -46,7 +32,7 @@ export default function Donors() {
           iconUrl="/assets/images/individual_donor.jpg"
           text="Donate to Elixir via our partner donor organizations"
           heading="Individual Donors"
-          link="/donate-now"
+          link="/donors/individual"
           buttonText="Donate"
         />
         <p className="inquiry">

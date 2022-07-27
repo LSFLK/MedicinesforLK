@@ -40,7 +40,7 @@ export default function UpdateComments({
           onChange={(event) => setNewComment(event.currentTarget.value)}
         />
         <div>
-          <button onClick={handleNewPostButtonClick}>
+          <button type="button" onClick={handleNewPostButtonClick}>
             {isCommenting ? "Posting..." : "Post"}
           </button>
         </div>
@@ -52,17 +52,23 @@ export default function UpdateComments({
             <div className="content">
               <span className="text">{post.updateComment}</span>
               <div className="actions">
-                <button onClick={() => onEditPostButtonClick(post)}>
+                <button
+                  type="button"
+                  onClick={() => onEditPostButtonClick(post)}
+                >
                   Edit
                 </button>
-                <button onClick={() => onDeletePostButtonClick(post)}>
+                <button
+                  type="button"
+                  onClick={() => onDeletePostButtonClick(post)}
+                >
                   Delete
                 </button>
               </div>
             </div>
           </div>
         ))}
-        <div></div>
+        <div />
       </div>
     </div>
   );

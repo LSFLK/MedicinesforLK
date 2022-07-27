@@ -43,21 +43,25 @@ export default function EditOrderItemPrompt({
     <div className="editOrderItemPrompt">
       <h4>Edit Order Item</h4>
       <div className="input">
-        <label htmlFor="orderItemQty">Quantity</label>
-        <div>
+        <label htmlFor="orderItemQty">
+          Quantity
           <input
             id="orderItemQty"
             value={quantity}
             type="number"
             onChange={(event) =>
-              setQuantity(parseInt(event.currentTarget.value))
+              setQuantity(parseInt(event.currentTarget.value, 10))
             }
           />
-        </div>
+        </label>
       </div>
       {errorText && <div className="errorText">{errorText}</div>}
       <div className="saveButton">
-        <button disabled={isSaving} onClick={handleSaveButtonClick}>
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={handleSaveButtonClick}
+        >
           {isSaving ? "Saving..." : "Save"}
         </button>
       </div>

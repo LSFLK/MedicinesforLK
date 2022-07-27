@@ -21,7 +21,7 @@ export default function OrderItemsTable({
           <th>Quantity</th>
           <th>Supplier</th>
           <th>Period</th>
-          <th />
+          <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -34,8 +34,11 @@ export default function OrderItemsTable({
               {item.period.day}/{item.period.month}/{item.period.year}
             </td>
             <td className="actions">
-              <button onClick={() => onEditItemButtonClick(item)}>Edit</button>
+              <button type="button" onClick={() => onEditItemButtonClick(item)}>
+                Edit
+              </button>
               <button
+                type="button"
                 className="deleteButton"
                 onClick={() => onDeleteButtonClick(item)}
               >

@@ -1,12 +1,56 @@
-import { useMemo } from "react";
-import { useTable, useExpanded, useGlobalFilter, CellValue } from "react-table";
-import { DraftAidPackages, GlobalFilter, NeedAssignments } from "../aidPackage";
-import { SupplierNeedAllocationTable } from "./supplierNeedAllocationTable";
+import React, { useMemo, useState } from "react";
+import {
+  useTable,
+  useExpanded,
+  useGlobalFilter,
+  CellValue,
+  useAsyncDebounce,
+} from "react-table";
+import moment from "moment";
+import SupplierNeedAllocationTable from "./supplierNeedAllocationTable";
 import { MedicalNeed } from "../../../types/MedicalNeeds";
 import "./assignSuppliers.css";
-import moment from "moment";
+import { NeedAssignments, DraftAidPackages } from "../../../types/AidPackage";
 
-export function AssignSuppliers({
+export function GlobalFilter({
+  globalFilter,
+  setGlobalFilter,
+}: {
+  globalFilter: any;
+  setGlobalFilter: any;
+}) {
+  const [value, setValue] = useState(globalFilter);
+  const onChange = useAsyncDebounce((filter) => {
+    setGlobalFilter(filter || undefined);
+  }, 50);
+
+  return (
+    <div
+      className="packageTableSearch"
+      style={{
+        position: "sticky",
+        top: 0,
+        background: "white",
+        paddingBottom: "1rem",
+      }}
+    >
+      <div className="searchContainer">
+        <img src="/assets/svg/search_icon.svg" alt="search-icon" />
+        <input
+          placeholder="Search"
+          className="textField"
+          value={value || ""}
+          onChange={(e) => {
+            setValue(e.target.value);
+            onChange(e.target.value);
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default function AssignSuppliers({
   needAssignments,
   setNeedAssignments,
   medicalNeeds,
@@ -21,9 +65,9 @@ export function AssignSuppliers({
 }) {
   const getAssignedCount = (
     need: MedicalNeed,
-    needAssignments: NeedAssignments
+    needAssignment: NeedAssignments
   ) => {
-    return Array.from(needAssignments[need.needID!].values()).reduce(
+    return Array.from(needAssignment[need.needID!].values()).reduce(
       (currentSum, value) => (currentSum as number) + (value || 0),
       0
     ) as number;
@@ -100,7 +144,7 @@ export function AssignSuppliers({
               viewBox="0 0 16 16"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
               />
             </svg>
@@ -197,14 +241,14 @@ export function AssignSuppliers({
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, index) => {
+          {rows.map((row) => {
             prepareRow(row);
 
-            const needsID = row.original["needID"];
+            const needsID = row.original.needID;
             const currentAssignments = needAssignments[needsID];
-            const requiredQuantity = row.values["requiredQuantity"];
+            const { requiredQuantity } = row.values;
 
-            const remainingQuantity = row.values["remainingQuantity"];
+            const { remainingQuantity } = row.values;
 
             return (
               <>

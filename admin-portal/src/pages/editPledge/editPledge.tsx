@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Page } from "../../layout/page";
-import { PageSelection } from "../../types/pages";
 import { Link, useParams } from "react-router-dom";
 import { AidPackage } from "../../types/AidPackage";
 import PledgeSummary from "./components/pledgeSummary/pledgeSummary";
@@ -10,8 +8,8 @@ import { PledgeActivity } from "../../types/PledgeActivity";
 import Modal from "../../components/modal/modal";
 import EditActivityPrompt from "./components/editActivityPrompt/editActivityPrompt";
 import "./editPledge.css";
-import { AidPackageService } from "../../apis/services/AidPackageService";
-import { PledgeService } from "../../apis/services/PledgeService";
+import AidPackageService from "../../apis/services/AidPackageService";
+import PledgeService from "../../apis/services/PledgeService";
 
 export default function EditPledge() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -22,12 +20,6 @@ export default function EditPledge() {
   const [isEditActivityModalVisible, setIsEditActivityModalVisible] =
     useState(false);
   const activityToBeEdited = useRef<PledgeActivity | null>(null);
-
-  useEffect(() => {
-    fetchAidPackage();
-    fetchPledge();
-    fetchUpdateComments();
-  }, []);
 
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
@@ -48,6 +40,12 @@ export default function EditPledge() {
     });
     setActivities(sorteddata);
   };
+
+  useEffect(() => {
+    fetchAidPackage();
+    fetchPledge();
+    fetchUpdateComments();
+  }, []);
 
   const handleEditActivityClick = (activity: PledgeActivity) => {
     activityToBeEdited.current = activity;
@@ -76,7 +74,7 @@ export default function EditPledge() {
 
   const handleNewActivity = async (text: string) => {
     await PledgeService.upsertUpdateComment(pledgeId!, {
-      pledgeID: parseInt(pledgeId!),
+      pledgeID: parseInt(pledgeId!, 10),
       pledgeUpdateID: 0,
       updateComment: text,
       dateTime: "",

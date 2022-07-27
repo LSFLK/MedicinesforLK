@@ -1,15 +1,18 @@
+import React, { useMemo } from "react";
+import { useTable } from "react-table";
 import {
   getDraftAidPackageKey,
   getSupplierIdFromAidPackageKey,
-} from "helpers/aidPackageHelper";
-import { formatMoney, formatNumber } from "helpers/formatter";
-import { getNeedFromId, getSupplierQuoteForNeed } from "helpers/needsHelper";
-import { useMemo } from "react";
-import { useTable } from "react-table";
-import { MedicalNeed } from "types/MedicalNeeds";
-import { DraftAidPackage, NeedAssignments } from "../../aidPackage";
+} from "../../../../helpers/aidPackageHelper";
+import { formatMoney, formatNumber } from "../../../../helpers/formatter";
+import {
+  getNeedFromId,
+  getSupplierQuoteForNeed,
+} from "../../../../helpers/needsHelper";
+import { DraftAidPackage, NeedAssignments } from "../../../../types/AidPackage";
+import { MedicalNeed } from "../../../../types/MedicalNeeds";
 
-export function AidPackageDetailsTable({
+export default function AidPackageDetailsTable({
   selectedPackage,
   selectedPackageKey,
   needAssignments,
@@ -37,7 +40,7 @@ export function AidPackageDetailsTable({
             supplierID,
           });
 
-          return selectedPackageKey == getDraftAidPackageKey(supplierQuote!);
+          return selectedPackageKey === getDraftAidPackageKey(supplierQuote!);
         })
         .map((needID) => {
           const need = getNeedFromId(medicalNeeds, Number(needID));
@@ -93,31 +96,38 @@ export function AidPackageDetailsTable({
       <hr />
       <h4>Edit Package: {selectedPackage.name}</h4>
       <div className="input-group">
-        <label htmlFor="package-name">Name:</label>
-        <input
-          type="text"
-          id="package-name"
-          name="package-name"
-          value={selectedPackage.name}
-          onChange={(event) => {
-            updateAidPackage({ ...selectedPackage, name: event.target.value });
-          }}
-        />
+        <label htmlFor="package-name">
+          Name:
+          <input
+            type="text"
+            id="package-name"
+            name="package-name"
+            value={selectedPackage.name}
+            onChange={(event) => {
+              updateAidPackage({
+                ...selectedPackage,
+                name: event.target.value,
+              });
+            }}
+          />
+        </label>
       </div>
 
       <div className="input-group">
-        <label htmlFor="package-description">Description:</label>
-        <textarea
-          id="package-description"
-          name="package-description"
-          value={selectedPackage.details}
-          onChange={(event) => {
-            updateAidPackage({
-              ...selectedPackage,
-              details: event.target.value,
-            });
-          }}
-        />
+        <label htmlFor="package-description">
+          Description:
+          <textarea
+            id="package-description"
+            name="package-description"
+            value={selectedPackage.details}
+            onChange={(event) => {
+              updateAidPackage({
+                ...selectedPackage,
+                details: event.target.value,
+              });
+            }}
+          />
+        </label>
       </div>
 
       <table {...getTableProps()}>

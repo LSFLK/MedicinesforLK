@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { AidPackage } from "types/AidPackage";
+import { AidPackage } from "../../../../../../types/AidPackage";
 
 interface TableRowProps {
   aidPackage: AidPackage;
 }
 
-export function TableRow(props: TableRowProps) {
+export default function TableRow(props: TableRowProps) {
   const { aidPackage } = props;
   const history = useHistory();
   const navigate = (path: string) => {
@@ -33,10 +33,16 @@ export function TableRow(props: TableRowProps) {
       </td>
       <td>{aidPackage.aidPackageItems[0]?.quotation.supplier.name}</td>
       <td>
-        <button onClick={() => handleDetailsButtonClick(aidPackage.packageID)}>
+        <button
+          type="button"
+          onClick={() => handleDetailsButtonClick(aidPackage.packageID)}
+        >
           Details
         </button>
-        <button onClick={() => handlePledgesButtonClick(aidPackage.packageID)}>
+        <button
+          type="button"
+          onClick={() => handlePledgesButtonClick(aidPackage.packageID)}
+        >
           Pledges
         </button>
       </td>

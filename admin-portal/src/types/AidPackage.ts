@@ -1,4 +1,5 @@
 import { AidPackageItem } from "./DonorAidPackageOrderItem";
+import { Quotation } from "./Quotation";
 
 export interface AidPackage {
   packageID: number;
@@ -21,3 +22,20 @@ export namespace AidPackage {
     Delivered = "Delivered",
   }
 }
+
+export type NeedAssignment = Map<number, number | null>; // Map<supplierId: quantity>
+
+export type NeedAssignments = {
+  [needID: string]: NeedAssignment;
+};
+
+export type DraftAidPackage = {
+  supplierID: number;
+  period: Quotation["period"];
+  name: string;
+  details: string;
+  isPublished?: boolean;
+};
+export type DraftAidPackages = {
+  [key: string]: DraftAidPackage;
+};

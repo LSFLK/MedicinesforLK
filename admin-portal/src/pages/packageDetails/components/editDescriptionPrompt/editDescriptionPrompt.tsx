@@ -28,7 +28,7 @@ export default function EditDescriptionPrompt({
     try {
       const editedAidPackage: AidPackage = {
         ...aidPackage,
-        description: description,
+        description,
       };
       await onSave(editedAidPackage);
     } catch (e) {
@@ -49,7 +49,11 @@ export default function EditDescriptionPrompt({
       />
       {errorText && <div className="errorText">{errorText}</div>}
       <div>
-        <button disabled={isSaving} onClick={handleSaveButtonClick}>
+        <button
+          type="button"
+          disabled={isSaving}
+          onClick={handleSaveButtonClick}
+        >
           {isSaving ? "Saving..." : "Save"}
         </button>
       </div>

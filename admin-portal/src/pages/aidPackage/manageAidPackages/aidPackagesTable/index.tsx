@@ -1,16 +1,51 @@
+/* eslint-disable react/prop-types */
+import React, { useCallback, useMemo, useState } from "react";
+import { useTable, useRowSelect } from "react-table";
+import { getSupplierQuoteForNeed } from "../../../../helpers/needsHelper";
+import {
+  AidPackage,
+  DraftAidPackages,
+  NeedAssignments,
+} from "../../../../types/AidPackage";
+import { MedicalNeed } from "../../../../types/MedicalNeeds";
+import { formatDate, formatMoney } from "../../../../helpers/formatter";
 import {
   getDraftAidPackageKey,
   getSupplierIdFromAidPackageKey,
-} from "helpers/aidPackageHelper";
-import { formatDate, formatMoney } from "helpers/formatter";
-import { getSupplierQuoteForNeed } from "helpers/needsHelper";
-import { useCallback, useMemo, useState } from "react";
-import { useTable, useRowSelect } from "react-table";
-import { AidPackage } from "types/AidPackage";
-import { MedicalNeed } from "types/MedicalNeeds";
-import { DraftAidPackages, NeedAssignments } from "../../aidPackage";
+} from "../../../../helpers/aidPackageHelper";
 
-export function AidPackageTable({
+function PublishAidPackageButton({
+  handlePublish,
+  supplierID,
+  status,
+  label,
+  setIsUploading,
+  packageKey,
+}: {
+  handlePublish: Function;
+  supplierID: number;
+  status: AidPackage.Status;
+  label: string;
+  setIsUploading: Function;
+  packageKey: string;
+}) {
+  return (
+    <button
+      type="button"
+      className={`table-action-button btn small ${
+        status !== AidPackage.Status.Published && "secondary"
+      }`}
+      onClick={(event) => {
+        event.stopPropagation();
+        handlePublish(supplierID, packageKey, status, setIsUploading);
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
+export default function AidPackageTable({
   aidPackages,
   setSelectedPackage,
   handleAidPkgPublish,
@@ -34,7 +69,7 @@ export function AidPackageTable({
           return !aidPackages[key].isPublished;
         })
         .map((key) => {
-          let supplierID = getSupplierIdFromAidPackageKey(key);
+          const supplierID = getSupplierIdFromAidPackageKey(key);
           let supplier: string = "";
           let period: Date = new Date();
 
@@ -50,12 +85,11 @@ export function AidPackageTable({
                 supplierID,
               });
 
-              return key == getDraftAidPackageKey(supplierQuote!);
+              return key === getDraftAidPackageKey(supplierQuote!);
             })
             .map(Number);
 
           const totalCost = needsWithSupplier.reduce((currentTotal, needID) => {
-            needID = Number(needID);
             const quote = getSupplierQuoteForNeed({
               medicalNeeds,
               needID,
@@ -139,7 +173,7 @@ export function AidPackageTable({
       {
         Header: "Actions",
         Cell: ({ row }: any) => {
-          let [isUploading, setIsUploading] = useState(false);
+          const [isUploading, setIsUploading] = useState(false);
           return !isUploading ? (
             <>
               <PublishAidPackageButton
@@ -224,35 +258,5 @@ export function AidPackageTable({
         })}
       </tbody>
     </table>
-  );
-}
-
-function PublishAidPackageButton({
-  handlePublish,
-  supplierID,
-  status,
-  label,
-  setIsUploading,
-  packageKey,
-}: {
-  handlePublish: Function;
-  supplierID: number;
-  status: AidPackage.Status;
-  label: string;
-  setIsUploading: Function;
-  packageKey: string;
-}) {
-  return (
-    <button
-      className={`table-action-button btn small ${
-        status !== AidPackage.Status.Published && "secondary"
-      }`}
-      onClick={(event) => {
-        event.stopPropagation();
-        handlePublish(supplierID, packageKey, status, setIsUploading);
-      }}
-    >
-      {label}
-    </button>
   );
 }

@@ -1,26 +1,80 @@
-import { getDraftAidPackageKey } from "helpers/aidPackageHelper";
-import { formatMoney } from "helpers/formatter";
+import React, { useMemo, useState, useEffect } from "react";
 import moment from "moment";
-import { DraftAidPackages, NeedAssignment } from "pages/aidPackage/aidPackage";
-import { useMemo, useState, useEffect } from "react";
 import { useTable, CellValue } from "react-table";
+import { formatMoney } from "../../../../helpers/formatter";
+import { getDraftAidPackageKey } from "../../../../helpers/aidPackageHelper";
 import { Quotation } from "../../../../types/Quotation";
+import { NeedAssignment, DraftAidPackages } from "../../../../types/AidPackage";
 
-export function SupplierNeedAllocationTable({
-  supplierQuotes,
-  setAssignmentForSupplier,
-  requiredQuantity,
-  assignmentsForSupplier,
-  aidPackages,
-}: {
+function validateRow(
+  value: string,
+  maxValue: number
+): { hasError: boolean; errorMessages?: Array<string> } {
+  let hasError = false;
+  const errorMessages = [];
+
+  if (maxValue < Number(value)) {
+    hasError = true;
+    errorMessages.push("Assigned quantity must be lower than the supplier max");
+  }
+
+  if (value === "0") {
+    hasError = true;
+    errorMessages.push("Assigned quantity must be more than zero");
+  }
+
+  return { hasError, errorMessages };
+}
+
+function EditableCell({
+  value: initialValue,
+  row: { index, original },
+  column: { id },
+  updateAssignment,
+}: any) {
+  const [value, setValue] = useState(initialValue);
+
+  const onChange = (e: any) => {
+    setValue(e.target.value);
+    updateAssignment(index, id, e.target.value);
+  };
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  const validationResult = validateRow(value, original.max);
+
+  return (
+    <div className={`${validationResult.hasError && "has-error"}`}>
+      <input
+        disabled={original.published}
+        type="number"
+        value={value}
+        onChange={onChange}
+      />
+      <span className="validation-message">
+        {validationResult.errorMessages?.[0]}
+      </span>
+    </div>
+  );
+}
+
+interface SupplierNeedAllocationTableProps {
   supplierQuotes: Quotation[];
   setAssignmentForSupplier: any;
   requiredQuantity: number;
   assignmentsForSupplier: NeedAssignment;
   aidPackages: DraftAidPackages;
-}) {
-  supplierQuotes = supplierQuotes || [];
+}
 
+export default function SupplierNeedAllocationTable({
+  supplierQuotes,
+  setAssignmentForSupplier,
+  requiredQuantity,
+  assignmentsForSupplier,
+  aidPackages,
+}: SupplierNeedAllocationTableProps) {
   const data = useMemo<Array<{ [key: string]: any }>>(
     () =>
       supplierQuotes.map((quote) => {
@@ -122,12 +176,12 @@ export function SupplierNeedAllocationTable({
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
+        {rows.map((row) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell, index) => {
-                return index != 4 ? (
+                return index !== 4 ? (
                   <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                 ) : (
                   <td {...cell.getCellProps()}>
@@ -141,58 +195,4 @@ export function SupplierNeedAllocationTable({
       </tbody>
     </table>
   );
-}
-
-function EditableCell({
-  value: initialValue,
-  row: { index, original },
-  column: { id },
-  updateAssignment,
-}: any) {
-  const [value, setValue] = useState(initialValue);
-
-  const onChange = (e: any) => {
-    setValue(e.target.value);
-    updateAssignment(index, id, e.target.value);
-  };
-
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
-
-  const validationResult = validateRow(value, original["max"]);
-
-  return (
-    <div className={`${validationResult.hasError && "has-error"}`}>
-      <input
-        disabled={original.published}
-        type="number"
-        value={value}
-        onChange={onChange}
-      />
-      <span className="validation-message">
-        {validationResult.errorMessages?.[0]}
-      </span>
-    </div>
-  );
-}
-
-function validateRow(
-  value: string,
-  maxValue: number
-): { hasError: boolean; errorMessages?: Array<string> } {
-  let hasError = false;
-  const errorMessages = [];
-
-  if (maxValue < Number(value)) {
-    hasError = true;
-    errorMessages.push("Assigned quantity must be lower than the supplier max");
-  }
-
-  if (value === "0") {
-    hasError = true;
-    errorMessages.push("Assigned quantity must be more than zero");
-  }
-
-  return { hasError, errorMessages };
 }

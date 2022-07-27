@@ -45,7 +45,7 @@ export default function AidPackageDetailsPage() {
   };
 
   const handleDonateClick = () => {
-    navigate("/donate-now");
+    navigate("/donors");
   };
 
   const handlePledgeSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -185,6 +185,7 @@ export default function AidPackageDetailsPage() {
                   )}
                 </>
               ) : (
+                userId !== null &&
                 aidPackage.status === AidPackage.Status.Published && (
                   <form onSubmit={handlePledgeSubmit}>
                     <p>Enter amount (in USD)</p>
