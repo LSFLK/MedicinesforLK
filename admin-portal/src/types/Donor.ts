@@ -1,5 +1,5 @@
 export interface Donor {
-  donorID: number;
+  donorID: string;
   orgName: string;
   orgLink: string;
   email: string;
