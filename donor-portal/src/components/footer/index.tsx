@@ -6,25 +6,6 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-red">
-        <h1>Can&apos;t decide which aid package to support?</h1>
-        <p>
-          You don&apos;t have to! The red Cross team in collaboration with
-          various teams on the ground are continously reviewing the countries
-          needs and prioritizing based on severity and criticality.
-        </p>
-        <p>Your donation will be used to fund various aid packages</p>
-        <p>Donate to</p>
-        <div className="actions">
-          <button className="btn" type="button">
-            Sri Lanka Red Cross
-          </button>
-          <span>Or</span>
-          <button className="btn" type="button">
-            Local Registered Charity
-          </button>
-        </div>
-      </div>
       <div className="footer-black">
         <div className="footer-black-top">
           <img
