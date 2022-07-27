@@ -56,36 +56,45 @@ export default function PledgeStatus() {
             Pledge Status
           </div>
           <h1 className="heading">{aidPackage.name} - Pledge Status</h1>
-          <div className="contributionsSummary">
+
+          {pledges.length > 0 ? (
             <div>
-              <ContributionsChart
-                goalAmount={aidPackage.goalAmount}
-                receivedAmount={aidPackage.receivedAmount}
+              <div className="contributionsSummary">
+                <div>
+                  <ContributionsChart
+                    goalAmount={aidPackage.goalAmount}
+                    receivedAmount={aidPackage.receivedAmount}
+                  />
+                </div>
+                <div>
+                  <p>
+                    Goal: $
+                    {aidPackage.goalAmount.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </p>
+                  <p>
+                    Received: $
+                    {aidPackage.receivedAmount.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </p>
+                  <p>Status: {aidPackage.status}</p>
+                </div>
+              </div>
+              <DonorTable
+                pledges={pledges}
+                onPledgeEdit={handlePledgeEdit}
+                onPledgeDelete={handlePledgeDelete}
               />
             </div>
-            <div>
-              <p>
-                Goal: $
-                {aidPackage.goalAmount.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </p>
-              <p>
-                Received: $
-                {aidPackage.receivedAmount.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </p>
-              <p>Status: {aidPackage.status}</p>
-            </div>
-          </div>
-          <DonorTable
-            pledges={pledges}
-            onPledgeEdit={handlePledgeEdit}
-            onPledgeDelete={handlePledgeDelete}
-          />
+          ) : (
+            <p className="errorMessage">
+              This AidPackage doesn't contain Pledge yet
+            </p>
+          )}
         </div>
       )}
     </>
