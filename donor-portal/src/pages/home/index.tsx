@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
 import HeaderImage from "../layout/header-image";
 import Page from "../layout/page";
 import "./styles.css";
@@ -66,6 +67,7 @@ function PackageCard({
 
 export default function Home() {
   const userId = useContext(UserContext);
+  const { state } = useAuthContext();
   const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
     AidPackage[]
   >([]);
@@ -103,11 +105,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (userId != null) {
+    if (userId !== null && state.isAuthenticated) {
       fetchPledgedAidPackages(userId);
       setActiveTabItem(TabItems.MY_PLEDGES);
     }
-  }, [userId]);
+  }, [userId, state.isAuthenticated]);
 
   useEffect(() => {
     fetchAidPackages();
@@ -130,7 +132,7 @@ export default function Home() {
         <h1>Aid Packages</h1>
 
         <div className="goal-filter">
-          {userId && (
+          {state.isAuthenticated && userId && (
             <button
               type="button"
               className={`btn ${
@@ -186,6 +188,7 @@ export default function Home() {
             />
           ))}
         {userId &&
+          state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.length === 0 && (
             <p>
@@ -201,6 +204,7 @@ export default function Home() {
             </p>
           )}
         {userId &&
+          state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.map((aidPackage) => (
             <PackageCard

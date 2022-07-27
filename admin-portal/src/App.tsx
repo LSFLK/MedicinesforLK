@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { ToastContainer } from "react-toastify";
 import CreateAidPackage from "./pages/aidPackage/aidPackage";
-import "./App.css";
 import Page from "./layout/page";
 import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
@@ -18,24 +17,22 @@ import SupplierQuotationUpload from "./pages/supplierQuotationUpload/supplierQuo
 import NeedUpload from "./pages/needUpload/needUpload";
 import Home from "./pages/home/home";
 import NavBar from "./components/navbar/navbar";
+import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
+
+import "./App.css";
 
 function App() {
-  const { httpRequest, signIn, trySignInSilently } = useAuthContext();
+  const { state, httpRequest, signIn } = useAuthContext();
   const [isSigningIn, setIsSigningIn] = useState(true);
 
   useEffect(() => {
-    trySignInSilently()
-      .then((response) => {
-        if (!response) {
-          signIn();
-        }
-      })
-      .catch(() => {
-        signIn();
-      })
-      .finally(() => {
+    if (!state.isAuthenticated) {
+      signIn().then(() => {
         setIsSigningIn(false);
       });
+    } else {
+      setIsSigningIn(false);
+    }
     const http: Http = new Http(
       httpRequest,
       "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
@@ -44,10 +41,14 @@ function App() {
     MedicalNeedsService.http = http;
     PledgeService.http = http;
     SupplierService.http = http;
-  }, []);
+  }, [state.isAuthenticated]);
 
   if (isSigningIn) {
-    return <p>Loading...</p>;
+    return (
+      <div className="App">
+        <SpinnerLoader loaderText="Proceed to Login" />
+      </div>
+    );
   }
   return (
     <div className="App">

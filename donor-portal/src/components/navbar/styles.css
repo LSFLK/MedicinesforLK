@@ -166,6 +166,7 @@
   from {
     transform: translate(-100%);
   }
+
   50% {
     transform: translate(-20%);
   }
@@ -179,6 +180,22 @@
 .nav-link:hover {
   color: var(--elixir-color-gray-400);
   /* padding: 2rem; */
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: white;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: var(--elixir-color-gray-400);
 }
 
 .login-btn {
