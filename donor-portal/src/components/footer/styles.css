@@ -32,13 +32,9 @@
 }
 
 .footer .footer-black {
-  /* height: 70px; */
   position: relative;
   padding: 2rem 0;
   background-color: black;
-  /* padding: 40px; */
-  /* padding-top: 100px; */
-  /* padding-bottom: 40px; */
 }
 
 .footer .footer-red button {
@@ -91,14 +87,10 @@
   align-items: center;
   width: 50%;
   margin: 0 auto;
-  /* margin-top: -70px; */
+  justify-content: center;
   width: 60%;
-  /* margin-left: 250px; */
   margin-bottom: 30px;
 }
-
-/* .footer-black-top p {
-} */
 
 .icons {
   display: flex;
@@ -181,7 +173,5 @@ a.text-link:hover {
   width: 5px;
   background-color: black;
   border-radius: 50%;
-  /* display: inline-flex;
-  align-items: center; */
   margin: 0 8px;
 }

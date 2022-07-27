@@ -13,17 +13,6 @@ export default function AboutUs() {
         </div>
       </HeaderImage>
 
-      <div className="video-section">
-        <iframe
-          className="video"
-          src="https://www.youtube.com/embed/eU9WY5fUs8w"
-          title="For us, its about serving people (Progress Video 2022)"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-
       <h2>Our Approach</h2>
       <img src="/assets/images/about-us/our-approach.png" alt="our-approach" />
 

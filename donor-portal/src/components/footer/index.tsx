@@ -31,13 +31,6 @@ export default function Footer() {
             src="/assets/images/about-us/sl-red-cross-logo.jpg"
             alt="SL Red Cross Logo"
           />
-          <p>
-            {/* TODO: add content here */}
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Repudiandae molestiae labore tempora maiores officiis odio facilis
-            eligendi quae quos fuga, facere explicabo accusantium qui sequi ad,
-            suscipit nisi! Quas, repellendus.
-          </p>
           <div className="icons">
             <p>FOLLOW</p>
             <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">

@@ -70,26 +70,10 @@
   margin-top: 20px;
 }
 
-.about-us .video-section .video {
-  padding: 1rem;
-  aspect-ratio: 16 / 9;
-  width: 100%;
-}
-
 .about-us .text-section {
   padding-top: 30px;
   margin: 0 6rem 2rem 6rem;
   line-height: 160%;
-}
-
-.about-us .world-map-section {
-  background-color: var(--elixir-color-gray-200);
-  display: flex;
-  justify-content: center;
-}
-
-.about-us .world-map-section img {
-  max-width: 100%;
 }
 
 .about-us .info-links-section {
@@ -141,10 +125,11 @@
 
 .image-section {
   width: 100vw;
-  display: flex;
   position: relative;
-  right: 25%;
-  justify-content: center;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .image-section img {
