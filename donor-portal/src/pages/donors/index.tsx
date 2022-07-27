@@ -32,7 +32,7 @@ export default function Donors() {
           iconUrl="/assets/images/individual_donor.jpg"
           text="Donate to Elixir via our partner donor organizations"
           heading="Individual Donors"
-          link="/donors/individual"
+          link="https://give.asia/charity/slredcross"
           buttonText="Donate"
         />
         <p className="inquiry">
