@@ -7,8 +7,10 @@ import "./styles.css";
 export default function AboutUs() {
   return (
     <Page className="about-us">
-      <HeaderImage imageUrl="https://images.unsplash.com/photo-1566140967404-b8b3932483f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
-        <h1>About Us</h1>
+      <HeaderImage imageUrl="/assets/images/about-us/header.jpg">
+        <div className="about-us-container">
+          <h1>About Us</h1>
+        </div>
       </HeaderImage>
 
       <div className="video-section">
@@ -27,6 +29,11 @@ export default function AboutUs() {
 
       <div className="container">
         <div className="accountability-and-transparency">
+          <img
+            src="/assets/images/about-us/accountability.png"
+            alt="accountability"
+          />
+
           <h2>Accountability</h2>
           <p>
             The Elixir team is motivated by the singular goal of alleviating the
@@ -42,12 +49,17 @@ export default function AboutUs() {
           <span className="middle-text">&</span>
         </div>
         <div className="accountability-and-transparency">
+          <img
+            src="/assets/images/about-us/transparency.png"
+            alt="transparency"
+          />
+
           <h2>Transparency</h2>
           <p>
-            Elixir’s primary design goal is transparency. While the Sri Lanka
-            Red Cross will monitor the flow of aid packages and provide daily
-            status updates, we have also contracted the services of KPMG Sri
-            Lanka, to perform an end-to-end audit of the Elixir process and
+            Elixir&apos;s primary design goal is transparency. While the Sri
+            Lanka Red Cross will monitor the flow of aid packages and provide
+            daily status updates, we have also contracted the services of KPMG
+            Sri Lanka, to perform an end-to-end audit of the Elixir process and
             finances. Our financial team will also publish the monthly statement
             of accounts on the Elixir website. We are committed to continuously
             improving our processes. Please contact us at elixir@redcross.lk
@@ -93,12 +105,12 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      <FullBleedContainer className="leadership-image-section">
-        <img
-          src="/assets/images/about-us/leadership-images.jpg"
-          alt="leadership"
-        />
-      </FullBleedContainer>
+
+      <div className="image-section">
+        <img src="/assets/images/about-us/banner-two.jpg" alt="children" />
+        <img src="/assets/images/about-us/banner-one.jpg" alt="people" />
+      </div>
+
       <div className="partner-section">
         <h2>Partners</h2>
         <div className="partner-card-container">
@@ -175,6 +187,8 @@ export default function AboutUs() {
             <p>Kavishka Timashan</p>
             <p>Thisaru Guruge</p>
             <p>Tharindu Udupitiya</p>
+            <p>Ayesh Almeida</p>
+            <p>Dinuka Piyadigama</p>
           </div>
           <div className="volunteer-img-container">
             <img
@@ -184,8 +198,6 @@ export default function AboutUs() {
             />
           </div>
           <div className="volunteer-names">
-            <p>Ayesh Almeida</p>
-            <p>Dinuka Piyadigama</p>
             <p>Ramindu Deshapriya</p>
             <p>Kajendran Alagaratnam</p>
             <p>Kanushka Gayan</p>
@@ -204,9 +216,17 @@ export default function AboutUs() {
             <p>Donny Surtani</p>
             <p>Priya Vasa</p>
             <p>Sanith Wijesinghe</p>
+            <p>Lakshitha Surasinghe</p>
+            <p>Namali Premawardhana</p>
+            <p>Krishni Ratnayaka</p>
+            <p>Avanthi Gunatilake</p>
           </div>
         </div>
       </div>
+
+      <FullBleedContainer className="leadership-image-section">
+        <img src="/assets/images/about-us/banner.jpg" alt="banner" />
+      </FullBleedContainer>
     </Page>
   );
 }
