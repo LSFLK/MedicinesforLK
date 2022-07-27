@@ -92,7 +92,7 @@ export default function PledgeStatus() {
             </div>
           ) : (
             <p className="errorMessage">
-              This AidPackage doesn't contain Pledge yet
+              This AidPackage doesn&apos;t contain Pledge yet
             </p>
           )}
         </div>
