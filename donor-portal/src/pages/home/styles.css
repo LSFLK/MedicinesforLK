@@ -15,6 +15,40 @@
   background-color: rgba(175, 175, 175, 0.274);
 }
 
+.home-description{
+  display: flex;
+  margin: 2rem 2rem 1rem 2rem;
+  border: 1px solid var(--elixir-color-gray-500);
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.home-description .image-container{
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.image-container img{
+  max-width: 300px;
+}
+
+.home-description-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+  align-items: flex-start;
+}
+
+.home-description h3{
+  color: var(--elixir-color-red);
+  margin-bottom: 0;
+}
+
+.home-description-text .bold{
+  font-weight: 500;
+}
+
 .home-heading {
   display: flex;
   justify-content: space-between;
@@ -100,5 +134,9 @@
 
   .package-card img {
     display: none;
+  }
+
+  .home-description{
+    flex-direction: column;
   }
 }
