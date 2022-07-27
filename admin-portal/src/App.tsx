@@ -17,7 +17,7 @@ import SupplierQuotationUpload from "./pages/supplierQuotationUpload/supplierQuo
 import NeedUpload from "./pages/needUpload/needUpload";
 import Home from "./pages/home/home";
 import NavBar from "./components/navbar/navbar";
-import SpinnerLoader from "components/spinnerLoader/spinnerLoader";
+import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 
 import "./App.css";
 
@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     if (!state.isAuthenticated) {
-      signIn().then(_ => {
+      signIn().then(() => {
         setIsSigningIn(false);
       });
     } else {
@@ -44,7 +44,11 @@ function App() {
   }, [state.isAuthenticated]);
 
   if (isSigningIn) {
-    return <div className="App"><SpinnerLoader loaderText="Proceed to Login" /></div>;
+    return (
+      <div className="App">
+        <SpinnerLoader loaderText="Proceed to Login" />
+      </div>
+    );
   }
   return (
     <div className="App">

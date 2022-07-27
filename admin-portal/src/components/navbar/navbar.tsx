@@ -17,12 +17,6 @@ export default function NavBar() {
     });
   }, [on]);
 
-  useEffect(() => {
-    if (!state?.isAuthenticated) {
-      return;
-    }
-  }, [state?.isAuthenticated]);
-
   const handleLogin = () => {
     signIn();
   };
@@ -64,21 +58,21 @@ export default function NavBar() {
         </div>
         <div className="navbar__items navbar__items--right">
           {state.isAuthenticated ? (
-            <a
-              href="/"
+            <button
+              type="button"
               onClick={() => handleLogout()}
-              className="navbar__item navbar__link"
+              className="navbar__item logout-btn"
             >
               Logout
-            </a>
+            </button>
           ) : (
-            <a
-              href="/"
+            <button
+              type="button"
               onClick={() => handleLogin()}
-              className="navbar__item navbar__link"
+              className="navbar__item logout-btn"
             >
               Login
-            </a>
+            </button>
           )}
         </div>
       </div>
