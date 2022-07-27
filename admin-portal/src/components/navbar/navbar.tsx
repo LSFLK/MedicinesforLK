@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { Hooks, useAuthContext } from "@asgardeo/auth-react";
 
 import "./navbar.css";
-import { useLocation } from "react-router-dom";
 
 interface NavBarProps {}
 
 export function NavBar(params: NavBarProps) {
-  const { state, signIn, signOut, on, trySignInSilently } = useAuthContext();
-
-  // const search = useLocation().search;
-  // const stateParam = new URLSearchParams(search).get("state");
-  // const errorDescParam = new URLSearchParams(search).get("error_description");
-
-  // useEffect(() => {
-  //   if (stateParam && errorDescParam) {
-  //     if (errorDescParam === "End User denied the logout request") {
-  //       setHasLogoutFailureError(true);
-  //     }
-  //   }
-  // }, [stateParam, errorDescParam]);
+  const { state, signIn, signOut, on } = useAuthContext();
 
   /**
    * handles the error occurs when the logout consent page is enabled
@@ -36,25 +23,10 @@ export function NavBar(params: NavBarProps) {
     if (!state?.isAuthenticated) {
       return;
     }
-    // (async (): Promise<void> => {
-    //   const basicUserInfo = await getBasicUserInfo();
-    //   const idToken = await getIDToken();
-    //   const decodedIDToken = await getDecodedIDToken();
-
-    //   const derivedState = {
-    //     authenticateResponse: basicUserInfo,
-    //     idToken: idToken?.split("."),
-    //     decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
-    //     decodedIDTokenPayload: decodedIDToken
-    //   };
-
-    //   setDerivedAuthenticationState(derivedState);
-    // })();
   }, [state?.isAuthenticated]);
 
   const handleLogin = () => {
-    //setHasLogoutFailureError(false);
-    signIn(); //.catch(() => setHasAuthenticationErrors(true));
+    signIn();
   };
 
   const handleLogout = () => {

@@ -17,27 +17,13 @@ import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
 
 function App() {
-  const { httpRequest, trySignInSilently } = useAuthContext();
+  const { state, httpRequest, getDecodedIDToken } = useAuthContext();
   const [loggedInUserId, setLoggedInUserId] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   const storedUserId = localStorage.getItem("loggedInUserId");
-  //   if (storedUserId) setLoggedInUserId(storedUserId);
-  // }, []);
-
   useEffect(() => {
-    trySignInSilently()
-      .then((response: any) => {
-        if (response && response.userid) {
-          setLoggedInUserId(response.userid);
-        }
-      })
-      .catch(() => {
-        // TODO: add a toaster here to say login failed.
-        setLoggedInUserId(null);
-      })
-      .finally(() => {
-        // setLoggedInUserId(false);
+    if (state.isAuthenticated)
+      getDecodedIDToken().then((value) => {
+        if (value && value.sub) setLoggedInUserId(value.sub);
       });
     const adminHttp: Http = new Http(
       httpRequest,
@@ -49,7 +35,7 @@ function App() {
     );
     AidPackageService.adminHttp = adminHttp;
     AidPackageService.donorHttp = donorHttp;
-  }, []);
+  }, [state.isAuthenticated]);
 
   return (
     <div className="App">

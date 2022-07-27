@@ -1,8 +1,8 @@
 export default {
   clientID: "W_ZaTLGR20OKy0HTYPqSAJvuS5Ia",
   baseUrl: "https://api.asgardeo.io/t/elixir",
-  signInRedirectURL: `${process.env.VERCEL_URL}`,
-  signOutRedirectURL: `${process.env.VERCEL_URL}`,
+  signInRedirectURL: `${process.env.REACT_APP_SIGN_IN_REDIRECT_URL}`,
+  signOutRedirectURL: `${process.env.REACT_APP_SIGN_OUT_REDIRECT_URL}`,
   scope: ["openid", "email", "profile"],
   stsConfig: {
     credentials: {
@@ -16,4 +16,5 @@ export default {
   resourceServerURLs: [
     "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0",
   ],
+  disableTrySignInSilently: false,
 };
