@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="footer-red">
         <h1>Can&apos;t decide which aid package to support?</h1>
         <p>
-          You don&apos;t have to! The red Cross team in collaboration with
+          You don&apos;t have to! The Red Cross in collaboration with
           various teams on the ground are continously reviewing the countries
           needs and prioritizing based on severity and criticality.
         </p>
