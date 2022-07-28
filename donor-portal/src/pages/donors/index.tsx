@@ -40,6 +40,8 @@ export default function Donors() {
         />
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
+          heading="Individual Donors"
+          link="https://slredcross.give.asia/"
           text={
             <span>
               Please donate using our secure site:{" "}
@@ -50,9 +52,6 @@ export default function Donors() {
               support multiple aid packages.
             </span>
           }
-          heading="For Individuals
-          "
-          link="/donors/individual"
           buttonText="Donate"
         />
         <p className="inquiry">
