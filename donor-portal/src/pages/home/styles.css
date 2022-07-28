@@ -13,6 +13,7 @@
   margin: 0 2rem;
   padding: 20px;
   background-color: rgba(175, 175, 175, 0.274);
+  margin-left: 70px;
 }
 
 .home-page .header-image_logo img {
@@ -20,6 +21,7 @@
   height: 220x;
   display: flex;
   justify-content: flex-end;
+  margin-left: 250px;
 }
 
 .home-description{
