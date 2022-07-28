@@ -15,6 +15,13 @@
   background-color: rgba(175, 175, 175, 0.274);
 }
 
+.home-page .header-image_logo img {
+  width: 220px;
+  height: 220x;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .home-description{
   display: flex;
   margin: 2rem 2rem 1rem 2rem;

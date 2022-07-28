@@ -129,6 +129,9 @@ export default function Home() {
             </strong>
           </p>
         </div>
+        <div className="header-image_logo">
+          <img src="assets/images/elixirLogo4.png" alt="elixir-logo" />
+        </div>
       </HeaderImage>
       <div className="home-description">
         <div className="image-container">
