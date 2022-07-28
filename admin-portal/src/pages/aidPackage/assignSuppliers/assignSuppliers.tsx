@@ -75,51 +75,53 @@ export default function AssignSuppliers({
 
   const data = useMemo<Array<{ [key: string]: any }>>(() => {
     let isValidSupplierAssignments = true;
-    const needs = medicalNeeds.map((need) => {
-      const remainingQuantity =
-        need.remainingQuantity - getAssignedCount(need, needAssignments);
-      const periodDate = new Date(
-        need.period.year,
-        need.period.month - 1,
-        need.period.day
-      );
+    const needs = medicalNeeds
+      .filter((need) => need.supplierQuotes.length)
+      .map((need) => {
+        const remainingQuantity =
+          need.remainingQuantity - getAssignedCount(need, needAssignments);
+        const periodDate = new Date(
+          need.period.year,
+          need.period.month - 1,
+          need.period.day
+        );
 
-      // all remaining quantities must be zero or positive
-      if (remainingQuantity < 0) {
-        isValidSupplierAssignments = false;
-      }
-
-      // all assignments must be less than supplier max and more than 0
-      const assignmentForNeed = needAssignments[need.needID!];
-      need.supplierQuotes.forEach((quote) => {
-        const assignedFromQuote = assignmentForNeed.get(quote.supplierID);
-        if (!assignedFromQuote) {
-          if (assignedFromQuote === 0) {
-            isValidSupplierAssignments = false;
-          }
-          return;
-        }
-
-        if (assignedFromQuote > quote.availableQuantity) {
+        // all remaining quantities must be zero or positive
+        if (remainingQuantity < 0) {
           isValidSupplierAssignments = false;
         }
-      });
 
-      return {
-        needID: need.needID,
-        needName: need.medicalItem.name,
-        unit: need.medicalItem.unit,
-        beneficiary: need.beneficiary?.name,
-        urgency: need.urgency,
-        period: moment(periodDate).format("DD/MM/YYYY"),
-        requiredQuantity: need.neededQuantity,
-        remainingQuantity,
-        suppliers: need.supplierQuotes
-          .map((quote) => quote.supplier.name)
-          .join(", "),
-        supplierQuotes: need.supplierQuotes || [],
-      };
-    });
+        // all assignments must be less than supplier max and more than 0
+        const assignmentForNeed = needAssignments[need.needID!];
+        need.supplierQuotes.forEach((quote) => {
+          const assignedFromQuote = assignmentForNeed.get(quote.supplierID);
+          if (!assignedFromQuote) {
+            if (assignedFromQuote === 0) {
+              isValidSupplierAssignments = false;
+            }
+            return;
+          }
+
+          if (assignedFromQuote > quote.availableQuantity) {
+            isValidSupplierAssignments = false;
+          }
+        });
+
+        return {
+          needID: need.needID,
+          needName: need.medicalItem.name,
+          unit: need.medicalItem.unit,
+          beneficiary: need.beneficiary?.name,
+          urgency: need.urgency,
+          period: moment(periodDate).format("DD/MM/YYYY"),
+          requiredQuantity: need.neededQuantity,
+          remainingQuantity,
+          suppliers: need.supplierQuotes
+            .map((quote) => quote.supplier.name)
+            .join(", "),
+          supplierQuotes: need.supplierQuotes || [],
+        };
+      });
 
     setIsValidAssignment(isValidSupplierAssignments);
 
