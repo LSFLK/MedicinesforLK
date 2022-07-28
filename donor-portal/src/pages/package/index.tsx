@@ -176,11 +176,7 @@ export default function AidPackageDetailsPage() {
                         className="pledge-amount-input"
                         defaultValue={pledge.amount}
                         min={0}
-                        max={
-                          aidPackage.goalAmount -
-                          aidPackage.receivedAmount +
-                          pledge.amount
-                        }
+                        max={aidPackage.goalAmount - aidPackage.receivedAmount}
                       />
                       <button type="submit" className="btn">
                         Update
