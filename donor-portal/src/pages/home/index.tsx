@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
 import HeaderImage from "../layout/header-image";
 import Page from "../layout/page";
 import "./styles.css";
@@ -66,6 +67,7 @@ function PackageCard({
 
 export default function Home() {
   const userId = useContext(UserContext);
+  const { state } = useAuthContext();
   const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
     AidPackage[]
   >([]);
@@ -103,11 +105,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (userId != null) {
+    if (userId !== null && state.isAuthenticated) {
       fetchPledgedAidPackages(userId);
       setActiveTabItem(TabItems.MY_PLEDGES);
     }
-  }, [userId]);
+  }, [userId, state.isAuthenticated]);
 
   useEffect(() => {
     fetchAidPackages();
@@ -125,12 +127,48 @@ export default function Home() {
           </p>
         </div>
       </HeaderImage>
+      <div className="home-description">
+        <div className="image-container">
+          <img
+            src="assets/images/donating.png"
+            alt="donating medical supplies"
+          />
+        </div>
+        <div className="home-description-text">
+          <h3>An Acute Medical Emergency</h3>
+          <p>
+            Sri Lanka lacks a coordinated response to address the overall
+            medical needs of hospitals. Given the limited resources it is
+            essential to optimize the demand and distribution of supplies to
+            help avoid possible duplication, address gaps and avoid detrimental
+            outcomes to citizens most in need.
+          </p>
+          <h3>An Alternative Approach</h3>
+          <p>
+            <span className="bold">ELIXIR</span> is a platform designed to meet
+            this need. It is operated by the Sri Lanka Red Cross along with a
+            network of volunteers and professionals to help improve the efficacy
+            of donations. In partnership with the Sri Lanka Medical Supplies
+            Division we have compiled aid packages that aggregate needs across
+            multiple hospitals to help achieve bulk price discounts from
+            suppliers. Our volunteers help negotiate prices and coordinate
+            invoicing and shipping logistics. ELIXIR facilitates transparency
+            and accountability throughout the entire supply chain.
+          </p>
+          <h3>Please Donate</h3>
+          <p>
+            Together we can do more. We are accepting donations from both
+            organizations and individuals. Check out our aid packages below and
+            click on the Donate button to get started.
+          </p>
+        </div>
+      </div>
 
       <div className="home-heading">
         <h1>Aid Packages</h1>
 
         <div className="goal-filter">
-          {userId && (
+          {state.isAuthenticated && userId && (
             <button
               type="button"
               className={`btn ${
@@ -186,6 +224,7 @@ export default function Home() {
             />
           ))}
         {userId &&
+          state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.length === 0 && (
             <p>
@@ -201,6 +240,7 @@ export default function Home() {
             </p>
           )}
         {userId &&
+          state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.map((aidPackage) => (
             <PackageCard

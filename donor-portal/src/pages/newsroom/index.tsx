@@ -6,23 +6,25 @@ import "./styles.css";
 export default function NewsRoom() {
   return (
     <Page className="news-room">
-      <HeaderImage imageUrl="https://images.unsplash.com/photo-1544991936-9464fa9919d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
+      <HeaderImage imageUrl="/assets/images/newsroom.jpg">
         <div className="news-room__container">
           <h1>News Room</h1>
         </div>
       </HeaderImage>
       <div className="text-section">
-        <h1>Media Contacts</h1>
+        <div className="video-section">
+          <iframe
+            className="video"
+            src="https://www.youtube.com/embed/eU9WY5fUs8w"
+            title="For us, its about serving people (Progress Video 2022)"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
 
-        <p>
-          <strong>
-            If you are looking for information or resources to help with
-            COVID-19, please visit
-          </strong>{" "}
-          <a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/coronavirus-safety.html">
-            COVID-19 – Novel Coronavirus information page.
-          </a>
-        </p>
+        <h1>Media & News</h1>
+        <h2>Media Contacts</h2>
         <p>
           When personal disasters strike, the Red Cross provides food, shelter,
           clothing and essential supplies for up to 72 hours.
@@ -65,16 +67,6 @@ export default function NewsRoom() {
             [E] <a href="mailto:info@redcross.lk">info@redcross.lk </a>
           </span>
         </div>
-      </div>
-      <div className="video-section">
-        <iframe
-          className="video"
-          src="https://www.youtube.com/embed/eU9WY5fUs8w"
-          title="For us, its about serving people (Progress Video 2022)"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
       </div>
 
       <div className="news-article-list">

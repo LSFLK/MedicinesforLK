@@ -8,8 +8,10 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-black">
         <div className="footer-black-top">
-          <img src="/assets/images/about-us/sl-red-cross-logo.jpg" alt="" />
-          <p>{/* TODO: add content here */}</p>
+          <img
+            src="/assets/images/about-us/sl-red-cross-logo.jpg"
+            alt="SL Red Cross Logo"
+          />
           <div className="icons">
             <p>FOLLOW</p>
             <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">
@@ -30,20 +32,15 @@ export default function Footer() {
           <Link to="/about-us" className="text-link">
             About
           </Link>
-          <span>|</span>
           <Link to="/donors" className="text-link">
             Donors
           </Link>
-          <span>|</span>
-
           <Link to="/suppliers" className="text-link">
-            Hospital and Suppliers
+            Hospital & Suppliers
           </Link>
-          <span>|</span>
           <Link to="/news-room" className="text-link">
             Newsroom
           </Link>
-          <span>|</span>
           <Link to="/login" className="text-link">
             Login
           </Link>
@@ -54,12 +51,12 @@ export default function Footer() {
           Copyright © <a href="www.elixir.redcross.lk">elixir.redcross.lk </a>|
           All rights reserved
         </p>
-        <div>
-          {/* <a href="">Privacy</a>
-          <span className="dot"></span>
-          <a href="">Terms</a>
-          <span className="dot"></span>
-          <a href="">Cookies</a> */}
+        <div className="nav">
+          <a href="/">Privacy</a>
+          <span className="dot">&nbsp;</span>
+          <a href="/">Terms</a>
+          <span className="dot">&nbsp;</span>
+          <a href="/">Cookies</a>
         </div>
       </div>
     </footer>

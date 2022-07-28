@@ -8,14 +8,14 @@ import "./styles.css";
 export default function Suppliers() {
   return (
     <Page className="suppliers">
-      <HeaderImage imageUrl="/assets/images/medical-suppliers-pills.jpg">
+      <HeaderImage imageUrl="/assets/images/header-imgs/medical-suppliers-pills.jpg">
         <h1>Doctors and Suppliers</h1>
       </HeaderImage>
       <div className="text-section">
         <p>
           We are continuously growing our network of hospitals and
           pharmaceutical suppliers. Please contact us at{" "}
-          <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a> for
+          <a href="mailto: elixir@redcross.lk ">elixir@redcross.lk </a> for
           details on how to participate.
         </p>
       </div>

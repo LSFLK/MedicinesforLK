@@ -4,50 +4,40 @@
   text-align: center;
 }
 
-.footer .footer-red {
-  background-color: var(--elixir-color-red);
-  height: 210px;
-  padding: 40px;
-}
-
-.footer .footer-red h1 {
-  color: rgb(255, 255, 255);
-}
-
 .footer p {
   color: white;
   font-size: 18px;
-  width: 60%;
+  width: 30%;
   margin: auto;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .footer .footer-black {
-  height: 70px;
+  position: relative;
+  padding-bottom: 2rem;
+  padding-top: 4rem;
   background-color: black;
-  /* padding: 40px; */
-  padding-top: 100px;
-  padding-bottom: 40px;
-}
-
-.footer .footer-red button {
-  margin: 20px;
-  height: 33px;
-  font-size: 15px;
-  font-weight: 500;
-  background-color: white;
-  color: var(--elixir-color-red);
-  border-radius: 10px;
-  border: var(--elixir-color-gray-700) solid 1px;
-}
-
-.footer .footer-red span {
-  color: white;
-  font-size: 18px;
 }
 
 .footer .footer-black img {
-  height: 100px;
+  position: absolute;
+  left: 6%;
+  height: 120px;
   border-radius: 50%;
+}
+
+@media screen and (min-width: 1096px) {
+  .footer .footer-black img {
+    left: 12%;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  .footer .footer-black img {
+    top: -40px;
+    height: 70px;
+  }
 }
 
 .footer .footer-black p {
@@ -59,9 +49,10 @@
 .footer .footer-black .footer-black-top {
   display: flex;
   align-items: center;
-  margin-top: -70px;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
   width: 60%;
-  margin-left: 250px;
   margin-bottom: 30px;
 }
 
@@ -76,20 +67,41 @@
   margin: 10px;
 }
 
+.icons p {
+  letter-spacing: 3px;
+  color: var(--elixir-color-gray-600);
+}
+
 .footer-black-bottom {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   text-decoration: none;
   font-size: 18px;
   margin: auto;
   width: 65%;
+  font-weight: 600;
+}
+
+.footer-black-bottom:hover a {
+  padding: 0 18px;
 }
 
 .footer-black-bottom span {
   color: white;
 }
+
 .text-link {
   color: white;
+  padding: 0 25px;
+  transition: all 0.5s;
+}
+
+a.text-link:hover {
+  padding: 0 60px;
+}
+
+.text-link:not(:last-child) {
+  border-right: 1px solid white;
 }
 
 .footer-gray {
@@ -115,11 +127,15 @@
   font-weight: 500;
 }
 
+.footer-gray .nav {
+  display: flex;
+  align-items: center;
+}
+
 .dot {
   height: 5px;
   width: 5px;
   background-color: black;
   border-radius: 50%;
-  display: inline-block;
   margin: 0 8px;
 }
