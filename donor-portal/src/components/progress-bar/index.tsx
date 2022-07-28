@@ -24,7 +24,13 @@ export default function SimpleProgressBar({
   useEffect(() => {
     if (containerRef.current) {
       const totalWidth = containerRef.current.clientWidth;
-      setInnerWidth((totalWidth / max) * current);
+
+      if (current > max) {
+        // this is a temporary fix, until the backend limits going beyond 100%
+        setInnerWidth(totalWidth);
+      } else {
+        setInnerWidth((totalWidth / max) * current);
+      }
     }
   }, [max, current, className, containerRef.current]);
 
