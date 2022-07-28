@@ -50,7 +50,7 @@ export default function DonorTable({
         ) : (
           <tbody>
             <tr>
-              <td colSpan={4} style={{textAlign:"center"}}>
+              <td colSpan={4} style={{ textAlign: "center" }}>
                 This AidPackage does not yet include any pledges
               </td>
             </tr>
