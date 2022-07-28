@@ -20,8 +20,11 @@ export default function NavBar() {
         <div className="logo" />
       </Link>
       <div className="nav-links">
+        <NavLink to="/" className="nav-link">
+          Home
+        </NavLink>
         <NavLink to="/about-us" className="nav-link">
-          About
+          About Us
         </NavLink>
         <NavLink exact to="/donors" className="nav-link">
           How to Donate
