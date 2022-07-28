@@ -9,9 +9,9 @@ export default function Footer() {
       <div className="footer-red">
         <h1>Can&apos;t decide which aid package to support?</h1>
         <p>
-          You don&apos;t have to! The Red Cross in collaboration with
-          various teams on the ground are continously reviewing the countries
-          needs and prioritizing based on severity and criticality.
+          You don&apos;t have to! The Red Cross in collaboration with various
+          teams on the ground are continously reviewing the countries needs and
+          prioritizing based on severity and criticality.
         </p>
         <p>Your donation will be used to fund various aid packages</p>
         <p>Donate to</p>
