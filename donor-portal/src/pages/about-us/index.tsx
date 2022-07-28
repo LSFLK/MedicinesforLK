@@ -159,7 +159,7 @@ export default function AboutUs() {
             <p>Jayasanka Weerasinghe </p>
             <p>Nipuna Gunathilake</p>
             <p>Kalsha Samarajeewa</p>
-            <p>Heshvan Andrews</p>
+            <p>Heshan Andrews</p>
             <p>Manoj Lakshan</p>
             <p>Randila Premarathne</p>
             <p>Anupama Pathirage</p>
