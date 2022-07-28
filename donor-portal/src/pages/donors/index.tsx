@@ -13,25 +13,45 @@ export default function Donors() {
       </HeaderImage>
       <div className="text-section">
         <p>
-          If you represent an organization please click on the ‘Login’ button to
-          register an account on Elixir. After you complete login, select a
-          desired aid package and enter a pledge amount. After the target
-          donations for your aid package has been reached we will contact you to
-          arrange payment.
+          We have a unique approach to receiving donations that is geared to
+          help maximize transparency and accountability. Each aid package has a
+          target donation goal that must be reached before being submitted as a
+          purchase order to our suppliers. The Elixir platform tracks the aid
+          package throughout its lifecycle and provides status at each stage of
+          invoicing, shipping and delivery.
         </p>
       </div>
       <InfoBoxContainer>
         <InfoBox
           iconUrl="assets/images/charity2.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Charities, Foundations and Corporations"
+          text={
+            <span>
+              We have a 2-step process that allows you to first pledge your
+              support to a specific aid package and then arrange for payment
+              once the target threshold is reached. Please email us at:
+              <a href="mailto:elixir@slredcross.lk">elixir@slredcross.lk</a> so
+              that we can create your Elixir account.
+            </span>
+          }
+          heading="For Organizations
+          "
           link="/login"
           buttonText="Login"
         />
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
-          text="Donate to Elixir via our partner donor organizations"
-          heading="Individual Donors"
+          text={
+            <span>
+              Please donate using our secure site:{" "}
+              <a href="https://slredcross.give.asia/">
+                https://slredcross.give.asia/
+              </a>
+              We are currently accepting donations to a general fund that will
+              support multiple aid packages.
+            </span>
+          }
+          heading="For Individuals
+          "
           link="/donors/individual"
           buttonText="Donate"
         />
