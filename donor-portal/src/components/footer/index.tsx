@@ -6,38 +6,12 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-red">
-        <h1>Can&apos;t decide which aid package to support?</h1>
-        <p>
-          You don&apos;t have to! The red Cross team in collaboration with
-          various teams on the ground are continously reviewing the countries
-          needs and prioritizing based on severity and criticality.
-        </p>
-        <p>Your donation will be used to fund various aid packages</p>
-        <p>Donate to</p>
-        <div className="actions">
-          <button className="btn" type="button">
-            Sri Lanka Red Cross
-          </button>
-          <span>Or</span>
-          <button className="btn" type="button">
-            Local Registered Charity
-          </button>
-        </div>
-      </div>
       <div className="footer-black">
         <div className="footer-black-top">
           <img
             src="/assets/images/about-us/sl-red-cross-logo.jpg"
             alt="SL Red Cross Logo"
           />
-          <p>
-            {/* TODO: add content here */}
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Repudiandae molestiae labore tempora maiores officiis odio facilis
-            eligendi quae quos fuga, facere explicabo accusantium qui sequi ad,
-            suscipit nisi! Quas, repellendus.
-          </p>
           <div className="icons">
             <p>FOLLOW</p>
             <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">

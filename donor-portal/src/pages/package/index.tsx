@@ -120,6 +120,10 @@ export default function AidPackageDetailsPage() {
             <div className="aid-package-title-container">
               <h1>{aidPackage.name}</h1>
             </div>
+            <div className="aid-package-header-image">
+              <img src="/assets/images/packages/vaccine.jpg" alt="vaccine" />
+            </div>
+            <h1 className="aid-package-description-ribbon">Description</h1>
             <div>
               <p>{aidPackage.description}</p>
             </div>

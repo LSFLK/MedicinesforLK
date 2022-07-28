@@ -12,7 +12,7 @@ export default function InfoBox({
   iconUrl: string;
   link: string;
   heading: string;
-  text: string;
+  text: React.ReactNode;
   buttonText?: string;
 }) {
   return (

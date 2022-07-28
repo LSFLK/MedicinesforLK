@@ -24,7 +24,7 @@ export default function SimpleProgressBar({
   useEffect(() => {
     if (containerRef.current) {
       const totalWidth = containerRef.current.clientWidth;
-      setInnerWidth((totalWidth / max) * current);
+      setInnerWidth(Math.min(totalWidth * (current / max), totalWidth));
     }
   }, [max, current, className, containerRef.current]);
 

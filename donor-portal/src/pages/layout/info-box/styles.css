@@ -1,5 +1,5 @@
 .info-box {
-  height: 300px;
+  height: 370px;
   flex-basis: 40%;
   padding-left: 30px;
   padding-right: 30px;
@@ -26,4 +26,7 @@
   color: var(--elixir-color-red);
   background-color: white;
   cursor: pointer;
+}
+.info-box p {
+  min-height: 130px;
 }

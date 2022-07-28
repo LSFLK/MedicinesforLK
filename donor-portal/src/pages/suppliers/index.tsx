@@ -15,7 +15,7 @@ export default function Suppliers() {
         <p>
           We are continuously growing our network of hospitals and
           pharmaceutical suppliers. Please contact us at{" "}
-          <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a> for
+          <a href="mailto: elixir@redcross.lk ">elixir@redcross.lk </a> for
           details on how to participate.
         </p>
       </div>
