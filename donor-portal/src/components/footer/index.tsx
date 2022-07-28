@@ -51,13 +51,6 @@ export default function Footer() {
           Copyright © <a href="www.elixir.redcross.lk">elixir.redcross.lk </a>|
           All rights reserved
         </p>
-        <div className="nav">
-          <a href="/">Privacy</a>
-          <span className="dot">&nbsp;</span>
-          <a href="/">Terms</a>
-          <span className="dot">&nbsp;</span>
-          <a href="/">Cookies</a>
-        </div>
       </div>
     </footer>
   );
