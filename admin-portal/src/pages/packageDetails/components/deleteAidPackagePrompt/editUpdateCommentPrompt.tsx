@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./deleteAidPackagePrompt.css";
+import { useHistory } from "react-router-dom";
 import { AidPackage } from "../../../../types/AidPackage";
 
 interface EditStatusPostPromptProps {
@@ -13,12 +14,14 @@ export default function DeleteAidPackagePrompt({
 }: EditStatusPostPromptProps) {
   const [isSaving, setIsSaving] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const history = useHistory();
 
   const handleSaveButtonClick = async () => {
     setIsSaving(true);
     setErrorText("");
     try {
       await onSave();
+      history.push("/");
     } catch (e) {
       setErrorText("Something went wrong. Couldn't delete the aid package.");
     }
