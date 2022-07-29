@@ -18,6 +18,7 @@ import EditDescriptionPrompt from "./components/editDescriptionPrompt/editDescri
 export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
+  const [aidPackageStatus, setAidPackageStatus] = useState<AidPackage.Status>();
   const [posts, setPosts] = useState<AidPackageUpdateComment[]>([]);
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] =
@@ -41,6 +42,7 @@ export default function PackageDetails() {
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
     setAidPackage(data);
+    setAidPackageStatus(data.status);
   };
 
   const fetchUpdateComments = async () => {
@@ -70,11 +72,11 @@ export default function PackageDetails() {
   };
 
   const handleStatusChange = async (statusToBeChanged: AidPackage.Status) => {
-    if (statusToBeChanged === aidPackage?.status) {
+    if (statusToBeChanged === aidPackageStatus) {
       return;
     }
-    if (aidPackage?.status) {
-      if (statusToLevel[statusToBeChanged] < statusToLevel[aidPackage.status]) {
+    if (aidPackageStatus) {
+      if (statusToLevel[statusToBeChanged] < statusToLevel[aidPackageStatus]) {
         alert("Sorry, you cannot change back to a previous status");
         return;
       }
@@ -87,7 +89,7 @@ export default function PackageDetails() {
         ...aidPackage!,
         status: statusToBeChanged,
       });
-      setAidPackage(data);
+      setAidPackageStatus(data.status);
       if (statusToBeChanged === AidPackage.Status.Published) {
         AidPackageService.commentPublishedAidPackage(data);
       }
@@ -160,7 +162,7 @@ export default function PackageDetails() {
   return (
     <>
       {!aidPackage && <p>Loading Aid Package...</p>}
-      {aidPackage && (
+      {aidPackage && aidPackageStatus && (
         <div className="packageDetails">
           <Modal
             show={isEditOrderItemModalVisible}
@@ -241,7 +243,7 @@ export default function PackageDetails() {
             </div>
           </div>
           <PackageStatus
-            currentStatus={aidPackage.status}
+            currentStatus={aidPackageStatus}
             onStatusChange={handleStatusChange}
           />
           <UpdateComments
