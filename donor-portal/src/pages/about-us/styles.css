@@ -19,6 +19,9 @@
 
 .about-us .header-image h1 {
   z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 175px;
 }
 
 .volunteer-names {

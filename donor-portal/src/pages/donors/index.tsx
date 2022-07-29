@@ -56,7 +56,7 @@ export default function Donors() {
         />
         <p className="inquiry">
           For all inquiries, please email us at{" "}
-          <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a>
+          <a href="mailto: elixir@redcross.lk">elixir@redcross.lk</a>
         </p>
       </InfoBoxContainer>
     </Page>

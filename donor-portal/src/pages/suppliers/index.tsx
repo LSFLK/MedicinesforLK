@@ -9,7 +9,7 @@ export default function Suppliers() {
   return (
     <Page className="suppliers">
       <HeaderImage imageUrl="/assets/images/header-imgs/medical-suppliers-pills.jpg">
-        <h1>Doctors and Suppliers</h1>
+        <h1>Hospitals and Suppliers</h1>
       </HeaderImage>
       <div className="text-section">
         <p>
@@ -36,7 +36,7 @@ export default function Suppliers() {
         />
         <p className="inquiry">
           For all inquiries, please email us at{" "}
-          <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a>
+          <a href="mailto: elixir@redcross.lk">elixir@redcross.lk</a>
         </p>
       </InfoBoxContainer>
     </Page>

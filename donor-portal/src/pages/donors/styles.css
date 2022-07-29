@@ -14,12 +14,15 @@
 .donors .header-image h1 {
   z-index: 1;
   font-size: 2.5rem;
+  text-align: left;
+  margin-left: 200px;
 }
 
 .donors .text-section {
   padding-top: 30px;
   margin: 0 6rem 6rem;
   line-height: 160%;
+  font-size: 14pt;
 }
 
 .inquiry {
