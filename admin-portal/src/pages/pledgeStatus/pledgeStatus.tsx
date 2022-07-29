@@ -38,7 +38,7 @@ export default function PledgeStatus() {
 
   const handlePledgeDelete = async (pledge: Pledge) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete the pledge of ${pledge.donor?.orgName}?`
+      `Are you sure you want to delete the pledge of ${pledge.donorID}?`
     );
     if (confirmed) {
       await PledgeService.deletePledge(pledge.pledgeID);
