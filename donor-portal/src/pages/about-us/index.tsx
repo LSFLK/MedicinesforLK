@@ -52,7 +52,7 @@ export default function AboutUs() {
             finances. Our financial team will also publish the monthly statement
             of accounts on the Elixir website. We are committed to continuously
             improving our processes. Please contact us at elixir@redcross.lk
-            should you have any questions or have for feedback for us.
+            should you have any questions or feedback for us.
           </p>
         </div>
       </div>
