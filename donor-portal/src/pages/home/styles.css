@@ -4,6 +4,7 @@
   flex: 1;
   align-items: flex-start;
   justify-content: flex-start;
+  margin-left: 77px;
 }
 
 .home-page .header-image__text-container p {
@@ -21,7 +22,7 @@
   height: 220x;
   display: flex;
   justify-content: flex-end;
-  margin-left: 250px;
+  margin-right: 125px;
 }
 
 .home-description{
