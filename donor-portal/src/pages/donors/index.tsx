@@ -50,8 +50,7 @@ export default function Donors() {
               support multiple aid packages.
             </span>
           }
-          heading="For Individuals
-          "
+          heading="For Individuals"
           link="/donors/individual"
           buttonText="Donate"
         />
