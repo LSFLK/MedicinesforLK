@@ -41,9 +41,6 @@ export default function Footer() {
           <Link to="/news-room" className="text-link">
             Newsroom
           </Link>
-          <Link to="/login" className="text-link">
-            Login
-          </Link>
         </div>
       </div>
       <div className="footer-gray">
