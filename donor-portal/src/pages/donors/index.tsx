@@ -29,8 +29,8 @@ export default function Donors() {
               We have a 2-step process that allows you to first pledge your
               support to a specific aid package and then arrange for payment
               once the target threshold is reached. Please email us at:
-              <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a> so
-              that we can create your Elixir account.
+              <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a> so that
+              we can create your Elixir account.
             </span>
           }
           heading="For Organizations
