@@ -123,7 +123,7 @@ export default function Home() {
             <strong>
               Sri Lanka is going through an unprecedented economic crisis. It
               has left the country facing a severe shortage of life-saving
-              medicines and medical supplies. <br />
+              medicines and medical supplies. <br /> <br />
               The Elixir platform facilitates matches donations with the most
               urgent and provides transparency.
             </strong>
@@ -154,16 +154,15 @@ export default function Home() {
           <h3>An Alternative Approach</h3>
           <p>
             <strong>
-              <span className="bold">ELIXIR</span> is a platform designed to
-              meet this need. It is operated by the Sri Lanka Red Cross along
-              with a network of volunteers and professionals to help improve the
-              efficacy of donations. In partnership with the Sri Lanka Medical
-              Supplies Division we have compiled aid packages that aggregate
-              needs across multiple hospitals to help achieve bulk price
-              discounts from suppliers. Our volunteers help negotiate prices and
-              coordinate invoicing and shipping logistics. ELIXIR facilitates
-              transparency and accountability throughout the entire supply
-              chain.
+              ELIXIR is a platform designed to meet this need. It is operated by
+              the Sri Lanka Red Cross along with a network of volunteers and
+              professionals to help improve the efficacy of donations. In
+              partnership with the Sri Lanka Medical Supplies Division we have
+              compiled aid packages that aggregate needs across multiple
+              hospitals to help achieve bulk price discounts from suppliers. Our
+              volunteers help negotiate prices and coordinate invoicing and
+              shipping logistics. ELIXIR facilitates transparency and
+              accountability throughout the entire supply chain.
             </strong>
           </p>
           <h3>Please Donate</h3>
