@@ -29,8 +29,8 @@ export default function Donors() {
               We have a 2-step process that allows you to first pledge your
               support to a specific aid package and then arrange for payment
               once the target threshold is reached. Please email us at:
-              <a href="mailto:elixir@slredcross.lk">elixir@slredcross.lk</a> so
-              that we can create your Elixir account.
+              <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a> so that
+              we can create your Elixir account.
             </span>
           }
           heading="For Organizations
@@ -40,8 +40,6 @@ export default function Donors() {
         />
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
-          heading="Individual Donors"
-          link="https://slredcross.give.asia/"
           text={
             <span>
               Please donate using our secure site:{" "}
@@ -52,6 +50,8 @@ export default function Donors() {
               support multiple aid packages.
             </span>
           }
+          heading="For Individuals"
+          link="/donors/individual"
           buttonText="Donate"
         />
         <p className="inquiry">

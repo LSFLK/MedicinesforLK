@@ -1,5 +1,5 @@
 .donors .header-image {
-  color: var(--elixir-color-red);
+  color: var(--elixir-color-white);
 }
 
 .donors .header-image::before {
