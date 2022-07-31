@@ -1,4 +1,5 @@
 import React from "react";
+import { AidPackage } from "../../../../types/AidPackage";
 import { AidPackageItem } from "../../../../types/DonorAidPackageOrderItem";
 import "./orderItemsTable.css";
 
@@ -6,12 +7,14 @@ interface PackageItemsTableProps {
   items: AidPackageItem[];
   onEditItemButtonClick: (item: AidPackageItem) => void;
   onDeleteButtonClick: (item: AidPackageItem) => void;
+  aidPackageStatus: AidPackage.Status;
 }
 
 export default function OrderItemsTable({
   items,
   onEditItemButtonClick,
   onDeleteButtonClick,
+  aidPackageStatus,
 }: PackageItemsTableProps) {
   return (
     <table className="orderItemsTable">
@@ -34,13 +37,28 @@ export default function OrderItemsTable({
               {item.period.day}/{item.period.month}/{item.period.year}
             </td>
             <td className="actions">
-              <button type="button" onClick={() => onEditItemButtonClick(item)}>
+              <button
+                type="button"
+                onClick={() => onEditItemButtonClick(item)}
+                disabled={
+                  !(
+                    aidPackageStatus === AidPackage.Status.Draft ||
+                    aidPackageStatus === AidPackage.Status.Published
+                  )
+                }
+              >
                 Edit
               </button>
               <button
                 type="button"
                 className="deleteButton"
                 onClick={() => onDeleteButtonClick(item)}
+                disabled={
+                  !(
+                    aidPackageStatus === AidPackage.Status.Draft ||
+                    aidPackageStatus === AidPackage.Status.Published
+                  )
+                }
               >
                 delete
               </button>
