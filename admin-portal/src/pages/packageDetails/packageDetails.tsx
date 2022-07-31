@@ -212,6 +212,7 @@ export default function PackageDetails() {
                   items={aidPackage?.aidPackageItems}
                   onEditItemButtonClick={handleEditOrderItemButtonClick}
                   onDeleteButtonClick={handlePackageItemDelete}
+                  aidPackageStatus={aidPackageStatus}
                 />
               </div>
             </div>
