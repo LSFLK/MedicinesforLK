@@ -16,16 +16,10 @@ export default function OrderItemsTable({
   onDeleteButtonClick,
   aidPackageStatus,
 }: PackageItemsTableProps) {
-  const [disableBtns, setDisableBtns] = useState<boolean>(false);
-
-  useEffect(() => {
-    setDisableBtns(
-      !(
-        aidPackageStatus === AidPackage.Status.Draft ||
-        aidPackageStatus === AidPackage.Status.Published
-      )
-    );
-  }, [aidPackageStatus]);
+  const disableBtns = !(
+    aidPackageStatus === AidPackage.Status.Draft ||
+    aidPackageStatus === AidPackage.Status.Published
+  );
 
   return (
     <table className="orderItemsTable">
