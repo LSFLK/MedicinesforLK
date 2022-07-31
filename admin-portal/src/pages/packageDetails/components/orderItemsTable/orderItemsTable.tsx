@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AidPackage } from "../../../../types/AidPackage";
 import { AidPackageItem } from "../../../../types/DonorAidPackageOrderItem";
 import "./orderItemsTable.css";
@@ -16,6 +16,17 @@ export default function OrderItemsTable({
   onDeleteButtonClick,
   aidPackageStatus,
 }: PackageItemsTableProps) {
+  const [disableBtns, setDisableBtns] = useState<boolean>(false);
+
+  useEffect(() => {
+    setDisableBtns(
+      !(
+        aidPackageStatus === AidPackage.Status.Draft ||
+        aidPackageStatus === AidPackage.Status.Published
+      )
+    );
+  }, [aidPackageStatus]);
+
   return (
     <table className="orderItemsTable">
       <thead>
@@ -40,12 +51,7 @@ export default function OrderItemsTable({
               <button
                 type="button"
                 onClick={() => onEditItemButtonClick(item)}
-                disabled={
-                  !(
-                    aidPackageStatus === AidPackage.Status.Draft ||
-                    aidPackageStatus === AidPackage.Status.Published
-                  )
-                }
+                disabled={disableBtns}
               >
                 Edit
               </button>
@@ -53,12 +59,7 @@ export default function OrderItemsTable({
                 type="button"
                 className="deleteButton"
                 onClick={() => onDeleteButtonClick(item)}
-                disabled={
-                  !(
-                    aidPackageStatus === AidPackage.Status.Draft ||
-                    aidPackageStatus === AidPackage.Status.Published
-                  )
-                }
+                disabled={disableBtns}
               >
                 delete
               </button>
