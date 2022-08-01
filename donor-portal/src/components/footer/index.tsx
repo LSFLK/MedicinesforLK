@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
       <div className="footer-gray">
         <p>
-          Al content copyright © 2022 Sri Lanka Red Cross. All rights reserved.{" "}
+          All content copyright © 2022 Sri Lanka Red Cross. All rights reserved.{" "}
           |
           <a href=" https://www.redcross.lk/who-we-are/our-legal-status-in-sri-lanka/">
             {" "}
