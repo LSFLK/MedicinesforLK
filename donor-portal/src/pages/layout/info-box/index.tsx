@@ -24,12 +24,16 @@ export default function InfoBox({
       <p>{text}</p>
       {path && (
         <Link to={path}>
-          <button type="button">{buttonText}</button>
+          <button type="button" className="btn">
+            {buttonText}
+          </button>
         </Link>
       )}
       {link && (
         <a href={link} target="_blank" rel="noreferrer">
-          <button type="button">{buttonText}</button>
+          <button type="button" className="btn">
+            {buttonText}
+          </button>
         </a>
       )}
     </div>
