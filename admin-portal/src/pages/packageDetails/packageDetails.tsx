@@ -35,7 +35,7 @@ export default function PackageDetails() {
     "Awaiting Payment": 3,
     Ordered: 4,
     Shipped: 5,
-    "Received At MOH": 6,
+    "Received at MoH": 6,
     Delivered: 7,
   };
 

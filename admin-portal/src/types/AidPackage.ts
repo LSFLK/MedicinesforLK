@@ -18,7 +18,7 @@ export namespace AidPackage {
     AwaitingPayment = "Awaiting Payment",
     Ordered = "Ordered",
     Shipped = "Shipped",
-    ReceivedAtMOH = "Received At MOH",
+    ReceivedAtMOH = "Received at MoH",
     Delivered = "Delivered",
   }
 }
