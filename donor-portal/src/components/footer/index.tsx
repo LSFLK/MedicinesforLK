@@ -8,12 +8,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-black">
         <div className="footer-black-top">
-          <img
-            src="/assets/images/about-us/sl-red-cross-logo.jpg"
-            alt="SL Red Cross Logo"
-          />
           <div className="icons">
-            <p>FOLLOW</p>
             <a href="https://www.facebook.com/pages/Sri-Lanka-Red-Cross-Society/133902706641597">
               <FaFacebookF className="icon" />
             </a>
@@ -48,8 +43,12 @@ export default function Footer() {
       </div>
       <div className="footer-gray">
         <p>
-          Copyright © <a href="www.elixir.redcross.lk">elixir.redcross.lk </a>|
-          All rights reserved
+          Al content copyright © 2022 Sri Lanka Red Cross. All rights reserved.{" "}
+          |
+          <a href=" https://www.redcross.lk/who-we-are/our-legal-status-in-sri-lanka/">
+            {" "}
+            Our Legal Status in Sri Lanka{" "}
+          </a>
         </p>
       </div>
     </footer>

@@ -17,7 +17,7 @@
   position: relative;
   padding-bottom: 2rem;
   padding-top: 4rem;
-  background-color: black;
+  background-color: #333333;
 }
 
 .footer .footer-black img {
@@ -62,9 +62,12 @@
 }
 
 .icon {
-  color: white;
+  color: #333333;
   align-self: center;
   margin: 10px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10%;
 }
 
 .icons p {
@@ -79,7 +82,7 @@
   font-size: 18px;
   margin: auto;
   width: 65%;
-  font-weight: 600;
+  
 }
 
 .footer-black-bottom:hover a {
@@ -106,23 +109,22 @@ a.text-link:hover {
 
 .footer-gray {
   height: 60px;
-  background-color: var(--elixir-color-gray-600);
+  background-color: #333333;
   display: flex;
-  padding-left: 270px;
-  padding-right: 270px;
+  
   align-items: center;
 }
 
 .footer-gray p {
   font-size: 10px;
-  width: 300px;
-  text-align: left;
-  margin-left: 10px;
+  
+  text-align: center;
+  
 }
 
-.footer-gray > div a {
+.footer-gray  a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 13px;
   font-weight: 500;
 }
