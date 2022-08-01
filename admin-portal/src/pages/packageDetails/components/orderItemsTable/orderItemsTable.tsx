@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AidPackage } from "../../../../types/AidPackage";
 import { AidPackageItem } from "../../../../types/DonorAidPackageOrderItem";
 import "./orderItemsTable.css";
