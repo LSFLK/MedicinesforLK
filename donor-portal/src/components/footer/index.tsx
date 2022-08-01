@@ -39,7 +39,7 @@ export default function Footer() {
             Medical Needs
           </Link>
           <Link to="/suppliers" className="text-link">
-            Medical Suppliers
+            Hospitals & Suppliers
           </Link>
           <Link to="/news-room" className="text-link">
             Newsroom

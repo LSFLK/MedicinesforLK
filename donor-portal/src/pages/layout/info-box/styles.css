@@ -4,7 +4,7 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 40px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
   text-align: center;
   border-radius: 20px;
   margin-bottom: 40px;
@@ -17,16 +17,12 @@
 }
 
 .info-box button {
-  height: 32px;
-  font-size: 15px;
   font-weight: 600;
-  width: 100px;
-  border: 2px solid var(--elixir-color-gray-600);
   border-radius: 8px;
-  color: var(--elixir-color-red);
-  background-color: white;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
+
 .info-box p {
   min-height: 130px;
 }

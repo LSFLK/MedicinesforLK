@@ -22,17 +22,19 @@ export default function Suppliers() {
       <InfoBoxContainer>
         <InfoBox
           iconUrl="/assets/images/doctor.jpg"
-          text="ELIXIR provides an easy to use application to manage all your urgent supply needs. Contact us for details on how
-                        to create an account"
-          heading="Hospitals/Doctors"
-          link="#"
+          text="Elixir provides an easy to use application to manage all your urgent supply needs. Contact us for details on how
+                        to create an account."
+          heading="Hospitals & Doctors"
+          link="mailto:elixir@redcross.lk"
+          buttonText="Email us"
         />
         <InfoBox
           iconUrl="/assets/images/pharmacy.jpg"
-          text="ELIXIR would like to partner with you to source the needs of our hospitals and doctors. Contact us to onboard your
+          text="Elixir would like to partner with you to source the needs of our hospitals and doctors. Contact us to onboard your
                         inventory."
           heading="Pharmaceutical Suppliers"
-          link="#"
+          link="mailto:elixir@redcross.lk"
+          buttonText="Email us"
         />
         <p className="inquiry">
           For all inquiries, please email us at{" "}
