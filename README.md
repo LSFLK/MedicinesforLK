@@ -4,9 +4,19 @@ This is the repo for Elixir - Medicines for LK application.
 
 ## Setup Development Environment Locally
 
-- Clone your forked repository
+Please make sure you have all the listed prerequisites tools installed locally.
 
-### Admin Portal
+1. Node - Latest
+2. npm - Latest
+
+### Steps
+- Clone your forked repository
+- Move in to cloned repository
+  ```
+  cd MedicinesforLK
+  ```
+
+#### Admin Portal
 
 - Change Directory to Admin Portal
   ```
@@ -39,7 +49,7 @@ This is the repo for Elixir - Medicines for LK application.
 
 - Visit your app at http://localhost:3000
 
-### Donor Portal
+#### Donor Portal
 
 - Change Directory to Donor Portal
   ```
@@ -66,9 +76,3 @@ This is the repo for Elixir - Medicines for LK application.
   ```
 
 - Visit your app at http://localhost:3000
-
-## Build
-
-Please make sure you have all the listed prerequisites tools installed locally.
-
-1. Node - Latest
