@@ -16,6 +16,7 @@ import UserContext from "./userContext";
 import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
 import IndividualDonors from "./pages/donors/individual-donors";
+import MedicalNeeds from "./pages/medical-needs";
 
 function App() {
   const { state, httpRequest, getDecodedIDToken } = useAuthContext();
@@ -57,6 +58,9 @@ function App() {
             </Route>
             <Route exact path="/donors/individual">
               <IndividualDonors />
+            </Route>
+            <Route exact path="/medical-needs">
+              <MedicalNeeds />
             </Route>
             <Route exact path="/suppliers">
               <Suppliers />

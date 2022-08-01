@@ -29,6 +29,9 @@ export default function NavBar() {
         <NavLink exact to="/donors" className="nav-link">
           How to Donate
         </NavLink>
+        <NavLink to="/medical-needs" className="nav-link">
+          Medical Needs
+        </NavLink>
         <NavLink to="/suppliers" className="nav-link">
           Medical Suppliers
         </NavLink>

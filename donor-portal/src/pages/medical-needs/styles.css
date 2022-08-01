@@ -1,0 +1,82 @@
+.medical-needs-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 2rem;
+}
+
+.medical-needs-heading h1 {
+  color: var(--elixir-color-red);
+  margin: 0;
+}
+
+.medical-needs-heading .goal-filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.package-list {
+  margin: 0 2rem;
+}
+
+.package-card {
+  display: flex;
+  margin-bottom: 2rem;
+  border: 1px solid var(--elixir-color-gray-500);
+}
+
+.card-details {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.package-card .card-details__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.package-card .card-details__heading h2 {
+  color: var(--elixir-color-red);
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.package-card .card-details__heading p {
+  margin: 0;
+}
+
+.card_details__package_progress_text {
+  font-size: 1.2rem;
+  color: var(--elixir-color-red);
+  font-weight: bold;
+}
+
+.card_details__package_progress_bar {
+  width: 100%;
+  height: 1.5rem;
+  background-color: var(--elixir-color-gray-500);
+  border-radius: 0.5rem;
+}
+
+.card_details__package_progress_bar span {
+  display: block;
+  width: 100%;
+  height: 1.5rem;
+  background-color: var(--elixir-color-red);
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .package-card img {
+    display: none;
+  }
+}
