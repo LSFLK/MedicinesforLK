@@ -2,6 +2,21 @@
   padding: 2rem;
 }
 
+.aid-package-text {
+  color: black;
+}
+
+.txt-align {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.login {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .aid-package-title-container {
   font-size: 1.4rem;
   width: 100%;
