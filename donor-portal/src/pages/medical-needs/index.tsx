@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
-import HeaderImage from "../layout/header-image";
 import Page from "../layout/page";
 import "./styles.css";
 import UserContext from "../../userContext";
@@ -116,8 +115,6 @@ export default function MedicalNeeds() {
 
   return (
     <Page className="medical-needs-page">
-      <HeaderImage imageUrl="https://images.unsplash.com/photo-1516826435551-36a8a09e4526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" />
-
       <div className="medical-needs-heading">
         <h1>Medical Needs</h1>
 
