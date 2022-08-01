@@ -35,7 +35,7 @@ export default function Donors() {
           }
           heading="For Organizations
           "
-          link="/login"
+          path="/login"
           buttonText="Login"
         />
         <InfoBox
@@ -51,7 +51,7 @@ export default function Donors() {
             </span>
           }
           heading="For Individuals"
-          link="/donors/individual"
+          path="/donors/individual"
           buttonText="Donate"
         />
         <p className="inquiry">

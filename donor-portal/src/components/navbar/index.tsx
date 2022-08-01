@@ -33,7 +33,7 @@ export default function NavBar() {
           Medical Needs
         </NavLink>
         <NavLink to="/suppliers" className="nav-link">
-          Medical Suppliers
+          Hospitals & Suppliers
         </NavLink>
         <NavLink to="/news-room" className="nav-link">
           Newsroom
