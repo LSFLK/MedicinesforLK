@@ -1,4 +1,4 @@
-import React, { useEffect, useState, CSSProperties } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { ToastContainer } from "react-toastify";
@@ -18,18 +18,11 @@ import SupplierQuotationUpload from "./pages/supplierQuotationUpload/supplierQuo
 import NeedUpload from "./pages/needUpload/needUpload";
 import Home from "./pages/home/home";
 import NavBar from "./components/navbar/navbar";
-import HashLoader from "react-spinners/HashLoader";
-import LoadingOverlay from 'react-loading-overlay-ts';  
+// import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 
-const override: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-  borderColor: "red",
-};
 
 function App() {
   const { state, httpRequest, signIn, trySignInSilently } = useAuthContext();
-  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     trySignInSilently()
@@ -51,15 +44,16 @@ function App() {
     SupplierService.http = http;
   }, []);
 
-  useEffect(() => {
-    if(state.isAuthenticated){
-      setLoading(false);
-    }
-  });
+  if (!state.isAuthenticated) {
+    return (
+      <div className="App">
+        {/* <SpinnerLoader loaderText="Proceed to Login" /> */}
+      </div>
+    );
+  }
   
   return (
     <div className="App">
-      <LoadingOverlay active={loading} spinner={<HashLoader color={'#09d3ac'} loading={loading} cssOverride={override} size={50} />}   >
       <header className="App-header">
         <NavBar />
       </header>
@@ -106,7 +100,6 @@ function App() {
         </div>
       </footer>
       <ToastContainer />
-      </LoadingOverlay>
     </div>
   );
 }
