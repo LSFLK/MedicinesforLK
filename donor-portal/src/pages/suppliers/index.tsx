@@ -23,7 +23,7 @@ export default function Suppliers() {
         <InfoBox
           iconUrl="/assets/images/doctor.jpg"
           text="Elixir provides an easy to use application to manage all your urgent supply needs. Contact us for details on how
-                        to create an account"
+                        to create an account."
           heading="Hospitals & Doctors"
           link="mailto:elixir@redcross.lk"
           buttonText="Email us"
