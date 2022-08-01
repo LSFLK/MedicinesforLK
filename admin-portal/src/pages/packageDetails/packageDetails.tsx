@@ -86,11 +86,11 @@ export default function PackageDetails() {
     );
     if (confirmed) {
       if (statusToLevel[statusToBeChanged] > 3) {
-        const confirmationCheck2 = window.confirm(
+        const orderCompletionConfirmation = window.confirm(
           "You are trying to move this package into a 'completion' status!"
         );
 
-        if (!confirmationCheck2) return; // don't update the status
+        if (!orderCompletionConfirmation) return; // don't update the status
       }
 
       const { data } = await AidPackageService.updateAidPackage({
