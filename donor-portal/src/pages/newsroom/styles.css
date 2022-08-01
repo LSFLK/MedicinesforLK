@@ -21,6 +21,7 @@
   padding: 0 6rem;
   color: var(--elixir-color-white);
   text-align: left;
+  margin-left: 113px;
 }
 
 .news-room h1 {
@@ -97,5 +98,4 @@ h4 {
 .news-room .video-section .video {
   aspect-ratio: 16 / 9;
   width: 100%;
-  height: 350px;
 }

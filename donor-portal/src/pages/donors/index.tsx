@@ -8,50 +8,55 @@ import "./styles.css";
 export default function Donors() {
   return (
     <Page className="donors">
-      <HeaderImage imageUrl="https://media.capc.org/images/AdobeStock_274131656.original.original.jpg">
-        <h1>Donors</h1>
+      <HeaderImage imageUrl="/assets/images/header-imgs/donors.jpg">
+        <h1>How to Donate</h1>
       </HeaderImage>
       <div className="text-section">
         <p>
-          If you represent an organization please click on the ‘Login’ button to
-          register an account on Elixir. After you complete login, select a
-          desired aid package and enter a pledge amount. After the target
-          donations for your aid package has been reached we will contact you to
-          arrange payment.
+          We have a unique approach to receiving donations that is geared to
+          help maximize transparency and accountability. Each aid package has a
+          target donation goal that must be reached before being submitted as a
+          purchase order to our suppliers. The Elixir platform tracks the aid
+          package throughout its lifecycle and provides status at each stage of
+          invoicing, shipping and delivery.
         </p>
       </div>
       <InfoBoxContainer>
         <InfoBox
           iconUrl="assets/images/charity2.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Charities"
-          link="/login"
-          buttonText="Login"
-        />
-        <InfoBox
-          iconUrl="assets/images/gov.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Government Embassies"
-          link="/login"
-          buttonText="Login"
-        />
-        <InfoBox
-          iconUrl="/assets/images/corporation.jpg"
-          text="Navigate to the login page to begin registration"
-          heading="Foundations / Corporations"
+          text={
+            <span>
+              We have a 2-step process that allows you to first pledge your
+              support to a specific aid package and then arrange for payment
+              once the target threshold is reached. Please email us at:
+              <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a> so that
+              we can create your Elixir account.
+            </span>
+          }
+          heading="For Organizations
+          "
           link="/login"
           buttonText="Login"
         />
         <InfoBox
           iconUrl="/assets/images/individual_donor.jpg"
-          text="Donate to Elixir via our partner donor organizations"
-          heading="Individual Donors"
-          link="/donate-now"
+          text={
+            <span>
+              Please donate using our secure site:{" "}
+              <a href="https://slredcross.give.asia/">
+                https://slredcross.give.asia/
+              </a>
+              We are currently accepting donations to a general fund that will
+              support multiple aid packages.
+            </span>
+          }
+          heading="For Individuals"
+          link="/donors/individual"
           buttonText="Donate"
         />
         <p className="inquiry">
           For all inquiries, please email us at{" "}
-          <a href="mailto: inquiries@redcross.lk">inquiries@redcross.lk</a>
+          <a href="mailto: elixir@redcross.lk">elixir@redcross.lk</a>
         </p>
       </InfoBoxContainer>
     </Page>

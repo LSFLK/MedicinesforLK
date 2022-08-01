@@ -1,16 +1,13 @@
 import React, { ChangeEvent } from "react";
 import "./pledgeSummary.css";
-import { Donor } from "../../../../types/Donor";
 import { Pledge } from "../../../../types/Pledge";
 
 interface PledgeSummaryProps {
-  donor: Donor;
   pledge: Pledge;
   onStatusChange: (status: Pledge.Status) => void;
 }
 
 export default function PledgeSummary({
-  donor,
   pledge,
   onStatusChange,
 }: PledgeSummaryProps) {
@@ -24,7 +21,7 @@ export default function PledgeSummary({
   return (
     <div className="pledgeSummary">
       <div className="heading">Donor:</div>
-      <div>{donor.orgName}</div>
+      <div>{pledge.donorID}</div>
       <div className="heading">Amount:</div>
       <div>
         $

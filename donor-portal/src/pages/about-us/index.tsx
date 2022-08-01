@@ -7,37 +7,58 @@ import "./styles.css";
 export default function AboutUs() {
   return (
     <Page className="about-us">
-      <HeaderImage imageUrl="https://images.unsplash.com/photo-1566140967404-b8b3932483f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
-        <h1>About Us</h1>
+      <HeaderImage imageUrl="/assets/images/about-us/header.jpg">
+        <div className="about-us-container">
+          <h1>About Us</h1>
+        </div>
       </HeaderImage>
 
-      <div className="text-section">
-        <p>
-          We are a group of volunteers from around the world supporting the Sri
-          Lanka Red Cross to address the acute medical supply shortage in our
-          motherland. Collectively we bring our skills in software development,
-          pharmaceutical supply chain logistics and disaster aid management to
-          develop a unique solution that can provide transparency for donors and
-          efficiency for medical providers.
-        </p>
-        <p>
-          In partnership with the Lanka Software Foundation, Sustainable
-          Education Foundation, Watchdog, The Last Word, the Ministry of Health,
-          and the Medical Supply Division we are developing an online platform
-          to match financial contributions from the Sri Lankan diaspora, charity
-          organizations and businesses with the pharmaceutical demand needs from
-          hospitals across the nation.
-        </p>
-        <p>
-          The Sri Lanka Red Cross serves to coordinate distribution activities
-          on the ground and helps perform auditing and monitoring actions to
-          ensure donors receive end-to-end visibility of shipments from
-          suppliers to those in need.
-        </p>
+      <h2>Our Approach</h2>
+      <img src="/assets/images/about-us/our-approach.png" alt="our-approach" />
+
+      <div className="container">
+        <div className="accountability-and-transparency">
+          <img
+            src="/assets/images/about-us/accountability.png"
+            alt="accountability"
+          />
+
+          <h2>Accountability</h2>
+          <p>
+            The Elixir team is motivated by the singular goal of alleviating the
+            medical crisis in Sri Lanka. We are accountable internally, to one
+            another and our partner organizations and to a multitude of
+            volunteers who have invested considerable time and effort to create
+            Elixir. We are also accountable to you, our donors, both individuals
+            and organizations alike in executing our fiduciary responsibility to
+            maximize the utility of your donations.
+          </p>
+        </div>
+        <div className="middle-text-container">
+          <span className="middle-text">&</span>
+        </div>
+        <div className="accountability-and-transparency">
+          <img
+            src="/assets/images/about-us/transparency.png"
+            alt="transparency"
+          />
+
+          <h2>Transparency</h2>
+          <p>
+            Elixir&apos;s primary design goal is transparency. While the Sri
+            Lanka Red Cross will monitor the flow of aid packages and provide
+            daily status updates, we have also contracted the services of KPMG
+            Sri Lanka, to perform an end-to-end audit of the Elixir process and
+            finances. Our financial team will also publish the monthly statement
+            of accounts on the Elixir website. We are committed to continuously
+            improving our processes. Please contact us at elixir@redcross.lk
+            should you have any questions or feedback for us.
+          </p>
+        </div>
       </div>
 
       <div className="leadership-section">
-        <h2>Leadership</h2>
+        <h2>Leadership Team</h2>
         <div className="profile-card-container">
           <div className="profile-card">
             <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
@@ -73,12 +94,12 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      <FullBleedContainer className="leadership-image-section">
-        <img
-          src="/assets/images/about-us/leadership-images.jpg"
-          alt="leadership"
-        />
-      </FullBleedContainer>
+
+      <div className="image-section">
+        <img src="/assets/images/about-us/banner-two.jpg" alt="children" />
+        <img src="/assets/images/about-us/banner-one.jpg" alt="people" />
+      </div>
+
       <div className="partner-section">
         <h2>Partners</h2>
         <div className="partner-card-container">
@@ -94,7 +115,7 @@ export default function AboutUs() {
             </p>
           </div>
           <div className="partner-section-card">
-            <a href="https://sefglobal.org/?fbclid=IwAR2USvqUpwQjcTeo2mQrHAdaXdOgBiowyc4-V3IJvS3KDw0hwUOfOHVK8bE">
+            <a href="https://sefglobal.org/">
               <img src="/assets/images/about-us/SEF_Logo.png" alt="" />
             </a>
             <p>
@@ -131,6 +152,70 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+      <div>
+        <h2>Volunteers</h2>
+        <div className="container">
+          <div className="volunteer-names">
+            <p>Jayasanka Weerasinghe </p>
+            <p>Nipuna Gunathilake</p>
+            <p>Kalsha Samarajeewa</p>
+            <p>Heshan Andrews</p>
+            <p>Manoj Lakshan</p>
+            <p>Randila Premarathne</p>
+            <p>Anupama Pathirage</p>
+            <p>Amila Jayasekara</p>
+            <p>Marcus Chandradasa</p>
+            <p>Ryan Kuruppu</p>
+            <p>Shehan Kulathilake</p>
+            <p>Ratnajothy Sangeethanan</p>
+            <p>Sherazad Hamit</p>
+            <p>Srinath Perera</p>
+            <p>Samisa Abeysinghe</p>
+            <p>Sanjiva Weerawarana</p>
+            <p>Yujith Isura</p>
+            <p>Kavishka Timashan</p>
+            <p>Thisaru Guruge</p>
+            <p>Tharindu Udupitiya</p>
+            <p>Ayesh Almeida</p>
+            <p>Dinuka Piyadigama</p>
+          </div>
+          <div className="volunteer-img-container">
+            <img
+              className="volunteer-img"
+              src="/assets/images/about-us/volunteers.jpg"
+              alt="our-approach"
+            />
+          </div>
+          <div className="volunteer-names">
+            <p>Ramindu Deshapriya</p>
+            <p>Kajendran Alagaratnam</p>
+            <p>Kanushka Gayan</p>
+            <p>Madusha Gunasekara</p>
+            <p>Charuka Karunanayake</p>
+            <p>Nipun Sampath</p>
+            <p>Manuranga Perera</p>
+            <p>Sameera Jayasoma</p>
+            <p>Ruhaim Izmeth</p>
+            <p>Arosha Bandara</p>
+            <p>Joys Chokatte</p>
+            <p>Deepal Mody</p>
+            <p>Yatin Mody</p>
+            <p>Madri Perera</p>
+            <p>Harindra Rajapakse</p>
+            <p>Donny Surtani</p>
+            <p>Priya Vasa</p>
+            <p>Sanith Wijesinghe</p>
+            <p>Lakshitha Surasinghe</p>
+            <p>Namali Premawardhana</p>
+            <p>Krishni Ratnayaka</p>
+            <p>Avanthi Gunatilake</p>
+          </div>
+        </div>
+      </div>
+
+      <FullBleedContainer className="leadership-image-section">
+        <img src="/assets/images/about-us/banner.jpg" alt="banner" />
+      </FullBleedContainer>
     </Page>
   );
 }

@@ -6,14 +6,17 @@ import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import authConfig from "./config.json";
+import authConfig from "./config";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <AuthProvider
-    config={{ ...authConfig, storage: "webWorker" as Storage.WebWorker }}
+    config={{
+      ...authConfig,
+      storage: "sessionStorage" as Storage.SessionStorage,
+    }}
     plugin={TokenExchangePlugin.getInstance()}
   >
     <App />

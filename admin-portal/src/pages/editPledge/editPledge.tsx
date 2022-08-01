@@ -111,7 +111,7 @@ export default function EditPledge() {
               Pledge Status
             </Link>
             &nbsp;&gt;&nbsp;
-            {pledge.donor.orgName}
+            {aidPackage.name}
           </div>
           <Modal
             show={isEditActivityModalVisible}
@@ -122,11 +122,7 @@ export default function EditPledge() {
               onSave={handleEditActivity}
             />
           </Modal>
-          <PledgeSummary
-            donor={pledge.donor}
-            pledge={pledge}
-            onStatusChange={handleStatusChange}
-          />
+          <PledgeSummary pledge={pledge} onStatusChange={handleStatusChange} />
           <PledgeActivities
             activities={activities}
             onEditActivityButtonClick={handleEditActivityClick}

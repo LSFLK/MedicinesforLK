@@ -3,6 +3,7 @@
  */
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
 import SimpleProgressBar from "../../components/progress-bar";
 import Page from "../layout/page";
 import "./styles.css";
@@ -18,6 +19,7 @@ import { Pledge } from "../../types/Pledge";
 export default function AidPackageDetailsPage() {
   const { id: packageId } = useParams<{ id: string }>();
   const userId = useContext(UserContext);
+  const { state } = useAuthContext();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [pledge, setPledge] = useState<Pledge | null>(null);
   const [updateComments, setUpdateComments] = useState<
@@ -28,19 +30,12 @@ export default function AidPackageDetailsPage() {
   const navigate = (path: string) => {
     history.push(path);
   };
-
   const fetchAidPackage = async () => {
     setIsLoading(true);
     const { data } = await AidPackageService.getAidPackage(packageId);
     setAidPackage(data);
     setIsLoading(false);
   };
-
-  const fetchUpdateComments = async () => {
-    const { data } = await AidPackageService.getUpdateComments(packageId);
-    setUpdateComments(data);
-  };
-
   const fetchPledge = async (donorId: string, pledgePackageId: string) => {
     const { data } = await AidPackageService.getDonorPledgesByAidPackage(
       donorId,
@@ -49,17 +44,8 @@ export default function AidPackageDetailsPage() {
     if (data.length !== 0) setPledge(data[0]);
   };
 
-  useEffect(() => {
-    fetchAidPackage();
-    fetchUpdateComments();
-  }, []);
-
-  useEffect(() => {
-    if (userId != null) fetchPledge(userId, packageId);
-  }, [userId]);
-
   const handleDonateClick = () => {
-    navigate("/donate-now");
+    navigate("/donors");
   };
 
   const handlePledgeSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -70,7 +56,7 @@ export default function AidPackageDetailsPage() {
     if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
     const newPledge: Pledge = {
       pledgeID: 0,
-      donorID: parseInt(userId, 10),
+      donorID: userId,
       packageID: parseInt(packageId, 10),
       amount: parseInt(amount, 10),
       status: Pledge.Status.Pledged,
@@ -89,7 +75,7 @@ export default function AidPackageDetailsPage() {
     if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
     const updatedPledge: Pledge = {
       pledgeID: pledge.pledgeID,
-      donorID: parseInt(userId, 10),
+      donorID: userId,
       packageID: parseInt(packageId, 10),
       amount: parseInt(amount, 10),
       status: pledge.status,
@@ -105,6 +91,21 @@ export default function AidPackageDetailsPage() {
     fetchAidPackage();
   };
 
+  const fetchUpdateComments = async () => {
+    const { data } = await AidPackageService.getUpdateComments(packageId);
+    setUpdateComments(data);
+  };
+
+  useEffect(() => {
+    fetchAidPackage();
+    fetchUpdateComments();
+  }, []);
+
+  useEffect(() => {
+    if (userId !== null && state.isAuthenticated)
+      fetchPledge(userId, packageId);
+  }, [userId, state.isAuthenticated]);
+
   return (
     <>
       {isLoading && (
@@ -119,6 +120,10 @@ export default function AidPackageDetailsPage() {
             <div className="aid-package-title-container">
               <h1>{aidPackage.name}</h1>
             </div>
+            <div className="aid-package-header-image">
+              <img src="/assets/images/packages/vaccine.jpg" alt="vaccine" />
+            </div>
+            <h1 className="aid-package-description-ribbon">Description</h1>
             <div>
               <p>{aidPackage.description}</p>
             </div>
@@ -141,7 +146,7 @@ export default function AidPackageDetailsPage() {
                 max={aidPackage.goalAmount as number}
                 className="aid-pacakge-progress-bar"
               />
-              {userId == null && (
+              {userId === null && !state.isAuthenticated && (
                 <button
                   type="button"
                   className="btn aid-package-donate-btn"
@@ -152,7 +157,7 @@ export default function AidPackageDetailsPage() {
               )}
             </div>
             <div>
-              {userId != null && pledge != null ? (
+              {userId !== null && state.isAuthenticated && pledge != null ? (
                 <>
                   <p>
                     You&apos;ve pledged $
@@ -184,6 +189,7 @@ export default function AidPackageDetailsPage() {
                   )}
                 </>
               ) : (
+                userId !== null &&
                 aidPackage.status === AidPackage.Status.Published && (
                   <form onSubmit={handlePledgeSubmit}>
                     <p>Enter amount (in USD)</p>

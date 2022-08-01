@@ -4,6 +4,7 @@
   flex: 1;
   align-items: flex-start;
   justify-content: flex-start;
+  margin-left: 77px;
 }
 
 .home-page .header-image__text-container p {
@@ -13,6 +14,49 @@
   margin: 0 2rem;
   padding: 20px;
   background-color: rgba(175, 175, 175, 0.274);
+  margin-left: 70px;
+}
+
+.home-page .header-image_logo img {
+  width: 220px;
+  height: 220x;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 125px;
+}
+
+.home-description {
+  display: flex;
+  margin: 2rem 2rem 1rem 2rem;
+  border: 1px solid var(--elixir-color-gray-500);
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.home-description .image-container {
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.image-container img {
+  max-width: 300px;
+}
+
+.home-description-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+  align-items: flex-start;
+}
+
+.home-description h3 {
+  color: var(--elixir-color-red);
+  margin-bottom: 0;
+}
+
+.home-description-text .bold {
+  font-weight: 500;
 }
 
 .home-heading {
@@ -22,83 +66,13 @@
   margin: 1.5rem 2rem;
 }
 
-.home-heading h1 {
-  color: var(--elixir-color-red);
-  margin: 0;
-}
-
-.home-heading .goal-filter {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.text-blue {
-  color: blue;
-}
-
-.package-list {
-  margin: 0 2rem;
-}
-
-.package-card {
-  display: flex;
-  margin-bottom: 2rem;
-  border: 1px solid var(--elixir-color-gray-500);
-}
-
-.card-details {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.package-card .card-details__heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex: 1;
-}
-
-.package-card .card-details__heading h2 {
-  color: var(--elixir-color-red);
-  margin: 0;
-  margin-bottom: 0.5rem;
-}
-
-.package-card .card-details__heading p {
-  margin: 0;
-}
-
-.card_details__package_progress_text {
-  font-size: 1.2rem;
-  color: var(--elixir-color-red);
-  font-weight: bold;
-}
-
-.card_details__package_progress_bar {
-  width: 100%;
-  height: 1.5rem;
-  background-color: var(--elixir-color-gray-500);
-  border-radius: 0.5rem;
-}
-
-.card_details__package_progress_bar span {
-  display: block;
-  width: 100%;
-  height: 1.5rem;
-  background-color: var(--elixir-color-red);
-  border-radius: 0.5rem;
-}
-
 @media (max-width: 600px) {
   .home-heading {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .package-card img {
-    display: none;
+  .home-description {
+    flex-direction: column;
   }
 }

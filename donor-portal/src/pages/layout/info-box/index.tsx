@@ -12,7 +12,7 @@ export default function InfoBox({
   iconUrl: string;
   link: string;
   heading: string;
-  text: string;
+  text: React.ReactNode;
   buttonText?: string;
 }) {
   return (
@@ -20,11 +20,16 @@ export default function InfoBox({
       <img src={iconUrl} alt="" />
       <h2>{heading}</h2>
       <p>{text}</p>
-      {link !== "#" && (
-        <Link to={link}>
-          <button type="button">{buttonText}</button>
-        </Link>
-      )}
+      {link !== "#" &&
+        (!link.startsWith("https://") ? (
+          <Link to={link}>
+            <button type="button">{buttonText}</button>
+          </Link>
+        ) : (
+          <a href={link} target="_blank" rel="noreferrer">
+            <button type="button">{buttonText}</button>
+          </a>
+        ))}
     </div>
   );
 }

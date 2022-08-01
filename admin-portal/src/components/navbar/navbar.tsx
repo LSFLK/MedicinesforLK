@@ -7,18 +7,6 @@ import "./navbar.css";
 export default function NavBar() {
   const { state, signIn, signOut, on } = useAuthContext();
 
-  // const search = useLocation().search;
-  // const stateParam = new URLSearchParams(search).get("state");
-  // const errorDescParam = new URLSearchParams(search).get("error_description");
-
-  // useEffect(() => {
-  //   if (stateParam && errorDescParam) {
-  //     if (errorDescParam === "End User denied the logout request") {
-  //       setHasLogoutFailureError(true);
-  //     }
-  //   }
-  // }, [stateParam, errorDescParam]);
-
   /**
    * handles the error occurs when the logout consent page is enabled
    * and the user clicks 'NO' at the logout consent page
@@ -29,24 +17,8 @@ export default function NavBar() {
     });
   }, [on]);
 
-  useEffect(() => {
-    // (async (): Promise<void> => {
-    //   const basicUserInfo = await getBasicUserInfo();
-    //   const idToken = await getIDToken();
-    //   const decodedIDToken = await getDecodedIDToken();
-    //   const derivedState = {
-    //     authenticateResponse: basicUserInfo,
-    //     idToken: idToken?.split("."),
-    //     decodedIdTokenHeader: JSON.parse(atob(idToken?.split(".")[0])),
-    //     decodedIDTokenPayload: decodedIDToken
-    //   };
-    //   setDerivedAuthenticationState(derivedState);
-    // })();
-  }, [state?.isAuthenticated]);
-
   const handleLogin = () => {
-    // setHasLogoutFailureError(false);
-    signIn(); // .catch(() => setHasAuthenticationErrors(true));
+    signIn();
   };
 
   const handleLogout = () => {
@@ -86,21 +58,21 @@ export default function NavBar() {
         </div>
         <div className="navbar__items navbar__items--right">
           {state.isAuthenticated ? (
-            <a
-              href="/"
+            <button
+              type="button"
               onClick={() => handleLogout()}
-              className="navbar__item navbar__link"
+              className="navbar__item logout-btn"
             >
               Logout
-            </a>
+            </button>
           ) : (
-            <a
-              href="/"
+            <button
+              type="button"
               onClick={() => handleLogin()}
-              className="navbar__item navbar__link"
+              className="navbar__item logout-btn"
             >
               Login
-            </a>
+            </button>
           )}
         </div>
       </div>
