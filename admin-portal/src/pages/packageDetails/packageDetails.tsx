@@ -14,6 +14,7 @@ import PackageStatus from "./components/packageStatus/packageStatus";
 import ContributionsChart from "../../components/contributionsChart/contributionsChart";
 import AidPackageService from "../../apis/services/AidPackageService";
 import EditDescriptionPrompt from "./components/editDescriptionPrompt/editDescriptionPrompt";
+import DeleteAidPackagePrompt from "./components/deleteAidPackagePrompt/editUpdateCommentPrompt";
 
 export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -21,6 +22,8 @@ export default function PackageDetails() {
   const [aidPackageStatus, setAidPackageStatus] = useState<AidPackage.Status>();
   const [posts, setPosts] = useState<AidPackageUpdateComment[]>([]);
   const [isEditPostModalVisible, setIsEditPostModalVisible] = useState(false);
+  const [isDeleteAidPackageModalVisible, setIsDeleteAidPackageModalVisible] =
+    useState(false);
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] =
     useState(false);
   const [isEditDescriptionModalVisible, setIsEditDescriptionModalVisible] =
@@ -53,6 +56,10 @@ export default function PackageDetails() {
       );
     });
     setPosts(sorteddata);
+  };
+
+  const handleAidPackageDelete = async () => {
+    await AidPackageService.deleteAidPackage(packageId!);
   };
 
   useEffect(() => {
@@ -191,6 +198,15 @@ export default function PackageDetails() {
             />
           </Modal>
           <Modal
+            show={isDeleteAidPackageModalVisible}
+            onClose={() => setIsDeleteAidPackageModalVisible(false)}
+          >
+            <DeleteAidPackagePrompt
+              aidPackage={aidPackage}
+              onSave={handleAidPackageDelete}
+            />
+          </Modal>
+          <Modal
             show={isEditDescriptionModalVisible}
             onClose={() => setIsEditDescriptionModalVisible(false)}
           >
@@ -205,13 +221,23 @@ export default function PackageDetails() {
           <h1 className="packageName">{aidPackage.name}</h1>
           <div className="topContainer">
             <div className="descriptionArea">
-              <div className="edit-desc">
-                <p className="heading">Description</p>
+              <div className="deleteButtonContainer">
+                <div className="edit-desc">
+                  <p className="heading">Description</p>
 
-                <FiEdit3
-                  className="desc-edit-icon"
-                  onClick={() => handleEditDescriptionButtonClick(aidPackage)}
-                />
+                  <FiEdit3
+                    className="desc-edit-icon"
+                    onClick={() => handleEditDescriptionButtonClick(aidPackage)}
+                  />
+                </div>
+                {aidPackage.status === AidPackage.Status.Draft && (
+                  <button
+                    type="button"
+                    onClick={() => setIsDeleteAidPackageModalVisible(true)}
+                  >
+                    Delete Package
+                  </button>
+                )}
               </div>
 
               <p>{aidPackage.description}</p>

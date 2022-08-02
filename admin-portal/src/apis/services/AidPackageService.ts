@@ -32,6 +32,10 @@ export default class AidPackageService {
     );
   }
 
+  static deleteAidPackage(packageID: number | string) {
+    return AidPackageService.http.delete(`aidpackages/${packageID}`);
+  }
+
   static getUpdateComments(packageID: number | string) {
     return AidPackageService.http.get<AidPackageUpdateComment[]>(
       `aidpackages/${packageID}/updatecomments`
