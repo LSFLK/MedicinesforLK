@@ -142,7 +142,7 @@ export default function AidPackageDetailsPage() {
               {userId === null && !state.isAuthenticated && (
                 <>
                   <p className="aid-package-text txt-align">
-                    Please donate using our secure site, We are currently
+                    Please donate using our secure site. We are currently
                     accepting donations to a general fund that will support
                     multiple aid packages.
                   </p>
