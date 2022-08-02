@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { ToastContainer } from "react-toastify";
@@ -18,20 +18,22 @@ import NeedUpload from "./pages/needUpload/needUpload";
 import Home from "./pages/home/home";
 import NavBar from "./components/navbar/navbar";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
-
 import "./App.css";
 
 function App() {
-  const { state, httpRequest, signIn } = useAuthContext();
-  const [isSigningIn, setIsSigningIn] = useState(true);
+  const { state, httpRequest, signIn, trySignInSilently } = useAuthContext();
 
   useEffect(() => {
     if (!state.isAuthenticated) {
-      signIn().then(() => {
-        setIsSigningIn(false);
-      });
-    } else {
-      setIsSigningIn(false);
+      trySignInSilently()
+        .then((response) => {
+          if (!response) {
+            signIn();
+          }
+        })
+        .catch(() => {
+          signIn();
+        });
     }
     const http: Http = new Http(
       httpRequest,
@@ -43,13 +45,14 @@ function App() {
     SupplierService.http = http;
   }, [state.isAuthenticated]);
 
-  if (isSigningIn) {
+  if (!state.isAuthenticated) {
     return (
       <div className="App">
-        <SpinnerLoader loaderText="Proceed to Login" />
+        <SpinnerLoader loaderText="Loading..." />
       </div>
     );
   }
+
   return (
     <div className="App">
       <header className="App-header">
