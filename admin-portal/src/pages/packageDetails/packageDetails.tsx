@@ -35,7 +35,7 @@ export default function PackageDetails() {
     "Awaiting Payment": 3,
     Ordered: 4,
     Shipped: 5,
-    "Received At MOH": 6,
+    "Received at MoH": 6,
     Delivered: 7,
   };
 
@@ -85,6 +85,14 @@ export default function PackageDetails() {
       `Are you sure you want to change the status to ${statusToBeChanged}?`
     );
     if (confirmed) {
+      if (statusToLevel[statusToBeChanged] > 3) {
+        const orderCompletionConfirmation = window.confirm(
+          "You are trying to move this package into a 'completion' status!"
+        );
+
+        if (!orderCompletionConfirmation) return; // don't update the status
+      }
+
       const { data } = await AidPackageService.updateAidPackage({
         ...aidPackage!,
         status: statusToBeChanged,

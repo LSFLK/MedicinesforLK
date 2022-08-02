@@ -4,23 +4,16 @@
   text-align: center;
 }
 
-.footer p {
-  color: white;
-  font-size: 18px;
-  width: 30%;
-  margin: auto;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
 
-.footer .footer-black {
+
+.footer .footer-gray {
   position: relative;
   padding-bottom: 2rem;
   padding-top: 4rem;
-  background-color: black;
+  background-color: #333333;
 }
 
-.footer .footer-black img {
+.footer .footer-gray img {
   position: absolute;
   left: 6%;
   height: 120px;
@@ -28,25 +21,25 @@
 }
 
 @media screen and (min-width: 1096px) {
-  .footer .footer-black img {
+  .footer .footer-gray img {
     left: 12%;
   }
 }
 
 @media screen and (max-width: 810px) {
-  .footer .footer-black img {
+  .footer .footer-gray img {
     top: -40px;
     height: 70px;
   }
 }
 
-.footer .footer-black p {
-  font-size: 13px;
+.footer .footer-gray p {
+  font-size: 0.8125rem;
   width: 50%;
   text-align: justify;
 }
 
-.footer .footer-black .footer-black-top {
+.footer .footer-gray .footer-gray-top {
   display: flex;
   align-items: center;
   width: 50%;
@@ -62,9 +55,12 @@
 }
 
 .icon {
-  color: white;
+  color: #333333;
   align-self: center;
   margin: 10px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10%;
 }
 
 .icons p {
@@ -72,62 +68,49 @@
   color: var(--elixir-color-gray-600);
 }
 
-.footer-black-bottom {
+.footer-gray-middle {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 0.8125rem;
   margin: auto;
-  width: 65%;
-  font-weight: 600;
+  width: 65%;  
 }
 
-.footer-black-bottom:hover a {
-  padding: 0 18px;
-}
-
-.footer-black-bottom span {
+.footer-gray-middle span {
   color: white;
 }
 
 .text-link {
   color: white;
-  padding: 0 25px;
-  transition: all 0.5s;
-}
-
-a.text-link:hover {
-  padding: 0 60px;
+  padding: 0 10px; 
 }
 
 .text-link:not(:last-child) {
   border-right: 1px solid white;
 }
 
-.footer-gray {
+.footer-gray-bottom {
   height: 60px;
-  background-color: var(--elixir-color-gray-600);
+  background-color: #333333;
   display: flex;
-  padding-left: 270px;
-  padding-right: 270px;
   align-items: center;
 }
 
-.footer-gray p {
-  font-size: 10px;
-  width: 300px;
-  text-align: left;
-  margin-left: 10px;
+.footer-gray-bottom p {
+  font-size: 0.81rem;
+  text-align: center;
+  font-weight: 300;
+  color: #c3c3c3;
+  margin: auto auto 35px auto;
 }
 
-.footer-gray > div a {
-  text-decoration: none;
-  color: black;
-  font-size: 13px;
-  font-weight: 500;
+.footer-gray-bottom  a {
+  text-decoration: underline;
+  color: #c3c3c3; 
 }
 
-.footer-gray .nav {
+.footer-gray-bottom .nav {
   display: flex;
   align-items: center;
 }
