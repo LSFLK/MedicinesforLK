@@ -27,7 +27,9 @@ export default function DonorTable({
           <tbody>
             {pledges.map((pledge: Pledge) => (
               <tr key={pledge.pledgeID}>
-                <td>{pledge.donorID}</td>
+                <td>
+                  {pledge.donor ? pledge.donor.displayName : pledge.donorID}
+                </td>
                 <td>
                   $
                   {pledge.amount.toLocaleString(undefined, {
