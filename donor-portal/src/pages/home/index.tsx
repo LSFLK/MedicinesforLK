@@ -40,21 +40,22 @@ export default function Home() {
           </p>
           <h3>An Alternative Approach</h3>
           <p>
-            ELIXIR is a platform designed to meet this need. It is operated by
+            Elixir is a platform designed to meet this need. It is operated by
             the Sri Lanka Red Cross along with a network of volunteers and
             professionals to help improve the efficacy of donations. In
             partnership with the Sri Lanka Medical Supplies Division we have
             compiled aid packages that aggregate needs across multiple hospitals
             to help achieve bulk price discounts from suppliers. Our volunteers
             help negotiate prices and coordinate invoicing and shipping
-            logistics. ELIXIR facilitates transparency and accountability
+            logistics. Elixir facilitates transparency and accountability
             throughout the entire supply chain.
           </p>
           <h3>Please Donate</h3>
           <p>
             Together we can do more. We are accepting donations from both
-            organizations and individuals. Check out our aid packages below and
-            click on the Donate button to get started.
+            organizations and individuals. Check out{" "}
+            <a href="/medical-needs">medical needs</a> and click on the Donate
+            button to get started.
           </p>
         </div>
       </div>

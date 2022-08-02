@@ -63,6 +63,11 @@
   font-size: 0.875rem;
 }
 
+.home-description-text p a {
+  text-decoration: underline;
+  color: #222;
+}
+
 .home-heading {
   display: flex;
   justify-content: space-between;
