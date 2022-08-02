@@ -101,7 +101,7 @@ export default function AidPackageTable({
             period = new Date(
               quote.period.year,
               quote.period.month - 1,
-              quote.period.year
+              quote.period.day
             );
             supplier = quote.supplier.name;
 
