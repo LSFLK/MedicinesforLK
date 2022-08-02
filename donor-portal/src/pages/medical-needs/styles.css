@@ -6,7 +6,6 @@
 }
 
 .medical-needs-heading h1 {
-  color: var(--elixir-color-red);
   margin: 0;
 }
 
@@ -45,7 +44,6 @@
 }
 
 .package-card .card-details__heading h2 {
-  color: var(--elixir-color-red);
   margin: 0;
   margin-bottom: 0.5rem;
 }
@@ -56,7 +54,6 @@
 
 .card_details__package_progress_text {
   font-size: 1.2rem;
-  color: var(--elixir-color-red);
   font-weight: bold;
 }
 
