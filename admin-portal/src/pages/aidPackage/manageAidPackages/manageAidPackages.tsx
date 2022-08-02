@@ -64,7 +64,7 @@ export default function ManageAidPackages({
             aidPackages[draftAidPackageKey];
         } else {
           syncedAidPackages[draftAidPackageKey] = {
-            name: `Supplier - ${supplierID} Package - ${period.year}/${period.month}/${period.day}`,
+            name: `Supplier - ${supplierID} Package - ${period.day}/${period.month}/${period.year}`,
             details: "",
             period,
             supplierID,
