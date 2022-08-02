@@ -40,16 +40,6 @@
   display: block;
 }
 
-.aid-package-description-ribbon {
-  max-width: 100%;
-  font-size: 2.6rem;
-  font-weight: bold;
-  padding-left: 2rem;
-  background-color: var(--elixir-color-red);
-  color: white;
-  margin-bottom: 2.5rem;
-}
-
 .aid-package-progress-container {
   color: var(--elixir-color-red);
   text-align: center;
