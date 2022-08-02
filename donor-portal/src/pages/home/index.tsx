@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import HeaderImage from "../layout/header-image";
 import Page from "../layout/page";
 import "./styles.css";
@@ -54,8 +55,8 @@ export default function Home() {
           <p>
             Together we can do more. We are accepting donations from both
             organizations and individuals. Check out{" "}
-            <a href="/medical-needs">medical needs</a> and click on the Donate
-            button to get started.
+            <Link to="/medical-needs">medical needs</Link> and click on the
+            Donate button to get started.
           </p>
         </div>
       </div>
