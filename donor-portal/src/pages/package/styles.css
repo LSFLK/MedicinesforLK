@@ -2,6 +2,21 @@
   padding: 2rem;
 }
 
+.aid-package-text {
+  color: black;
+}
+
+.txt-align {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.login {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .aid-package-title-container {
   font-size: 1.4rem;
   width: 100%;
@@ -23,16 +38,6 @@
   background-size: cover;
   object-fit: cover;
   display: block;
-}
-
-.aid-package-description-ribbon {
-  max-width: 100%;
-  font-size: 2.6rem;
-  font-weight: bold;
-  padding-left: 2rem;
-  background-color: var(--elixir-color-red);
-  color: white;
-  margin-bottom: 2.5rem;
 }
 
 .aid-package-progress-container {

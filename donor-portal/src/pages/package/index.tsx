@@ -2,7 +2,7 @@
  * main page for displaying aid package details
  */
 import React, { FormEvent, useContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import SimpleProgressBar from "../../components/progress-bar";
 import Page from "../layout/page";
@@ -19,17 +19,14 @@ import { Pledge } from "../../types/Pledge";
 export default function AidPackageDetailsPage() {
   const { id: packageId } = useParams<{ id: string }>();
   const userId = useContext(UserContext);
-  const { state } = useAuthContext();
+  const { state, signIn } = useAuthContext();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
   const [pledge, setPledge] = useState<Pledge | null>(null);
   const [updateComments, setUpdateComments] = useState<
     AidPackageUpdateComment[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const history = useHistory();
-  const navigate = (path: string) => {
-    history.push(path);
-  };
+
   const fetchAidPackage = async () => {
     setIsLoading(true);
     const { data } = await AidPackageService.getAidPackage(packageId);
@@ -42,10 +39,6 @@ export default function AidPackageDetailsPage() {
       pledgePackageId
     );
     if (data.length !== 0) setPledge(data[0]);
-  };
-
-  const handleDonateClick = () => {
-    navigate("/donors");
   };
 
   const handlePledgeSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -123,7 +116,6 @@ export default function AidPackageDetailsPage() {
             <div className="aid-package-header-image">
               <img src="/assets/images/packages/vaccine.jpg" alt="vaccine" />
             </div>
-            <h1 className="aid-package-description-ribbon">Description</h1>
             <div>
               <p>{aidPackage.description}</p>
             </div>
@@ -146,14 +138,33 @@ export default function AidPackageDetailsPage() {
                 max={aidPackage.goalAmount as number}
                 className="aid-pacakge-progress-bar"
               />
+
               {userId === null && !state.isAuthenticated && (
-                <button
-                  type="button"
-                  className="btn aid-package-donate-btn"
-                  onClick={handleDonateClick}
-                >
-                  Donate
-                </button>
+                <>
+                  <p className="aid-package-text txt-align">
+                    Please donate using our secure site. We are currently
+                    accepting donations to a general fund that will support
+                    multiple aid packages.
+                  </p>
+                  <a
+                    href="https://slredcross.give.asia"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn aid-package-donate-btn"
+                  >
+                    Donate
+                  </a>
+                  <p className="aid-package-text">
+                    Already have an account?{" "}
+                    <button
+                      type="button"
+                      onClick={() => signIn()}
+                      className="login"
+                    >
+                      <u>Login</u>
+                    </button>
+                  </p>
+                </>
               )}
             </div>
             <div>
