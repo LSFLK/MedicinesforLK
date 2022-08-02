@@ -88,17 +88,18 @@
 }
  
 .current-donors h2 {
-  color: var(--elixir-color-red);
+  color: #333;
   text-align: center;
   padding: 1rem;
   font-size: 1.75rem;
 }
 
 .current-donors .donor-logo img{
- max-width: 150px;
-max-height: 150px;
-padding: 3rem 3rem 3rem 3rem;
+ max-width: 200px;
+max-height: 175px;
+padding: 3rem;
 }
+
 .current-donors .logo-container {
   display: grid;
   grid-template-columns: auto auto auto auto;

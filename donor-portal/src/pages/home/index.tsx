@@ -62,46 +62,72 @@ export default function Home() {
         <h2>Current Donors</h2>
         <div className="logo-container">
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/icrc_logo.png"
-              alt="icrc-logo"
-            />
+            <a href="https://www.icrc.org/en" target="_blank" rel="noreferrer">
+              <img
+                src="assets/images/current-donors/icrc_logo.png"
+                alt="icrc-logo"
+              />
+            </a>
           </div>
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/ifrc_logo.png"
-              alt="ifrc-logo"
-            />
+            <a href="https://www.ifrc.org/" target="_blank" rel="noreferrer">
+              <img
+                src="assets/images/current-donors/ifrc_logo.png"
+                alt="ifrc-logo"
+              />
+            </a>
           </div>
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/Singapore_Red_Cross.jpg"
-              alt="singapore-rc-logo"
-            />
+            <a href="https://www.redcross.sg/" target="_blank" rel="noreferrer">
+              <img
+                src="assets/images/current-donors/Singapore_Red_Cross.jpg"
+                alt="singapore-rc-logo"
+              />
+            </a>
           </div>
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/canada_rc.png"
-              alt="canada-rc-logo"
-            />
+            <a href="https://www.redcross.ca/" target="_blank" rel="noreferrer">
+              <img
+                src="assets/images/current-donors/canada_rc.png"
+                alt="canada-rc-logo"
+              />
+            </a>
           </div>
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/qatar-red-crescent-logo.png"
-              alt="qatar-rc-logo"
-            />
+            <a
+              href="https://www.qrcs.org.qa/en/Pages/default.aspx"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="assets/images/current-donors/qatar-red-crescent-logo.png"
+                alt="qatar-rc-logo"
+              />
+            </a>
           </div>
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/microsoft-logo.png"
-              alt="microsoft-logo"
-            />
+            <a
+              href="https://www.microsoft.com/en-lk"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="assets/images/current-donors/microsoft-logo.png"
+                alt="microsoft-logo"
+              />
+            </a>
           </div>
           <div className="donor-logo">
-            <img
-              src="assets/images/current-donors/uber-logo.png"
-              alt="uber-logo"
-            />
+            <a
+              href="https://www.uber.com/lk/en/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="assets/images/current-donors/uber-logo.png"
+                alt="uber-logo"
+              />
+            </a>
           </div>
         </div>
       </div>
