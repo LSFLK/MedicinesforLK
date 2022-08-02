@@ -21,7 +21,7 @@ export default function PledgeSummary({
   return (
     <div className="pledgeSummary">
       <div className="heading">Donor:</div>
-      <div>{pledge.donorID}</div>
+      <div>{pledge.donor ? pledge.donor.displayName : pledge.donorID}</div>
       <div className="heading">Amount:</div>
       <div>
         $
