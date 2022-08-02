@@ -24,6 +24,7 @@ function App() {
   const { state, httpRequest, signIn, trySignInSilently } = useAuthContext();
 
   useEffect(() => {
+    if (!state.isAuthenticated) {
     trySignInSilently()
       .then((response) => {
         if (!response) {
@@ -33,6 +34,7 @@ function App() {
       .catch(() => {
         signIn();
       });
+    }
     const http: Http = new Http(
       httpRequest,
       "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
