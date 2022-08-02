@@ -48,7 +48,7 @@ function App() {
   if (!state.isAuthenticated) {
     return (
       <div className="App">
-        <SpinnerLoader loaderText="Proceed to Login" />
+        <SpinnerLoader loaderText="Loading..." />
       </div>
     );
   }
