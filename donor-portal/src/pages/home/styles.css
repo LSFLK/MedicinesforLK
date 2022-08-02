@@ -100,9 +100,8 @@ max-height: 150px;
 padding: 3rem 3rem 3rem 3rem;
 }
 .current-donors .logo-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+ justify-content: center;
+align-items: center;
 }
