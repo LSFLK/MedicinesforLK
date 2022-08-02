@@ -25,15 +25,15 @@ function App() {
 
   useEffect(() => {
     if (!state.isAuthenticated) {
-    trySignInSilently()
-      .then((response) => {
-        if (!response) {
+      trySignInSilently()
+        .then((response) => {
+          if (!response) {
+            signIn();
+          }
+        })
+        .catch(() => {
           signIn();
-        }
-      })
-      .catch(() => {
-        signIn();
-      });
+        });
     }
     const http: Http = new Http(
       httpRequest,
