@@ -50,13 +50,22 @@
   align-items: flex-start;
 }
 
-.home-description h3 {
-  color: var(--elixir-color-red);
+.home-description-text h3 {
+  color: #333;
   margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.125rem;
 }
 
-.home-description-text .bold {
-  font-weight: 500;
+.home-description-text p {
+  font-weight: 400;
+  color: #222;
+  font-size: 0.875rem;
+}
+
+.home-description-text p a {
+  text-decoration: underline;
+  color: #222;
 }
 
 .home-heading {
@@ -75,4 +84,30 @@
   .home-description {
     flex-direction: column;
   }
+}
+
+ .current-donors{
+   margin: 2rem 2rem 1rem 2rem;
+  padding: 1.5rem;
+  align-items: center;
+}
+ 
+.current-donors h2 {
+  color: #333;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.75rem;
+}
+
+.current-donors .donor-logo img{
+ max-width: 200px;
+max-height: 175px;
+padding: 3rem;
+}
+
+.current-donors .logo-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+ justify-content: center;
+align-items: center;
 }
