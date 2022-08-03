@@ -23,15 +23,10 @@ function App() {
       getDecodedIDToken().then((value) => {
         if (value && value.sub) setLoggedInUserId(value.sub);
       });
-    const adminHttp: Http = new Http(
-      httpRequest,
-      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0"
-    );
     const donorHttp: Http = new Http(
       httpRequest,
       "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/donor-api/1.0.0"
     );
-    AidPackageService.adminHttp = adminHttp;
     AidPackageService.donorHttp = donorHttp;
   }, [state.isAuthenticated]);
 

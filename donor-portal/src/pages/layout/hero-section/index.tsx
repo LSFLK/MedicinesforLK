@@ -14,7 +14,7 @@ export default function HeroSection({
     <div
       className="hero-image"
       style={{
-        backgroundImage: `linear-gradient(270deg,transparent,rgba(0,0,0,.6)), url(${image})`,
+        backgroundImage: `linear-gradient(270deg,transparent,rgba(0,0,0,0.8)), url(${image})`,
       }}
     >
       <div className="container">

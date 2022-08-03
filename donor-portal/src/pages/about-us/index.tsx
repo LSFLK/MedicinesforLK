@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "../layout/header-section";
+import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
 import ourApproachImage from "./images/our-approach.png";
 import lsfLogo from "./images/lsf-logo.png";

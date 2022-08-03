@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "../layout/header-section";
+import HeroSection from "../layout/hero-section";
 import InfoBoxContainer from "../layout/info-box-container";
 import InfoBox from "../layout/info-box";
 import bannerImage from "./images/banner.jpg";

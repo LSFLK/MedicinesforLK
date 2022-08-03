@@ -14,6 +14,7 @@ import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import UserContext from "../../userContext";
 import { Pledge } from "../../types/Pledge";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
+import bannerImage from './images/banner.jpg';
 import "./styles.css";
 
 export default function AidPackageDetailsPage() {
@@ -110,7 +111,7 @@ export default function AidPackageDetailsPage() {
               <h1>{aidPackage.name}</h1>
             </div>
             <div className="aid-package-header-image">
-              <img src="/assets/images/packages/vaccine.jpg" alt="vaccine" />
+              <img src={bannerImage} alt="Banner Image" />
             </div>
             <div>
               <p>{aidPackage.description}</p>

@@ -17,12 +17,13 @@
 
 .hero-image .hero-text {
   position: absolute;
-  top: 40%;
+  top: 30%;
 }
 
 .hero-image .hero-text .title{
   font-size: 50px;
   padding-bottom: 28px;
+  width: 60%;
 }
 
 .hero-image .hero-text .icon{
