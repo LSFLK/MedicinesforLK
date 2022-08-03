@@ -1,210 +1,213 @@
 import React from "react";
 import HeaderImage from "../layout/header-image";
-import Page from "../layout/page";
 import "./styles.css";
 
 export default function AboutUs() {
   return (
-    <Page className="about-us">
-      <HeaderImage imageUrl="/assets/images/about-us/header.jpg">
-        <div className="about-us-container">
-          <h1>About Us</h1>
-        </div>
-      </HeaderImage>
+    <div className="about-us">
+      <HeaderImage
+        image="https://scontent.fcmb1-2.fna.fbcdn.net/v/t31.18172-8/278487_460537243978140_961954922_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e3f864&_nc_ohc=mwH7hhnQBUIAX-YjM-1&_nc_ht=scontent.fcmb1-2.fna&oh=00_AT9NquiDt05THy-2NyaqOF-lNS5lNWImlpXVc-abgwKoig&oe=630F745F"
+        title="About Us"
+      />
+      <div className="main-container">
+        <h2>Our Approach</h2>
+        <img
+          src="/assets/images/about-us/our-approach.png"
+          alt="our-approach"
+        />
 
-      <h2>Our Approach</h2>
-      <img src="/assets/images/about-us/our-approach.png" alt="our-approach" />
-
-      <div className="accountability-and-transparency-section">
-        <div className="accountability-and-transparency">
-          <h2>Accountability</h2>
-          <p>
-            The Elixir team is motivated by the singular goal of alleviating the
-            medical crisis in Sri Lanka. We are accountable internally, to one
-            another and our partner organizations and to a multitude of
-            volunteers who have invested considerable time and effort to create
-            Elixir. We are also accountable to you, our donors, both individuals
-            and organizations alike in executing our fiduciary responsibility to
-            maximize the utility of your donations.
-          </p>
-        </div>
-        <div className="accountability-and-transparency">
-          <h2>Transparency</h2>
-          <p>
-            Elixir&apos;s primary design goal is transparency. While the Sri
-            Lanka Red Cross will monitor the flow of aid packages and provide
-            daily status updates, we have also contracted the services of KPMG
-            Sri Lanka, to perform an end-to-end audit of the Elixir process and
-            finances. Our financial team will also publish the monthly statement
-            of accounts on the Elixir website. We are committed to continuously
-            improving our processes. Please contact us at elixir@redcross.lk
-            should you have any questions or feedback for us.
-          </p>
-        </div>
-      </div>
-
-      <div className="leadership-section">
-        <h2>Leadership Team</h2>
-        <div className="profile-card-container">
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
-              <h3>Dr. Mahesh Gunasekara</h3>
-              <p>Director General</p>
-              <p>Sri Lanka Red Cross Society</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
-              <h3>Helani Galpaya</h3>
-              <p>Citizen Volunteer</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-              <h3>Ashok Vasa</h3>
-              <p>Founder/CEO</p>
-              <p>Vasa Digital Architects</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-              <h3>Ashok Vasa</h3>
-              <p>Founder/CEO</p>
-              <p>Vasa Digital Architects</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-              <h3>Ashok Vasa</h3>
-              <p>Founder/CEO</p>
-              <p>Vasa Digital Architects</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-              <h3>Ashok Vasa</h3>
-              <p>Founder/CEO</p>
-              <p>Vasa Digital Architects</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-              <h3>Ashok Vasa</h3>
-              <p>Founder/CEO</p>
-              <p>Vasa Digital Architects</p>
-            </a>
-          </div>
-          <div className="profile-card">
-            <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-              <h3>Ashok Vasa</h3>
-              <p>Founder/CEO</p>
-              <p>Vasa Digital Architects</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="partner-section">
-        <h2>Partners</h2>
-        <div className="partner-card-container">
-          <div className="partner-section-card">
-            <a href="https://opensource.lk/">
-              <img src="/assets/images/about-us/lsf-logo.png" alt="" />
-            </a>
+        <div className="accountability-and-transparency-section">
+          <div className="accountability-and-transparency">
+            <h2>Accountability</h2>
             <p>
-              LSF has been building large-scale open source systems for more
-              than 15 years, with government and communities, to address a range
-              of challenges from disaster management to elections, education to
-              the environment.
+              The Elixir team is motivated by the singular goal of alleviating
+              the medical crisis in Sri Lanka. We are accountable internally, to
+              one another and our partner organizations and to a multitude of
+              volunteers who have invested considerable time and effort to
+              create Elixir. We are also accountable to you, our donors, both
+              individuals and organizations alike in executing our fiduciary
+              responsibility to maximize the utility of your donations.
             </p>
           </div>
-          <div className="partner-section-card">
-            <a href="https://sefglobal.org/">
-              <img src="/assets/images/about-us/SEF_Logo.png" alt="" />
-            </a>
+          <div className="accountability-and-transparency">
+            <h2>Transparency</h2>
             <p>
-              Sustainable Education Foundation (SEF) helps local students
-              connect with industry experts and academics around the world for
-              mentoring and career opportunities. SEF also supports Sri Lankan
-              researchers by popularising their work and connecting them with
-              undergraduate researchers for collaborations.
-            </p>
-          </div>
-          <div className="partner-section-card">
-            <a href="https://longform.watchdog.team/about-us">
-              <img src="/assets/images/about-us/watchdog-logo.png" alt="" />
-            </a>
-            <p>
-              Watchdog is a multidisciplinary team of fact checkers,
-              journalists, researchers and software engineers. We hunt hoaxes
-              and misinformation, investigate matters of public welfare, and
-              build software tools that help operations like ours.
-            </p>
-          </div>
-          <div className="partner-section-card">
-            <a href="https://wearethelastword.com/">
-              <img
-                src="/assets/images/about-us/the-last-word-logo.png"
-                alt=""
-              />
-            </a>
-            <p>
-              The Last Word are creatives and brand strategists whose work spans
-              the breadth of brand architecture, design, digital marketing
-              communications and user experience.
+              Elixir&apos;s primary design goal is transparency. While the Sri
+              Lanka Red Cross will monitor the flow of aid packages and provide
+              daily status updates, we have also contracted the services of KPMG
+              Sri Lanka, to perform an end-to-end audit of the Elixir process
+              and finances. Our financial team will also publish the monthly
+              statement of accounts on the Elixir website. We are committed to
+              continuously improving our processes. Please contact us at
+              elixir@redcross.lk should you have any questions or feedback for
+              us.
             </p>
           </div>
         </div>
-      </div>
-      <div>
-        <h2>Volunteers</h2>
-        <div className="volunteers-section">
-          <p>Jayasanka Weerasinghe </p>
-          <p>Nipuna Gunathilake</p>
-          <p>Kalsha Samarajeewa</p>
-          <p>Heshan Andrews</p>
-          <p>Manoj Lakshan</p>
-          <p>Randila Premarathne</p>
-          <p>Anupama Pathirage</p>
-          <p>Amila Jayasekara</p>
-          <p>Marcus Chandradasa</p>
-          <p>Ryan Kuruppu</p>
-          <p>Shehan Kulathilake</p>
-          <p>Ratnajothy Sangeethanan</p>
-          <p>Sherazad Hamit</p>
-          <p>Srinath Perera</p>
-          <p>Samisa Abeysinghe</p>
-          <p>Sanjiva Weerawarana</p>
-          <p>Yujith Isura</p>
-          <p>Kavishka Timashan</p>
-          <p>Thisaru Guruge</p>
-          <p>Tharindu Udupitiya</p>
-          <p>Ayesh Almeida</p>
-          <p>Dinuka Piyadigama</p>
-          <p>Ramindu Deshapriya</p>
-          <p>Kajendran Alagaratnam</p>
-          <p>Kanushka Gayan</p>
-          <p>Madusha Gunasekara</p>
-          <p>Charuka Karunanayake</p>
-          <p>Nipun Sampath</p>
-          <p>Manuranga Perera</p>
-          <p>Sameera Jayasoma</p>
-          <p>Ruhaim Izmeth</p>
-          <p>Arosha Bandara</p>
-          <p>Joys Chokatte</p>
-          <p>Deepal Mody</p>
-          <p>Yatin Mody</p>
-          <p>Madri Perera</p>
-          <p>Harindra Rajapakse</p>
-          <p>Donny Surtani</p>
-          <p>Priya Vasa</p>
-          <p>Sanith Wijesinghe</p>
-          <p>Lakshitha Surasinghe</p>
-          <p>Namali Premawardhana</p>
-          <p>Krishni Ratnayaka</p>
-          <p>Avanthi Gunatilake</p>
+
+        <div className="leadership-section">
+          <h2>Leadership Team</h2>
+          <div className="profile-card-container">
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
+                <h3>Dr. Mahesh Gunasekara</h3>
+                <p>Director General</p>
+                <p>Sri Lanka Red Cross Society</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
+                <h3>Helani Galpaya</h3>
+                <p>Citizen Volunteer</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
+                <h3>Ashok Vasa</h3>
+                <p>Founder/CEO</p>
+                <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
+                <h3>Ashok Vasa</h3>
+                <p>Founder/CEO</p>
+                <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
+                <h3>Ashok Vasa</h3>
+                <p>Founder/CEO</p>
+                <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
+                <h3>Ashok Vasa</h3>
+                <p>Founder/CEO</p>
+                <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
+                <h3>Ashok Vasa</h3>
+                <p>Founder/CEO</p>
+                <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
+                <h3>Ashok Vasa</h3>
+                <p>Founder/CEO</p>
+                <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="partner-section">
+          <h2>Partners</h2>
+          <div className="partner-card-container">
+            <div className="partner-section-card">
+              <a href="https://opensource.lk/">
+                <img src="/assets/images/about-us/lsf-logo.png" alt="" />
+              </a>
+              <p>
+                LSF has been building large-scale open source systems for more
+                than 15 years, with government and communities, to address a
+                range of challenges from disaster management to elections,
+                education to the environment.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <a href="https://sefglobal.org/">
+                <img src="/assets/images/about-us/SEF_Logo.png" alt="" />
+              </a>
+              <p>
+                Sustainable Education Foundation (SEF) helps local students
+                connect with industry experts and academics around the world for
+                mentoring and career opportunities. SEF also supports Sri Lankan
+                researchers by popularising their work and connecting them with
+                undergraduate researchers for collaborations.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <a href="https://longform.watchdog.team/about-us">
+                <img src="/assets/images/about-us/watchdog-logo.png" alt="" />
+              </a>
+              <p>
+                Watchdog is a multidisciplinary team of fact checkers,
+                journalists, researchers and software engineers. We hunt hoaxes
+                and misinformation, investigate matters of public welfare, and
+                build software tools that help operations like ours.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <a href="https://wearethelastword.com/">
+                <img
+                  src="/assets/images/about-us/the-last-word-logo.png"
+                  alt=""
+                />
+              </a>
+              <p>
+                The Last Word are creatives and brand strategists whose work
+                spans the breadth of brand architecture, design, digital
+                marketing communications and user experience.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2>Volunteers</h2>
+          <div className="volunteers-section">
+            <p>Jayasanka Weerasinghe </p>
+            <p>Nipuna Gunathilake</p>
+            <p>Kalsha Samarajeewa</p>
+            <p>Heshan Andrews</p>
+            <p>Manoj Lakshan</p>
+            <p>Randila Premarathne</p>
+            <p>Anupama Pathirage</p>
+            <p>Amila Jayasekara</p>
+            <p>Marcus Chandradasa</p>
+            <p>Ryan Kuruppu</p>
+            <p>Shehan Kulathilake</p>
+            <p>Ratnajothy Sangeethanan</p>
+            <p>Sherazad Hamit</p>
+            <p>Srinath Perera</p>
+            <p>Samisa Abeysinghe</p>
+            <p>Sanjiva Weerawarana</p>
+            <p>Yujith Isura</p>
+            <p>Kavishka Timashan</p>
+            <p>Thisaru Guruge</p>
+            <p>Tharindu Udupitiya</p>
+            <p>Ayesh Almeida</p>
+            <p>Dinuka Piyadigama</p>
+            <p>Ramindu Deshapriya</p>
+            <p>Kajendran Alagaratnam</p>
+            <p>Kanushka Gayan</p>
+            <p>Madusha Gunasekara</p>
+            <p>Charuka Karunanayake</p>
+            <p>Nipun Sampath</p>
+            <p>Manuranga Perera</p>
+            <p>Sameera Jayasoma</p>
+            <p>Ruhaim Izmeth</p>
+            <p>Arosha Bandara</p>
+            <p>Joys Chokatte</p>
+            <p>Deepal Mody</p>
+            <p>Yatin Mody</p>
+            <p>Madri Perera</p>
+            <p>Harindra Rajapakse</p>
+            <p>Donny Surtani</p>
+            <p>Priya Vasa</p>
+            <p>Sanith Wijesinghe</p>
+            <p>Lakshitha Surasinghe</p>
+            <p>Namali Premawardhana</p>
+            <p>Krishni Ratnayaka</p>
+            <p>Avanthi Gunatilake</p>
+          </div>
         </div>
       </div>
-    </Page>
+    </div>
   );
 }

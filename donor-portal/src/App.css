@@ -92,3 +92,12 @@ p {
   color: var(--elixir-color-red);
   background-color: var(--elixir-color-white);
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--elixir-content-max-width);
+  margin: 0 auto;
+  min-height: calc(100vh - 456px);
+}

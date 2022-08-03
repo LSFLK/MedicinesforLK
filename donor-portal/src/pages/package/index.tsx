@@ -5,8 +5,6 @@ import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import SimpleProgressBar from "../../components/progress-bar";
-import Page from "../layout/page";
-import "./styles.css";
 import AidPackageService from "../../apis/services/AidPackageService";
 import { AidPackage } from "../../types/AidPackage";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
@@ -15,6 +13,8 @@ import UpdateComments from "./components/updateComments";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import UserContext from "../../userContext";
 import { Pledge } from "../../types/Pledge";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
+import "./styles.css";
 
 export default function AidPackageDetailsPage() {
   const { id: packageId } = useParams<{ id: string }>();
@@ -33,6 +33,7 @@ export default function AidPackageDetailsPage() {
     setAidPackage(data);
     setIsLoading(false);
   };
+
   const fetchPledge = async (donorId: string, pledgePackageId: string) => {
     const { data } = await AidPackageService.getDonorPledgesByAidPackage(
       donorId,
@@ -101,14 +102,9 @@ export default function AidPackageDetailsPage() {
 
   return (
     <>
-      {isLoading && (
-        <Page>
-          {/* FIXME:  Use loader here */}
-          Loading...
-        </Page>
-      )}
+      {isLoading && <SpinnerLoader loaderText="Loading..." />}
       {aidPackage && (
-        <Page>
+        <div className="main-container">
           <div className="aid-package-container">
             <div className="aid-package-title-container">
               <h1>{aidPackage.name}</h1>
@@ -222,7 +218,7 @@ export default function AidPackageDetailsPage() {
             <PackageStatus currentStatus={aidPackage.status} />
             <UpdateComments comments={updateComments} />
           </div>
-        </Page>
+        </div>
       )}
     </>
   );

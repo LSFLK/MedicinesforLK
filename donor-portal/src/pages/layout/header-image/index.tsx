@@ -1,22 +1,30 @@
 import React from "react";
-import FullBleedContainer from "../full-bleed-container";
+import { Link } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa";
 import "./styles.css";
 
 export default function HeaderImage({
-  imageUrl,
-  children,
-  style = {},
+  image,
+  title,
 }: {
-  imageUrl: string;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
+  image: string;
+  title: string;
 }) {
   return (
-    <FullBleedContainer
-      style={{ backgroundImage: `url(${imageUrl})`, ...style }}
-      className="header-image"
+    <div
+      className="hero-image"
+      style={{
+        backgroundImage: `linear-gradient(270deg,transparent,rgba(0,0,0,.6)), url(${image})`,
+      }}
     >
-      {children}
-    </FullBleedContainer>
+      <div className="container">
+        <div className="hero-text">
+          <div className="title">{title}</div>
+          <Link to="/donate-now" className="btn">
+            Donate Now <FaAngleRight className="icon" />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
