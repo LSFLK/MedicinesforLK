@@ -20,7 +20,7 @@ export default function NavBar() {
       <nav className="navbar-container">
         <Link to="/">
           <div className="logo">
-            <img src={logo} />
+            <img src={logo} alt="Elixir Logo" />
           </div>
         </Link>
         <div className="nav-links">

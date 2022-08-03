@@ -14,10 +14,7 @@ export default function AboutUs() {
       <HeroSection image={bannerImage} title="About Us" />
       <div className="main-container">
         <h2>Our Approach</h2>
-        <img
-          src={ourApproachImage}
-          alt="our-approach"
-        />
+        <img src={ourApproachImage} alt="our-approach" />
 
         <div className="accountability-and-transparency-section">
           <div className="accountability-and-transparency">
@@ -148,10 +145,7 @@ export default function AboutUs() {
             </div>
             <div className="partner-section-card">
               <a href="https://wearethelastword.com/">
-                <img
-                  src={lastWordLogo}
-                  alt="Last Word Logo"
-                />
+                <img src={lastWordLogo} alt="Last Word Logo" />
               </a>
               <p>
                 The Last Word are creatives and brand strategists whose work

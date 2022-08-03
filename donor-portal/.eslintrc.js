@@ -9,6 +9,7 @@ module.exports = {
   ],
   rules: {
     "react/require-default-props": "off",
+    "no-alert" : "off"
   },
   parserOptions: {
     project: "./tsconfig.json",

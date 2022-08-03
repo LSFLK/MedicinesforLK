@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "../layout/header-section";
-import bannerImage from './images/banner.jpg'
+import bannerImage from "./images/banner.jpg";
 import "./styles.css";
 
 export default function NewsRoom() {

@@ -10,10 +10,7 @@ import "./styles.css";
 export default function Suppliers() {
   return (
     <div className="suppliers">
-      <HeroSection
-        title="Hospitals & Suppliers"
-        image={bannerImage}
-      />
+      <HeroSection title="Hospitals & Suppliers" image={bannerImage} />
       <div className="main-container">
         <div className="text-section">
           <p>
