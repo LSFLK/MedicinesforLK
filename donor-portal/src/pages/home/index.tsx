@@ -16,7 +16,10 @@ export default function Home() {
   return (
     <div className="home-page">
       <div>
-        <HeroSection title="Contribute to alleviate Sri Lanka’s medical supply needs. " image={bannerImage} />
+        <HeroSection
+          title="Contribute to alleviate Sri Lanka’s medical supply needs. "
+          image={bannerImage}
+        />
       </div>
       <div className="main-container">
         <div className="home-description">

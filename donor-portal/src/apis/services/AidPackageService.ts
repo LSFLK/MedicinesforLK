@@ -4,7 +4,6 @@ import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { Pledge } from "../../types/Pledge";
 
 export default class AidPackageService {
-
   static donorHttp: Http;
 
   static getAidPackages() {

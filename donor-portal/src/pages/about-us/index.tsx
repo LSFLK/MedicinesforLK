@@ -62,38 +62,12 @@ export default function AboutUs() {
               </a>
             </div>
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-                <h3>Ashok Vasa</h3>
-                <p>Founder/CEO</p>
-                <p>Vasa Digital Architects</p>
-              </a>
-            </div>
-            <div className="profile-card">
-              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-                <h3>Ashok Vasa</h3>
-                <p>Founder/CEO</p>
-                <p>Vasa Digital Architects</p>
-              </a>
-            </div>
-            <div className="profile-card">
-              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-                <h3>Ashok Vasa</h3>
-                <p>Founder/CEO</p>
-                <p>Vasa Digital Architects</p>
-              </a>
-            </div>
-            <div className="profile-card">
-              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-                <h3>Ashok Vasa</h3>
-                <p>Founder/CEO</p>
-                <p>Vasa Digital Architects</p>
-              </a>
-            </div>
-            <div className="profile-card">
-              <a href="https://www.linkedin.com/in/ashokvasa/?originalSubdomain=ca">
-                <h3>Ashok Vasa</h3>
-                <p>Founder/CEO</p>
-                <p>Vasa Digital Architects</p>
+              {/* TODO: Add linkedin link */}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <a href="#">
+                <h3>Tharaka Samarasinghe</h3>
+                <p>HR Assistant</p>
+                <p>Sri Lanka Red Cross Society</p>
               </a>
             </div>
             <div className="profile-card">
@@ -158,22 +132,23 @@ export default function AboutUs() {
         <div>
           <h2>Volunteers</h2>
           <div className="volunteers-section">
-            <p>Jayasanka Weerasinghe </p>
+            <p>Anupama Pathirage</p>
+            <p>Marcus Chandradasa</p>
+            <p>Sanjiva Weerawarana</p>
+            <p>Jayasanka Weerasinghe</p>
+            <p>Samisa Abeysinghe</p>
             <p>Nipuna Gunathilake</p>
+            <p>Randila Premarathne</p>
             <p>Kalsha Samarajeewa</p>
             <p>Heshan Andrews</p>
-            <p>Manoj Lakshan</p>
-            <p>Randila Premarathne</p>
-            <p>Anupama Pathirage</p>
             <p>Amila Jayasekara</p>
-            <p>Marcus Chandradasa</p>
+            <p>Manuranga Perera</p>
+            <p>Joys Chokatte</p>
             <p>Ryan Kuruppu</p>
             <p>Shehan Kulathilake</p>
             <p>Ratnajothy Sangeethanan</p>
-            <p>Sherazad Hamit</p>
             <p>Srinath Perera</p>
-            <p>Samisa Abeysinghe</p>
-            <p>Sanjiva Weerawarana</p>
+            <p>Manoj Lakshan</p>
             <p>Yujith Isura</p>
             <p>Kavishka Timashan</p>
             <p>Thisaru Guruge</p>
@@ -186,18 +161,14 @@ export default function AboutUs() {
             <p>Madusha Gunasekara</p>
             <p>Charuka Karunanayake</p>
             <p>Nipun Sampath</p>
-            <p>Manuranga Perera</p>
             <p>Sameera Jayasoma</p>
             <p>Ruhaim Izmeth</p>
-            <p>Arosha Bandara</p>
-            <p>Joys Chokatte</p>
-            <p>Deepal Mody</p>
+            <p>Deepali Mody</p>
             <p>Yatin Mody</p>
             <p>Madri Perera</p>
             <p>Harindra Rajapakse</p>
             <p>Donny Surtani</p>
             <p>Priya Vasa</p>
-            <p>Sanith Wijesinghe</p>
             <p>Lakshitha Surasinghe</p>
             <p>Namali Premawardhana</p>
             <p>Krishni Ratnayaka</p>
