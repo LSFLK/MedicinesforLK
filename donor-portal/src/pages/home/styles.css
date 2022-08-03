@@ -98,6 +98,9 @@
     font-size: 1.75rem;
 }
 
+.current-donors p {
+    text-align: center;
+}
 .current-donors .donor-logo img {
     max-width: 200px;
     max-height: 175px;

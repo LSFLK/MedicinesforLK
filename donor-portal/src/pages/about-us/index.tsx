@@ -13,7 +13,25 @@ export default function AboutUs() {
     <div className="about-us">
       <HeroSection image={bannerImage} title="About Us" />
       <div className="main-container">
+        <p>
+          <br /> <br />
+          We are a team of volunteers from around the world working to address
+          the acute medical supply shortage in our motherland. Collectively we
+          have brought our skills in software development, pharmaceutical supply
+          chain logistics and disaster aid management to develop a unique
+          solution that provides transparency to donors and efficiency for
+          medical service providers.
+        </p>
         <h2>Our Approach</h2>
+        <p>
+          In partnership with the Sri Lanka Red Cross, Ministry of Health, the
+          Medical Supply Division, Medical Colleges, Lanka Software Foundation,
+          and The Last Word, we have developed Elixir, an online platform that
+          matches financial contributions from individuals, charity
+          organizations and businesses with the pharmaceutical needs from
+          hospitals across the nation. Elixir coordinates the activities of our
+          partners throughout the lifecycle of an aid package as shown below.
+        </p>
         <img src={ourApproachImage} alt="our-approach" />
 
         <div className="accountability-and-transparency-section">
