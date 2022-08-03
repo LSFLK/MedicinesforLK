@@ -92,6 +92,19 @@ export default function PackageDetails() {
       `Are you sure you want to change the status to ${statusToBeChanged}?`
     );
     if (confirmed) {
+      if (
+        aidPackageStatus &&
+        (statusToLevel[aidPackageStatus] === 1 ||
+          statusToLevel[aidPackageStatus] === 2) &&
+        statusToLevel[statusToBeChanged] > 3
+      ) {
+        const orderCompletionConfirmation = window.confirm(
+          "You are trying to move this package into a 'completion' status!"
+        );
+
+        if (!orderCompletionConfirmation) return; // don't update the status
+      }
+
       const { data } = await AidPackageService.updateAidPackage({
         ...aidPackage!,
         status: statusToBeChanged,
