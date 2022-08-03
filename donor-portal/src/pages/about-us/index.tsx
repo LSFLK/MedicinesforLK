@@ -144,10 +144,10 @@ export default function AboutUs() {
             <p>Amila Jayasekara</p>
             <p>Manuranga Perera</p>
             <p>Joys Chokatte</p>
-            <p>Ryan Kuruppu</p>
             <p>Shehan Kulathilake</p>
             <p>Ratnajothy Sangeethanan</p>
             <p>Srinath Perera</p>
+            <p>Anjula Samarasinghe</p>
             <p>Manoj Lakshan</p>
             <p>Yujith Isura</p>
             <p>Kavishka Timashan</p>
@@ -173,6 +173,7 @@ export default function AboutUs() {
             <p>Namali Premawardhana</p>
             <p>Krishni Ratnayaka</p>
             <p>Avanthi Gunatilake</p>
+            <p>Ryan Kuruppu</p>
           </div>
         </div>
       </div>
