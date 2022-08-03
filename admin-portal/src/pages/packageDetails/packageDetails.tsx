@@ -94,7 +94,7 @@ export default function PackageDetails() {
     if (confirmed) {
       if (statusToLevel[statusToBeChanged] > 3) {
         const orderCompletionConfirmation = window.confirm(
-          "Statuses can only be updated forward towards completion"
+          "You are trying to move this package into a 'completion' status!"
         );
 
         if (!orderCompletionConfirmation) return; // don't update the status
