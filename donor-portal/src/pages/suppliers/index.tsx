@@ -1,15 +1,18 @@
 import React from "react";
-import HeaderImage from "../layout/header-image";
+import HeroSection from "../layout/header-section";
 import InfoBoxContainer from "../layout/info-box-container";
 import InfoBox from "../layout/info-box";
+import bannerImage from "./images/banner.jpg";
+import hospitalIcon from "./images/doctor.jpg";
+import supplierIcon from "./images/pharmacy.jpg";
 import "./styles.css";
 
 export default function Suppliers() {
   return (
     <div className="suppliers">
-      <HeaderImage
+      <HeroSection
         title="Hospitals & Suppliers"
-        image="/assets/images/header-imgs/medical-suppliers-pills.jpg"
+        image={bannerImage}
       />
       <div className="main-container">
         <div className="text-section">
@@ -22,7 +25,7 @@ export default function Suppliers() {
         </div>
         <InfoBoxContainer>
           <InfoBox
-            iconUrl="/assets/images/doctor.jpg"
+            iconUrl={hospitalIcon}
             text="Elixir provides an easy to use application to manage all your urgent supply needs. Contact us for details on how
                         to create an account."
             heading="Hospitals & Doctors"
@@ -30,7 +33,7 @@ export default function Suppliers() {
             buttonText="Email us"
           />
           <InfoBox
-            iconUrl="/assets/images/pharmacy.jpg"
+            iconUrl={supplierIcon}
             text="Elixir would like to partner with you to source the needs of our hospitals and doctors. Contact us to onboard your
                         inventory."
             heading="Pharmaceutical Suppliers"

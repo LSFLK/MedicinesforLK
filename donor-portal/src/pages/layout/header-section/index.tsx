@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 import "./styles.css";
 
-export default function HeaderImage({
+export default function HeroSection({
   image,
   title,
 }: {

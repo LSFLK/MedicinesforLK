@@ -1,12 +1,12 @@
 import React from "react";
-import HeaderImage from "../layout/header-image";
+import HeroSection from "../layout/header-section";
 import bannerImage from './images/banner.jpg'
 import "./styles.css";
 
 export default function NewsRoom() {
   return (
     <div className="news-room">
-      <HeaderImage title="News Room" image={bannerImage} />
+      <HeroSection title="News Room" image={bannerImage} />
       <div className="main-container">
         <div className="text-section">
           <h2>Media Contacts</h2>

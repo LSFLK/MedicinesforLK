@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HeaderImage from "../layout/header-image";
+import HeroSection from "../layout/header-section";
 import bannerImage from "./images/banner.jpg";
 import slRCLogo from "./images/slredcross_logo.png";
 import icrcLogo from "./images/icrc_logo.png";
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="home-page">
       <div>
-        <HeaderImage title="Lorem ipsum dollar sit amet" image={bannerImage} />
+        <HeroSection title="Lorem ipsum dollar sit amet" image={bannerImage} />
       </div>
       <div className="main-container">
         <div className="home-description">

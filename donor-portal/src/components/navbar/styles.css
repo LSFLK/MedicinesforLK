@@ -12,14 +12,16 @@
 }
 
 .logo {
-    background-image: url("../../../public/assets/images/logo.png");
     height: 70px;
     background-color: white;
-    background-repeat: no-repeat;
-    background-size: 170px 70px;
-    background-position: center;
-    width: 250px;
+    width: 180px;
     cursor: pointer;
+    display: flex;
+}
+
+.logo img {
+    width: 128px;
+    margin: auto;
 }
 
 .nav-links {

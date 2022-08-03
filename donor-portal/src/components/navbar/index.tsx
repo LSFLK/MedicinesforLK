@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./styles.css";
 import { useAuthContext } from "@asgardeo/auth-react";
+import logo from "./images/logo.png";
+import "./styles.css";
 
 export default function NavBar() {
   const { state, signIn, signOut } = useAuthContext();
@@ -18,7 +19,9 @@ export default function NavBar() {
     <div className="navbar">
       <nav className="navbar-container">
         <Link to="/">
-          <div className="logo" />
+          <div className="logo">
+            <img src={logo} />
+          </div>
         </Link>
         <div className="nav-links">
           <NavLink to="/" exact className="nav-link">
