@@ -25,18 +25,17 @@
   font-size: 2.5rem;
 }
 
-.volunteer-names {
-  width: 17%;
-  text-align: center;
+.volunteers-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  padding-bottom: 40px;
 }
 
-.accountability-and-transparency {
-  width: 40%;
-  text-align: center;
-}
-
-.accountability-and-transparency img {
-  width: 100%;
+.accountability-and-transparency-section {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 20px;
 }
 
 .middle-text-container {
@@ -44,34 +43,18 @@
   text-align: center;
 }
 
-.container {
-  display: flex;
-  margin-top: 2rem;
-}
-
-.middle-text {
-  color: var(--elixir-color-red);
-  font-size: 10rem;
-}
-
-.volunteer-img {
-  width: 100%;
-}
-
-.volunteer-img-container {
-  width: 66%;
-}
-
 .leadership-section {
   margin-top: 2rem;
 }
 
 .about-us h2 {
-  color: var(--elixir-color-red);
   text-align: center;
-  font-size: 2.5rem;
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 48px;
+  font-size: 1.98rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: #222;
 }
 
 .about-us .text-section {
@@ -127,42 +110,31 @@
   justify-content: center;
 }
 
-.image-section {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-.image-section img {
-  width: 50%;
-}
-
 .leadership-image-section img {
   max-width: 100%;
 }
 
-.partner-section {
-  margin: 0 2rem 4rem;
-}
-
 .partner-card-container {
-  display: flex;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  margin-top: 4rem;
   margin-bottom: 1rem;
   justify-content: space-around;
 }
 
 .partner-section-card {
   text-align: center;
-  margin: 20px;
 }
 
 .partner-section-card img {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   max-width: 12rem;
+  border-radius: 10px;
+}
+
+.partner-section p {
+  text-align: left;
 }
 
 .full-width-section {
@@ -193,23 +165,16 @@
 }
 
 .profile-card-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  padding-bottom: 40px;
 }
 
 .profile-card {
-  text-align: center;
   margin-top: 20px;
-  margin-bottom: 50px;
-  width: 20%;
 }
 
-.profile-card img {
-  border-radius: 50%;
-  width: 100%;
-  filter: drop-shadow(5px 5px 5px rgb(202, 202, 202));
-}
 .profile-card h3 {
   font-weight: 600;
   margin-top: 10px;

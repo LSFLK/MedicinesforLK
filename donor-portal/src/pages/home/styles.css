@@ -1,113 +1,111 @@
 .home-page .header-image__text-container {
-  max-width: var(--elixir-content-max-width);
-  display: flex;
-  flex: 1;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-left: 77px;
+    max-width: var(--elixir-content-max-width);
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 77px;
 }
 
 .home-page .header-image__text-container p {
-  max-width: 20rem;
-  font-weight: 500;
-  font-size: 1.15rem;
-  margin: 0 2rem;
-  padding: 20px;
-  background-color: rgba(175, 175, 175, 0.274);
-  margin-left: 70px;
+    max-width: 20rem;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin: 0 2rem;
+    padding: 20px;
+    background-color: rgba(175, 175, 175, 0.274);
+    margin-left: 70px;
 }
 
 .home-page .header-image_logo img {
-  width: 220px;
-  height: 220x;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 125px;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 125px;
 }
 
 .home-description {
-  display: flex;
-  margin: 2rem 2rem 1rem 2rem;
-  border: 1px solid var(--elixir-color-gray-500);
-  padding: 1.5rem;
-  align-items: center;
+    display: flex;
+    margin: 2rem 0;
+    border: 1px solid var(--elixir-color-gray-500);
+    padding: 1.5rem;
+    align-items: center;
 }
 
 .home-description .image-container {
-  padding: 0.5rem;
-  margin-right: 1rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
 }
 
 .image-container img {
-  max-width: 300px;
+    max-width: 300px;
 }
 
 .home-description-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  line-height: 1.2;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+    align-items: flex-start;
 }
 
 .home-description-text h3 {
-  color: #333;
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 1.125rem;
+    color: #333;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.125rem;
 }
 
 .home-description-text p {
-  font-weight: 400;
-  color: #222;
-  font-size: 0.875rem;
+    font-weight: 400;
+    color: #222;
+    font-size: 0.875rem;
 }
 
 .home-description-text p a {
-  text-decoration: underline;
-  color: #222;
+    text-decoration: underline;
+    color: #222;
 }
 
 .home-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 2rem;
 }
 
 @media (max-width: 600px) {
-  .home-heading {
-    flex-direction: column;
-    gap: 2rem;
-  }
+    .home-heading {
+        flex-direction: column;
+        gap: 2rem;
+    }
 
-  .home-description {
-    flex-direction: column;
-  }
+    .home-description {
+        flex-direction: column;
+    }
 }
 
- .current-donors{
-   margin: 2rem 2rem 1rem 2rem;
-  padding: 1.5rem;
-  align-items: center;
+.current-donors {
+    margin: 0.5rem 0;
+    align-items: center;
 }
- 
+
 .current-donors h2 {
-  color: #333;
-  text-align: center;
-  padding: 1rem;
-  font-size: 1.75rem;
+    color: #333;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.75rem;
 }
 
-.current-donors .donor-logo img{
- max-width: 200px;
-max-height: 175px;
-padding: 3rem;
+.current-donors .donor-logo img {
+    max-width: 200px;
+    max-height: 175px;
 }
 
 .current-donors .logo-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
- justify-content: center;
-align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
 }

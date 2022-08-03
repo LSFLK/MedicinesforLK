@@ -1,107 +1,208 @@
-import React, { useEffect, useState } from "react";
-import HeaderImage from "../layout/header-image";
-import Page from "../layout/page";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "@asgardeo/auth-react";
+import UserContext from "../../userContext";
+import { AidPackage } from "../../types/AidPackage";
+import AidPackageService from "../../apis/services/AidPackageService";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 import "./styles.css";
 
-type DonorOrganization = {
-  orgName: string;
-  orgLink: string;
-  orgDescription: string;
-};
+enum TabItems {
+  GOAL_PENDING,
+  GOAL_REACHED,
+  MY_PLEDGES,
+}
 
-export default function DonateNow() {
-  const [donorOrgs, setDonorOrgs] =
-    useState<
-      Array<{ continent: string; organizations: Array<DonorOrganization> }>
-    >();
-
-  useEffect(() => {
-    setDonorOrgs([
-      {
-        continent: "North America",
-        organizations: [
-          {
-            orgName: "Sri Lanka Medical Fund",
-            orgDescription:
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis",
-            orgLink: "#",
-          },
-          {
-            orgName: "Sri Lanka Medical Fund",
-            orgDescription:
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis",
-            orgLink: "#",
-          },
-          {
-            orgName: "Sri Lanka Medical Fund",
-            orgDescription:
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis",
-            orgLink: "#",
-          },
-        ],
-      },
-      {
-        continent: "Europe",
-        organizations: [
-          {
-            orgName: "Sri Lanka Medical Fund",
-            orgDescription:
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis",
-            orgLink: "#",
-          },
-          {
-            orgName: "Sri Lanka Medical Fund",
-            orgDescription:
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis",
-            orgLink: "#",
-          },
-        ],
-      },
-    ]);
-  });
+function PackageCard({
+  donorPackage,
+  buttonText,
+}: {
+  donorPackage: AidPackage;
+  buttonText: string;
+}) {
+  const { packageID, description, receivedAmount, goalAmount, name } =
+    donorPackage;
 
   return (
-    <Page className="donate-now-page">
-      <HeaderImage imageUrl="https://images.unsplash.com/photo-1573883431205-98b5f10aaedb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
-        <div className="header-image-content">
-          <h1>Donate Now</h1>
+    <div className="package-card" key={packageID}>
+      <div className="card-details">
+        <div className="card-details__heading">
+          <div className="card-details__heading__text">
+            <h2>{name}</h2>
+          </div>
+          <Link to={`/package/${packageID}`} className="btn">
+            {buttonText}
+          </Link>
         </div>
-      </HeaderImage>
-      <div className="donate-now-container">
-        <p>
-          If you are an individual, please reach out to our partners below to
-          donate to Elixir. Please connect directly with a partner in a
-          jurisdiction closest to you. Our partners will provide details of the
-          aid package they are supporting and will provide you options to
-          donate. You can check the status of the aid package from our home
-          page.
-        </p>
-
-        <div className="donation-org-container">
-          {donorOrgs?.map((organizationGroup) => (
-            <div className="donation-org-group">
-              <h1>{organizationGroup.continent}</h1>
-              {organizationGroup.organizations.map((org) => (
-                <div className="donation-org-row">
-                  <div className="donation-org-row__text">
-                    <h3>{org.orgName}</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                      magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                      quis
-                    </p>
-                  </div>
-
-                  <a href={org.orgLink} className="btn">
-                    Donate
-                  </a>
-                </div>
-              ))}
-            </div>
-          ))}
+        <p className="card_details__description">{description}</p>
+        <div className="card_details__package_progress">
+          <p className="card_details__package_progress_text">
+            $
+            {receivedAmount.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{" "}
+            raised of $
+            {goalAmount.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{" "}
+            goal
+          </p>
+          <div className="card_details__package_progress_bar">
+            <span
+              style={{
+                width: `${
+                  (Math.min(receivedAmount, goalAmount) / goalAmount) * 100
+                }%`,
+              }}
+            />
+          </div>
         </div>
       </div>
-    </Page>
+    </div>
+  );
+}
+
+export default function DonateNowPage() {
+  const userId = useContext(UserContext);
+  const { state } = useAuthContext();
+  const [isLoading, setIsLoading] = useState(true);
+  const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
+    AidPackage[]
+  >([]);
+  const [alreadyPledgedAidPackages, setAlreadyPledgedAidPackages] = useState<
+    AidPackage[]
+  >([]);
+  const [goalReachedAidPackages, setGoalReachedAidPackages] = useState<
+    AidPackage[]
+  >([]);
+  const [activeTabItem, setActiveTabItem] = useState<TabItems>(
+    TabItems.GOAL_PENDING
+  );
+
+  const fetchPledgedAidPackages = async (donorId: string) => {
+    const returnedPledgedPackages =
+      await AidPackageService.getPledgedAidPackages(donorId);
+    setAlreadyPledgedAidPackages(returnedPledgedPackages.data);
+  };
+
+  const fetchAidPackages = async () => {
+    const { data }: { data: AidPackage[] } =
+      await AidPackageService.getAidPackages();
+    setGoalReachedAidPackages(
+      data.filter(
+        (aidPackage) =>
+          aidPackage.status !== AidPackage.Status.Published &&
+          aidPackage.status !== AidPackage.Status.Draft
+      )
+    );
+    setGoalPendingAidPackages(
+      data.filter(
+        (aidPackage) => aidPackage.status === AidPackage.Status.Published
+      )
+    );
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    if (userId !== null && state.isAuthenticated) {
+      fetchPledgedAidPackages(userId);
+    }
+  }, [userId, state.isAuthenticated]);
+
+  useEffect(() => {
+    fetchAidPackages();
+  }, []);
+
+  return (
+    <div className="main-container medical-needs-page">
+      <div className="medical-needs-heading">
+        <h1>Medical Needs</h1>
+
+        <div className="goal-filter">
+          <button
+            type="button"
+            className={`btn ${
+              activeTabItem !== TabItems.GOAL_PENDING && "secondary"
+            }`}
+            onClick={() => {
+              setActiveTabItem(TabItems.GOAL_PENDING);
+            }}
+          >
+            Goal Pending
+          </button>
+          {state.isAuthenticated && userId && (
+            <button
+              type="button"
+              className={`btn ${
+                activeTabItem !== TabItems.MY_PLEDGES && "secondary"
+              }`}
+              onClick={() => {
+                setActiveTabItem(TabItems.MY_PLEDGES);
+              }}
+            >
+              My Pledges
+            </button>
+          )}
+          <button
+            type="button"
+            className={`btn ${
+              activeTabItem !== TabItems.GOAL_REACHED && "secondary"
+            }`}
+            onClick={() => {
+              setActiveTabItem(TabItems.GOAL_REACHED);
+            }}
+          >
+            Goal Reached
+          </button>
+        </div>
+      </div>
+      {isLoading && <SpinnerLoader loaderText="Loading..." />}
+      <div className="package-list">
+        {activeTabItem === TabItems.GOAL_PENDING &&
+          goalPendingAidPackages.map((aidPackage) => (
+            <PackageCard
+              key={aidPackage.packageID}
+              donorPackage={aidPackage}
+              buttonText={userId != null ? "Pledge" : "Donate"}
+            />
+          ))}
+        {activeTabItem === TabItems.GOAL_REACHED &&
+          goalReachedAidPackages.map((aidPackage) => (
+            <PackageCard
+              key={aidPackage.packageID}
+              donorPackage={aidPackage}
+              buttonText="Details"
+            />
+          ))}
+        {userId &&
+          state.isAuthenticated &&
+          activeTabItem === TabItems.MY_PLEDGES &&
+          alreadyPledgedAidPackages.length === 0 && (
+            <p>
+              No pledged packages found. Check the{" "}
+              <button
+                type="button"
+                className="text-blue"
+                onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+              >
+                goal pending tab
+              </button>{" "}
+              to find aid packages you can pledge towards.
+            </p>
+          )}
+        {userId &&
+          state.isAuthenticated &&
+          activeTabItem === TabItems.MY_PLEDGES &&
+          alreadyPledgedAidPackages.map((aidPackage) => (
+            <PackageCard
+              key={aidPackage.packageID}
+              donorPackage={aidPackage}
+              buttonText="Details"
+            />
+          ))}
+      </div>
+    </div>
   );
 }

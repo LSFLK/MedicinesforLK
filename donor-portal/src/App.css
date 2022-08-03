@@ -30,7 +30,7 @@
   --elixir-navbar-height: 3.75rem;
   --elixir-font-weight-semibold: 500;
   --elixir-hover-overlay: rgba(0, 0, 0, 0.05);
-  --elixir-heading-color: inherit;
+  --elixir-heading-color: #333;
   --elixir-font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -58,20 +58,6 @@ a {
     var(--elixir-transition-timing-default);
 }
 
-/* .footer--dark {
-  --elixir-footer-background-color: #303846;
-  --elixir-footer-color: var(--elixir-footer-link-color);
-  --elixir-footer-link-color: var(--elixir-color-secondary);
-  --elixir-footer-title-color: var(--elixir-color-white);
-}
-
-.footer {
-  background-color: var(--elixir-footer-background-color);
-  color: var(--elixir-footer-color);
-  padding: var(--elixir-footer-padding-vertical)
-    var(--elixir-footer-padding-horizontal);
-} */
-
 h1,
 h2,
 h3,
@@ -84,6 +70,11 @@ h6 {
   line-height: var(--elixir-heading-line-height);
   margin: var(--elixir-heading-margin-top) 0 var(--elixir-heading-margin-bottom)
     0;
+}
+
+p {
+  font-size: 0.98rem;
+  color: #222;
 }
 
 .btn {
@@ -100,4 +91,13 @@ h6 {
 .btn.secondary {
   color: var(--elixir-color-red);
   background-color: var(--elixir-color-white);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--elixir-content-max-width);
+  margin: 0 auto;
+  min-height: calc(100vh - 456px);
 }

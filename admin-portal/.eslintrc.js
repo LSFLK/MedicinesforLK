@@ -11,6 +11,7 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "react/no-unstable-nested-components": "off",
+    "no-alert" : "off",
   },
   parserOptions: {
     project: "./tsconfig.json",

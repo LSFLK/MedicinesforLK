@@ -1,0 +1,31 @@
+.hero-image {
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-image .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--elixir-content-max-width);
+  margin: 0 auto;
+  color: white;
+}
+
+.hero-image .hero-text {
+  position: absolute;
+  top: 30%;
+}
+
+.hero-image .hero-text .title{
+  font-size: 50px;
+  padding-bottom: 28px;
+  width: 708px;
+}
+
+.hero-image .hero-text .icon{
+  vertical-align: bottom;
+}
