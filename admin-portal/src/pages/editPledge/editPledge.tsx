@@ -122,7 +122,7 @@ export default function EditPledge() {
               onSave={handleEditActivity}
             />
           </Modal>
-          <PledgeSummary pledge={pledge} onStatusChange={handleStatusChange} />
+          <PledgeSummary pledge={pledge} onStatusChange={handleStatusChange} aidPackageStatus={aidPackage.status}/>
           <PledgeActivities
             activities={activities}
             onEditActivityButtonClick={handleEditActivityClick}
