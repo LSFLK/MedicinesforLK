@@ -67,7 +67,7 @@ export default function AboutUs() {
           <h2>Leadership Team</h2>
           <div className="profile-card-container">
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
+              <a href="https://www.linkedin.com/in/dr-mahesh-gunasekara-2b38526/ ">
                 <h3>Dr. Mahesh Gunasekara</h3>
                 <p>Director General</p>
                 <p>Sri Lanka Red Cross Society</p>
@@ -80,9 +80,7 @@ export default function AboutUs() {
               </a>
             </div>
             <div className="profile-card">
-              {/* TODO: Add linkedin link */}
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href="#">
+              <a href="https://www.linkedin.com/in/tharaka-samarasinghe-3b7819a8/ ">
                 <h3>Tharaka Samarasinghe</h3>
                 <p>HR Assistant</p>
                 <p>Sri Lanka Red Cross Society</p>
@@ -93,6 +91,34 @@ export default function AboutUs() {
                 <h3>Ashok Vasa</h3>
                 <p>Founder/CEO</p>
                 <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/krishni-ratnayaka-9a977916b/ ">
+                <h3>Krishni Ratnayaka</h3>
+                <p>Consultant Legal Affairs</p>
+                <p>Sri Lanka Red Cross Society</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/sherazadhamit/ ">
+                <h3>Sherazad Hamit</h3>
+                <p>Executive Director</p>
+                <p>Lanka Software Foundation</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/akbandara/ ">
+                <h3>Prof. Arosha Bandara</h3>
+                <p>Professor of Software Engineering </p>
+                <p>The Open University, UK</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/sanithw/ ">
+                <h3>Dr. Sanith Wijesinghe</h3>
+                <p>Technical Fellow</p>
+                <p>The MITRE Corporation, USA.</p>
               </a>
             </div>
           </div>
@@ -189,7 +215,6 @@ export default function AboutUs() {
             <p>Priya Vasa</p>
             <p>Lakshitha Surasinghe</p>
             <p>Namali Premawardhana</p>
-            <p>Krishni Ratnayaka</p>
             <p>Avanthi Gunatilake</p>
             <p>Ryan Kuruppu</p>
           </div>
