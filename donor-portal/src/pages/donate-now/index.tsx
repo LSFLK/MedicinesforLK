@@ -5,6 +5,8 @@ import UserContext from "../../userContext";
 import { AidPackage } from "../../types/AidPackage";
 import AidPackageService from "../../apis/services/AidPackageService";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
+import packageImage from "./images/package.jpg";
+
 import "./styles.css";
 
 enum TabItems {
@@ -20,11 +22,13 @@ function PackageCard({
   donorPackage: AidPackage;
   buttonText: string;
 }) {
-  const { packageID, description, receivedAmount, goalAmount, name } =
+  const { packageID, receivedAmount, description, goalAmount, name } =
     donorPackage;
+  const CHARACTER_LIMIT = 300;
 
   return (
     <div className="package-card" key={packageID}>
+      <img className="package-image" src={packageImage} alt="packageImage" />
       <div className="card-details">
         <div className="card-details__heading">
           <div className="card-details__heading__text">
@@ -34,7 +38,16 @@ function PackageCard({
             {buttonText}
           </Link>
         </div>
-        <p className="card_details__description">{description}</p>
+        <p className="card_details__description">
+          {description.length > CHARACTER_LIMIT ? (
+            <>
+              {description.substring(0, CHARACTER_LIMIT).concat("...")}
+              <Link to={`/package/${packageID}`}>read more</Link>
+            </>
+          ) : (
+            description
+          )}
+        </p>
         <div className="card_details__package_progress">
           <p className="card_details__package_progress_text">
             $
