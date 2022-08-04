@@ -100,7 +100,9 @@ export default function CreateAidPackage() {
            */
           aidPackages[packageKey].isPublished = true;
           setAidPackages({ ...aidPackages });
-          AidPackageService.commentPublishedAidPackage(data);
+          if (data.status !== AidPackage.Status.Draft) {
+            AidPackageService.commentPublishedAidPackage(data);
+          }
         })
         .catch(() => {
           toast("something went wrong");
