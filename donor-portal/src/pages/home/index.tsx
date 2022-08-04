@@ -50,14 +50,17 @@ export default function Home() {
             <h3>Please Donate</h3>
             <p>
               Together we can do more. We are accepting donations from both
-              organizations and individuals. Check out{" "}
-              <Link to="/donate-now">medical needs</Link> and click on the
-              Donate button to get started.
+              organizations and individuals. Check out our{" "}
+              <Link to="/donate-now">aid packages</Link> to get started.
             </p>
           </div>
         </div>
         <div className="current-donors">
           <h2>Current Donors</h2>
+          <p>
+            We would like to acknowledge the generous support of our donors
+            below.
+          </p>
           <div className="logo-container">
             <div className="donor-logo">
               <a

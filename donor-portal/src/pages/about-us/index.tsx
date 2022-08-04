@@ -13,7 +13,25 @@ export default function AboutUs() {
     <div className="about-us">
       <HeroSection image={bannerImage} title="About Us" />
       <div className="main-container">
+        <p>
+          <br /> <br />
+          We are a team of volunteers from around the world working to address
+          the acute medical supply shortage in our motherland. Collectively we
+          have brought our skills in software development, pharmaceutical supply
+          chain logistics and disaster aid management to develop a unique
+          solution that provides transparency to donors and efficiency for
+          medical service providers.
+        </p>
         <h2>Our Approach</h2>
+        <p>
+          In partnership with the Sri Lanka Red Cross, Ministry of Health, the
+          Medical Supply Division, Medical Colleges, Lanka Software Foundation,
+          and The Last Word, we have developed Elixir, an online platform that
+          matches financial contributions from individuals, charity
+          organizations and businesses with the pharmaceutical needs from
+          hospitals across the nation. Elixir coordinates the activities of our
+          partners throughout the lifecycle of an aid package as shown below.
+        </p>
         <img src={ourApproachImage} alt="our-approach" />
 
         <div className="accountability-and-transparency-section">
@@ -49,7 +67,7 @@ export default function AboutUs() {
           <h2>Leadership Team</h2>
           <div className="profile-card-container">
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/helani?originalSubdomain=lk">
+              <a href="https://www.linkedin.com/in/dr-mahesh-gunasekara-2b38526/ ">
                 <h3>Dr. Mahesh Gunasekara</h3>
                 <p>Director General</p>
                 <p>Sri Lanka Red Cross Society</p>
@@ -62,9 +80,7 @@ export default function AboutUs() {
               </a>
             </div>
             <div className="profile-card">
-              {/* TODO: Add linkedin link */}
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href="#">
+              <a href="https://www.linkedin.com/in/tharaka-samarasinghe-3b7819a8/ ">
                 <h3>Tharaka Samarasinghe</h3>
                 <p>HR Assistant</p>
                 <p>Sri Lanka Red Cross Society</p>
@@ -75,6 +91,34 @@ export default function AboutUs() {
                 <h3>Ashok Vasa</h3>
                 <p>Founder/CEO</p>
                 <p>Vasa Digital Architects</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/krishni-ratnayaka-9a977916b/ ">
+                <h3>Krishni Ratnayaka</h3>
+                <p>Consultant Legal Affairs</p>
+                <p>Sri Lanka Red Cross Society</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/sherazadhamit/ ">
+                <h3>Sherazad Hamit</h3>
+                <p>Executive Director</p>
+                <p>Lanka Software Foundation</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/akbandara/ ">
+                <h3>Prof. Arosha Bandara</h3>
+                <p>Professor of Software Engineering </p>
+                <p>The Open University, UK</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/sanithw/ ">
+                <h3>Dr. Sanith Wijesinghe</h3>
+                <p>Technical Fellow</p>
+                <p>The MITRE Corporation, USA.</p>
               </a>
             </div>
           </div>
@@ -171,7 +215,6 @@ export default function AboutUs() {
             <p>Priya Vasa</p>
             <p>Lakshitha Surasinghe</p>
             <p>Namali Premawardhana</p>
-            <p>Krishni Ratnayaka</p>
             <p>Avanthi Gunatilake</p>
             <p>Ryan Kuruppu</p>
           </div>
