@@ -6,7 +6,7 @@ import { AidPackage } from "../../../../types/AidPackage";
 interface PledgeSummaryProps {
   pledge: Pledge;
   onStatusChange: (status: Pledge.Status) => void;
-  aidPackageStatus: AidPackage.Status
+  aidPackageStatus: AidPackage.Status;
 }
 
 const statusAllowPledgeStatus = {
@@ -17,8 +17,8 @@ const statusAllowPledgeStatus = {
     AidPackage.Status.Ordered,
     AidPackage.Status.ReceivedAtMOH,
     AidPackage.Status.Shipped,
-    AidPackage.Status.AwaitingPayment
-  ]
+    AidPackage.Status.AwaitingPayment,
+  ],
 };
 
 export default function PledgeSummary({
@@ -34,22 +34,29 @@ export default function PledgeSummary({
   };
 
   function setActive(status: Pledge.Status) {
-
-    if (status === Pledge.Status.Pledged && statusAllowPledgeStatus.pledged.includes(aidPackageStatus)) {
+    if (
+      status === Pledge.Status.Pledged &&
+      statusAllowPledgeStatus.pledged.includes(aidPackageStatus)
+    ) {
       return false;
     }
 
-    if (status === Pledge.Status.PaymentInitiated && statusAllowPledgeStatus.paymentInitiated.includes(aidPackageStatus)) {
+    if (
+      status === Pledge.Status.PaymentInitiated &&
+      statusAllowPledgeStatus.paymentInitiated.includes(aidPackageStatus)
+    ) {
       return false;
     }
 
-    if (status === Pledge.Status.PaymentConfirmed && statusAllowPledgeStatus.paymentConfirm.includes(aidPackageStatus)) {
+    if (
+      status === Pledge.Status.PaymentConfirmed &&
+      statusAllowPledgeStatus.paymentConfirm.includes(aidPackageStatus)
+    ) {
       return false;
     }
 
     return true;
   }
-
 
   return (
     <div className="pledgeSummary">
