@@ -42,6 +42,13 @@ export default function PackageDetails() {
     Delivered: 7,
   };
 
+  const completedStatuses = [
+    AidPackage.Status.Ordered,
+    AidPackage.Status.Shipped,
+    AidPackage.Status.ReceivedAtMOH,
+    AidPackage.Status.Delivered,
+  ];
+
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
     setAidPackage(data);
@@ -94,9 +101,8 @@ export default function PackageDetails() {
     if (confirmed) {
       if (
         aidPackageStatus &&
-        (statusToLevel[aidPackageStatus] === 1 ||
-          statusToLevel[aidPackageStatus] === 2) &&
-        statusToLevel[statusToBeChanged] > 3
+        !completedStatuses.includes(aidPackageStatus) &&
+        completedStatuses.includes(statusToBeChanged)
       ) {
         const orderCompletionConfirmation = window.confirm(
           "You are trying to move this package into a 'completion' status!"
