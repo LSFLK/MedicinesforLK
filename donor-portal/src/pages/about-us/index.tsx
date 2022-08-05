@@ -6,6 +6,7 @@ import lsfLogo from "./images/lsf-logo.png";
 import sefLogo from "./images/SEF_Logo.png";
 import watchDogLogo from "./images/watchdog-logo.png";
 import lastWordLogo from "./images/the-last-word-logo.png";
+import wso2logo from "./images/wso2.png";
 import "./styles.css";
 
 export default function AboutUs() {
@@ -169,6 +170,17 @@ export default function AboutUs() {
                 The Last Word are creatives and brand strategists whose work
                 spans the breadth of brand architecture, design, digital
                 marketing communications and user experience.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <a href="https://wso2.com/">
+                <img src={wso2logo} alt="WSO2 Logo" />
+              </a>
+              <p>
+                Founded in 2005, WSO2 enables the composable enterprise. WSO2’s
+                open source, API-first, and decentralized approach helps
+                developers and architects to be more productive and rapidly
+                build digital products to meet demand.
               </p>
             </div>
           </div>
