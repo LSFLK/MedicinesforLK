@@ -21,6 +21,9 @@
 
 .text-blue {
   color: blue;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .package-list {

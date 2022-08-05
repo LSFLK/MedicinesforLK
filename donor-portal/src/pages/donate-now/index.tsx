@@ -181,15 +181,39 @@ export default function DonateNowPage() {
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.length === 0 && (
             <p>
-              No pledged packages found. Check the{" "}
+              You have not yet pledged towards aid packages. Please check the{" "}
               <button
                 type="button"
                 className="text-blue"
                 onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
               >
-                goal pending tab
+                Goal Pending tab
               </button>{" "}
               to find aid packages you can pledge towards.
+            </p>
+          )}
+        {!isLoading &&
+          activeTabItem === TabItems.GOAL_PENDING &&
+          !goalPendingAidPackages.length && (
+            <p>
+              There are no aid packages which can receive donors pledges at
+              present. However, this page is updated regularly. Please visit
+              this page again to view updates.
+            </p>
+          )}
+        {activeTabItem === TabItems.GOAL_REACHED &&
+          !goalReachedAidPackages.length && (
+            <p>
+              There are no aid packages that have reached their goal at present.
+              Please check the{" "}
+              <button
+                type="button"
+                className="text-blue"
+                onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+              >
+                Goal Pending tab
+              </button>{" "}
+              to view open aid packages.
             </p>
           )}
         {userId &&
