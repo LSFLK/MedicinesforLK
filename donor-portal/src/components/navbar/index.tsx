@@ -41,7 +41,7 @@ export default function NavBar() {
           </NavLink>
           {state.isAuthenticated ? (
             <button
-              className="login-btn nav-link"
+              className="logout-btn nav-link"
               type="button"
               onClick={() => handleLogout()}
             >

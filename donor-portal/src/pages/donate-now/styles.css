@@ -27,7 +27,12 @@
   margin: 2rem 0;
 }
 
+.package-image {
+  width: 275px;
+}
+
 .package-card {
+  height: 17rem;
   display: flex;
   margin-bottom: 2rem;
   border: 1px solid var(--elixir-color-gray-500);
@@ -43,8 +48,7 @@
 .package-card .card-details__heading {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex: 1;
+  align-items: center;
 }
 
 .package-card .card-details__heading h2 {
