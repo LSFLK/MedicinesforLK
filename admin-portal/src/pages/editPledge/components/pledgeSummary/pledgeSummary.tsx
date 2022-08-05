@@ -9,7 +9,10 @@ interface PledgeSummaryProps {
   aidPackageStatus: AidPackage.Status;
 }
 
-const statusAllowPledgeStatus: Record<Pledge.Status, AidPackage.Status[]> = {
+const pledgeStatusToAllowedStatuses: Record<
+  Pledge.Status,
+  AidPackage.Status[]
+> = {
   [Pledge.Status.Pledged]: [
     AidPackage.Status.Published,
     AidPackage.Status.AwaitingPayment,
@@ -36,35 +39,6 @@ export default function PledgeSummary({
     }
   };
 
-  function setActive(status: Pledge.Status) {
-    if (
-      status === Pledge.Status.Pledged &&
-      statusAllowPledgeStatus[Pledge.Status.Pledged].includes(aidPackageStatus)
-    ) {
-      return false;
-    }
-
-    if (
-      status === Pledge.Status.PaymentInitiated &&
-      statusAllowPledgeStatus[Pledge.Status.PaymentInitiated].includes(
-        aidPackageStatus
-      )
-    ) {
-      return false;
-    }
-
-    if (
-      status === Pledge.Status.PaymentConfirmed &&
-      statusAllowPledgeStatus[Pledge.Status.PaymentConfirmed].includes(
-        aidPackageStatus
-      )
-    ) {
-      return false;
-    }
-
-    return true;
-  }
-
   return (
     <div className="pledgeSummary">
       <div className="heading">Donor:</div>
@@ -81,7 +55,13 @@ export default function PledgeSummary({
       <div>
         <select onChange={handleStatusChange} value={pledge.status}>
           {Object.entries(Pledge.Status).map(([key, status]) => (
-            <option key={key} value={status} disabled={setActive(status)}>
+            <option
+              key={key}
+              value={status}
+              disabled={pledgeStatusToAllowedStatuses[status].includes(
+                aidPackageStatus
+              )}
+            >
               {status}
             </option>
           ))}
