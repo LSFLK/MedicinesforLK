@@ -29,6 +29,7 @@ Please make sure you have all the listed prerequisites tools installed locally.
   REACT_APP_CLIENT_SECRET = <Choreo Application Client Secret>
   REACT_APP_SIGN_IN_REDIRECT_URL = http://localhost:3000
   REACT_APP_SIGN_OUT_REDIRECT_URL = http://localhost:3000
+  REACT_APP_ADMIN_BACKEND_URL=https://9d2b57ae-4349-44f2-971c-106ae09d244d-dev.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0
   
   ```
   Note: REACT_APP_SIGN_IN_REDIRECT_URL and REACT_APP_SIGN_OUT_REDIRECT_URL are the URL that the application is running on. So in local it is http://localhost:3000. Always better keep the local development to this URL as we have whitelisted only this.
