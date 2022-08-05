@@ -127,7 +127,7 @@ export default function CreateAidPackage() {
 
       <div className="create-aid-body">
         {isLoading ? (
-          <p>Loading Aid Packages...</p>
+          <p>Loading...</p>
         ) : (
           <>
             {currentFormStep === STEPS.ASSIGN_SUPPLIERS && (

@@ -48,9 +48,7 @@ export default function Home() {
 
   return (
     <div className="pageContent">
-      {(!aidPackages || aidPackages.length <= 0) && (
-        <p>Loading Aid Packages...</p>
-      )}
+      {(!aidPackages || aidPackages.length <= 0) && <p>Loading...</p>}
       {aidPackages && aidPackages.length > 0 && (
         <>
           <header className="pageHeader">
