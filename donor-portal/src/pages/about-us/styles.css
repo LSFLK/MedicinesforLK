@@ -116,7 +116,7 @@
 
 .partner-card-container {
   display: grid;
-  grid-template-columns:  1fr 1fr 1fr 1fr;
+  grid-template-columns:  1fr 1fr ;
   grid-column-gap: 20px;
   margin-top: 4rem;
   margin-bottom: 1rem;
@@ -125,6 +125,9 @@
 
 .partner-section-card {
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
 }
 
 .partner-section-card img {
