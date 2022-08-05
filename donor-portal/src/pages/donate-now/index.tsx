@@ -24,7 +24,7 @@ function PackageCard({
 }) {
   const { packageID, receivedAmount, description, goalAmount, name } =
     donorPackage;
-  const CHARACTER_LIMIT = 300;
+  const CHARACTER_LIMIT = 350;
 
   return (
     <div className="package-card" key={packageID}>

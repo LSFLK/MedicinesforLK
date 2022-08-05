@@ -28,17 +28,18 @@
 }
 
 .package-image {
-  width: 30%;
+  width: 275px;
 }
 
 .package-card {
+  height: 17rem;
   display: flex;
   margin-bottom: 2rem;
   border: 1px solid var(--elixir-color-gray-500);
 }
 
 .card-details {
-  width: 70%;
+  width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -47,8 +48,7 @@
 .package-card .card-details__heading {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex: 1;
+  align-items: center;
 }
 
 .package-card .card-details__heading h2 {
