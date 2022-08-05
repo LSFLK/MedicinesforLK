@@ -9,10 +9,13 @@ interface PledgeSummaryProps {
   aidPackageStatus: AidPackage.Status;
 }
 
-const statusAllowPledgeStatus = {
-  pledged: [AidPackage.Status.Published, AidPackage.Status.AwaitingPayment],
-  paymentInitiated: [AidPackage.Status.AwaitingPayment],
-  paymentConfirm: [
+const statusAllowPledgeStatus: Record<Pledge.Status, AidPackage.Status[]> = {
+  [Pledge.Status.Pledged]: [
+    AidPackage.Status.Published,
+    AidPackage.Status.AwaitingPayment,
+  ],
+  [Pledge.Status.PaymentInitiated]: [AidPackage.Status.AwaitingPayment],
+  [Pledge.Status.PaymentConfirmed]: [
     AidPackage.Status.Delivered,
     AidPackage.Status.Ordered,
     AidPackage.Status.ReceivedAtMOH,
@@ -36,21 +39,25 @@ export default function PledgeSummary({
   function setActive(status: Pledge.Status) {
     if (
       status === Pledge.Status.Pledged &&
-      statusAllowPledgeStatus.pledged.includes(aidPackageStatus)
+      statusAllowPledgeStatus[Pledge.Status.Pledged].includes(aidPackageStatus)
     ) {
       return false;
     }
 
     if (
       status === Pledge.Status.PaymentInitiated &&
-      statusAllowPledgeStatus.paymentInitiated.includes(aidPackageStatus)
+      statusAllowPledgeStatus[Pledge.Status.PaymentInitiated].includes(
+        aidPackageStatus
+      )
     ) {
       return false;
     }
 
     if (
       status === Pledge.Status.PaymentConfirmed &&
-      statusAllowPledgeStatus.paymentConfirm.includes(aidPackageStatus)
+      statusAllowPledgeStatus[Pledge.Status.PaymentConfirmed].includes(
+        aidPackageStatus
+      )
     ) {
       return false;
     }
