@@ -58,9 +58,11 @@ export default function PledgeSummary({
             <option
               key={key}
               value={status}
-              disabled={pledgeStatusToAllowedStatuses[status].includes(
-                aidPackageStatus
-              )}
+              disabled={
+                !pledgeStatusToAllowedStatuses[status].includes(
+                  aidPackageStatus
+                )
+              }
             >
               {status}
             </option>
