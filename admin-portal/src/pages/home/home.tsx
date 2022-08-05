@@ -10,6 +10,7 @@ import Table from "./components/table/table";
 
 export default function Home() {
   const [aidPackages, setAidPackages] = useState<AidPackage[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [filteredAidPackages, setFilteredAidPackages] = useState<AidPackage[]>(
     []
   );
@@ -18,17 +19,20 @@ export default function Home() {
   useEffect(() => {
     if (state.isAuthenticated) {
       const fetchData = async () => {
+        setIsLoading(true);
         const response = await AidPackageService.getAidPackages();
         if (response && response.data) {
           setAidPackages(response.data);
           setFilteredAidPackages(response.data);
         }
+        setIsLoading(false);
       };
 
       fetchData().catch((reason: any) => {
         if (reason) {
           console.error(reason);
         }
+        setIsLoading(false);
       });
     }
   }, [state?.isAuthenticated]);
@@ -48,14 +52,13 @@ export default function Home() {
 
   return (
     <div className="pageContent">
-      {(!aidPackages || aidPackages.length <= 0) && (
-        <p>Loading Aid Packages...</p>
-      )}
+      <header className="pageHeader">
+        <h1>Aid Packages</h1>
+      </header>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && !aidPackages.length && <p>There are no aid packages</p>}
       {aidPackages && aidPackages.length > 0 && (
         <>
-          <header className="pageHeader">
-            <h1>Aid Packages</h1>
-          </header>
           <div className="packageTableSearch">
             <div className="searchContainer">
               <img src="/assets/svg/search_icon.svg" alt="search-icon" />
