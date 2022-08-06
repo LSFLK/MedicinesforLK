@@ -51,52 +51,48 @@ export default function NewsRoom() {
         </div>
 
         <div className="news-article-list">
-          <h2> News </h2>
+          <h2 className="news-title">News </h2>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/srilankaredcross/posts/pfbid0cC25DMKmdghvTXLhJBQxscS3buPkLuB3Fu5PLCPBDmmnuEQEZGoXFRdRDBfKuvnjl"
               target="_blank"
               rel="noreferrer"
             >
+              <span className="red">July 29th 2022</span>
               <p>
-                <strong>
-                  July 29th 2022: The International Committee of the Red Cross
-                  has donated a consignment of 10,000 blood bags to the National
-                  Blood Bank.
-                </strong>
+                The International Committee of the Red Cross has donated a
+                consignment of 10,000 blood bags to the National Blood Bank.
               </p>
             </a>
           </div>
           <div className="news-article-list-item">
             <a
-              href="https://www.facebook.com/srilankaredcross/posts/pfbid02Lgtf7Zh6wLDjfgyBA53hPWxMDYKjR5TnbtDNY4RZD8sw6Rnd1Wj9HPfgCcfCzLTCl 
+              href="https://www.facebook.com/srilankaredcross/posts/pfbid02Lgtf7Zh6wLDjfgyBA53hPWxMDYKjR5TnbtDNY4RZD8sw6Rnd1Wj9HPfgCcfCzLTCl
               "
               target="_blank"
               rel="noreferrer"
             >
+              <span className="red">June 9th 2022</span>
               <p>
-                <strong>
-                  June 9th 2022: Understanding the critical requirement of blood
-                  in Sri Lanka, Sri Lanka Red Cross Society - Colombo Branch
-                  organised a blood donation camp in Colombo, today.
-                </strong>
+                Understanding the critical requirement of blood in Sri Lanka,
+                Sri Lanka Red Cross Society - Colombo Branch organised a blood
+                donation camp in Colombo, today.
               </p>
             </a>
           </div>
           <div className="news-article-list-item">
+            <span className="red">May 31st 2022</span>
             <a
               href="
-              https://www.facebook.com/srilankaredcross/posts/pfbid0EdnJsD7qfC7Bc432CoTUtT2oBVM926G44gnTEqTfzJvGRGwRujtpajQivWpU6tHDl 
+              https://www.facebook.com/srilankaredcross/posts/pfbid0EdnJsD7qfC7Bc432CoTUtT2oBVM926G44gnTEqTfzJvGRGwRujtpajQivWpU6tHDl
               "
               target="_blank"
               rel="noreferrer"
             >
               <p>
-                <strong>
-                  May 31st 2022: In a time of grave crisis where essential
-                  medicines are scarce or not available at all, the Singapore
-                  Red Cross has donated medicines worth around 68,500 SGD.
-                </strong>
+                In a time of grave crisis where essential medicines are scarce
+                or not available at all, the Singapore Red Cross has donated
+                medicines worth around 68,500 SGD.
               </p>
             </a>
           </div>

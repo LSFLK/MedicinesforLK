@@ -54,6 +54,10 @@
   flex-direction: column;
 }
 
+.news-room .news-title {
+  padding-bottom: 1.8rem;
+}
+
 .news-room .news-article-list-item {
   display: flex;
   flex-direction: column;
