@@ -17,7 +17,7 @@ export default function Home() {
     <div className="home-page">
       <div>
         <HeroSection
-          title="Contribute to alleviate Sri Lanka’s medical supply needs. "
+          title="Donate to Sri Lanka’s medical supply needs. "
           image={bannerImage}
         />
       </div>
@@ -29,19 +29,19 @@ export default function Home() {
           <div className="home-description-text">
             <h3>An Acute Medical Emergency</h3>
             <p>
-              Sri Lanka lacks a coordinated response to address the overall
-              medical needs of hospitals. Given the limited resources it is
-              essential to optimize the demand and distribution of supplies to
-              help avoid possible duplication, address gaps and avoid
-              detrimental outcomes to citizens most in need.
+              Sri Lanka needs a coordinated response to address the overall
+              medical needs of hospitals. Given limited resources it is
+              essential to improve the distribution of supplies to help avoid
+              possible duplication, address gaps and avoid detrimental outcomes
+              to citizens most in need.
             </p>
             <h3>An Alternative Approach</h3>
             <p>
               Elixir is a platform designed to meet this need. It is operated by
               the Sri Lanka Red Cross along with a network of volunteers and
-              professionals to help improve the efficacy of donations. In
+              professionals to help improve the effectiveness of donations. In
               partnership with the Sri Lanka Medical Supplies Division we have
-              compiled aid packages that aggregate needs across multiple
+              compiled aid packages that collect the needs across multiple
               hospitals to help achieve bulk price discounts from suppliers. Our
               volunteers help negotiate prices and coordinate invoicing and
               shipping logistics. Elixir facilitates transparency and

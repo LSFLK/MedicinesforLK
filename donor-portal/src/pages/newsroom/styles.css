@@ -63,6 +63,10 @@
   border-bottom: var(--elixir-color-gray-500) 1px solid;
 }
 
+.news-article-list-item a{
+  text-decoration: black;
+}
+
 .news-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
