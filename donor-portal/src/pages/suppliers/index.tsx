@@ -37,10 +37,6 @@ export default function Suppliers() {
             link="mailto:elixir@redcross.lk"
             buttonText="Email us"
           />
-          <p className="inquiry">
-            For all inquiries, please email us at{" "}
-            <a href="mailto: elixir@redcross.lk">elixir@redcross.lk</a>
-          </p>
         </InfoBoxContainer>
       </div>
     </div>

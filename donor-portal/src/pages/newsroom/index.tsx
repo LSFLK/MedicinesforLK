@@ -11,10 +11,6 @@ export default function NewsRoom() {
         <div className="text-section">
           <h2>Media Contacts</h2>
           <p>
-            When personal disasters strike, the Red Cross provides food,
-            shelter, clothing and essential supplies for up to 72 hours.
-          </p>
-          <p>
             <strong>
               If you have been affected by a personal disaster and require
               assistance, contact us:
@@ -55,35 +51,50 @@ export default function NewsRoom() {
         </div>
 
         <div className="news-article-list">
-          <h2> News </h2>
+          <h2 className="news-title">News </h2>
           <div className="news-article-list-item">
-            <strong>
-              Pension Fund Coalition for Inclusive Capitalism Releases Resource
-              to Focus Investments on Long-term Value Creation
-            </strong>
-            <span className="red">May 16, 2022</span>
+            <a
+              href="https://www.facebook.com/srilankaredcross/posts/pfbid0cC25DMKmdghvTXLhJBQxscS3buPkLuB3Fu5PLCPBDmmnuEQEZGoXFRdRDBfKuvnjl"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">July 29th 2022</span>
+              <p>
+                The International Committee of the Red Cross has donated a
+                consignment of 10,000 blood bags to the National Blood Bank.
+              </p>
+            </a>
           </div>
           <div className="news-article-list-item">
-            <strong>
-              BCI Receives 2021 Pension Leadership Award for Sustainable
-              Investing
-            </strong>
-            <span className="red">May 16, 2022</span>
+            <a
+              href="https://www.facebook.com/srilankaredcross/posts/pfbid02Lgtf7Zh6wLDjfgyBA53hPWxMDYKjR5TnbtDNY4RZD8sw6Rnd1Wj9HPfgCcfCzLTCl
+              "
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">June 9th 2022</span>
+              <p>
+                Understanding the critical requirement of blood in Sri Lanka,
+                Sri Lanka Red Cross Society - Colombo Branch organised a blood
+                donation camp in Colombo, today.
+              </p>
+            </a>
           </div>
           <div className="news-article-list-item">
-            <strong>
-              BlackRock Subscribes to the Sustainable Development Goals Dataset
-              of the
-            </strong>
-            <span className="red">May 16, 2022</span>
-          </div>
-          <div className="news-article-list-item">
-            <strong>Paul Finch Reappointed to Board of Directors </strong>
-            <span className="red">May 16, 2022</span>
-          </div>
-          <div className="news-article-list-item">
-            <strong>BCI’s Return to Office Plan – Phase 4</strong>
-            <span className="red">May 16, 2022</span>
+            <span className="red">May 31st 2022</span>
+            <a
+              href="
+              https://www.facebook.com/srilankaredcross/posts/pfbid0EdnJsD7qfC7Bc432CoTUtT2oBVM926G44gnTEqTfzJvGRGwRujtpajQivWpU6tHDl
+              "
+              target="_blank"
+              rel="noreferrer"
+            >
+              <p>
+                In a time of grave crisis where essential medicines are scarce
+                or not available at all, the Singapore Red Cross has donated
+                medicines worth around 68,500 SGD.
+              </p>
+            </a>
           </div>
         </div>
       </div>

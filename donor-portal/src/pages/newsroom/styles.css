@@ -54,6 +54,10 @@
   flex-direction: column;
 }
 
+.news-room .news-title {
+  padding-bottom: 1.8rem;
+}
+
 .news-room .news-article-list-item {
   display: flex;
   flex-direction: column;
@@ -61,6 +65,10 @@
   margin-bottom: 1rem;
   gap: 0.5rem;
   border-bottom: var(--elixir-color-gray-500) 1px solid;
+}
+
+.news-article-list-item a{
+  text-decoration: black;
 }
 
 .news-grid {
