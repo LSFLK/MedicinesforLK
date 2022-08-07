@@ -104,8 +104,12 @@ export default function CreateAidPackage() {
             AidPackageService.commentPublishedAidPackage(data);
           }
         })
-        .catch(() => {
-          toast("something went wrong");
+        .catch((error) => {
+          if (error.response.data.includes("aid_package.NAME_UNIQUE")) {
+            toast("Aid package name already exists");
+          } else {
+            toast("Something went wrong");
+          }
         });
     }
     throw new Error("invalid supplier"); // or handle otherwise.
