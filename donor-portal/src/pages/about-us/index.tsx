@@ -83,7 +83,7 @@ export default function AboutUs() {
             <div className="profile-card">
               <a href="https://www.linkedin.com/in/tharaka-samarasinghe-3b7819a8/ ">
                 <h3>Tharaka Samarasinghe</h3>
-                <p>HR Assistant</p>
+                <p>Coordinator to the Director General&apos;s Office</p>
                 <p>Sri Lanka Red Cross Society</p>
               </a>
             </div>
@@ -229,6 +229,7 @@ export default function AboutUs() {
             <p>Namali Premawardhana</p>
             <p>Avanthi Gunatilake</p>
             <p>Ryan Kuruppu</p>
+            <p>Natasha Perera</p>
           </div>
         </div>
       </div>
