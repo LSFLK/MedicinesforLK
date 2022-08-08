@@ -69,6 +69,10 @@
   margin-bottom: 2rem;
 }
 
+.our-approach {
+  width: 100%;
+}
+
 .info-link-card {
   display: flex;
   flex-direction: column;
@@ -116,7 +120,7 @@
 
 .partner-card-container {
   display: grid;
-  grid-template-columns:  1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
   margin-top: 4rem;
   margin-bottom: 1rem;

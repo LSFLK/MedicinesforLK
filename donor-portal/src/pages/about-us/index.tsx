@@ -33,7 +33,14 @@ export default function AboutUs() {
           hospitals across the nation. Elixir coordinates the activities of our
           partners throughout the lifecycle of an aid package as shown below.
         </p>
-        <img src={ourApproachImage} alt="our-approach" />
+
+        <div>
+          <img
+            src={ourApproachImage}
+            alt="our-approach"
+            className="our-approach"
+          />
+        </div>
 
         <div className="accountability-and-transparency-section">
           <div className="accountability-and-transparency">
