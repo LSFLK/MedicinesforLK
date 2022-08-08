@@ -8,9 +8,6 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-red">
         <h1>Have questions on how to donate or pledge?</h1>
-        <span>
-          Email us at <u>elixir@redcross.com</u>
-        </span>
         <div className="actions">
           <button className="btn" type="button">
             <a href="mailto:mailto:elixir@redcross.lk">Email Us</a>
