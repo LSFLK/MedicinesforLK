@@ -50,7 +50,10 @@ export default function PledgeActivities({
         {activities.map((activity) => (
           <div key={activity.pledgeUpdateID} className="activity">
             <p className="activityDate">
-              {moment(activity.dateTime).format("LLL")}
+              {moment
+                .unix(activity.dateTime)
+                .local()
+                .format("YYYY-MM-DD hh:mm A")}
             </p>
             <div className="content">
               <span className="text">{activity.updateComment}</span>
