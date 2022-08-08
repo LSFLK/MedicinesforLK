@@ -12,7 +12,7 @@ import "./styles.css";
 export default function AboutUs() {
   return (
     <div className="about-us">
-      <HeroSection image={bannerImage} title="About Us" />
+      <HeroSection image={bannerImage} title="About Us" position="top left" />
       <div className="main-container">
         <p>
           <br /> <br />
@@ -229,7 +229,6 @@ export default function AboutUs() {
             <p>Deepali Mody</p>
             <p>Yatin Mody</p>
             <p>Madri Perera</p>
-            <p>Harindra Rajapakse</p>
             <p>Donny Surtani</p>
             <p>Priya Vasa</p>
             <p>Lakshitha Surasinghe</p>

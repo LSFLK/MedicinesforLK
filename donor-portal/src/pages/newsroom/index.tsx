@@ -25,27 +25,6 @@ export default function NewsRoom() {
               [E] <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a>
             </span>
           </div>
-          <div className="contact-section">
-            <span>Mr. Naveendra Senarathne</span>
-            <span>Media Focal Point</span>
-            <span>[T] +94 71 433 3331</span>
-            <span>
-              [E]{" "}
-              <a href="mailto:naveendra.senarathna@redcross.lk">
-                naveendra.senarathna@redcross.lk
-              </a>
-            </span>
-          </div>
-          <div className="contact-section">
-            <span>Mr. Zafran Packeerally</span>
-            <span>[T] +94 70 378 8685</span>
-            <span>
-              [E]
-              <a href="mailto:zafran.packeerally@redcross.lk">
-                zafran.packeerally@redcross.lk
-              </a>
-            </span>
-          </div>
         </div>
 
         <div className="news-article-list">
