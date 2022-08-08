@@ -43,11 +43,6 @@
   color: var(--elixir-color-red);
 }
 
-.footer .footer-red span {
-  color: white;
-  font-weight: 500;
-  font-size: 20px;
-}
 
 @media screen and (min-width: 1096px) {
   .footer .footer-gray img {
