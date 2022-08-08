@@ -6,7 +6,7 @@ import "./styles.css";
 export default function HeroSection({
   image,
   title,
-  position
+  position,
 }: {
   image: string;
   title: string;
