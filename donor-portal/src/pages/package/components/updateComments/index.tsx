@@ -15,7 +15,9 @@ export default function UpdateComments({ comments }: UpdateCommentsProps) {
         {comments.length === 0 && <p>No updates posted yet.</p>}
         {comments.map((post) => (
           <div key={post.packageUpdateID} className="comment">
-            <p className="date">{moment(post.dateTime).format("LLL")}</p>
+            <p className="date">
+              {moment.unix(post.dateTime).local().format("YYYY-MM-DD hh:mm A")}
+            </p>
             <div className="content">
               <span className="text">{post.updateComment}</span>
             </div>
