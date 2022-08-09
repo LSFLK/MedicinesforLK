@@ -118,6 +118,8 @@ export default function CreateAidPackage() {
           });
       }
     }
+
+    return true;
   };
 
   return (

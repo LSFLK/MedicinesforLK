@@ -222,15 +222,8 @@ export default function AidPackageTable({
     useRowSelect
   );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    // @ts-ignore
-    toggleAllRowsSelected,
-  } = tableInstance;
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance;
   return (
     <table {...getTableProps()}>
       <thead className="manage-package-header-row">
