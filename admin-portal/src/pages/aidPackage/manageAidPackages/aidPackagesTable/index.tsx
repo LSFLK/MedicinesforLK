@@ -176,18 +176,28 @@ export default function AidPackageTable({
           const [isUploading, setIsUploading] = useState(false);
           return !isUploading ? (
             <>
+              <button
+                type="button"
+                className="table-action-button btn small secondary"
+                onClick={() => {
+                  setSelectedPackage(row.original.key);
+                  row.toggleRowSelected(row.isRowSelected);
+                }}
+              >
+                Edit
+              </button>
               <PublishAidPackageButton
-                status={AidPackage.Status.Published}
+                status={AidPackage.Status.Draft}
                 handlePublish={handlePublish}
-                label="Publish"
+                label="Save Draft"
                 supplierID={row.original.supplierID}
                 packageKey={row.original.key}
                 setIsUploading={setIsUploading}
               />
               <PublishAidPackageButton
-                status={AidPackage.Status.Draft}
+                status={AidPackage.Status.Published}
                 handlePublish={handlePublish}
-                label="Save Draft"
+                label="Publish"
                 supplierID={row.original.supplierID}
                 packageKey={row.original.key}
                 setIsUploading={setIsUploading}
@@ -239,12 +249,6 @@ export default function AidPackageTable({
           return (
             <tr
               {...row.getRowProps()}
-              onClick={() => {
-                setSelectedPackage(row.original.key);
-                toggleAllRowsSelected(false);
-                // @ts-ignore
-                row.toggleRowSelected(true);
-              }}
               className={`manage-package-row ${
                 // @ts-ignore
                 row.isSelected && "manage-package-row--selected"

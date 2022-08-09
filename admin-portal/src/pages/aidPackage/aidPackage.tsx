@@ -72,47 +72,52 @@ export default function CreateAidPackage() {
       });
 
     if (aidPackage) {
-      return AidPackageService.postAidPackage({
-        name: aidPackage.name,
-        description: aidPackage.details,
-        status,
-        period: aidPackage.period,
-        aidPackageItems: needs.map((need) => {
-          const medicalNeed = medicalNeeds.find(
-            (currentNeed) => currentNeed.needID === need.id
-          );
-          const supplierQuotationID = medicalNeed?.supplierQuotes.find(
-            (quote) => quote.supplierID === supplierID
-          )?.quotationID;
+      if (!aidPackage.name) {
+        alert(
+          "Aid package name is required. Click edit button to add package name"
+        );
+      } else {
+        return AidPackageService.postAidPackage({
+          name: aidPackage.name,
+          description: aidPackage.details,
+          status,
+          period: aidPackage.period,
+          aidPackageItems: needs.map((need) => {
+            const medicalNeed = medicalNeeds.find(
+              (currentNeed) => currentNeed.needID === need.id
+            );
+            const supplierQuotationID = medicalNeed?.supplierQuotes.find(
+              (quote) => quote.supplierID === supplierID
+            )?.quotationID;
 
-          return {
-            needID: need.id,
-            quantity: need.quantity || 0,
-            quotationID: supplierQuotationID as number,
-          };
-        }),
-      })
-        .then(({ data }) => {
-          toast(`Successfully Published ${aidPackage.name}`);
-          /**
-           * flags the package to be removed from
-           * table.
-           */
-          aidPackages[packageKey].isPublished = true;
-          setAidPackages({ ...aidPackages });
-          if (data.status !== AidPackage.Status.Draft) {
-            AidPackageService.commentPublishedAidPackage(data);
-          }
+            return {
+              needID: need.id,
+              quantity: need.quantity || 0,
+              quotationID: supplierQuotationID as number,
+            };
+          }),
         })
-        .catch((error) => {
-          if (error.response.data.includes("aid_package.NAME_UNIQUE")) {
-            toast("Aid package name already exists");
-          } else {
-            toast("Something went wrong");
-          }
-        });
+          .then(({ data }) => {
+            toast(`Successfully Published ${aidPackage.name}`);
+            /**
+             * flags the package to be removed from
+             * table.
+             */
+            aidPackages[packageKey].isPublished = true;
+            setAidPackages({ ...aidPackages });
+            if (data.status !== AidPackage.Status.Draft) {
+              AidPackageService.commentPublishedAidPackage(data);
+            }
+          })
+          .catch((error) => {
+            if (error.response.data.includes("aid_package.NAME_UNIQUE")) {
+              toast("Aid package name already exists");
+            } else {
+              toast("Something went wrong");
+            }
+          });
+      }
     }
-    throw new Error("invalid supplier"); // or handle otherwise.
   };
 
   return (
