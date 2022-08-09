@@ -136,7 +136,6 @@ export default function PackageDetails() {
       packageUpdateID: 0,
       packageID: parseInt(packageId!, 10),
       updateComment: comment,
-      dateTime: "",
     });
     await fetchUpdateComments();
   };

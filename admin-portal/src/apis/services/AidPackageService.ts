@@ -1,7 +1,10 @@
 import { Quotation } from "../../types/Quotation";
 import Http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
-import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
+import {
+  AidPackageUpdateComment,
+  AidPackageUpsertUpdateComment,
+} from "../../types/AidPackageUpdateComment";
 import { AidPackageItem } from "../../types/DonorAidPackageOrderItem";
 import { Pledge } from "../../types/Pledge";
 
@@ -44,10 +47,10 @@ export default class AidPackageService {
 
   static upsertUpdateComment(
     packageID: number | string,
-    comment: AidPackageUpdateComment
+    comment: AidPackageUpsertUpdateComment
   ) {
     return AidPackageService.http.put<
-      AidPackageUpdateComment,
+      AidPackageUpsertUpdateComment,
       AidPackageUpdateComment
     >(`aidpackages/${packageID}/updatecomments`, comment);
   }
@@ -127,7 +130,6 @@ export default class AidPackageService {
       packageUpdateID: 0,
       packageID: aidPackage.packageID,
       updateComment: comment,
-      dateTime: "",
     });
   }
 }
