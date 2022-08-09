@@ -59,6 +59,8 @@ export default function PackageDetails() {
     const { data } = await AidPackageService.getUpdateComments(packageId!);
     const sorteddata = data.sort((data1, data2) => {
       return (
+        // TODO: dateTime will have to be *1000 to get the correct datetime
+        //  https://stackoverflow.com/a/847196/11005638
         new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime()
       );
     });

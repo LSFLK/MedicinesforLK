@@ -1,6 +1,9 @@
-export interface PledgeActivity {
+export interface PledgeActivity extends PledgeActivityUpsert {
+  dateTime: number;
+}
+
+export interface PledgeActivityUpsert {
   pledgeID: number;
   pledgeUpdateID: number;
   updateComment: string;
-  dateTime: number;
 }

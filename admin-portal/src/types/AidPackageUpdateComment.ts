@@ -1,5 +1,5 @@
 export interface AidPackageUpdateComment extends AidPackageUpsertUpdateComment {
-  dateTime: string;
+  dateTime: number;
 }
 
 export interface AidPackageUpsertUpdateComment {

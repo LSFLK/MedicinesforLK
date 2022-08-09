@@ -35,6 +35,8 @@ export default function EditPledge() {
     const { data } = await PledgeService.getUpdateComments(pledgeId!);
     const sorteddata = data.sort((data1, data2) => {
       return (
+        // TODO: dateTime will have to be *1000 to get the correct datetime
+        //  https://stackoverflow.com/a/847196/11005638
         new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime()
       );
     });
@@ -77,7 +79,6 @@ export default function EditPledge() {
       pledgeID: parseInt(pledgeId!, 10),
       pledgeUpdateID: 0,
       updateComment: text,
-      dateTime: "",
     });
     await fetchUpdateComments();
   };
