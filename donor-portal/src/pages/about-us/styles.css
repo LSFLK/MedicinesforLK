@@ -195,3 +195,35 @@
 .profile-card p {
   margin-top: -15px;
 }
+
+@media screen and (max-width: 900px) {
+  about-us-container {
+    z-index: 1;
+    width: var(--elixir-content-max-width);
+    padding: 3rem;
+  }
+
+  .our-approach {
+    width: 90% !important;
+    margin: 1rem;
+  }
+
+  .accountability-and-transparency-section, .profile-card-container,.partner-card-container,.partner-section-card,.volunteers-section{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* text-align: center; */
+  }
+
+  .profile-card{
+    text-align: center;
+  }
+
+  .accountability-and-transparency, .paraghraph {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: justify !important;
+  }
+  
+}
