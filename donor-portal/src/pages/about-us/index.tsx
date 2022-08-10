@@ -14,7 +14,7 @@ export default function AboutUs() {
     <div className="about-us">
       <HeroSection image={bannerImage} title="About Us" position="top left" />
       <div className="main-container">
-        <p>
+        <p className="paraghraph">
           <br /> <br />
           We are a team of volunteers from around the world working to address
           the acute medical supply shortage in our motherland. Collectively we
@@ -24,7 +24,7 @@ export default function AboutUs() {
           medical service providers.
         </p>
         <h2>Our Approach</h2>
-        <p>
+        <p className="paraghraph">
           In partnership with the Sri Lanka Red Cross, Ministry of Health, the
           Medical Supply Division, Medical Colleges, Lanka Software Foundation,
           and The Last Word, we have developed Elixir, an online platform that
@@ -139,7 +139,7 @@ export default function AboutUs() {
               <a href="https://opensource.lk/">
                 <img src={lsfLogo} alt="LSF Logo" />
               </a>
-              <p>
+              <p className="paraghraph">
                 LSF has been building large-scale open source systems for more
                 than 15 years, with government and communities, to address a
                 range of challenges from disaster management to elections,
@@ -150,7 +150,7 @@ export default function AboutUs() {
               <a href="https://sefglobal.org/">
                 <img src={sefLogo} alt="SEF Logo" />
               </a>
-              <p>
+              <p className="paraghraph">
                 Sustainable Education Foundation (SEF) helps local students
                 connect with industry experts and academics around the world for
                 mentoring and career opportunities. SEF also supports Sri Lankan
@@ -162,7 +162,7 @@ export default function AboutUs() {
               <a href="https://longform.watchdog.team/about-us">
                 <img src={watchDogLogo} alt="Watchdog Logo" />
               </a>
-              <p>
+              <p className="paraghraph">
                 Watchdog is a multidisciplinary team of fact checkers,
                 journalists, researchers and software engineers. We hunt hoaxes
                 and misinformation, investigate matters of public welfare, and
@@ -173,7 +173,7 @@ export default function AboutUs() {
               <a href="https://wearethelastword.com/">
                 <img src={lastWordLogo} alt="Last Word Logo" />
               </a>
-              <p>
+              <p className="paraghraph">
                 The Last Word are creatives and brand strategists whose work
                 spans the breadth of brand architecture, design, digital
                 marketing communications and user experience.
@@ -183,7 +183,7 @@ export default function AboutUs() {
               <a href="https://wso2.com/">
                 <img src={wso2logo} alt="WSO2 Logo" />
               </a>
-              <p>
+              <p className="paraghraph">
                 Founded in 2005, WSO2 enables the composable enterprise. WSO2’s
                 open source, API-first, and decentralized approach helps
                 developers and architects to be more productive and rapidly
