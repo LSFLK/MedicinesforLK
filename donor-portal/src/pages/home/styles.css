@@ -112,3 +112,16 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 900px) {
+    .home-description, .home-description-text,.current-donors, .logo-container{
+        flex: 1;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: justify;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+}
