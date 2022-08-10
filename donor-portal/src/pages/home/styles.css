@@ -72,18 +72,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1.5rem 2rem;
-}
-
-@media (max-width: 600px) {
-    .home-heading {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .home-description {
-        flex-direction: column;
-    }
+    margin: 1.5rem 1.5rem;
 }
 
 .current-donors {
@@ -120,8 +109,12 @@
         flex-direction: column !important;
         align-items: center !important;
         text-align: justify;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding:1rem 1rem;
+    }
+
+    .home-description .image-container {
+        padding: 0rem !important;
+        margin-right: 0rem !important;
     }
 
 }
