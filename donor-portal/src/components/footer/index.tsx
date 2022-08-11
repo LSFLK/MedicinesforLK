@@ -10,7 +10,7 @@ export default function Footer() {
         <h1>Have questions on how to donate or pledge?</h1>
         <div className="actions">
           <button className="btn" type="button">
-            <a href="mailto:mailto:elixir@redcross.lk">Email Us</a>
+            <a href="mailto:elixir@redcross.lk">Email Us</a>
           </button>
         </div>
       </div>
