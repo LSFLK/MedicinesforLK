@@ -127,7 +127,7 @@ export default function DonateNowPage() {
   useEffect(() => {
     fetchAidPackages();
   }, []);
-
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   return (
     <div className="main-container medical-needs-page">
       <div className="medical-needs-heading">

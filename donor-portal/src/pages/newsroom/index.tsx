@@ -4,6 +4,7 @@ import bannerImage from "./images/banner.jpg";
 import "./styles.css";
 
 export default function NewsRoom() {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   return (
     <div className="news-room">
       <HeroSection title="News Room" image={bannerImage} />

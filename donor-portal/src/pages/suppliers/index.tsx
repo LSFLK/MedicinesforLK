@@ -8,6 +8,7 @@ import supplierIcon from "./images/pharmacy.jpg";
 import "./styles.css";
 
 export default function Suppliers() {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   return (
     <div className="suppliers">
       <HeroSection title="Hospitals & Suppliers" image={bannerImage} />
