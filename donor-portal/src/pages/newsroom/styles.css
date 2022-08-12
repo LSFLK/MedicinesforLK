@@ -103,3 +103,25 @@ h4 {
   aspect-ratio: 16 / 9;
   width: 100%;
 }
+
+@media screen and (max-width: 900px) {
+  .text-section, .news-article-list{
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .sub-title{
+    max-width: 14rem;
+    margin: auto;
+  }
+
+  .contact-section{
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .news-article-list-item{
+    text-align: justify;
+  }
+}
