@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
+import { FaBars, FaChevronUp } from "react-icons/fa";
 import logo from "./images/logo.png";
 import "./styles.css";
 
 export default function NavBar() {
   const { state, signIn, signOut } = useAuthContext();
+
+  const [showMobileNav, setShowMobileNav] = useState(false);
 
   const handleLogout = () => {
     signOut();
@@ -15,15 +18,37 @@ export default function NavBar() {
     signIn();
   };
 
+  const toggleMobleNav = () => {
+    setShowMobileNav((pre: boolean) => {
+      return !pre;
+    });
+  };
+
   return (
     <div className="navbar">
       <nav className="navbar-container">
-        <Link to="/">
-          <div className="logo">
-            <img src={logo} alt="Elixir Logo" />
-          </div>
-        </Link>
-        <div className="nav-links">
+        <div className="mobile-nav-top">
+          {!showMobileNav && (
+            <FaBars className="menu-icon" size={20} onClick={toggleMobleNav} />
+          )}
+          {showMobileNav && (
+            <FaChevronUp
+              className="menu-icon"
+              size={20}
+              onClick={toggleMobleNav}
+            />
+          )}
+          <Link to="/">
+            <div className="logo">
+              <img src={logo} alt="Elixir Logo" />
+            </div>
+          </Link>
+        </div>
+        <div
+          className={`nav-links ${
+            showMobileNav ? "mobile-nav show" : "mobile-nav hide"
+          }`}
+        >
           <NavLink to="/" exact className="nav-link">
             Home
           </NavLink>
