@@ -7,7 +7,10 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-red">
-        <h1>Have questions on how to donate or pledge?</h1>
+        <h1>
+          Have questions on <br className="visible-sm" /> how to donate or
+          pledge?
+        </h1>
         <div className="actions">
           <button className="btn" type="button">
             <a href="mailto:elixir@redcross.lk">Email Us</a>
@@ -47,7 +50,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="footer-geay-middle">
+        <div className="footer-gray-middle">
           <Link to="/about-us" className="text-link">
             About
           </Link>
@@ -64,8 +67,9 @@ export default function Footer() {
       </div>
       <div className="footer-gray-bottom">
         <p>
-          All content copyright © 2022 Sri Lanka Red Cross. All rights reserved.{" "}
-          |
+          All content copyright © 2022 Sri Lanka Red Cross.
+          <br className="visible-sm" />
+          All rights reserved. |
           <a href=" https://www.redcross.lk/who-we-are/our-legal-status-in-sri-lanka/">
             {" "}
             Our Legal Status in Sri Lanka
