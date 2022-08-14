@@ -25,7 +25,7 @@ function App() {
       });
     const donorHttp: Http = new Http(
       httpRequest,
-      "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/donor-api/1.0.0"
+      `${process.env.REACT_APP_DONOR_BACKEND_URL}`
     );
     AidPackageService.donorHttp = donorHttp;
   }, [state.isAuthenticated]);
