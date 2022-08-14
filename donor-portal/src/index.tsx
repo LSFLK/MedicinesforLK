@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { AuthProvider, Storage } from "@asgardeo/auth-react";
 import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -19,7 +20,9 @@ root.render(
     }}
     plugin={TokenExchangePlugin.getInstance()}
   >
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </AuthProvider>
 );
 

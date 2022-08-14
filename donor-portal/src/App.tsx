@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
@@ -30,35 +30,38 @@ function App() {
     AidPackageService.donorHttp = donorHttp;
   }, [state.isAuthenticated]);
 
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+
   return (
     <div className="App">
       <UserContext.Provider value={loggedInUserId}>
-        <BrowserRouter>
-          <header className="App-header">
-            <NavBar />
-          </header>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/about-us">
-              <AboutUs />
-            </Route>
-            <Route exact path="/suppliers">
-              <Suppliers />
-            </Route>
-            <Route exact path="/package/:id">
-              <AidPackageDetailsPage />
-            </Route>
-            <Route exact path="/donate-now">
-              <DonateNowPage />
-            </Route>
-            <Route exact path="/news-room">
-              <NewsRoom />
-            </Route>
-          </Switch>
-          <Footer />
-        </BrowserRouter>
+        <header className="App-header">
+          <NavBar />
+        </header>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about-us">
+            <AboutUs />
+          </Route>
+          <Route exact path="/suppliers">
+            <Suppliers />
+          </Route>
+          <Route exact path="/package/:id">
+            <AidPackageDetailsPage />
+          </Route>
+          <Route exact path="/donate-now">
+            <DonateNowPage />
+          </Route>
+          <Route exact path="/news-room">
+            <NewsRoom />
+          </Route>
+        </Switch>
+        <Footer />
       </UserContext.Provider>
     </div>
   );
