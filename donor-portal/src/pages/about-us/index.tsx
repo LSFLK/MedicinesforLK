@@ -10,7 +10,6 @@ import wso2logo from "./images/wso2.png";
 import "./styles.css";
 
 export default function AboutUs() {
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   return (
     <div className="about-us">
       <HeroSection image={bannerImage} title="About Us" position="top left" />
