@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
