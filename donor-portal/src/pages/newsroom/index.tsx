@@ -10,7 +10,7 @@ export default function NewsRoom() {
       <div className="main-container">
         <div className="text-section">
           <h2>Media Contacts</h2>
-          <p>
+          <p className="sub-title">
             <strong>For all media inquiries please contact us below:</strong>
           </p>
           <div className="contact-section">

@@ -67,7 +67,7 @@
   border-bottom: var(--elixir-color-gray-500) 1px solid;
 }
 
-.news-article-list-item a{
+.news-article-list-item a {
   text-decoration: black;
 }
 
@@ -102,4 +102,49 @@ h4 {
 .news-room .video-section .video {
   aspect-ratio: 16 / 9;
   width: 100%;
+}
+
+@media screen and (max-width: 400px) {
+
+  .text-section,
+  .news-article-list {
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .sub-title {
+    max-width: 14rem;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 950px) {
+
+  .text-section,
+  .news-article-list {
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .contact-section {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .news-article-list-item {
+    text-align: justify;
+  }
+
+}
+
+@media screen and (min-width: 950px) and (max-width:1160px) {
+
+  .text-section,
+  .news-article-list {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
 }
