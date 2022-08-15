@@ -90,7 +90,7 @@ export default function SupplierNeedAllocationTable({
             `${quote.period.day}/${quote.period.month}/${quote.period.year}`
           ).format("MM/DD/YYYY"),
           quantity,
-          max: Math.min(requiredQuantity, quote.availableQuantity),
+          max: quote.remainingQuantity,
           supplierID: quote.supplierID,
           published: aidPackages?.[getDraftAidPackageKey(quote)]?.isPublished,
           unitPrice: formatMoney(quote.unitPrice),
