@@ -24,7 +24,7 @@
 }
 .aid-package-header-image img {
   width: 100%;
-  height: 420px;
+  height: 40vh;
   background-size: cover;
   object-fit: cover;
   display: block;
