@@ -234,7 +234,11 @@ export default function AssignSuppliers({
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()} style={{}}>
+                <th
+                  className="table-header"
+                  {...column.getHeaderProps()}
+                  style={{}}
+                >
                   {column.render("Header")}
                 </th>
               ))}
