@@ -31,6 +31,9 @@
   grid-column-gap: 20px;
   padding-bottom: 40px;
   list-style: none;
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0;
 }
 
 .volunteers-section li {
@@ -222,17 +225,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* text-align: center; */
   }
 
   .profile-card {
     text-align: center;
   }
 
-  .accountability-and-transparency,
-  .paraghraph {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    text-align: justify !important;
+  .accountability-and-transparency-section,
+  .main-container > p {
+    padding: 0 1.5rem;
   }
 }
