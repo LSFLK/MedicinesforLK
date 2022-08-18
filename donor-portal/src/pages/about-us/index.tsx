@@ -9,13 +9,59 @@ import lastWordLogo from "./images/the-last-word-logo.png";
 import wso2logo from "./images/wso2.png";
 import "./styles.css";
 
+const volunteers = [
+  "Anupama Pathirage",
+  "Marcus Chandradasa",
+  "Sanjiva Weerawarana",
+  "Jayasanka Weerasinghe",
+  "Samisa Abeysinghe",
+  "Nipuna Gunathilake",
+  "Randila Premarathne",
+  "Kalsha Samarajeewa",
+  "Heshan Andrews",
+  "Amila Jayasekara",
+  "Manuranga Perera",
+  "Joys Chokatte",
+  "Shehan Kulathilake",
+  "Ratnajothy Sangeethanan",
+  "Srinath Perera",
+  "Anjula Samarasinghe",
+  "Manoj Lakshan",
+  "Yujith Isura",
+  "Kavishka Timashan",
+  "Thisaru Guruge",
+  "Tharindu Udupitiya",
+  "Ayesh Almeida",
+  "Dinuka Piyadigama",
+  "Ramindu Deshapriya",
+  "Kajendran Alagaratnam",
+  "Kanushka Gayan",
+  "Madusha Gunasekara",
+  "Charuka Karunanayake",
+  "Nipun Sampath",
+  "Sameera Jayasoma",
+  "Ruhaim Izmeth",
+  "Deepali Mody",
+  "Yatin Mody",
+  "Madri Perera",
+  "Donny Surtani",
+  "Priya Vasa",
+  "Lakshitha Surasinghe",
+  "Namali Premawardhana",
+  "Avanthi Gunatilake",
+  "Ryan Kuruppu",
+  "Natasha Perera",
+  "Buddhi Weerasekera",
+  "Dllina Bandara",
+];
+
 export default function AboutUs() {
   return (
     <div className="about-us">
       <HeroSection image={bannerImage} title="About Us" position="top left" />
       <div className="main-container">
-        <p className="paraghraph">
-          <br /> <br />
+        <p>
+          <br />
           We are a team of volunteers from around the world working to address
           the acute medical supply shortage in our motherland. Collectively we
           have brought our skills in software development, pharmaceutical supply
@@ -24,7 +70,7 @@ export default function AboutUs() {
           medical service providers.
         </p>
         <h2>Our Approach</h2>
-        <p className="paraghraph">
+        <p>
           In partnership with the Sri Lanka Red Cross, Ministry of Health, the
           Medical Supply Division, Medical Colleges, Lanka Software Foundation,
           and The Last Word, we have developed Elixir, an online platform that
@@ -139,7 +185,7 @@ export default function AboutUs() {
               <a href="https://opensource.lk/">
                 <img src={lsfLogo} alt="LSF Logo" />
               </a>
-              <p className="paraghraph">
+              <p>
                 LSF has been building large-scale open source systems for more
                 than 15 years, with government and communities, to address a
                 range of challenges from disaster management to elections,
@@ -150,7 +196,7 @@ export default function AboutUs() {
               <a href="https://sefglobal.org/">
                 <img src={sefLogo} alt="SEF Logo" />
               </a>
-              <p className="paraghraph">
+              <p>
                 Sustainable Education Foundation (SEF) helps local students
                 connect with industry experts and academics around the world for
                 mentoring and career opportunities. SEF also supports Sri Lankan
@@ -162,7 +208,7 @@ export default function AboutUs() {
               <a href="https://longform.watchdog.team/about-us">
                 <img src={watchDogLogo} alt="Watchdog Logo" />
               </a>
-              <p className="paraghraph">
+              <p>
                 Watchdog is a multidisciplinary team of fact checkers,
                 journalists, researchers and software engineers. We hunt hoaxes
                 and misinformation, investigate matters of public welfare, and
@@ -173,7 +219,7 @@ export default function AboutUs() {
               <a href="https://wearethelastword.com/">
                 <img src={lastWordLogo} alt="Last Word Logo" />
               </a>
-              <p className="paraghraph">
+              <p>
                 The Last Word are creatives and brand strategists whose work
                 spans the breadth of brand architecture, design, digital
                 marketing communications and user experience.
@@ -183,7 +229,7 @@ export default function AboutUs() {
               <a href="https://wso2.com/">
                 <img src={wso2logo} alt="WSO2 Logo" />
               </a>
-              <p className="paraghraph">
+              <p>
                 Founded in 2005, WSO2 enables the composable enterprise. WSO2’s
                 open source, API-first, and decentralized approach helps
                 developers and architects to be more productive and rapidly
@@ -194,49 +240,11 @@ export default function AboutUs() {
         </div>
         <div>
           <h2>Volunteers</h2>
-          <div className="volunteers-section">
-            <p>Anupama Pathirage</p>
-            <p>Marcus Chandradasa</p>
-            <p>Sanjiva Weerawarana</p>
-            <p>Jayasanka Weerasinghe</p>
-            <p>Samisa Abeysinghe</p>
-            <p>Nipuna Gunathilake</p>
-            <p>Randila Premarathne</p>
-            <p>Kalsha Samarajeewa</p>
-            <p>Heshan Andrews</p>
-            <p>Amila Jayasekara</p>
-            <p>Manuranga Perera</p>
-            <p>Joys Chokatte</p>
-            <p>Shehan Kulathilake</p>
-            <p>Ratnajothy Sangeethanan</p>
-            <p>Srinath Perera</p>
-            <p>Anjula Samarasinghe</p>
-            <p>Manoj Lakshan</p>
-            <p>Yujith Isura</p>
-            <p>Kavishka Timashan</p>
-            <p>Thisaru Guruge</p>
-            <p>Tharindu Udupitiya</p>
-            <p>Ayesh Almeida</p>
-            <p>Dinuka Piyadigama</p>
-            <p>Ramindu Deshapriya</p>
-            <p>Kajendran Alagaratnam</p>
-            <p>Kanushka Gayan</p>
-            <p>Madusha Gunasekara</p>
-            <p>Charuka Karunanayake</p>
-            <p>Nipun Sampath</p>
-            <p>Sameera Jayasoma</p>
-            <p>Ruhaim Izmeth</p>
-            <p>Deepali Mody</p>
-            <p>Yatin Mody</p>
-            <p>Madri Perera</p>
-            <p>Donny Surtani</p>
-            <p>Priya Vasa</p>
-            <p>Lakshitha Surasinghe</p>
-            <p>Namali Premawardhana</p>
-            <p>Avanthi Gunatilake</p>
-            <p>Ryan Kuruppu</p>
-            <p>Natasha Perera</p>
-          </div>
+          <ul className="volunteers-section">
+            {volunteers.map((volunteer) => (
+              <li>{volunteer}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

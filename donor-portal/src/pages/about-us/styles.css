@@ -30,6 +30,14 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 20px;
   padding-bottom: 40px;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.volunteers-section li {
+  margin: 1rem 0;
 }
 
 .accountability-and-transparency-section {
@@ -208,22 +216,23 @@
     margin: 1rem;
   }
 
-  .accountability-and-transparency-section, .profile-card-container,.partner-card-container,.partner-section-card,.volunteers-section{
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      /* text-align: center; */
+  .accountability-and-transparency-section,
+  .profile-card-container,
+  .partner-card-container,
+  .partner-section-card,
+  .volunteers-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .profile-card{
+  .profile-card {
     text-align: center;
   }
 
-  .accountability-and-transparency, .paraghraph {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    text-align: justify !important;
+  .accountability-and-transparency-section,
+  .main-container > p {
+    padding: 0 1.5rem;
   }
-  
 }
