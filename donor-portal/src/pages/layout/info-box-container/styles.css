@@ -4,3 +4,9 @@
   flex-wrap: wrap;
   margin-top: -70px;
 }
+
+@media only screen and (max-width: 480px) {
+  .info-box-container {
+    justify-content: center;
+  }
+}

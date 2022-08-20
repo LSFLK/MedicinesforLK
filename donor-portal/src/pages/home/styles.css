@@ -72,18 +72,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1.5rem 2rem;
-}
-
-@media (max-width: 600px) {
-    .home-heading {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .home-description {
-        flex-direction: column;
-    }
+    margin: 1.5rem 1.5rem;
 }
 
 .current-donors {
@@ -111,4 +100,21 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .home-description, .home-description-text,.current-donors, .logo-container{
+        flex: 1;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: justify;
+        padding:1rem 1rem;
+    }
+
+    .home-description .image-container {
+        padding: 0rem !important;
+        margin-right: 0rem !important;
+    }
+
 }

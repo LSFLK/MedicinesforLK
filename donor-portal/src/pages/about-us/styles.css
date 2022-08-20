@@ -30,6 +30,14 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 20px;
   padding-bottom: 40px;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.volunteers-section li {
+  margin: 1rem 0;
 }
 
 .accountability-and-transparency-section {
@@ -67,6 +75,10 @@
   display: flex;
   gap: 2px;
   margin-bottom: 2rem;
+}
+
+.our-approach {
+  width: 100%;
 }
 
 .info-link-card {
@@ -116,7 +128,7 @@
 
 .partner-card-container {
   display: grid;
-  grid-template-columns:  1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
   margin-top: 4rem;
   margin-bottom: 1rem;
@@ -190,4 +202,37 @@
 
 .profile-card p {
   margin-top: -15px;
+}
+
+@media screen and (max-width: 900px) {
+  about-us-container {
+    z-index: 1;
+    width: var(--elixir-content-max-width);
+    padding: 3rem;
+  }
+
+  .our-approach {
+    width: 90% !important;
+    margin: 1rem;
+  }
+
+  .accountability-and-transparency-section,
+  .profile-card-container,
+  .partner-card-container,
+  .partner-section-card,
+  .volunteers-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-card {
+    text-align: center;
+  }
+
+  .accountability-and-transparency-section,
+  .main-container > p {
+    padding: 0 1.5rem;
+  }
 }

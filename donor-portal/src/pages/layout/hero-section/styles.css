@@ -1,6 +1,5 @@
 .hero-image {
   height: 50vh;
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -28,4 +27,31 @@
 
 .hero-image .hero-text .icon{
   vertical-align: bottom;
+}
+@media screen and (max-width: 920px) {
+  .title, .hero-text{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 25px !important;
+    max-width: 20rem !important;
+  }
+
+  .hero-image {
+    height: 25vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title {
+    text-align: center;
+  }
+
+  .title, .hero-image .hero-text {
+    justify-content: center;
+    max-width: 82%!important;
+  }
 }

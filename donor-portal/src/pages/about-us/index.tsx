@@ -9,13 +9,59 @@ import lastWordLogo from "./images/the-last-word-logo.png";
 import wso2logo from "./images/wso2.png";
 import "./styles.css";
 
+const volunteers = [
+  "Anupama Pathirage",
+  "Marcus Chandradasa",
+  "Sanjiva Weerawarana",
+  "Jayasanka Weerasinghe",
+  "Samisa Abeysinghe",
+  "Nipuna Gunathilake",
+  "Randila Premarathne",
+  "Kalsha Samarajeewa",
+  "Heshan Andrews",
+  "Amila Jayasekara",
+  "Manuranga Perera",
+  "Joys Chokatte",
+  "Shehan Kulathilake",
+  "Ratnajothy Sangeethanan",
+  "Srinath Perera",
+  "Anjula Samarasinghe",
+  "Manoj Lakshan",
+  "Yujith Isura",
+  "Kavishka Timashan",
+  "Thisaru Guruge",
+  "Tharindu Udupitiya",
+  "Ayesh Almeida",
+  "Dinuka Piyadigama",
+  "Ramindu Deshapriya",
+  "Kajendran Alagaratnam",
+  "Kanushka Gayan",
+  "Madusha Gunasekara",
+  "Charuka Karunanayake",
+  "Nipun Sampath",
+  "Sameera Jayasoma",
+  "Ruhaim Izmeth",
+  "Deepali Mody",
+  "Yatin Mody",
+  "Madri Perera",
+  "Donny Surtani",
+  "Priya Vasa",
+  "Lakshitha Surasinghe",
+  "Namali Premawardhana",
+  "Avanthi Gunatilake",
+  "Ryan Kuruppu",
+  "Natasha Perera",
+  "Buddhi Weerasekera",
+  "Dllina Bandara",
+];
+
 export default function AboutUs() {
   return (
     <div className="about-us">
-      <HeroSection image={bannerImage} title="About Us" />
+      <HeroSection image={bannerImage} title="About Us" position="top left" />
       <div className="main-container">
         <p>
-          <br /> <br />
+          <br />
           We are a team of volunteers from around the world working to address
           the acute medical supply shortage in our motherland. Collectively we
           have brought our skills in software development, pharmaceutical supply
@@ -33,7 +79,14 @@ export default function AboutUs() {
           hospitals across the nation. Elixir coordinates the activities of our
           partners throughout the lifecycle of an aid package as shown below.
         </p>
-        <img src={ourApproachImage} alt="our-approach" />
+
+        <div>
+          <img
+            src={ourApproachImage}
+            alt="our-approach"
+            className="our-approach"
+          />
+        </div>
 
         <div className="accountability-and-transparency-section">
           <div className="accountability-and-transparency">
@@ -83,7 +136,7 @@ export default function AboutUs() {
             <div className="profile-card">
               <a href="https://www.linkedin.com/in/tharaka-samarasinghe-3b7819a8/ ">
                 <h3>Tharaka Samarasinghe</h3>
-                <p>HR Assistant</p>
+                <p>Coordinator to the Director General&apos;s Office</p>
                 <p>Sri Lanka Red Cross Society</p>
               </a>
             </div>
@@ -187,49 +240,11 @@ export default function AboutUs() {
         </div>
         <div>
           <h2>Volunteers</h2>
-          <div className="volunteers-section">
-            <p>Anupama Pathirage</p>
-            <p>Marcus Chandradasa</p>
-            <p>Sanjiva Weerawarana</p>
-            <p>Jayasanka Weerasinghe</p>
-            <p>Samisa Abeysinghe</p>
-            <p>Nipuna Gunathilake</p>
-            <p>Randila Premarathne</p>
-            <p>Kalsha Samarajeewa</p>
-            <p>Heshan Andrews</p>
-            <p>Amila Jayasekara</p>
-            <p>Manuranga Perera</p>
-            <p>Joys Chokatte</p>
-            <p>Shehan Kulathilake</p>
-            <p>Ratnajothy Sangeethanan</p>
-            <p>Srinath Perera</p>
-            <p>Anjula Samarasinghe</p>
-            <p>Manoj Lakshan</p>
-            <p>Yujith Isura</p>
-            <p>Kavishka Timashan</p>
-            <p>Thisaru Guruge</p>
-            <p>Tharindu Udupitiya</p>
-            <p>Ayesh Almeida</p>
-            <p>Dinuka Piyadigama</p>
-            <p>Ramindu Deshapriya</p>
-            <p>Kajendran Alagaratnam</p>
-            <p>Kanushka Gayan</p>
-            <p>Madusha Gunasekara</p>
-            <p>Charuka Karunanayake</p>
-            <p>Nipun Sampath</p>
-            <p>Sameera Jayasoma</p>
-            <p>Ruhaim Izmeth</p>
-            <p>Deepali Mody</p>
-            <p>Yatin Mody</p>
-            <p>Madri Perera</p>
-            <p>Harindra Rajapakse</p>
-            <p>Donny Surtani</p>
-            <p>Priya Vasa</p>
-            <p>Lakshitha Surasinghe</p>
-            <p>Namali Premawardhana</p>
-            <p>Avanthi Gunatilake</p>
-            <p>Ryan Kuruppu</p>
-          </div>
+          <ul className="volunteers-section">
+            {volunteers.map((volunteer) => (
+              <li>{volunteer}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

@@ -30,6 +30,7 @@
   display: flex;
   align-items: center;
   color: white;
+  transition: all 1s ease-in-out;
 }
 
 .nav-link {
@@ -88,4 +89,81 @@
 
 .login-btn:hover {
   color: red;
+}
+
+.mobile-nav-top .menu-icon {
+  display: none;
+}
+
+/* Small devices (portrait tablets and large phones) */
+@media only screen and (max-width: 640px) {
+  .navbar-container {
+    height: unset;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-top .menu-icon {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 20px 20px;
+    border-radius: 20px;
+  }
+
+  .nav-links.mobile-nav.hide {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 0;
+    transition: all 1s ease-in-out;
+  }
+
+  .nav-link {
+    padding: 8px 16px;
+    width: -webkit-fill-available;
+    transition: all 0.2s ease-out;
+  }
+
+  .nav-link:hover {
+    color: white;
+  }
+
+  .nav-link.active {
+    font-weight: normal;
+    background-color: #9b0101;
+  }
+
+  .logo {
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+  }
+
+  .login-btn {
+    background-color: transparent;
+    font-size: 17px;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    border-top: 1px solid white;
+    cursor: pointer;
+    margin-left: unset;
+    color: white;
+    padding: 8px 16px;
+    border-radius: unset;
+    box-shadow: unset;
+    top: unset;
+    width: -webkit-fill-available;
+    height: unset;
+    line-height: unset;
+    font-weight: normal;
+    background-image: unset;
+    transition: unset;
+  }
 }

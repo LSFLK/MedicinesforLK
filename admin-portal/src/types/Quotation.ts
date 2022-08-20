@@ -6,6 +6,7 @@ export interface Quotation {
   itemID: number;
   brandName: string;
   availableQuantity: number;
+  remainingQuantity: number;
   expiryDate: {
     year: number;
     month: number;

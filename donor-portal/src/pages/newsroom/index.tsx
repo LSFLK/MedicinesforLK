@@ -10,34 +10,11 @@ export default function NewsRoom() {
       <div className="main-container">
         <div className="text-section">
           <h2>Media Contacts</h2>
-          <p>
-            <strong>
-              If you have been affected by a personal disaster and require
-              assistance, contact us:
-            </strong>
+          <p className="sub-title">
+            <strong>For all media inquiries please contact us below:</strong>
           </p>
           <div className="contact-section">
-            <span>Mr. Naveendra Senarathne</span>
-            <span>Media Focal Point</span>
-            <span>[T] +94 71 433 3331</span>
-            <span>
-              [E]{" "}
-              <a href="mailto:naveendra.senarathna@redcross.lk">
-                naveendra.senarathna@redcross.lk
-              </a>
-            </span>
-          </div>
-          <div className="contact-section">
-            <span>Mr. Zafran Packeerally</span>
-            <span>[T] +94 70 378 8685</span>
-            <span>
-              [E]
-              <a href="mailto:zafran.packeerally@redcross.lk">
-                zafran.packeerally@redcross.lk
-              </a>
-            </span>
-          </div>
-          <div className="contact-section">
+            <span>Mr. Tharaka Samarasinghe</span>
             <span>Sri Lanka Red Cross Society</span>
             <span>National Headquarters</span>
             <span>106, Dharmapala Mawatha,</span>
@@ -45,7 +22,7 @@ export default function NewsRoom() {
             <span>[T] +94 11 269 1095 , +94 11 269 1095</span>
             <span>[F] +94 11 268 2675</span>
             <span>
-              [E] <a href="mailto:info@redcross.lk">info@redcross.lk </a>
+              [E] <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a>
             </span>
           </div>
         </div>
@@ -74,9 +51,8 @@ export default function NewsRoom() {
             >
               <span className="red">June 9th 2022</span>
               <p>
-                Understanding the critical requirement of blood in Sri Lanka,
                 Sri Lanka Red Cross Society - Colombo Branch organised a blood
-                donation camp in Colombo, today.
+                donation camp in Colombo.
               </p>
             </a>
           </div>
@@ -90,9 +66,8 @@ export default function NewsRoom() {
               rel="noreferrer"
             >
               <p>
-                In a time of grave crisis where essential medicines are scarce
-                or not available at all, the Singapore Red Cross has donated
-                medicines worth around 68,500 SGD.
+                Singapore Red Cross donated medicines worth 68,500 SGD (approx.
+                $50,000 USD).
               </p>
             </a>
           </div>

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useTable } from "react-table";
 import {
   getDraftAidPackageKey,
@@ -26,6 +26,7 @@ export default function AidPackageDetailsTable({
   medicalNeeds: MedicalNeed[];
 }) {
   const supplierID = getSupplierIdFromAidPackageKey(selectedPackageKey);
+  const [packageName, setPackageName] = useState("");
 
   const data = useMemo(
     () =>
@@ -94,7 +95,7 @@ export default function AidPackageDetailsTable({
   return (
     <div className="aid-package-details">
       <hr />
-      <h4>Edit Package: {selectedPackage.name}</h4>
+      <h4>Edit Package:</h4>
       <div className="input-group">
         <label htmlFor="package-name">
           Name:
@@ -102,8 +103,9 @@ export default function AidPackageDetailsTable({
             type="text"
             id="package-name"
             name="package-name"
-            value={selectedPackage.name}
+            value={packageName}
             onChange={(event) => {
+              setPackageName(event.target.value);
               updateAidPackage({
                 ...selectedPackage,
                 name: event.target.value,

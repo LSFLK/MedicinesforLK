@@ -13,3 +13,8 @@
   font-size: 14pt;
 }
 
+@media only screen and (max-width: 480px) {
+  .suppliers .text-section {
+    text-align: center;
+  }
+}
