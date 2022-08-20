@@ -44,3 +44,14 @@
     padding: 2rem;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .title {
+    text-align: center;
+  }
+
+  .title, .hero-image .hero-text {
+    justify-content: center;
+    max-width: 82%!important;
+  }
+}
