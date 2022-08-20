@@ -76,7 +76,7 @@ export default function AssignSuppliers({
   const data = useMemo<Array<{ [key: string]: any }>>(() => {
     let isValidSupplierAssignments = true;
     const needs = medicalNeeds
-      .filter((need) => need.supplierQuotes.length)
+      .filter((need) => need.supplierQuotes.length && need.remainingQuantity)
       .map((need) => {
         const remainingQuantity =
           need.remainingQuantity - getAssignedCount(need, needAssignments);
