@@ -78,6 +78,7 @@ table {
 
 .supplier-allocation-table {
   margin: 1rem 0;
+  width: 100%;
 }
 
 .create-aid-body .supplier-allocation-table-container {
