@@ -144,7 +144,7 @@ export default function AidPackageDetailsPage() {
                     multiple aid packages.
                   </p>
                   <a
-                    href="https://slredcross.give.asia"
+                    href="https://give.asia/campaign/medicince-for-sri-lanka-poject-elixir"
                     target="_blank"
                     rel="noreferrer"
                     className="btn aid-package-donate-btn"
