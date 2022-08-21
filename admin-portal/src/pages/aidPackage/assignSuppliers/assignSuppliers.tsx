@@ -295,8 +295,12 @@ export default function AssignSuppliers({
                         ) => {
                           const updatedAssignments = currentAssignments.set(
                             supplierID,
-                            quantity === "" ? null : Number(quantity)
+                            Number(quantity)
                           );
+
+                          if (quantity === "" || quantity === "0") {
+                            updatedAssignments.delete(supplierID);
+                          }
 
                           setNeedAssignments({
                             ...needAssignments,
