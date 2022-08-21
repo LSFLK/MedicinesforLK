@@ -35,9 +35,10 @@ export default function EditPledge() {
     const { data } = await PledgeService.getUpdateComments(pledgeId!);
     const sorteddata = data.sort((data1, data2) => {
       return (
-        // TODO: dateTime will have to be *1000 to get the correct datetime
+        //  dateTime has to be *1000 to get the correct datetime in JS Date
         //  https://stackoverflow.com/a/847196/11005638
-        new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime()
+        new Date(data2.dateTime * 1000).getTime() -
+        new Date(data1.dateTime * 1000).getTime()
       );
     });
     setActivities(sorteddata);
