@@ -9,6 +9,7 @@ export interface AidPackage {
   aidPackageItems: AidPackageItem[];
   goalAmount: number;
   receivedAmount: number;
+  dateTime: number;
 }
 
 export namespace AidPackage {

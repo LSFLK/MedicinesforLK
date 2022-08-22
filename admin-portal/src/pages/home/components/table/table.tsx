@@ -13,6 +13,7 @@ export default function Table(props: TableProps) {
     <table>
       <thead>
         <tr>
+          <th>Created on</th>
           <th>Aid Package</th>
           <th>Status</th>
           <th>Pledges</th>

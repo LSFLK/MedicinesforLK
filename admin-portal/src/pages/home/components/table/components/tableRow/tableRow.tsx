@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { AidPackage } from "../../../../../../types/AidPackage";
@@ -23,6 +24,7 @@ export default function TableRow(props: TableRowProps) {
 
   return (
     <tr key={aidPackage.packageID}>
+      <td>{moment.unix(aidPackage.dateTime).format("DD/MM/YYYY")}</td>
       <td>{aidPackage.name}</td>
       <td>{aidPackage.status}</td>
       <td>
