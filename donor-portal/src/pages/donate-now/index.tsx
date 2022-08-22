@@ -193,7 +193,7 @@ export default function DonateNowPage() {
           state.isAuthenticated &&
           activeTabItem === TabItems.MY_PLEDGES &&
           alreadyPledgedAidPackages.length === 0 && (
-            <p>
+            <p className="empty-state-text">
               You have not yet pledged towards aid packages. Please check the{" "}
               <button
                 type="button"
@@ -208,7 +208,7 @@ export default function DonateNowPage() {
         {!isLoading &&
           activeTabItem === TabItems.GOAL_PENDING &&
           !goalPendingAidPackages.length && (
-            <p>
+            <p className="empty-state-text">
               There are no aid packages which can receive donors pledges at
               present. However, this page is updated regularly. Please visit
               this page again to view updates.
@@ -216,7 +216,7 @@ export default function DonateNowPage() {
           )}
         {activeTabItem === TabItems.GOAL_REACHED &&
           !goalReachedAidPackages.length && (
-            <p>
+            <p className="empty-state-text">
               There are no aid packages that have reached their goal at present.
               Please check the{" "}
               <button
