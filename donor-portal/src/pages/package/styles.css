@@ -55,3 +55,10 @@
   margin-right: 10px;
   height: 34px;
 }
+
+@media (max-width: 600px) {
+  .main-container {
+    margin: 1rem;
+    width: auto;
+  }
+}

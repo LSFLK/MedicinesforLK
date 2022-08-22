@@ -37,7 +37,7 @@
 .package-card {
   height: 17rem;
   display: flex;
-  margin-bottom: 2rem;
+  margin: 1rem;
   border: 1px solid var(--elixir-color-gray-500);
 }
 
@@ -86,5 +86,31 @@
 @media (max-width: 600px) {
   .package-card img {
     display: none;
+  }
+
+  .medical-needs-heading {
+    display: block;
+    margin: 1rem;
+  }
+
+  .medical-needs-page {
+    margin-top: 0px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .goal-filter {
+    margin-top: 1rem;
+  }
+
+  .package-list {
+    margin: 0px;
+  }
+
+  .empty-state-text {
+    margin: 1rem;
   }
 }
