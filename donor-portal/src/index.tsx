@@ -16,18 +16,17 @@ const isRootWindow = window.parent === window.top;
 
 root.render(
   <AuthProvider
-      config={{
-          ...authConfig,
-          storage: "sessionStorage" as Storage.SessionStorage,
-      }}
-      plugin={TokenExchangePlugin.getInstance()}
+    config={{
+      ...authConfig,
+      storage: "sessionStorage" as Storage.SessionStorage,
+    }}
+    plugin={TokenExchangePlugin.getInstance()}
   >
-      {
-          isRootWindow &&
-          <BrowserRouter>
-              <App/>
-          </BrowserRouter>
-      }
+    {isRootWindow && (
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    )}
   </AuthProvider>
 );
 
