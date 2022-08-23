@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { AuthProvider, Storage } from "@asgardeo/auth-react";
+import { AuthProvider } from "@asgardeo/auth-react";
 import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -12,13 +12,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <AuthProvider
-    config={{
-      ...authConfig,
-      storage: "sessionStorage" as Storage.SessionStorage,
-    }}
-    plugin={TokenExchangePlugin.getInstance()}
-  >
+  <AuthProvider config={authConfig} plugin={TokenExchangePlugin.getInstance()}>
     <App />
   </AuthProvider>
 );

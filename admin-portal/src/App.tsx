@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useAuthContext } from "@asgardeo/auth-react";
+import { BasicUserInfo, useAuthContext } from "@asgardeo/auth-react";
 import { ToastContainer } from "react-toastify";
 import CreateAidPackage from "./pages/aidPackage/aidPackage";
 import Page from "./layout/page";
@@ -22,17 +22,10 @@ import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 import "./App.css";
 
 function App() {
-  const { state, httpRequest, signIn } = useAuthContext();
-  const [isSigningIn, setIsSigningIn] = useState(true);
+  const { state, httpRequest, trySignInSilently, signIn } = useAuthContext();
+  const { isAuthenticated, isLoading } = state;
 
   useEffect(() => {
-    if (!state.isAuthenticated) {
-      signIn().then(() => {
-        setIsSigningIn(false);
-      });
-    } else {
-      setIsSigningIn(false);
-    }
     const http: Http = new Http(
       httpRequest,
       `${process.env.REACT_APP_ADMIN_BACKEND_URL}`
@@ -41,15 +34,32 @@ function App() {
     MedicalNeedsService.http = http;
     PledgeService.http = http;
     SupplierService.http = http;
-  }, [state.isAuthenticated]);
+  }, []);
 
-  if (isSigningIn) {
+  useEffect(() => {
+    if (isAuthenticated || isLoading) {
+      return;
+    }
+
+    trySignInSilently()
+      .then((response: boolean | BasicUserInfo) => {
+        if (!response) {
+          signIn();
+        }
+      })
+      .catch(() => {
+        signIn();
+      });
+  }, [isAuthenticated, isLoading]);
+
+  if (isLoading || !isAuthenticated) {
     return (
       <div className="App">
         <SpinnerLoader loaderText="Proceed to Login" />
       </div>
     );
   }
+
   return (
     <div className="App">
       <header className="App-header">
