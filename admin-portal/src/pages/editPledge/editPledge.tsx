@@ -35,7 +35,10 @@ export default function EditPledge() {
     const { data } = await PledgeService.getUpdateComments(pledgeId!);
     const sorteddata = data.sort((data1, data2) => {
       return (
-        new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime()
+        //  dateTime has to be *1000 to get the correct datetime in JS Date
+        //  https://stackoverflow.com/a/847196/11005638
+        new Date(data2.dateTime * 1000).getTime() -
+        new Date(data1.dateTime * 1000).getTime()
       );
     });
     setActivities(sorteddata);
@@ -77,7 +80,6 @@ export default function EditPledge() {
       pledgeID: parseInt(pledgeId!, 10),
       pledgeUpdateID: 0,
       updateComment: text,
-      dateTime: "",
     });
     await fetchUpdateComments();
   };

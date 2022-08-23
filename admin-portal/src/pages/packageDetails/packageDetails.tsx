@@ -59,7 +59,10 @@ export default function PackageDetails() {
     const { data } = await AidPackageService.getUpdateComments(packageId!);
     const sorteddata = data.sort((data1, data2) => {
       return (
-        new Date(data2.dateTime).getTime() - new Date(data1.dateTime).getTime()
+        //  dateTime has to be *1000 to get the correct datetime in JS Date
+        //  https://stackoverflow.com/a/847196/11005638
+        new Date(data2.dateTime * 1000).getTime() -
+        new Date(data1.dateTime * 1000).getTime()
       );
     });
     setPosts(sorteddata);
@@ -136,7 +139,6 @@ export default function PackageDetails() {
       packageUpdateID: 0,
       packageID: parseInt(packageId!, 10),
       updateComment: comment,
-      dateTime: "",
     });
     await fetchUpdateComments();
   };

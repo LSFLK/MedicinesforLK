@@ -1,4 +1,7 @@
-import { PledgeActivity } from "../../types/PledgeActivity";
+import {
+  PledgeActivity,
+  PledgeActivityUpsert,
+} from "../../types/PledgeActivity";
 import { Pledge } from "../../types/Pledge";
 import Http from "../httpCommon";
 
@@ -34,9 +37,9 @@ export default class PledgeService {
 
   static upsertUpdateComment(
     pledgeID: number | string,
-    comment: PledgeActivity
+    comment: PledgeActivityUpsert
   ) {
-    return PledgeService.http.put<PledgeActivity, PledgeActivity>(
+    return PledgeService.http.put<PledgeActivityUpsert, PledgeActivity>(
       `pledges/${pledgeID}/updatecomment`,
       comment
     );
