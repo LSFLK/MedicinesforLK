@@ -12,6 +12,8 @@ import authConfig from "./config";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+const isRootWindow = window.parent === window.top;
+
 root.render(
   <AuthProvider
     config={{
@@ -20,9 +22,11 @@ root.render(
     }}
     plugin={TokenExchangePlugin.getInstance()}
   >
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    {isRootWindow && (
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    )}
   </AuthProvider>
 );
 
