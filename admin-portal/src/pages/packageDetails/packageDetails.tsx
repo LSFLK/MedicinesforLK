@@ -128,6 +128,7 @@ export default function PackageDetails() {
   const handleDescriptionEdit = async (editedAidPackage: AidPackage) => {
     await AidPackageService.updateAidPackage({
       ...aidPackage!,
+      status: aidPackageStatus!,
       description: editedAidPackage.description,
     });
     await fetchAidPackage();
