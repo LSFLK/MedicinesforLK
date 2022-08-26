@@ -14,6 +14,7 @@ export default function DonorTable({
 }: DonorTableProps) {
   return (
     <div>
+      <p style={{ fontWeight: "600" }}>Donor Pledges</p>
       <table>
         <thead>
           <tr>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./packageDetails.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { FiEdit3 } from "react-icons/fi";
 import OrderItemsTable from "./components/orderItemsTable/orderItemsTable";
 import { AidPackage } from "../../types/AidPackage";
@@ -15,6 +15,9 @@ import ContributionsChart from "../../components/contributionsChart/contribution
 import AidPackageService from "../../apis/services/AidPackageService";
 import EditDescriptionPrompt from "./components/editDescriptionPrompt/editDescriptionPrompt";
 import DeleteAidPackagePrompt from "./components/deleteAidPackagePrompt/editUpdateCommentPrompt";
+import PledgeService from "../../apis/services/PledgeService";
+import { Pledge } from "../../types/Pledge";
+import DonorTable from "../pledgeStatus/donorTable/donorTable";
 
 export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -31,6 +34,7 @@ export default function PackageDetails() {
   const postToBeEdited = useRef<AidPackageUpdateComment | null>(null);
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
   const aidPackageToBeEdited = useRef<AidPackage | null>(null);
+  const [pledges, setPledges] = useState<Pledge[]>([]);
 
   const statusToLevel = {
     Draft: 1,
@@ -48,6 +52,11 @@ export default function PackageDetails() {
     AidPackage.Status.ReceivedAtMOH,
     AidPackage.Status.Delivered,
   ];
+
+  const history = useHistory();
+  const navigate = (path: string) => {
+    history.push(path);
+  };
 
   const fetchAidPackage = async () => {
     const { data } = await AidPackageService.getAidPackage(packageId!);
@@ -72,9 +81,15 @@ export default function PackageDetails() {
     await AidPackageService.deleteAidPackage(packageId!);
   };
 
+  const fetchPledges = async () => {
+    const { data } = await AidPackageService.getPledges(packageId!);
+    setPledges(data);
+  };
+
   useEffect(() => {
     fetchAidPackage();
     fetchUpdateComments();
+    fetchPledges();
   }, []);
 
   const handleEditOrderItemButtonClick = (item: AidPackageItem) => {
@@ -188,6 +203,20 @@ export default function PackageDetails() {
     setIsEditPostModalVisible(false);
   };
 
+  const handlePledgeEdit = (pledge: Pledge) => {
+    navigate(`${packageId}/pledges/${pledge.pledgeID}`);
+  };
+
+  const handlePledgeDelete = async (pledge: Pledge) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete the pledge of ${pledge.donorID}?`
+    );
+    if (confirmed) {
+      await PledgeService.deletePledge(pledge.pledgeID);
+      fetchPledges();
+    }
+  };
+
   return (
     <>
       {!aidPackage && <p>Loading Aid Package...</p>}
@@ -294,6 +323,11 @@ export default function PackageDetails() {
           <PackageStatus
             currentStatus={aidPackageStatus}
             onStatusChange={handleStatusChange}
+          />
+          <DonorTable
+            pledges={pledges}
+            onPledgeEdit={handlePledgeEdit}
+            onPledgeDelete={handlePledgeDelete}
           />
           <UpdateComments
             posts={posts}
