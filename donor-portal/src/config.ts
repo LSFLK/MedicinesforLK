@@ -5,10 +5,7 @@ export default {
   signOutRedirectURL: `${process.env.REACT_APP_SIGN_OUT_REDIRECT_URL}`,
   scope: ["openid", "email", "profile"],
   stsConfig: {
-    credentials: {
-      client_id: `${process.env.REACT_APP_CLIENT_ID}`,
-      client_secret: `${process.env.REACT_APP_CLIENT_SECRET}`,
-    },
+    client_id: `${process.env.REACT_APP_CLIENT_ID}`,
     orgHandle: "elixir",
     scope: [],
   },

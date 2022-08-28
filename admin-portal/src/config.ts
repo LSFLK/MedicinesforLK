@@ -11,10 +11,7 @@ const SDKConfig: AuthReactConfig & STSClientConfig = {
   // https://github.com/asgardeo/asgardeo-auth-react-sdk/issues/120 is fixed.
   storage: Storage.SessionStorage,
   stsConfig: {
-    credentials: {
-      client_id: `${process.env.REACT_APP_CLIENT_ID}`,
-      client_secret: `${process.env.REACT_APP_CLIENT_SECRET}`,
-    },
+    client_id: `${process.env.REACT_APP_CLIENT_ID}`,
     orgHandle: "elixir",
     scope: [],
   },
