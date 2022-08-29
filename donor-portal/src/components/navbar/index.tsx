@@ -1,14 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState, MutableRefObject } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { FaBars, FaChevronUp } from "react-icons/fa";
 import logo from "./images/logo.png";
 import "./styles.css";
 
+const mobileNavItems = [
+  {
+    path: "/",
+    name: "Home",
+  },
+  {
+    path: "/about-us",
+    name: "About Us",
+  },
+  {
+    path: "/donate-now",
+    name: "Donate Now",
+  },
+  {
+    path: "/suppliers",
+    name: "Hospitals & Suppliers",
+  },
+  {
+    path: "/news-room",
+    name: "Newsroom",
+  },
+];
+
 export default function NavBar() {
   const { state, signIn, signOut } = useAuthContext();
-
-  const [showMobileNav, setShowMobileNav] = useState(false);
+  const navbarRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
 
   const handleLogout = () => {
     signOut();
@@ -18,24 +41,42 @@ export default function NavBar() {
     signIn();
   };
 
-  const toggleMobleNav = () => {
-    setShowMobileNav((pre: boolean) => {
+  const toggleMobileNav = () => {
+    setIsMobileNavVisible((pre: boolean) => {
       return !pre;
     });
   };
 
+  useEffect(() => {
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      if (
+        isMobileNavVisible &&
+        navbarRef.current &&
+        !navbarRef.current.contains(e.target as HTMLElement)
+      ) {
+        toggleMobileNav();
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [isMobileNavVisible]);
+
   return (
-    <div className="navbar">
+    <div className="navbar" ref={navbarRef}>
       <nav className="navbar-container">
         <div className="mobile-nav-top">
-          {!showMobileNav && (
-            <FaBars className="menu-icon" size={20} onClick={toggleMobleNav} />
+          {!isMobileNavVisible && (
+            <FaBars className="menu-icon" size={20} onClick={toggleMobileNav} />
           )}
-          {showMobileNav && (
+          {isMobileNavVisible && (
             <FaChevronUp
               className="menu-icon"
               size={20}
-              onClick={toggleMobleNav}
+              onClick={toggleMobileNav}
             />
           )}
           <Link to="/">
@@ -46,24 +87,20 @@ export default function NavBar() {
         </div>
         <div
           className={`nav-links ${
-            showMobileNav ? "mobile-nav show" : "mobile-nav hide"
+            isMobileNavVisible ? "mobile-nav show" : "mobile-nav hide"
           }`}
         >
-          <NavLink to="/" exact className="nav-link">
-            Home
-          </NavLink>
-          <NavLink to="/about-us" className="nav-link">
-            About Us
-          </NavLink>
-          <NavLink to="/donate-now" className="nav-link">
-            Donate Now
-          </NavLink>
-          <NavLink to="/suppliers" className="nav-link">
-            Hospitals & Suppliers
-          </NavLink>
-          <NavLink to="/news-room" className="nav-link">
-            Newsroom
-          </NavLink>
+          {mobileNavItems.map((navItem) => (
+            <NavLink
+              to={navItem.path}
+              exact
+              className="nav-link"
+              onClick={toggleMobileNav}
+            >
+              {navItem.name}
+            </NavLink>
+          ))}
+
           {state.isAuthenticated ? (
             <button
               className="logout-btn nav-link"
