@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, MutableRefObject } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { FaBars, FaChevronUp } from "react-icons/fa";
@@ -30,7 +30,7 @@ const mobileNavItems = [
 
 export default function NavBar() {
   const { state, signIn, signOut } = useAuthContext();
-  const navbarRef = useRef() as MutableRefObject<HTMLInputElement>;
+
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
 
   const handleLogout = () => {
@@ -47,26 +47,8 @@ export default function NavBar() {
     });
   };
 
-  useEffect(() => {
-    const checkIfClickedOutside = (e: MouseEvent) => {
-      if (
-        isMobileNavVisible &&
-        navbarRef.current &&
-        !navbarRef.current.contains(e.target as HTMLElement)
-      ) {
-        toggleMobileNav();
-      }
-    };
-
-    document.addEventListener("mousedown", checkIfClickedOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, [isMobileNavVisible]);
-
   return (
-    <div className="navbar" ref={navbarRef}>
+    <div className="navbar">
       <nav className="navbar-container">
         <div className="mobile-nav-top">
           {!isMobileNavVisible && (
