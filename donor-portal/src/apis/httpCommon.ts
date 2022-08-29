@@ -1,6 +1,10 @@
 import { HttpRequestConfig } from "@asgardeo/auth-spa";
 import axios, { AxiosResponse } from "axios";
 
+/*
+ TODO: Remove these HTTP clients and use HTTP class for public APIs
+  once https://github.com/asgardeo/asgardeo-auth-spa-sdk/pull/134 merged.
+*/
 export const adminHttpClient = axios.create({
   baseURL: `${process.env.REACT_APP_ADMIN_BACKEND_URL}`,
 });
