@@ -6,6 +6,8 @@ import { Pledge } from "../../types/Pledge";
 export default class AidPackageService {
   static donorHttp: Http;
 
+  static adminHttp: Http;
+
   static getAidPackages() {
     return donorHttpClient.get<AidPackage[]>(
       "aidpackages"
@@ -19,17 +21,19 @@ export default class AidPackageService {
   }
 
   static getPledgedAidPackages(donorId: string) {
-    return donorHttp.get<AidPackage[]>(`${donorId}/aidpackages`);
+    return AidPackageService.donorHttp.get<AidPackage[]>(
+      `${donorId}/aidpackages`
+    );
   }
 
   static getUpdateComments(packageID: number | string) {
-    return donorHttp.get<AidPackageUpdateComment[]>(
+    return AidPackageService.donorHttp.get<AidPackageUpdateComment[]>(
       `aidpackages/${packageID}/updatecomments`
     );
   }
 
   static getDonorPledgesByAidPackage(donorId: string, packageId: string) {
-    return donorHttp.get<Pledge[]>(
+    return AidPackageService.donorHttp.get<Pledge[]>(
       `${donorId}/aidpackages/${packageId}/pledges`
     );
   }
