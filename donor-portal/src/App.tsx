@@ -23,11 +23,14 @@ function App() {
       getDecodedIDToken().then((value) => {
         if (value && value.sub) setLoggedInUserId(value.sub);
       });
-    const donorHttp: Http = new Http(
+    AidPackageService.donorHttp = new Http(
       httpRequest,
       `${process.env.REACT_APP_DONOR_BACKEND_URL}`
     );
-    AidPackageService.donorHttp = donorHttp;
+    AidPackageService.adminHttp = new Http(
+      httpRequest,
+      `${process.env.REACT_APP_ADMIN_BACKEND_URL}`
+    );
   }, [state.isAuthenticated]);
 
   const { pathname } = useLocation();
