@@ -12,7 +12,10 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <AuthProvider config={authConfig} plugin={TokenExchangePlugin.getInstance()}>
+  <AuthProvider
+    config={authConfig}
+    plugin={TokenExchangePlugin.getInstance() as any}
+  >
     <App />
   </AuthProvider>
 );
