@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { AuthProvider, Storage } from "@asgardeo/auth-react";
+import { AuthProvider } from "@asgardeo/auth-react";
 import { TokenExchangePlugin } from "@asgardeo/token-exchange-plugin";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
 import authConfig from "./config";
 
 const root = ReactDOM.createRoot(
@@ -15,13 +14,7 @@ const root = ReactDOM.createRoot(
 const isRootWindow = window.parent === window.top;
 
 root.render(
-  <AuthProvider
-    config={{
-      ...authConfig,
-      storage: "sessionStorage" as Storage.SessionStorage,
-    }}
-    plugin={TokenExchangePlugin.getInstance()}
-  >
+  <AuthProvider config={authConfig} plugin={TokenExchangePlugin.getInstance()}>
     {isRootWindow && (
       <BrowserRouter>
         <App />

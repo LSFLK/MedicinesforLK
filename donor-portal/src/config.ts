@@ -1,4 +1,7 @@
-export default {
+import { AuthReactConfig, Storage } from "@asgardeo/auth-react";
+import { STSClientConfig } from "@asgardeo/token-exchange-plugin";
+
+const SDKConfig: AuthReactConfig | STSClientConfig = {
   clientID: "LZqQ7Ze31x5sJOBxffwimfSfpj8a",
   baseUrl: "https://api.asgardeo.io/t/elixir",
   signInRedirectURL: `${process.env.REACT_APP_SIGN_IN_REDIRECT_URL}`,
@@ -9,6 +12,7 @@ export default {
     orgHandle: "elixir",
     scope: [],
   },
+  storage: Storage.WebWorker,
   stsTokenEndpoint: "https://sts.choreo.dev/oauth2/token",
   resourceServerURLs: [
     `${process.env.REACT_APP_ADMIN_BACKEND_URL}`,
@@ -16,3 +20,5 @@ export default {
   ],
   disableTrySignInSilently: false,
 };
+
+export default SDKConfig;
