@@ -15,7 +15,7 @@ export default function TableRows(props: TableRowsProps) {
       const rows: ReactElement[] = [];
       if (aidPackages) {
         aidPackages.forEach((value: AidPackage) => {
-          rows.push(<TableRow aidPackage={value} />);
+          rows.push(<TableRow aidPackage={value} key={value?.packageID} />);
         });
       }
       return rows;

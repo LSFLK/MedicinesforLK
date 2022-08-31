@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@asgardeo/auth-react": "^1.1.11",
-    "@asgardeo/auth-spa": "^0.4.4",
-    "@asgardeo/token-exchange-plugin": "^0.1.4",
+    "@asgardeo/auth-react": "^1.1.18",
+    "@asgardeo/auth-spa": "^0.4.9",
+    "@asgardeo/token-exchange-plugin": "^0.1.5",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",

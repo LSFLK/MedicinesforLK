@@ -1,9 +1,9 @@
-import Http, { temporaryClient } from "../httpCommon";
+import Http from "../httpCommon";
 
 export default class SupplierService {
   static http: Http;
 
-  static postQuotation(quotation: any) {
-    return temporaryClient.post<string>(`quotations`, quotation);
+  static postQuotation(quotation: FormData) {
+    return SupplierService.http.post<FormData, string>(`quotations`, quotation);
   }
 }

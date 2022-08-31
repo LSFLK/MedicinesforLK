@@ -1,10 +1,5 @@
 import { HttpRequestConfig } from "@asgardeo/auth-spa";
-import axios, { AxiosResponse } from "axios";
-
-export const temporaryClient = axios.create({
-  baseURL:
-    "https://9d2b57ae-4349-44f2-971c-106ae09d244d-prod.e1-us-east-azure.choreoapis.dev/qmov/admin-api/1.0.0",
-});
+import { AxiosResponse } from "axios";
 
 export default class Http {
   httpRequest: (config: HttpRequestConfig) => Promise<any>;
