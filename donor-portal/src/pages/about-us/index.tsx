@@ -4,6 +4,7 @@ import bannerImage from "./images/banner.jpg";
 import ourApproachImage from "./images/our-approach.png";
 import lsfLogo from "./images/lsf-logo.png";
 import sefLogo from "./images/SEF_Logo.png";
+import hardTalkLogo from "./images/hardTalk.jpeg";
 import watchDogLogo from "./images/watchdog-logo.png";
 import lastWordLogo from "./images/the-last-word-logo.png";
 import wso2logo from "./images/wso2.png";
@@ -121,7 +122,7 @@ export default function AboutUs() {
           <h2>Leadership Team</h2>
           <div className="profile-card-container">
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/dr-mahesh-gunasekara-2b38526/ ">
+              <a href="https://www.linkedin.com/in/dr-mahesh-gunasekara-2b38526/">
                 <h3>Dr. Mahesh Gunasekara</h3>
                 <p>Director General</p>
                 <p>Sri Lanka Red Cross Society</p>
@@ -134,7 +135,7 @@ export default function AboutUs() {
               </a>
             </div>
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/tharaka-samarasinghe-3b7819a8/ ">
+              <a href="https://www.linkedin.com/in/tharaka-samarasinghe-3b7819a8/">
                 <h3>Tharaka Samarasinghe</h3>
                 <p>Coordinator to the Director General&apos;s Office</p>
                 <p>Sri Lanka Red Cross Society</p>
@@ -148,31 +149,38 @@ export default function AboutUs() {
               </a>
             </div>
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/krishni-ratnayaka-9a977916b/ ">
+              <a href="https://www.linkedin.com/in/krishni-ratnayaka-9a977916b/">
                 <h3>Krishni Ratnayaka</h3>
                 <p>Consultant Legal Affairs</p>
                 <p>Sri Lanka Red Cross Society</p>
               </a>
             </div>
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/sherazadhamit/ ">
+              <a href="https://www.linkedin.com/in/sherazadhamit/">
                 <h3>Sherazad Hamit</h3>
                 <p>Executive Director</p>
                 <p>Lanka Software Foundation</p>
               </a>
             </div>
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/akbandara/ ">
+              <a href="https://www.linkedin.com/in/akbandara/">
                 <h3>Prof. Arosha Bandara</h3>
                 <p>Professor of Software Engineering </p>
                 <p>The Open University, UK</p>
               </a>
             </div>
             <div className="profile-card">
-              <a href="https://www.linkedin.com/in/sanithw/ ">
+              <a href="https://www.linkedin.com/in/sanithw/">
                 <h3>Dr. Sanith Wijesinghe</h3>
                 <p>Technical Fellow</p>
                 <p>The MITRE Corporation, USA.</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/mushthak">
+                <h3>Mushthak Ahamed</h3>
+                <p>Chief Operating Officer</p>
+                <p>HardTalk PR</p>
               </a>
             </div>
           </div>
@@ -236,9 +244,21 @@ export default function AboutUs() {
                 build digital products to meet demand.
               </p>
             </div>
+            <div className="partner-section-card">
+              <a href="https://www.hardtalk.lk/">
+                <img src={hardTalkLogo} alt="HardTalk Logo" />
+              </a>
+              <p>
+                HardTalk (backed by the Derana Group and Liberty Publishing), is
+                a specialized Public Relations company, operating in strategic
+                communications (traditional /digital). HardTalk pairs local
+                insights with global best practices to deliver customized
+                solutions and ensure organizations build the right bridges with
+                the desired audiences. We are in the business of impactful
+                persuasion and meaningful relationships.
+              </p>
+            </div>
           </div>
-        </div>
-        <div>
           <h2>Volunteers</h2>
           <ul className="volunteers-section">
             {volunteers.map((volunteer) => (
