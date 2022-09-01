@@ -1,17 +1,34 @@
 import React from "react";
+import { AidPackage } from "../../../types/AidPackage";
 import { Pledge } from "../../../types/Pledge";
+import PledgeStatusSelector from "../../editPledge/components/pledgeStatusSelector/pledgeStatusSelector";
 
 interface DonorTableProps {
   pledges: Pledge[];
+  setPledges: (pledges: Pledge[]) => void;
   onPledgeDelete: (pledge: Pledge) => void;
   onPledgeEdit: (pledge: Pledge) => void;
+  aidPackageStatus: AidPackage.Status;
 }
 
 export default function DonorTable({
   pledges,
+  setPledges,
   onPledgeEdit,
   onPledgeDelete,
+  aidPackageStatus,
 }: DonorTableProps) {
+  const updatePledgeStatus = (
+    pledge: Pledge,
+    newPledgeStatus: Pledge.Status
+  ) => {
+    const pledgeIndex = pledges.indexOf(pledge);
+    const updatedPledge = { ...pledge, status: newPledgeStatus };
+    const updatedPledgesArr = [...pledges];
+    updatedPledgesArr[pledgeIndex] = updatedPledge;
+    setPledges(updatedPledgesArr);
+  };
+
   return (
     <div>
       <p style={{ fontWeight: "600" }}>Donor Pledges</p>
@@ -26,29 +43,39 @@ export default function DonorTable({
         </thead>
         {pledges.length > 0 ? (
           <tbody>
-            {pledges.map((pledge: Pledge) => (
-              <tr key={pledge.pledgeID}>
-                <td>
-                  {pledge.donor ? pledge.donor.displayName : pledge.donorID}
-                </td>
-                <td>
-                  $
-                  {pledge.amount.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </td>
-                <td>{pledge.status}</td>
-                <td>
-                  <button type="button" onClick={() => onPledgeEdit(pledge)}>
-                    Edit
-                  </button>
-                  <button type="button" onClick={() => onPledgeDelete(pledge)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {pledges &&
+              pledges.map((pledge: Pledge) => (
+                <tr key={pledge.pledgeID}>
+                  <td>
+                    {pledge.donor ? pledge.donor.displayName : pledge.donorID}
+                  </td>
+                  <td>
+                    $
+                    {pledge.amount.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </td>
+                  <td>
+                    <PledgeStatusSelector
+                      pledge={pledge}
+                      aidPackageStatus={aidPackageStatus}
+                      updatePledge={updatePledgeStatus}
+                    />
+                  </td>
+                  <td>
+                    <button type="button" onClick={() => onPledgeEdit(pledge)}>
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => onPledgeDelete(pledge)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         ) : (
           <tbody>

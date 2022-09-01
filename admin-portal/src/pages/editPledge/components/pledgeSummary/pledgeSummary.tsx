@@ -1,44 +1,20 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import "./pledgeSummary.css";
 import { Pledge } from "../../../../types/Pledge";
 import { AidPackage } from "../../../../types/AidPackage";
+import PledgeStatusSelector from "../pledgeStatusSelector/pledgeStatusSelector";
 
 interface PledgeSummaryProps {
   pledge: Pledge;
-  onStatusChange: (status: Pledge.Status) => void;
   aidPackageStatus: AidPackage.Status;
+  setPledge: (prevPledge: any) => any;
 }
-
-const pledgeStatusToAllowedStatuses: Record<
-  Pledge.Status,
-  AidPackage.Status[]
-> = {
-  [Pledge.Status.Pledged]: [
-    AidPackage.Status.Published,
-    AidPackage.Status.AwaitingPayment,
-  ],
-  [Pledge.Status.PaymentInitiated]: [AidPackage.Status.AwaitingPayment],
-  [Pledge.Status.PaymentConfirmed]: [
-    AidPackage.Status.Delivered,
-    AidPackage.Status.Ordered,
-    AidPackage.Status.ReceivedAtMOH,
-    AidPackage.Status.Shipped,
-    AidPackage.Status.AwaitingPayment,
-  ],
-};
 
 export default function PledgeSummary({
   pledge,
-  onStatusChange,
   aidPackageStatus,
+  setPledge,
 }: PledgeSummaryProps) {
-  const handleStatusChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const newStatus = event.currentTarget.value as Pledge.Status;
-    if (newStatus !== pledge.status) {
-      onStatusChange(newStatus);
-    }
-  };
-
   return (
     <div className="pledgeSummary">
       <div className="heading">Donor:</div>
@@ -53,21 +29,12 @@ export default function PledgeSummary({
       </div>
       <div className="heading">Status:</div>
       <div>
-        <select onChange={handleStatusChange} value={pledge.status}>
-          {Object.entries(Pledge.Status).map(([key, status]) => (
-            <option
-              key={key}
-              value={status}
-              disabled={
-                !pledgeStatusToAllowedStatuses[status].includes(
-                  aidPackageStatus
-                )
-              }
-            >
-              {status}
-            </option>
-          ))}
-        </select>
+        {/* TODO: add this select with logic to the donor table table */}
+        <PledgeStatusSelector
+          aidPackageStatus={aidPackageStatus}
+          pledge={pledge}
+          setPledge={setPledge}
+        />
       </div>
     </div>
   );

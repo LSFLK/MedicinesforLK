@@ -84,20 +84,6 @@ export default function EditPledge() {
     await fetchUpdateComments();
   };
 
-  const handleStatusChange = async (newStatus: Pledge.Status) => {
-    const confirmed = window.confirm(
-      `Are you sure you want to change the status to ${newStatus}?`
-    );
-    if (confirmed) {
-      try {
-        await PledgeService.updatePledgeStatus(pledgeId!, newStatus);
-        setPledge((prevPledge) => ({ ...prevPledge!, status: newStatus }));
-      } catch (error) {
-        alert("An error occurred when trying to change the status");
-      }
-    }
-  };
-
   return (
     <>
       {(!aidPackage || !pledge) && <p>Loading Aid Package...</p>}
@@ -126,8 +112,8 @@ export default function EditPledge() {
           </Modal>
           <PledgeSummary
             pledge={pledge}
-            onStatusChange={handleStatusChange}
             aidPackageStatus={aidPackage.status}
+            setPledge={setPledge}
           />
           <PledgeActivities
             activities={activities}

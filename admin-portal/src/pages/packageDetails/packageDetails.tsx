@@ -326,8 +326,10 @@ export default function PackageDetails() {
           />
           <DonorTable
             pledges={pledges}
+            setPledges={setPledges}
             onPledgeEdit={handlePledgeEdit}
             onPledgeDelete={handlePledgeDelete}
+            aidPackageStatus={aidPackageStatus}
           />
           <UpdateComments
             posts={posts}
