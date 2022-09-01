@@ -84,8 +84,10 @@ export default function PledgeStatus() {
             </div>
             <DonorTable
               pledges={pledges}
+              setPledges={setPledges}
               onPledgeEdit={handlePledgeEdit}
               onPledgeDelete={handlePledgeDelete}
+              aidPackageStatus={aidPackage.status}
             />
           </div>
         </div>
