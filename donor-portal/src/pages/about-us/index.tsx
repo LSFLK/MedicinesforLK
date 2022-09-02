@@ -249,10 +249,9 @@ export default function AboutUs() {
                 <img src={hardTalkLogo} alt="HardTalk Logo" />
               </a>
               <p>
-                HardTalk (backed by the Derana Group and Liberty Publishing), is
-                a specialized Public Relations company, operating in strategic
-                communications (traditional /digital). HardTalk pairs local
-                insights with global best practices to deliver customized
+                HardTalk is a specialized Public Relations company, operating in
+                strategic communications (traditional /digital). HardTalk pairs
+                local insights with global best practices to deliver customized
                 solutions and ensure organizations build the right bridges with
                 the desired audiences. We are in the business of impactful
                 persuasion and meaningful relationships.
