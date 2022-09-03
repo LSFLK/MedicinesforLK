@@ -100,7 +100,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={qatarRCLogo} decoding="async" loading="lazy" />
+                <img src={qatarRCLogo} alt="qatar-rc-logo" decoding="async" loading="lazy" />
               </a>
             </div>
             <div className="donor-logo">
