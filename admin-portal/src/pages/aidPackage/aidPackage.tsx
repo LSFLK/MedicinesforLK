@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, startTransition } from "react";
 import toast from "react-simple-toasts";
 import { Stepper, Step } from "../../components/stepper";
 import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
@@ -50,7 +50,9 @@ export default function CreateAidPackage() {
   }, []);
 
   const goToStep = (step: STEPS) => {
-    setCurrentFormStep(step);
+    startTransition(() => {
+      setCurrentFormStep(step);
+    })
   };
 
   const handleAidPkgPublish = async (

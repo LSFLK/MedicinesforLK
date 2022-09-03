@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, startTransition } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { FaBars, FaChevronUp } from "react-icons/fa";
@@ -42,9 +42,9 @@ export default function NavBar() {
   };
 
   const toggleMobileNav = () => {
-    setIsMobileNavVisible((pre: boolean) => {
-      return !pre;
-    });
+    startTransition(() => {
+      setIsMobileNavVisible((pre: boolean) => !pre);
+    })
   };
 
   return (
@@ -68,9 +68,8 @@ export default function NavBar() {
           </Link>
         </div>
         <div
-          className={`nav-links ${
-            isMobileNavVisible ? "mobile-nav show" : "mobile-nav hide"
-          }`}
+          className={`nav-links ${isMobileNavVisible ? "mobile-nav show" : "mobile-nav hide"
+            }`}
         >
           {mobileNavItems.map((navItem) => (
             <NavLink

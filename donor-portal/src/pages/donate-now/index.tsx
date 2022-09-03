@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useTransition } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import UserContext from "../../userContext";
@@ -81,6 +81,7 @@ export default function DonateNowPage() {
   const userId = useContext(UserContext);
   const { state } = useAuthContext();
   const [isLoading, setIsLoading] = useState(true);
+  const [isPending, startTransition ] = useTransition()
   const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
     AidPackage[]
   >([]);
@@ -91,6 +92,9 @@ export default function DonateNowPage() {
     AidPackage[]
   >([]);
   const [activeTabItem, setActiveTabItem] = useState<TabItems>(
+    TabItems.GOAL_PENDING
+  );
+  const [concurrentActiveTabItem, setConcurrentActiveTabItem] = useState<TabItems>(
     TabItems.GOAL_PENDING
   );
 
@@ -137,10 +141,13 @@ export default function DonateNowPage() {
           <button
             type="button"
             className={`btn ${
-              activeTabItem !== TabItems.GOAL_PENDING && "secondary"
+              concurrentActiveTabItem !== TabItems.GOAL_PENDING && "secondary"
             }`}
             onClick={() => {
-              setActiveTabItem(TabItems.GOAL_PENDING);
+              setConcurrentActiveTabItem(TabItems.GOAL_PENDING);
+              startTransition(() => {
+                setActiveTabItem(TabItems.GOAL_PENDING);
+              })
             }}
           >
             Goal Pending
@@ -149,10 +156,13 @@ export default function DonateNowPage() {
             <button
               type="button"
               className={`btn ${
-                activeTabItem !== TabItems.MY_PLEDGES && "secondary"
+                concurrentActiveTabItem !== TabItems.MY_PLEDGES && "secondary"
               }`}
               onClick={() => {
-                setActiveTabItem(TabItems.MY_PLEDGES);
+                setConcurrentActiveTabItem(TabItems.MY_PLEDGES);
+                startTransition(() => {
+                  setActiveTabItem(TabItems.MY_PLEDGES);
+                })
               }}
             >
               My Pledges
@@ -161,10 +171,13 @@ export default function DonateNowPage() {
           <button
             type="button"
             className={`btn ${
-              activeTabItem !== TabItems.GOAL_REACHED && "secondary"
+              concurrentActiveTabItem !== TabItems.GOAL_REACHED && "secondary"
             }`}
             onClick={() => {
-              setActiveTabItem(TabItems.GOAL_REACHED);
+              setConcurrentActiveTabItem(TabItems.GOAL_REACHED);
+              startTransition(() => {
+                setActiveTabItem(TabItems.GOAL_REACHED);
+              })
             }}
           >
             Goal Reached
@@ -172,7 +185,7 @@ export default function DonateNowPage() {
         </div>
       </div>
       {isLoading && <SpinnerLoader loaderText="Loading..." />}
-      <div className="package-list">
+      <div className="package-list" style={{opacity: isPending ? 0.5 : 1}}>
         {activeTabItem === TabItems.GOAL_PENDING &&
           goalPendingAidPackages.map((aidPackage) => (
             <PackageCard
@@ -198,7 +211,12 @@ export default function DonateNowPage() {
               <button
                 type="button"
                 className="text-blue"
-                onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+                onClick={() => {
+                  setConcurrentActiveTabItem(TabItems.GOAL_PENDING);
+                  startTransition(() => {
+                    setActiveTabItem(TabItems.GOAL_PENDING);
+                  })
+                }}
               >
                 Goal Pending tab
               </button>{" "}
@@ -222,7 +240,12 @@ export default function DonateNowPage() {
               <button
                 type="button"
                 className="text-blue"
-                onClick={() => setActiveTabItem(TabItems.GOAL_PENDING)}
+                onClick={() => {
+                  setConcurrentActiveTabItem(TabItems.GOAL_PENDING);
+                  startTransition(() => {
+                    setActiveTabItem(TabItems.GOAL_PENDING);
+                  })
+                }}
               >
                 Goal Pending tab
               </button>{" "}

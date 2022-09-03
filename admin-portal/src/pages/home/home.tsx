@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, startTransition } from "react";
 
 import { useAuthContext } from "@asgardeo/auth-react";
 
@@ -39,15 +39,17 @@ export default function Home() {
 
   function handleSearch(keyword: string) {
     const searchText = keyword.trim().toLowerCase();
-    const newlyFilteredPackages = aidPackages.filter((aidPackage) => {
-      const supplier = aidPackage.aidPackageItems[0]?.quotation.supplier.name;
-      return (
-        aidPackage.name.toLowerCase().includes(searchText) ||
-        aidPackage.status.toLowerCase().includes(searchText) ||
-        supplier?.toLowerCase().includes(searchText)
-      );
-    });
-    setFilteredAidPackages(newlyFilteredPackages);
+    startTransition(() => {
+      const newlyFilteredPackages = aidPackages.filter((aidPackage) => {
+        const supplier = aidPackage.aidPackageItems[0]?.quotation.supplier.name;
+        return (
+          aidPackage.name.toLowerCase().includes(searchText) ||
+          aidPackage.status.toLowerCase().includes(searchText) ||
+          supplier?.toLowerCase().includes(searchText)
+        );
+      });
+      setFilteredAidPackages(newlyFilteredPackages);
+    })
   }
 
   return (
@@ -65,6 +67,7 @@ export default function Home() {
               <input
                 placeholder="Search"
                 className="textField"
+                type="search"
                 onChange={(event) => handleSearch(event.target.value)}
               />
             </div>
