@@ -86,6 +86,7 @@ export default function AboutUs() {
             src={ourApproachImage}
             alt="our-approach"
             className="our-approach"
+            decoding="async"
           />
         </div>
 
@@ -191,7 +192,7 @@ export default function AboutUs() {
           <div className="partner-card-container">
             <div className="partner-section-card">
               <a href="https://opensource.lk/">
-                <img src={lsfLogo} alt="LSF Logo" />
+                <img src={lsfLogo} alt="LSF Logo" decoding="async" loading="lazy" />
               </a>
               <p>
                 LSF has been building large-scale open source systems for more
@@ -202,7 +203,7 @@ export default function AboutUs() {
             </div>
             <div className="partner-section-card">
               <a href="https://sefglobal.org/">
-                <img src={sefLogo} alt="SEF Logo" />
+                <img src={sefLogo} alt="SEF Logo" decoding="async" loading="lazy" />
               </a>
               <p>
                 Sustainable Education Foundation (SEF) helps local students
@@ -214,7 +215,7 @@ export default function AboutUs() {
             </div>
             <div className="partner-section-card">
               <a href="https://longform.watchdog.team/about-us">
-                <img src={watchDogLogo} alt="Watchdog Logo" />
+                <img src={watchDogLogo} alt="Watchdog Logo" decoding="async" loading="lazy" />
               </a>
               <p>
                 Watchdog is a multidisciplinary team of fact checkers,
@@ -225,7 +226,7 @@ export default function AboutUs() {
             </div>
             <div className="partner-section-card">
               <a href="https://wearethelastword.com/">
-                <img src={lastWordLogo} alt="Last Word Logo" />
+                <img src={lastWordLogo} alt="Last Word Logo" decoding="async" loading="lazy" />
               </a>
               <p>
                 The Last Word are creatives and brand strategists whose work
@@ -235,7 +236,7 @@ export default function AboutUs() {
             </div>
             <div className="partner-section-card">
               <a href="https://wso2.com/">
-                <img src={wso2logo} alt="WSO2 Logo" />
+                <img src={wso2logo} alt="WSO2 Logo" decoding="async" loading="lazy" />
               </a>
               <p>
                 Founded in 2005, WSO2 enables the composable enterprise. WSO2’s
@@ -246,7 +247,7 @@ export default function AboutUs() {
             </div>
             <div className="partner-section-card">
               <a href="https://www.hardtalk.lk/">
-                <img src={hardTalkLogo} alt="HardTalk Logo" />
+                <img src={hardTalkLogo} alt="HardTalk Logo" decoding="async" loading="lazy" />
               </a>
               <p>
                 HardTalk is a specialized Public Relations company, operating in

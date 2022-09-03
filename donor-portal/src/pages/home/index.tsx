@@ -24,7 +24,7 @@ export default function Home() {
       <div className="main-container">
         <div className="home-description">
           <div className="image-container">
-            <img src={slRCLogo} alt="SL Red Cross Logo" />
+            <img src={slRCLogo} alt="SL Red Cross Logo" decoding="async" />
           </div>
           <div className="home-description-text">
             <h3>An Acute Medical Emergency</h3>
@@ -68,12 +68,12 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={icrcLogo} alt="icrc-logo" />
+                <img src={icrcLogo} alt="icrc-logo" decoding="async" loading="lazy" />
               </a>
             </div>
             <div className="donor-logo">
               <a href="https://www.ifrc.org/" target="_blank" rel="noreferrer">
-                <img src={ifrcLogo} alt="ifrc-logo" />
+                <img src={ifrcLogo} alt="ifrc-logo" decoding="async" loading="lazy" />
               </a>
             </div>
             <div className="donor-logo">
@@ -82,7 +82,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={singaporeRCLogo} alt="singapore-rc-logo" />
+                <img src={singaporeRCLogo} decoding="async" loading="lazy" alt="singapore-rc-logo" />
               </a>
             </div>
             <div className="donor-logo">
@@ -91,7 +91,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={canadianRCLogo} alt="canada-rc-logo" />
+                <img src={canadianRCLogo} alt="canada-rc-logo" decoding="async" loading="lazy" />
               </a>
             </div>
             <div className="donor-logo">
@@ -100,7 +100,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={qatarRCLogo} alt="qatar-rc-logo" />
+                <img src={qatarRCLogo} decoding="async" loading="lazy" />
               </a>
             </div>
             <div className="donor-logo">
@@ -109,7 +109,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={microsoftLogo} alt="microsoft-logo" />
+                <img src={microsoftLogo} alt="microsoft-logo" decoding="async" loading="lazy" />
               </a>
             </div>
             <div className="donor-logo">
@@ -118,7 +118,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={uberLogo} alt="uber-logo" />
+                <img src={uberLogo} alt="uber-logo" decoding="async" loading="lazy" />
               </a>
             </div>
           </div>
