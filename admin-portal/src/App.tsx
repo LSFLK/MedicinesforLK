@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { BasicUserInfo, useAuthContext } from "@asgardeo/auth-react";
 import { ToastContainer } from "react-toastify";
-import CreateAidPackage from "./pages/aidPackage/aidPackage";
 import Page from "./layout/page";
 import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
@@ -10,16 +9,35 @@ import "react-toastify/dist/ReactToastify.css";
 import PledgeService from "./apis/services/PledgeService";
 import SupplierService from "./apis/services/SupplierService";
 import MedicalNeedsService from "./apis/services/MedicalNeedsService";
-import EditPledge from "./pages/editPledge/editPledge";
-import PledgeStatus from "./pages/pledgeStatus/pledgeStatus";
-import PackageDetails from "./pages/packageDetails/packageDetails";
-import SupplierQuotationUpload from "./pages/supplierQuotationUpload/supplierQuotationUpload";
-import NeedUpload from "./pages/needUpload/needUpload";
-import Home from "./pages/home/home";
 import NavBar from "./components/navbar/navbar";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
-
 import "./App.css";
+
+const Home = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/home/home")
+);
+const CreateAidPackage = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/aidPackage/aidPackage")
+);
+const NeedUpload = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/needUpload/needUpload")
+);
+const PackageDetails = lazy(
+  () =>
+    import(/* webpackPrefetch: true */ "./pages/packageDetails/packageDetails")
+);
+const SupplierQuotationUpload = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */ "./pages/supplierQuotationUpload/supplierQuotationUpload"
+    )
+);
+const PledgeStatus = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/pledgeStatus/pledgeStatus")
+);
+const EditPledge = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/editPledge/editPledge")
+);
 
 function App() {
   const { state, httpRequest, trySignInSilently, signIn } = useAuthContext();
@@ -68,31 +86,33 @@ function App() {
       <div className="main-wrapper">
         <BrowserRouter>
           <Page>
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/creation" exact component={CreateAidPackage} />
-              <Route path="/needUpload" exact component={NeedUpload} />
-              <Route
-                path="/packages/:packageId"
-                exact
-                component={PackageDetails}
-              />
-              <Route
-                exact
-                path="/supplierQuotationUpload"
-                component={SupplierQuotationUpload}
-              />
-              <Route
-                exact
-                path="/packages/:packageId/pledge-status"
-                component={PledgeStatus}
-              />
-              <Route
-                exact
-                path="/packages/:packageId/pledges/:pledgeId"
-                component={EditPledge}
-              />
-            </Switch>
+            <Suspense
+              fallback={<SpinnerLoader loaderText="Loading the Page" />}
+            >
+              <Switch>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/creation" exact>
+                  <CreateAidPackage />
+                </Route>
+                <Route path="/needUpload" exact>
+                  <NeedUpload />
+                </Route>
+                <Route path="/packages/:packageId" exact>
+                  <PackageDetails />
+                </Route>
+                <Route exact path="/supplierQuotationUpload">
+                  <SupplierQuotationUpload />
+                </Route>
+                <Route exact path="/packages/:packageId/pledge-status">
+                  <PledgeStatus />
+                </Route>
+                <Route exact path="/packages/:packageId/pledges/:pledgeId">
+                  <EditPledge />
+                </Route>
+              </Switch>
+            </Suspense>
           </Page>
         </BrowserRouter>
       </div>

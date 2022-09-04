@@ -1,18 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { useAuthContext } from "@asgardeo/auth-react";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
-import Home from "./pages/home";
-import AboutUs from "./pages/about-us";
-import Suppliers from "./pages/suppliers";
 import "./App.css";
-import AidPackageDetailsPage from "./pages/package";
-import NewsRoom from "./pages/newsroom";
 import UserContext from "./userContext";
 import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
-import DonateNowPage from "./pages/donate-now";
+import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
+
+const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
+const AboutUs = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/about-us")
+);
+const Suppliers = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/suppliers")
+);
+const AidPackageDetailsPage = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/package")
+);
+const DonateNowPage = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/donate-now")
+);
+const NewsRoom = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/newsroom")
+);
 
 function App() {
   const { state, httpRequest, getDecodedIDToken } = useAuthContext();
@@ -44,26 +56,28 @@ function App() {
         <header className="App-header">
           <NavBar />
         </header>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about-us">
-            <AboutUs />
-          </Route>
-          <Route exact path="/suppliers">
-            <Suppliers />
-          </Route>
-          <Route exact path="/package/:id">
-            <AidPackageDetailsPage />
-          </Route>
-          <Route exact path="/donate-now">
-            <DonateNowPage />
-          </Route>
-          <Route exact path="/news-room">
-            <NewsRoom />
-          </Route>
-        </Switch>
+        <Suspense fallback={<SpinnerLoader loaderText="Loading the Page" />}>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/about-us">
+              <AboutUs />
+            </Route>
+            <Route exact path="/suppliers">
+              <Suppliers />
+            </Route>
+            <Route exact path="/package/:id">
+              <AidPackageDetailsPage />
+            </Route>
+            <Route exact path="/donate-now">
+              <DonateNowPage />
+            </Route>
+            <Route exact path="/news-room">
+              <NewsRoom />
+            </Route>
+          </Switch>
+        </Suspense>
         <Footer />
       </UserContext.Provider>
     </div>
