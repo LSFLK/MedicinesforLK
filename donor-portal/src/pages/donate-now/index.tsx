@@ -81,7 +81,7 @@ export default function DonateNowPage() {
   const userId = useContext(UserContext);
   const { state } = useAuthContext();
   const [isLoading, setIsLoading] = useState(true);
-  const [isPending, startTransition ] = useTransition()
+  const [isPending, startTransition] = useTransition();
   const [goalPendingAidPackages, setGoalPendingAidPackages] = useState<
     AidPackage[]
   >([]);
@@ -94,9 +94,8 @@ export default function DonateNowPage() {
   const [activeTabItem, setActiveTabItem] = useState<TabItems>(
     TabItems.GOAL_PENDING
   );
-  const [concurrentActiveTabItem, setConcurrentActiveTabItem] = useState<TabItems>(
-    TabItems.GOAL_PENDING
-  );
+  const [concurrentActiveTabItem, setConcurrentActiveTabItem] =
+    useState<TabItems>(TabItems.GOAL_PENDING);
 
   const fetchPledgedAidPackages = async (donorId: string) => {
     const returnedPledgedPackages =
@@ -147,7 +146,7 @@ export default function DonateNowPage() {
               setConcurrentActiveTabItem(TabItems.GOAL_PENDING);
               startTransition(() => {
                 setActiveTabItem(TabItems.GOAL_PENDING);
-              })
+              });
             }}
           >
             Goal Pending
@@ -162,7 +161,7 @@ export default function DonateNowPage() {
                 setConcurrentActiveTabItem(TabItems.MY_PLEDGES);
                 startTransition(() => {
                   setActiveTabItem(TabItems.MY_PLEDGES);
-                })
+                });
               }}
             >
               My Pledges
@@ -177,7 +176,7 @@ export default function DonateNowPage() {
               setConcurrentActiveTabItem(TabItems.GOAL_REACHED);
               startTransition(() => {
                 setActiveTabItem(TabItems.GOAL_REACHED);
-              })
+              });
             }}
           >
             Goal Reached
@@ -185,7 +184,7 @@ export default function DonateNowPage() {
         </div>
       </div>
       {isLoading && <SpinnerLoader loaderText="Loading..." />}
-      <div className="package-list" style={{opacity: isPending ? 0.5 : 1}}>
+      <div className="package-list" style={{ opacity: isPending ? 0.5 : 1 }}>
         {activeTabItem === TabItems.GOAL_PENDING &&
           goalPendingAidPackages.map((aidPackage) => (
             <PackageCard
@@ -215,7 +214,7 @@ export default function DonateNowPage() {
                   setConcurrentActiveTabItem(TabItems.GOAL_PENDING);
                   startTransition(() => {
                     setActiveTabItem(TabItems.GOAL_PENDING);
-                  })
+                  });
                 }}
               >
                 Goal Pending tab
@@ -244,7 +243,7 @@ export default function DonateNowPage() {
                   setConcurrentActiveTabItem(TabItems.GOAL_PENDING);
                   startTransition(() => {
                     setActiveTabItem(TabItems.GOAL_PENDING);
-                  })
+                  });
                 }}
               >
                 Goal Pending tab

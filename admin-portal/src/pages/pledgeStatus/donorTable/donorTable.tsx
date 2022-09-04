@@ -28,7 +28,7 @@ export default function DonorTable({
     updatedPledgesArr[pledgeIndex] = updatedPledge;
     setPledges(updatedPledgesArr);
   };
-  const [isPending, startTransition] = React.useTransition()
+  const [isPending, startTransition] = React.useTransition();
 
   return (
     <div>
@@ -65,11 +65,15 @@ export default function DonorTable({
                     />
                   </td>
                   <td>
-                    <button disabled={isPending} type="button" onClick={() => {
-                      startTransition(() => {
-                        onPledgeEdit(pledge)
-                      })
-                    }}>
+                    <button
+                      disabled={isPending}
+                      type="button"
+                      onClick={() => {
+                        startTransition(() => {
+                          onPledgeEdit(pledge);
+                        });
+                      }}
+                    >
                       Edit
                     </button>
                     <button
@@ -77,8 +81,8 @@ export default function DonorTable({
                       disabled={isPending}
                       onClick={() => {
                         startTransition(() => {
-                          onPledgeDelete(pledge)
-                        })
+                          onPledgeDelete(pledge);
+                        });
                       }}
                     >
                       Delete

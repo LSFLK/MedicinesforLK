@@ -52,7 +52,7 @@ export default function CreateAidPackage() {
   const goToStep = (step: STEPS) => {
     startTransition(() => {
       setCurrentFormStep(step);
-    })
+    });
   };
 
   const handleAidPkgPublish = async (
