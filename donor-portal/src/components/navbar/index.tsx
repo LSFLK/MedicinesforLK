@@ -61,7 +61,7 @@ export default function NavBar() {
           )}
           <Link to="/">
             <div className="logo">
-              <img src={logo} alt="Elixir Logo" />
+              <img src={logo} alt="Elixir Logo" decoding="async" />
             </div>
           </Link>
         </div>

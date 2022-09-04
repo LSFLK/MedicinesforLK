@@ -63,7 +63,11 @@ export default function Home() {
         <>
           <div className="packageTableSearch">
             <div className="searchContainer">
-              <img src="/assets/svg/search_icon.svg" alt="search-icon" />
+              <img
+                src="/assets/svg/search_icon.svg"
+                alt="search-icon"
+                decoding="async"
+              />
               <input
                 placeholder="Search"
                 className="textField"

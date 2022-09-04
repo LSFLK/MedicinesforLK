@@ -51,6 +51,7 @@ export default function NavBar() {
                 src="/assets/images/elixirLogo4.png"
                 alt="Elixir Logo"
                 className="themedImage--light"
+                decoding="async"
               />
             </div>
             <b className="navbar__title">Elixir</b>
