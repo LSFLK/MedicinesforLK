@@ -68,12 +68,22 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={icrcLogo} alt="icrc-logo" decoding="async" loading="lazy" />
+                <img
+                  src={icrcLogo}
+                  alt="icrc-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
             </div>
             <div className="donor-logo">
               <a href="https://www.ifrc.org/" target="_blank" rel="noreferrer">
-                <img src={ifrcLogo} alt="ifrc-logo" decoding="async" loading="lazy" />
+                <img
+                  src={ifrcLogo}
+                  alt="ifrc-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
             </div>
             <div className="donor-logo">
@@ -82,7 +92,12 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={singaporeRCLogo} decoding="async" loading="lazy" alt="singapore-rc-logo" />
+                <img
+                  src={singaporeRCLogo}
+                  decoding="async"
+                  loading="lazy"
+                  alt="singapore-rc-logo"
+                />
               </a>
             </div>
             <div className="donor-logo">
@@ -91,7 +106,12 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={canadianRCLogo} alt="canada-rc-logo" decoding="async" loading="lazy" />
+                <img
+                  src={canadianRCLogo}
+                  alt="canada-rc-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
             </div>
             <div className="donor-logo">
@@ -100,7 +120,12 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={qatarRCLogo} alt="qatar-rc-logo" decoding="async" loading="lazy" />
+                <img
+                  src={qatarRCLogo}
+                  alt="qatar-rc-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
             </div>
             <div className="donor-logo">
@@ -109,7 +134,12 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={microsoftLogo} alt="microsoft-logo" decoding="async" loading="lazy" />
+                <img
+                  src={microsoftLogo}
+                  alt="microsoft-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
             </div>
             <div className="donor-logo">
@@ -118,7 +148,12 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={uberLogo} alt="uber-logo" decoding="async" loading="lazy" />
+                <img
+                  src={uberLogo}
+                  alt="uber-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
               </a>
             </div>
           </div>

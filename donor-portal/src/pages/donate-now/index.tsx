@@ -28,7 +28,12 @@ function PackageCard({
 
   return (
     <div className="package-card" key={packageID}>
-      <img className="package-image" src={packageImage} alt="packageImage" decoding="async" />
+      <img
+        className="package-image"
+        src={packageImage}
+        alt="packageImage"
+        decoding="async"
+      />
       <div className="card-details">
         <div className="card-details__heading">
           <div className="card-details__heading__text">
