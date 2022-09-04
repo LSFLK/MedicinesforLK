@@ -91,29 +91,27 @@ function App() {
               fallback={<SpinnerLoader loaderText="Loading the Page" />}
             >
               <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/creation" exact component={CreateAidPackage} />
-                <Route path="/needUpload" exact component={NeedUpload} />
-                <Route
-                  path="/packages/:packageId"
-                  exact
-                  component={PackageDetails}
-                />
-                <Route
-                  exact
-                  path="/supplierQuotationUpload"
-                  component={SupplierQuotationUpload}
-                />
-                <Route
-                  exact
-                  path="/packages/:packageId/pledge-status"
-                  component={PledgeStatus}
-                />
-                <Route
-                  exact
-                  path="/packages/:packageId/pledges/:pledgeId"
-                  component={EditPledge}
-                />
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/creation" exact>
+                  <CreateAidPackage />
+                </Route>
+                <Route path="/needUpload" exact>
+                  <NeedUpload />
+                </Route>
+                <Route path="/packages/:packageId" exact>
+                  <PackageDetails />
+                </Route>
+                <Route exact path="/supplierQuotationUpload">
+                  <SupplierQuotationUpload />
+                </Route>
+                <Route exact path="/packages/:packageId/pledge-status">
+                  <PledgeStatus />
+                </Route>
+                <Route exact path="/packages/:packageId/pledges/:pledgeId">
+                  <EditPledge />
+                </Route>
               </Switch>
             </Suspense>
           </Page>
