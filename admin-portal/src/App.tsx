@@ -12,13 +12,31 @@ import MedicalNeedsService from "./apis/services/MedicalNeedsService";
 import NavBar from "./components/navbar/navbar";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 
-const Home = lazy(() => import(/* webpackPrefetch: true */"./pages/home/home"))
-const CreateAidPackage = lazy(() => import(/* webpackPrefetch: true */"./pages/aidPackage/aidPackage"))
-const NeedUpload = lazy(() => import(/* webpackPrefetch: true */"./pages/needUpload/needUpload"))
-const PackageDetails = lazy(() => import(/* webpackPrefetch: true */"./pages/packageDetails/packageDetails"))
-const SupplierQuotationUpload = lazy(() => import(/* webpackPrefetch: true */"./pages/supplierQuotationUpload/supplierQuotationUpload"))
-const PledgeStatus = lazy(() => import(/* webpackPrefetch: true */"./pages/pledgeStatus/pledgeStatus"))
-const EditPledge = lazy(() => import(/* webpackPrefetch: true */"./pages/editPledge/editPledge"))
+const Home = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/home/home")
+);
+const CreateAidPackage = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/aidPackage/aidPackage")
+);
+const NeedUpload = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/needUpload/needUpload")
+);
+const PackageDetails = lazy(
+  () =>
+    import(/* webpackPrefetch: true */ "./pages/packageDetails/packageDetails")
+);
+const SupplierQuotationUpload = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */ "./pages/supplierQuotationUpload/supplierQuotationUpload"
+    )
+);
+const PledgeStatus = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/pledgeStatus/pledgeStatus")
+);
+const EditPledge = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/editPledge/editPledge")
+);
 
 import "./App.css";
 
@@ -69,7 +87,9 @@ function App() {
       <div className="main-wrapper">
         <BrowserRouter>
           <Page>
-            <Suspense fallback={<SpinnerLoader loaderText="Loading the Page" />}>
+            <Suspense
+              fallback={<SpinnerLoader loaderText="Loading the Page" />}
+            >
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/creation" exact component={CreateAidPackage} />

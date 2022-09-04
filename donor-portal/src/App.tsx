@@ -9,12 +9,22 @@ import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 
-const Home = lazy(() => import(/* webpackPrefetch: true */"./pages/home"))
-const AboutUs = lazy(() => import(/* webpackPrefetch: true */"./pages/about-us"))
-const Suppliers = lazy(() => import(/* webpackPrefetch: true */"./pages/suppliers"))
-const AidPackageDetailsPage = lazy(() => import(/* webpackPrefetch: true */"./pages/package"))
-const DonateNowPage = lazy(() => import(/* webpackPrefetch: true */"./pages/donate-now"))
-const NewsRoom = lazy(() => import(/* webpackPrefetch: true */"./pages/newsroom"))
+const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
+const AboutUs = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/about-us")
+);
+const Suppliers = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/suppliers")
+);
+const AidPackageDetailsPage = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/package")
+);
+const DonateNowPage = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/donate-now")
+);
+const NewsRoom = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/newsroom")
+);
 
 function App() {
   const { state, httpRequest, getDecodedIDToken } = useAuthContext();
