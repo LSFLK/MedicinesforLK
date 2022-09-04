@@ -42,9 +42,7 @@ export default function NavBar() {
   };
 
   const toggleMobileNav = () => {
-    setIsMobileNavVisible((pre: boolean) => {
-      return !pre;
-    });
+    setIsMobileNavVisible((pre: boolean) => !pre);
   };
 
   return (
