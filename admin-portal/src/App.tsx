@@ -11,6 +11,7 @@ import SupplierService from "./apis/services/SupplierService";
 import MedicalNeedsService from "./apis/services/MedicalNeedsService";
 import NavBar from "./components/navbar/navbar";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
+import "./App.css";
 
 const Home = lazy(
   () => import(/* webpackPrefetch: true */ "./pages/home/home")
@@ -37,8 +38,6 @@ const PledgeStatus = lazy(
 const EditPledge = lazy(
   () => import(/* webpackPrefetch: true */ "./pages/editPledge/editPledge")
 );
-
-import "./App.css";
 
 function App() {
   const { state, httpRequest, trySignInSilently, signIn } = useAuthContext();
