@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
-export default function Footer() {
+const Footer = React.memo(() => {
   return (
     <footer className="footer">
       <div className="footer-red">
@@ -78,4 +78,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+});
+
+export default Footer;

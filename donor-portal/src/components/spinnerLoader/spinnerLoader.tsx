@@ -9,7 +9,7 @@ interface SpinnerProps {
   loaderText?: string;
 }
 
-export default function SpinnerLoader(props: SpinnerProps) {
+const SpinnerLoader = React.memo((props: SpinnerProps) => {
   const { loaderText } = props;
   return (
     <div className="loading-container">
@@ -21,4 +21,6 @@ export default function SpinnerLoader(props: SpinnerProps) {
       )}
     </div>
   );
-}
+});
+
+export default SpinnerLoader;

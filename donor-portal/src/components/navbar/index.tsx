@@ -72,6 +72,7 @@ export default function NavBar() {
         >
           {mobileNavItems.map((navItem) => (
             <NavLink
+              key={navItem.name}
               to={navItem.path}
               exact
               className="nav-link"

@@ -56,7 +56,7 @@ const volunteers = [
   "Dllina Bandara",
 ];
 
-export default function AboutUs() {
+const AboutUs = React.memo(() => {
   return (
     <div className="about-us">
       <HeroSection image={bannerImage} title="About Us" position="top left" />
@@ -292,11 +292,13 @@ export default function AboutUs() {
           <h2>Volunteers</h2>
           <ul className="volunteers-section">
             {volunteers.map((volunteer) => (
-              <li>{volunteer}</li>
+              <li key={volunteer}>{volunteer}</li>
             ))}
           </ul>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default AboutUs;

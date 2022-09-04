@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, startTransition } from "react";
 import {
   useTable,
   useExpanded,
@@ -35,7 +35,11 @@ export function GlobalFilter({
       }}
     >
       <div className="searchContainer">
-        <img src="/assets/svg/search_icon.svg" alt="search-icon" />
+        <img
+          src="/assets/svg/search_icon.svg"
+          alt="search-icon"
+          decoding="async"
+        />
         <input
           placeholder="Search"
           className="textField"
@@ -301,10 +305,11 @@ export default function AssignSuppliers({
                           if (quantity === "" || quantity === "0") {
                             updatedAssignments.delete(supplierID);
                           }
-
-                          setNeedAssignments({
-                            ...needAssignments,
-                            [needsID]: new Map(updatedAssignments),
+                          startTransition(() => {
+                            setNeedAssignments({
+                              ...needAssignments,
+                              [needsID]: new Map(updatedAssignments),
+                            });
                           });
                         }}
                         requiredQuantity={requiredQuantity}
