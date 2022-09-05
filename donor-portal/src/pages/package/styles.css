@@ -62,3 +62,8 @@
     width: auto;
   }
 }
+
+.created-by {
+  font-weight: 600;
+  padding-top: 1rem;
+}

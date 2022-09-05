@@ -98,12 +98,14 @@ export default class AidPackageService {
 
   static postAidPackage({
     name,
+    donorId,
     description,
     status,
     aidPackageItems,
   }: {
     name: string;
     description: string;
+    donorId: string;
     status: AidPackage.Status;
     period: Quotation["period"];
     aidPackageItems: Array<{
@@ -115,6 +117,7 @@ export default class AidPackageService {
     // TODO:  Define interfaces for the data types.
     return AidPackageService.http.post<any, AidPackage>(`aidpackages`, {
       name,
+      donorId,
       description,
       aidPackageItems,
       status,
