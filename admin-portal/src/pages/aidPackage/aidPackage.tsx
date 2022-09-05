@@ -1,5 +1,6 @@
 import React, { useEffect, useState, startTransition } from "react";
 import toast from "react-simple-toasts";
+import { useAuthContext } from "@asgardeo/auth-react";
 import { Stepper, Step } from "../../components/stepper";
 import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
 import AidPackageService from "../../apis/services/AidPackageService";
@@ -25,6 +26,15 @@ export default function CreateAidPackage() {
   const [aidPackages, setAidPackages] = useState<DraftAidPackages>({});
   const [isValidAssignment, setIsValidAssignment] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const { state, getDecodedIDToken } = useAuthContext();
+  const [donorId, setDonorId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (state.isAuthenticated)
+      getDecodedIDToken().then((value) => {
+        if (value && value.sub) setDonorId(value.sub);
+      });
+  }, [state.isAuthenticated]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -82,6 +92,7 @@ export default function CreateAidPackage() {
         return AidPackageService.postAidPackage({
           name: aidPackage.name,
           description: aidPackage.details,
+          donorId: donorId!,
           status,
           period: aidPackage.period,
           aidPackageItems: needs.map((need) => {

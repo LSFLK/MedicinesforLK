@@ -4,6 +4,7 @@ export interface AidPackage {
   packageID: number;
   name: string;
   description: string;
+  createdBy: string;
   status: AidPackage.Status;
   aidPackageItems: AidPackageItem[];
   goalAmount: number;

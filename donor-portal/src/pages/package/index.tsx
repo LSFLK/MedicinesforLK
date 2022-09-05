@@ -215,6 +215,8 @@ export default function AidPackageDetailsPage() {
                 )
               )}
             </div>
+            <p className="created-by">Created by</p>
+            <div>{aidPackage.createdBy}</div>
             <OrderItemsTable items={aidPackage.aidPackageItems} />
             <PackageStatus currentStatus={aidPackage.status} />
             <UpdateComments comments={updateComments} />
