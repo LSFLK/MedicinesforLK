@@ -3,7 +3,7 @@ import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
 import "./styles.css";
 
-export default function NewsRoom() {
+const NewsRoom = React.memo(() => {
   return (
     <div className="news-room">
       <HeroSection title="News Room" image={bannerImage} />
@@ -75,4 +75,6 @@ export default function NewsRoom() {
       </div>
     </div>
   );
-}
+});
+
+export default NewsRoom;

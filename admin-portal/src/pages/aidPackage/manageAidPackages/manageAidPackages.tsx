@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, startTransition } from "react";
 import AidPackageDetailsTable from "./aidPackageDetailsTable";
 import AidPackageTable from "./aidPackagesTable";
 import "./manageAidPackages.css";
@@ -89,9 +89,11 @@ export default function ManageAidPackages({
         <AidPackageDetailsTable
           selectedPackage={aidPackages[selectedPackageKey]}
           updateAidPackage={(updatedPackage: DraftAidPackage) => {
-            setAidPackages({
-              ...aidPackages,
-              [selectedPackageKey]: updatedPackage,
+            startTransition(() => {
+              setAidPackages({
+                ...aidPackages,
+                [selectedPackageKey]: updatedPackage,
+              });
             });
           }}
           selectedPackageKey={selectedPackageKey}

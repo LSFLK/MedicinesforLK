@@ -23,7 +23,9 @@ export default function PackageStatus({
                 id={key}
                 checked={status === currentStatus}
                 onChange={() => {
-                  onStatusChange(status as AidPackage.Status);
+                  React.startTransition(() => {
+                    onStatusChange(status as AidPackage.Status);
+                  });
                 }}
               />
               <label htmlFor={key}>{status}</label>

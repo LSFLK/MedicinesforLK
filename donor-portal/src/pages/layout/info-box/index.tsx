@@ -19,7 +19,7 @@ export default function InfoBox({
 }) {
   return (
     <div className="info-box">
-      <img src={iconUrl} alt="" />
+      <img src={iconUrl} alt="" decoding="async" />
       <h2>{heading}</h2>
       <p>{text}</p>
       {path && (
