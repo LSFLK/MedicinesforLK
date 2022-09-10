@@ -40,7 +40,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 80%;
+  width: 95%;
 }
 
 td,
@@ -58,7 +58,6 @@ th {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  margin-bottom: 20px;
 }
 
 .noDataMessage {

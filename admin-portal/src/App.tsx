@@ -118,13 +118,11 @@ function App() {
       </div>
       <footer className="footer footer--dark">
         <div>
-          <p>
-            Copyright ©{" "}
-            <a href="www.elixir.redcross.lk" className="footer-link">
-              elixir.redcross.lk{" "}
-            </a>
-            | All rights reserved
-          </p>
+          Copyright ©{" "}
+          <a href="www.elixir.redcross.lk" className="footer-link">
+            elixir.redcross.lk{" "}
+          </a>
+          | All rights reserved
         </div>
       </footer>
       <ToastContainer />
