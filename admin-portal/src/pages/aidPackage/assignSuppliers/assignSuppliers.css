@@ -20,6 +20,10 @@
   top: 3.5rem;
 }
 
+.need-column {
+  width: 15rem !important;
+}
+
 .supplier-allocation-table .has-error .validation-message {
   display: block;
 }

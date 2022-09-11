@@ -23,7 +23,7 @@
   transition: width var(--elixir-transition-fast) ease;
   width: var(--elixir-sidebar-width);
   will-change: width;
-  min-height: 92vh;
+  min-height: 96.5vh;
 }
 
 .sidebar {
@@ -36,7 +36,6 @@
   position: sticky;
   top: 0;
   transition: opacity 50ms;
-  width: var(--elixir-sidebar-width);
 }
 
 .menu {

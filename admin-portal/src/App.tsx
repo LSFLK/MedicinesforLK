@@ -83,7 +83,7 @@ function App() {
       <header className="App-header">
         <NavBar />
       </header>
-      <div className="main-wrapper">
+      <div>
         <BrowserRouter>
           <Page>
             <Suspense

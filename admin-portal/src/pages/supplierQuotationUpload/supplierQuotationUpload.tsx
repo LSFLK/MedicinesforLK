@@ -71,7 +71,7 @@ export default function SupplierQuotationUpload() {
 
       <div className="uploadSupplierQuotationContainer">
         <form onSubmit={handleSubmit}>
-          <p>Select the needs csv file that you want to upload.</p>
+          <p>Select the supplier quotation csv file that you want to upload.</p>
           <input
             type="file"
             accept=".csv"

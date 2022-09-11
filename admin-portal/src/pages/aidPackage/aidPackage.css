@@ -20,7 +20,7 @@ table {
 
 .create-aid-body {
   flex: 1;
-  max-height: calc(100vh - 22rem);
+  max-height: 64vh;
   overflow: scroll;
 }
 
@@ -58,7 +58,7 @@ table {
 .needs-row td {
   width: 20px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 0.5rem;
 }
 
 .needs-row td .expander {
