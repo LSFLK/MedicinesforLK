@@ -58,19 +58,12 @@ a:hover {
 .footer {
   background-color: var(--elixir-footer-background-color);
   color: var(--elixir-footer-color);
-  padding: var(--elixir-footer-padding-vertical)
-    var(--elixir-footer-padding-horizontal);
+  padding: 0.5rem;
 }
 
 .footer-link {
   color: var(--elixir-footer-color);
   text-decoration: none;
-}
-
-.main-wrapper {
-  flex: 1 0 auto;
-  box-sizing: border-box;
-  display: flex;
 }
 
 h1,

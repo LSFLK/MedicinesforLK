@@ -10,7 +10,7 @@ interface TableProps {
 export default function Table(props: TableProps) {
   const { aidPackages } = props;
   return (
-    <table>
+    <table style={{ marginTop: 20 }}>
       <thead>
         <tr>
           <th>Created on</th>

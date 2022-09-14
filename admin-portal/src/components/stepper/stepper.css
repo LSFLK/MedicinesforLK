@@ -4,8 +4,8 @@
   display: flex;
   gap: 1rem;
   border-bottom: 1px dashed var(--elixir-color-gray-700);
-  padding-bottom: 1.5rem;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .stepper .divider {

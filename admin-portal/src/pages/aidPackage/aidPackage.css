@@ -20,7 +20,7 @@ table {
 
 .create-aid-body {
   flex: 1;
-  max-height: calc(100vh - 26.5rem);
+  max-height: 64vh;
   overflow: scroll;
 }
 
@@ -42,13 +42,13 @@ table {
   border: none;
   border-top: 1px solid var(--elixir-color-gray-400);
   border-bottom: 2px solid var(--elixir-color-gray-400);
-  padding: 0.75rem 0;
+  padding: 0.4rem 0;
 }
 
 .create-aid-body td {
   border: none;
   border-bottom: 1px solid var(--elixir-color-gray-400);
-  padding: 0.75rem 0;
+  padding: 0.6rem 0;
 }
 
 .needs-row {
@@ -58,13 +58,13 @@ table {
 .needs-row td {
   width: 20px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 0.5rem;
 }
 
 .needs-row td .expander {
   display: inline-block;
   width: 100%;
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -82,5 +82,5 @@ table {
 }
 
 .create-aid-body .supplier-allocation-table-container {
-  padding: 1rem 1rem;
+  padding: 0.5rem 0.5rem;
 }

@@ -136,7 +136,6 @@ export default function AssignSuppliers({
     () => [
       {
         Header: () => null,
-        minWidth: 40,
         id: "expander", // It needs an ID
         Cell: ({ row }: any) => (
           <span
@@ -159,6 +158,7 @@ export default function AssignSuppliers({
       },
       {
         Header: "Need",
+        className: "need-column",
         accessor: "needName",
       },
       {
