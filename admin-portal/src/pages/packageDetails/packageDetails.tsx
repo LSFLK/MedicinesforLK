@@ -17,7 +17,7 @@ import EditDescriptionPrompt from "./components/editDescriptionPrompt/editDescri
 import DeleteAidPackagePrompt from "./components/deleteAidPackagePrompt/editUpdateCommentPrompt";
 import PledgeService from "../../apis/services/PledgeService";
 import { Pledge } from "../../types/Pledge";
-import DonorTable from "../pledgeStatus/donorTable/donorTable";
+import DonorTable from "./components/donorTable/donorTable";
 
 export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();

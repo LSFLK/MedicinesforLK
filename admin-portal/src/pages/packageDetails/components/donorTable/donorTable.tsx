@@ -1,7 +1,7 @@
 import React from "react";
-import { AidPackage } from "../../../types/AidPackage";
-import { Pledge } from "../../../types/Pledge";
-import PledgeStatusSelector from "../../editPledge/components/pledgeStatusSelector/pledgeStatusSelector";
+import { AidPackage } from "../../../../types/AidPackage";
+import { Pledge } from "../../../../types/Pledge";
+import PledgeStatusSelector from "../../../editPledge/components/pledgeStatusSelector/pledgeStatusSelector";
 
 interface DonorTableProps {
   pledges: Pledge[];
