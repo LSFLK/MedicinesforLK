@@ -16,7 +16,8 @@ export default function UpdateComments({ comments }: UpdateCommentsProps) {
         {comments.map((post) => (
           <div key={post.packageUpdateID} className="comment">
             <p className="date">
-              {moment.unix(post.dateTime).local().format("YYYY-MM-DD hh:mm A")}
+              {post.dateTime &&
+                moment.unix(post.dateTime).local().format("YYYY-MM-DD hh:mm A")}
             </p>
             <div className="content">
               <span className="text">{post.updateComment}</span>
