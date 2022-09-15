@@ -2,7 +2,7 @@ import React from "react";
 import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
 import ourApproachImage from "./images/our-approach.png";
-import slRedCrossLogo from "./images/sl-redcross-logo.jpeg";
+import slRedCrossLogo from "./images/sl-redcross-logo.png";
 import lsfLogo from "./images/lsf-logo.png";
 import sefLogo from "./images/SEF_Logo.png";
 import hardTalkLogo from "./images/hardTalk.jpeg";
