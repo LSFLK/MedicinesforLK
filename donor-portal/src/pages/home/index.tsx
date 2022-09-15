@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
-import slRCLogo from "./images/slredcross_logo.png";
+import governmentLogo from "./images/government-logo.jpeg";
 import icrcLogo from "./images/icrc_logo.png";
 import ifrcLogo from "./images/ifrc_logo.png";
 import singaporeRCLogo from "./images/Singapore_Red_Cross.jpg";
@@ -17,14 +17,20 @@ export default function Home() {
     <div className="home-page">
       <div>
         <HeroSection
-          title="Donate to Sri Lanka’s medical supply needs. "
+          title="Coordinated donations to Sri Lanka’s medical supply needs"
           image={bannerImage}
         />
       </div>
       <div className="main-container">
         <div className="home-description">
           <div className="image-container">
-            <img src={slRCLogo} alt="SL Red Cross Logo" decoding="async" />
+            <img
+              src={governmentLogo}
+              alt="SL Red Cross Logo"
+              decoding="async"
+            />
+            <p>With support from the</p>
+            <h2>Ministry of Health</h2>
           </div>
           <div className="home-description-text">
             <h3>An Acute Medical Emergency</h3>
