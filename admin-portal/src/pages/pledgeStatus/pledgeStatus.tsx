@@ -8,6 +8,7 @@ import AidPackageService from "../../apis/services/AidPackageService";
 import { Pledge } from "../../types/Pledge";
 import PledgeService from "../../apis/services/PledgeService";
 
+// This page was removed - donor table was moved to the aidpackage view with all status update functionality
 export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();

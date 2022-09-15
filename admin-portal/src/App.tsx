@@ -32,9 +32,6 @@ const SupplierQuotationUpload = lazy(
       /* webpackPrefetch: true */ "./pages/supplierQuotationUpload/supplierQuotationUpload"
     )
 );
-const PledgeStatus = lazy(
-  () => import(/* webpackPrefetch: true */ "./pages/pledgeStatus/pledgeStatus")
-);
 const EditPledge = lazy(
   () => import(/* webpackPrefetch: true */ "./pages/editPledge/editPledge")
 );
@@ -104,9 +101,6 @@ function App() {
                 </Route>
                 <Route exact path="/supplierQuotationUpload">
                   <SupplierQuotationUpload />
-                </Route>
-                <Route exact path="/packages/:packageId/pledge-status">
-                  <PledgeStatus />
                 </Route>
                 <Route exact path="/packages/:packageId/pledges/:pledgeId">
                   <EditPledge />

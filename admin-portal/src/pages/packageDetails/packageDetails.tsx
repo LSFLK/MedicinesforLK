@@ -315,9 +315,6 @@ export default function PackageDetails() {
                   maximumFractionDigits: 2,
                 })}
               </p>
-              <Link to={`/packages/${packageId}/pledge-status`}>
-                See pledge status
-              </Link>
             </div>
           </div>
           <PackageStatus
