@@ -2,6 +2,7 @@ import React from "react";
 import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
 import ourApproachImage from "./images/our-approach.png";
+import slRedCrossLogo from "./images/sl-redcross-logo.png";
 import lsfLogo from "./images/lsf-logo.png";
 import sefLogo from "./images/SEF_Logo.png";
 import hardTalkLogo from "./images/hardTalk.jpeg";
@@ -190,6 +191,24 @@ const AboutUs = React.memo(() => {
         <div className="partner-section">
           <h2>Partners</h2>
           <div className="partner-card-container">
+            <div className="partner-section-card">
+              <a href="https://www.redcross.lk/">
+                <img
+                  src={slRedCrossLogo}
+                  alt="SL Red Cross Logo"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </a>
+              <p>
+                The Sri Lanka Red Cross Society has operated since 1936. We
+                focus on Disaster Management, Health, Organization Development,
+                Humanitarian Values, Communication, Finance, and Transportation.
+                The SLRCS covers all 25 administrative Districts of the country
+                and has 25 branches a total membership of 100,000 and 6,500
+                volunteers.
+              </p>
+            </div>
             <div className="partner-section-card">
               <a href="https://opensource.lk/">
                 <img
