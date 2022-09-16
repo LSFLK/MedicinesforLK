@@ -24,7 +24,10 @@ export default function TableRow(props: TableRowProps) {
 
   return (
     <tr key={aidPackage.packageID}>
-      <td>{moment.unix(aidPackage.dateTime).local().format("DD/MM/YYYY")}</td>
+      <td>
+        {aidPackage.dateTime &&
+          moment.unix(aidPackage.dateTime).local().format("DD/MM/YYYY")}
+      </td>
       <td>{aidPackage.name}</td>
       <td>{aidPackage.status}</td>
       <td>

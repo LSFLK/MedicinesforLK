@@ -49,7 +49,8 @@ export default function UpdateComments({
         {posts.map((post) => (
           <div key={post.packageUpdateID} className="post">
             <p className="date">
-              {moment.unix(post.dateTime).local().format("YYYY-MM-DD hh:mm A")}
+              {post.dateTime &&
+                moment.unix(post.dateTime).local().format("YYYY-MM-DD hh:mm A")}
             </p>
             <div className="content">
               <span className="text">{post.updateComment}</span>
