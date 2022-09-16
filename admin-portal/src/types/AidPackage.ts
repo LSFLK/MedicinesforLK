@@ -1,5 +1,4 @@
 import { AidPackageItem } from "./DonorAidPackageOrderItem";
-import { Quotation } from "./Quotation";
 
 export interface AidPackage {
   packageID: number;
@@ -32,7 +31,6 @@ export type NeedAssignments = {
 
 export type DraftAidPackage = {
   supplierID: number;
-  period: Quotation["period"];
   name: string;
   details: string;
   isPublished?: boolean;

@@ -6,7 +6,6 @@ import { MedicalNeed } from "../../../types/MedicalNeeds";
 import { getSupplierQuoteForNeed } from "../../../helpers/needsHelper";
 import {
   getDraftAidPackageKey,
-  getPeriodFromAidPackageKey,
   getSupplierIdFromAidPackageKey,
 } from "../../../helpers/aidPackageHelper";
 import {
@@ -56,7 +55,6 @@ export default function ManageAidPackages({
       const syncedAidPackages: DraftAidPackages = {};
 
       Array.from(draftAidPackageKeys).forEach((draftAidPackageKey) => {
-        const period = getPeriodFromAidPackageKey(draftAidPackageKey);
         const supplierID = getSupplierIdFromAidPackageKey(draftAidPackageKey);
 
         if (aidPackages[draftAidPackageKey]) {
@@ -66,7 +64,6 @@ export default function ManageAidPackages({
           syncedAidPackages[draftAidPackageKey] = {
             name: "",
             details: "",
-            period,
             supplierID,
           };
         }
