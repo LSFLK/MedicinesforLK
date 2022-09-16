@@ -52,7 +52,7 @@ const volunteers = [
   "Namali Premawardhana",
   "Avanthi Gunatilake",
   "Ryan Kuruppu",
-  "Natasha Perera",
+  "Dr. Natasha Perera",
   "Buddhi Weerasekera",
   "Dllina Bandara",
 ];
