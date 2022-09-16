@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { AidPackage } from "../../types/AidPackage";
-import DonorTable from "./donorTable/donorTable";
+import DonorTable from "../../pages/packageDetails/components/donorTable/donorTable";
 import "./pledgeStatus.css";
-import ContributionsChart from "../../components/contributionsChart/contributionsChart";
+import ContributionsChart from "../contributionsChart/contributionsChart";
 import AidPackageService from "../../apis/services/AidPackageService";
 import { Pledge } from "../../types/Pledge";
 import PledgeService from "../../apis/services/PledgeService";
 
+// This page was removed - donor table was moved to the aidpackage view with all status update functionality
 export default function PledgeStatus() {
   const { packageId } = useParams<{ packageId: string }>();
   const [aidPackage, setAidPackage] = useState<AidPackage>();
