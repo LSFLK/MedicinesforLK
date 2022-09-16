@@ -36,27 +36,30 @@ export default function Home() {
             <h3>An Acute Medical Emergency</h3>
             <p>
               Sri Lanka needs a coordinated response to address the overall
-              medical needs of hospitals. Given limited resources it is
+              medical needs of hospitals. Given limited resources, it is
               essential to improve the distribution of supplies to help avoid
               possible duplication, address gaps and avoid detrimental outcomes
-              to citizens most in need.
+              to citizens most in need. We believe that donor cooperation is
+              essential to help Sri Lanka accelerate a return to normalcy.
             </p>
             <h3>An Alternative Approach</h3>
             <p>
-              Elixir is a platform designed to meet this need. It is operated by
-              the Sri Lanka Red Cross along with a network of volunteers and
-              professionals to help improve the effectiveness of donations. In
-              partnership with the Sri Lanka Medical Supplies Division we have
-              compiled aid packages that collect the needs across multiple
-              hospitals to help achieve bulk price discounts from suppliers. Our
-              volunteers help negotiate prices and coordinate invoicing and
-              shipping logistics. Elixir facilitates transparency and
-              accountability throughout the entire supply chain.
+              Elixir is a platform designed to meet this need by serving as a
+              central hub to coordinate donations from around the world. It is
+              operated by the Sri Lanka Red Cross along with a network of
+              volunteers and professionals to help improve the effectiveness of
+              donations. In partnership with the Sri Lanka Medical Supplies
+              Division, we have compiled aid packages that collect the needs
+              across multiple hospitals to help achieve bulk price discounts
+              from suppliers. Our volunteers help negotiate prices and
+              coordinate invoicing and shipping logistics. Elixir facilitates
+              transparency and accountability throughout the entire supply
+              chain.
             </p>
             <h3>Please Donate</h3>
             <p>
-              Together we can do more. We are accepting donations from both
-              organizations and individuals. Check out our{" "}
+              By aligning our efforts we can do more. We are accepting donations
+              from both organizations and individuals. Check out our{" "}
               <Link to="/donate-now">aid packages</Link> to get started.
             </p>
           </div>
