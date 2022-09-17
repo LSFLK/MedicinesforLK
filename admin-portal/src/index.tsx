@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import authConfig from "./config";
 
+const isRootWindow = window.parent === window.top;
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -16,7 +17,7 @@ root.render(
     config={authConfig}
     plugin={TokenExchangePlugin.getInstance() as any}
   >
-    <App />
+    {isRootWindow && <App />}
   </AuthProvider>
 );
 
