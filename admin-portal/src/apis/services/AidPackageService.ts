@@ -1,4 +1,3 @@
-import { Quotation } from "../../types/Quotation";
 import Http from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import {
@@ -107,7 +106,6 @@ export default class AidPackageService {
     description: string;
     donorId: string;
     status: AidPackage.Status;
-    period: Quotation["period"];
     aidPackageItems: Array<{
       needID: number;
       quantity?: number;

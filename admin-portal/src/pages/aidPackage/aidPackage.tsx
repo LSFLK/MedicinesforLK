@@ -94,7 +94,6 @@ export default function CreateAidPackage() {
           description: aidPackage.details,
           donorId: donorId!,
           status,
-          period: aidPackage.period,
           aidPackageItems: needs.map((need) => {
             const medicalNeed = medicalNeeds.find(
               (currentNeed) => currentNeed.needID === need.id
