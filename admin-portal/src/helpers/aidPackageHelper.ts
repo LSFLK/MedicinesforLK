@@ -1,7 +1,7 @@
 import { Quotation } from "../types/Quotation";
 
 export function getDraftAidPackageKey(quote: Quotation) {
-  return `${quote.supplierID}`;
+  return quote.supplierID;
 }
 
 export function getSupplierIdFromAidPackageKey(aidPackageKey: string): number {
