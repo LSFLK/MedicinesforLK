@@ -24,7 +24,6 @@ function PackageCard({
 }) {
   const { packageID, receivedAmount, description, goalAmount, name } =
     donorPackage;
-  const CHARACTER_LIMIT = 350;
 
   return (
     <div className="package-card" key={packageID}>
@@ -43,16 +42,7 @@ function PackageCard({
             {buttonText}
           </Link>
         </div>
-        <p className="card_details__description">
-          {description.length > CHARACTER_LIMIT ? (
-            <>
-              {description.substring(0, CHARACTER_LIMIT).concat("...")}
-              <Link to={`/package/${packageID}`}>read more</Link>
-            </>
-          ) : (
-            description
-          )}
-        </p>
+        <p className="card_details__description">{description}</p>
         <div className="card_details__package_progress">
           <p className="card_details__package_progress_text">
             $
