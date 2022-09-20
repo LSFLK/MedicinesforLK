@@ -63,6 +63,20 @@
   margin: 0;
 }
 
+.package-card .card-details__heading__text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.package-card .card_details__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .card_details__package_progress_text {
   font-size: 1.2rem;
   font-weight: bold;
