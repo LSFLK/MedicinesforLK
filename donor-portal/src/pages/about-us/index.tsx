@@ -14,7 +14,7 @@ import "./styles.css";
 const volunteers = [
   "Anupama Pathirage",
   "Marcus Chandradasa",
-  "Sanjiva Weerawarana",
+  "Dr. Sanjiva Weerawarana",
   "Jayasanka Weerasinghe",
   "Samisa Abeysinghe",
   "Nipuna Gunathilake",
