@@ -14,10 +14,6 @@ export default function TableRow(props: TableRowProps) {
     history.push(path);
   };
 
-  function handlePledgesButtonClick(packageId: number) {
-    navigate(`/packages/${packageId}/pledge-status`);
-  }
-
   function handleDetailsButtonClick(packageId: number) {
     navigate(`/packages/${packageId}`);
   }
@@ -43,12 +39,6 @@ export default function TableRow(props: TableRowProps) {
           onClick={() => handleDetailsButtonClick(aidPackage.packageID)}
         >
           Details
-        </button>
-        <button
-          type="button"
-          onClick={() => handlePledgesButtonClick(aidPackage.packageID)}
-        >
-          Pledges
         </button>
       </td>
     </tr>
