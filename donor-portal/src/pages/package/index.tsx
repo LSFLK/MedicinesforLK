@@ -111,7 +111,11 @@ export default function AidPackageDetailsPage() {
               <h1>{aidPackage.name}</h1>
             </div>
             <div className="aid-package-header-image">
-              <img src={bannerImage} alt="Banner" decoding="async" />
+              <img
+                src={aidPackage?.banner ? aidPackage.banner : bannerImage}
+                alt="Banner"
+                decoding="async"
+              />
             </div>
             <div>
               <p>{aidPackage.description}</p>

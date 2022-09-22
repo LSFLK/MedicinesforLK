@@ -29,7 +29,7 @@ function PackageCard({
     <div className="package-card" key={packageID}>
       <img
         className="package-image"
-        src={packageImage}
+        src={donorPackage?.thumbnail ? donorPackage.thumbnail : packageImage}
         alt="packageImage"
         decoding="async"
       />
