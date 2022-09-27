@@ -35,9 +35,7 @@ function PackageCard({
       />
       <div className="card-details">
         <div className="card-details__heading">
-          <div className="card-details__heading__text">
-            <h2>{name}</h2>
-          </div>
+          <h2 className="card-details__heading__text">{name}</h2>
           <Link to={`/package/${packageID}`} className="btn">
             {buttonText}
           </Link>
