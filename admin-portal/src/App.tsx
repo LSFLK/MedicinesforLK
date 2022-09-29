@@ -7,7 +7,7 @@ import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
 import "react-toastify/dist/ReactToastify.css";
 import PledgeService from "./apis/services/PledgeService";
-import SupplierService from "./apis/services/SupplierService";
+import SupplierService from "./apis/services/QuotationService";
 import MedicalNeedsService from "./apis/services/MedicalNeedsService";
 import NavBar from "./components/navbar/navbar";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
@@ -26,10 +26,16 @@ const PackageDetails = lazy(
   () =>
     import(/* webpackPrefetch: true */ "./pages/packageDetails/packageDetails")
 );
-const SupplierQuotationUpload = lazy(
+const QuotationUpload = lazy(
   () =>
     import(
-      /* webpackPrefetch: true */ "./pages/supplierQuotationUpload/supplierQuotationUpload"
+      /* webpackPrefetch: true */ "./pages/quotationUpload/quotationUpload"
+    )
+);
+const SuppliersUpload = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */ "./pages/suppliersUpload/suppliersUpload"
     )
 );
 const EditPledge = lazy(
@@ -99,8 +105,11 @@ function App() {
                 <Route path="/packages/:packageId" exact>
                   <PackageDetails />
                 </Route>
-                <Route exact path="/supplierQuotationUpload">
-                  <SupplierQuotationUpload />
+                <Route exact path="/quotationUpload">
+                  <QuotationUpload />
+                </Route>
+                <Route exact path="/suppliersUpload">
+                  <SuppliersUpload />
                 </Route>
                 <Route exact path="/packages/:packageId/pledges/:pledgeId">
                   <EditPledge />

@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import "./supplierQuotationUpload.css";
+import "./suppliersUpload.css";
 import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
-import SupplierService from "../../apis/services/SupplierService";
+import SuppliersService from "../../apis/services/SuppliersService";
 
-export default function SupplierQuotationUpload() {
+export default function SuppliersUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [responseData, setResponseData] = useState("");
@@ -24,7 +24,7 @@ export default function SupplierQuotationUpload() {
     if (file) {
       formData.append("file", file);
       try {
-        const response = await SupplierService.postQuotation(formData);
+        const response = await SuppliersService.postSuppliers(formData);
         toast.success("File uploaded successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -66,12 +66,12 @@ export default function SupplierQuotationUpload() {
   return (
     <div className="pageContent">
       <header className="pageHeader">
-        <h1>Supplier Quotation Upload</h1>
+        <h1>Suppliers Upload</h1>
       </header>
 
       <div className="uploadSupplierQuotationContainer">
         <form onSubmit={handleSubmit}>
-          <p>Select the supplier quotation csv file that you want to upload.</p>
+          <p>Select the suppliers csv file that you want to upload.</p>
           <input
             type="file"
             accept=".csv"

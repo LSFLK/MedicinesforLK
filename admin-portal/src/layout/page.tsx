@@ -46,7 +46,19 @@ export default function Page(props: PageProps) {
                   <div className="menu__list-item-container">
                     <NavLink
                       exact
-                      to="/supplierQuotationUpload"
+                      to="/quotationUpload"
+                      className="menu__link"
+                      activeClassName="menu__link menu__link--active"
+                    >
+                      Quotations
+                    </NavLink>
+                  </div>
+                </li>
+                <li className="menu__list-item">
+                  <div className="menu__list-item-container">
+                    <NavLink
+                      exact
+                      to="/suppliersUpload"
                       className="menu__link"
                       activeClassName="menu__link menu__link--active"
                     >
