@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./editBannerUrlPrompt.css";
+import "./editThumbnailUrlPrompt.css";
 import { AidPackage } from "../../../../types/AidPackage";
 
 interface EditBannerUrlPromptProps {
@@ -12,12 +12,12 @@ export default function EditBannerUrlPrompt({
   onSave,
 }: EditBannerUrlPromptProps) {
   const [isSaving, setIsSaving] = useState(false);
-  const [banner, setBanner] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
   const [errorText, setErrorText] = useState("");
 
   useEffect(() => {
-    if (aidPackage.banner) {
-      setBanner(aidPackage.banner);
+    if (aidPackage.thumbnail) {
+      setThumbnail(aidPackage.thumbnail);
     }
     setErrorText("");
   }, [aidPackage]);
@@ -28,7 +28,7 @@ export default function EditBannerUrlPrompt({
     try {
       const editedAidPackage: AidPackage = {
         ...aidPackage,
-        banner,
+        thumbnail,
       };
       await onSave(editedAidPackage);
     } catch (e) {
@@ -39,12 +39,12 @@ export default function EditBannerUrlPrompt({
 
   return (
     <div className="editDescPrompt">
-      <h4>Edit Banner Image URL</h4>
+      <h4>Edit Thumbnail Image URL</h4>
       <textarea
-        value={banner}
+        value={thumbnail}
         rows={4}
         onChange={(event) => {
-          setBanner(event.currentTarget.value);
+          setThumbnail(event.currentTarget.value);
         }}
       />
       {errorText && <div className="errorText">{errorText}</div>}

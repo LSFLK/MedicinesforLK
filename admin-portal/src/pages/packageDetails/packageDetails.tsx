@@ -19,6 +19,7 @@ import PledgeService from "../../apis/services/PledgeService";
 import { Pledge } from "../../types/Pledge";
 import DonorTable from "./components/donorTable/donorTable";
 import EditBannerUrlPrompt from "./components/editBannerUrlPrompt/editBannerUrlPrompt";
+import EditThumbnailUrlPrompt from "./components/editThumbnaiUrlPrompt/editThumbnailUrlPrompt";
 
 export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -33,6 +34,8 @@ export default function PackageDetails() {
   const [isEditDescriptionModalVisible, setIsEditDescriptionModalVisible] =
     useState(false);
   const [isEditBannerUrlModalVisible, setIsEditBannerUrlModalVisible] =
+    useState(false);
+  const [isEditThumbnailUrlModalVisible, setIsEditThumbnailUrlModalVisible] =
     useState(false);
   const postToBeEdited = useRef<AidPackageUpdateComment | null>(null);
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
@@ -143,7 +146,7 @@ export default function PackageDetails() {
     }
   };
 
-  // TODO: all these handle modal functions need to be generatlized & refactored to use the same components
+  // TODO: all these handle modal functions could be generatlized & refactored to use the same funcs/ components
   const handleDescriptionEdit = async (editedAidPackage: AidPackage) => {
     await AidPackageService.updateAidPackage({
       ...aidPackage!,
@@ -155,21 +158,22 @@ export default function PackageDetails() {
   };
 
   const handleBannerUrlUpdate = async (editedAidPackage: AidPackage) => {
-    await AidPackageService.updateAidPackage({
-      ...aidPackage!,
-      banner: editedAidPackage.banner,
-    });
-    await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
+    await AidPackageService.updateAidPackage(editedAidPackage);
+    // await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
     setAidPackage({ ...aidPackage!, banner: editedAidPackage.banner });
+    setIsEditBannerUrlModalVisible(false);
   };
 
   const handleThumbnailUrlUpdate = async (editedAidPackage: AidPackage) => {
+    console.log("handleThumbnailUrlUpdate");
     await AidPackageService.updateAidPackage({
       ...aidPackage!,
+      status: aidPackageStatus!,
       thumbnail: editedAidPackage.thumbnail,
     });
-    await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
+    // await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
     setAidPackage({ ...aidPackage!, thumbnail: editedAidPackage.thumbnail });
+    setIsEditThumbnailUrlModalVisible(false);
   };
 
   const handleNewComment = async (comment: string) => {
@@ -222,6 +226,11 @@ export default function PackageDetails() {
   const handleEditBannerUrlButtonClick = () => {
     aidPackageToBeEdited.current = aidPackage!;
     setIsEditBannerUrlModalVisible(true);
+  };
+
+  const handleEditThumbnailUrlButtonClick = () => {
+    aidPackageToBeEdited.current = aidPackage!;
+    setIsEditThumbnailUrlModalVisible(true);
   };
 
   const handleStatusPostEdit = async (comment: AidPackageUpdateComment) => {
@@ -295,10 +304,10 @@ export default function PackageDetails() {
             />
           </Modal>
           <Modal
-            show={isEditBannerUrlModalVisible}
-            onClose={() => setIsEditBannerUrlModalVisible(false)}
+            show={isEditThumbnailUrlModalVisible}
+            onClose={() => setIsEditThumbnailUrlModalVisible(false)}
           >
-            <EditBannerUrlPrompt
+            <EditThumbnailUrlPrompt
               aidPackage={aidPackageToBeEdited.current!}
               onSave={handleThumbnailUrlUpdate}
             />
@@ -332,32 +341,26 @@ export default function PackageDetails() {
 
               <div className="edit-desc">
                 <p className="heading">Banner Image Link</p>
-                {/* TODO: check if banner exists - display current banner, if available? in modal? */}
-                <p>{aidPackage?.banner}</p>
 
-                {/* TODO: use a modal, similar to description - it's easier now since it's already done */}
-                {/* <input
-                  type="text"
-                  id="bannerUrl"
-                  name="bannerUrl"
-                  value={aidPackage?.banner}
-                  onChange={(e: any) => {}}
-                /> */}
                 <FiEdit3
                   className="desc-edit-icon"
                   onClick={() => handleEditBannerUrlButtonClick()}
                 />
               </div>
+              {/* TODO: check if banner exists - display current banner, if available? in modal? */}
+              <a href={aidPackage?.banner} target="_blank" rel="noreferrer">
+                {aidPackage?.banner}
+              </a>
 
               <div className="edit-desc">
                 <p className="heading">Thumbnail Image Link</p>
-                {/* TODO: check if thumbnail exists - display current thumbnail, if available? in modal? */}
-                <p>{aidPackage?.thumbnail}</p>
                 <FiEdit3
                   className="desc-edit-icon"
-                  onClick={() => handleEditBannerUrlButtonClick()}
+                  onClick={() => handleEditThumbnailUrlButtonClick()}
                 />
               </div>
+              {/* TODO: check if thumbnail exists - display current thumbnail, if available? in modal? */}
+              <p>{aidPackage?.thumbnail}</p>
 
               <div>
                 <OrderItemsTable
