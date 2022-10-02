@@ -153,13 +153,16 @@ export default function PackageDetails() {
       status: aidPackageStatus!,
       description: editedAidPackage.description,
     });
-    await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
+    setAidPackage({
+      ...aidPackage!,
+      status: aidPackageStatus!,
+      description: editedAidPackage.description,
+    });
     setIsEditDescriptionModalVisible(false);
   };
 
   const handleBannerUrlUpdate = async (editedAidPackage: AidPackage) => {
     await AidPackageService.updateAidPackage(editedAidPackage);
-    // await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
     setAidPackage({ ...aidPackage!, banner: editedAidPackage.banner });
     setIsEditBannerUrlModalVisible(false);
   };
@@ -171,7 +174,6 @@ export default function PackageDetails() {
       status: aidPackageStatus!,
       thumbnail: editedAidPackage.thumbnail,
     });
-    // await fetchAidPackage(); // FIXME: why isn't this just updated from the info that exists in the frontend, based on the response received from the backend?
     setAidPackage({ ...aidPackage!, thumbnail: editedAidPackage.thumbnail });
     setIsEditThumbnailUrlModalVisible(false);
   };
