@@ -10,6 +10,9 @@ import AidPackageService from "./apis/services/AidPackageService";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 
 const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
+const LatestNeeds = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/needs")
+);
 const AboutUs = lazy(
   () => import(/* webpackPrefetch: true */ "./pages/about-us")
 );
@@ -60,6 +63,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/latest-needs">
+              <LatestNeeds />
             </Route>
             <Route exact path="/about-us">
               <AboutUs />

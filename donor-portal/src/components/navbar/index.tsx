@@ -11,16 +11,20 @@ const mobileNavItems = [
     name: "Home",
   },
   {
+    path: "/latest-needs",
+    name: "Latest Needs",
+  },
+  {
     path: "/about-us",
     name: "About Us",
   },
   {
     path: "/donate-now",
-    name: "Donate Now",
+    name: "Donate",
   },
   {
     path: "/suppliers",
-    name: "Hospitals & Suppliers",
+    name: "Suppliers",
   },
   {
     path: "/news-room",

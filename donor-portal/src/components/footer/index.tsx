@@ -55,10 +55,10 @@ const Footer = React.memo(() => {
             About
           </Link>
           <Link to="/donate-now" className="text-link">
-            Donate Now
+            Donate
           </Link>
           <Link to="/suppliers" className="text-link">
-            Hospitals & Suppliers
+            Suppliers
           </Link>
           <Link to="/news-room" className="text-link">
             Newsroom

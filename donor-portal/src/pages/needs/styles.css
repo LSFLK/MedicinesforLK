@@ -1,0 +1,44 @@
+.needs-page {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.needs-table {
+  overflow-x: auto;
+}
+
+.needs-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.needs-heading h1 {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td,
+th {
+  border: 1px solid #333;
+  padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .needs-heading {
+    display: block;
+    margin: 1rem;
+  }
+
+  .needs-page {
+    margin-top: 0px;
+  }
+
+  .needs-table {
+    margin: 1rem;
+  }
+}
