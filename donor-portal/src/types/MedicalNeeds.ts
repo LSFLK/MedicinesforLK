@@ -1,22 +1,18 @@
-import { Quotation } from "./Quotation";
-
-export type MedicalNeed = {
-  needID?: number;
-  itemID: number;
-  beneficiaryID: number;
-  time: any;
+export interface MedicalNeed {
+  needID: number;
+  item: MedicalItem;
+  period: Period;
   urgency: string;
-  period: {
-    year: number;
-    month: number;
-    day: number;
-  };
   neededQuantity: number;
   remainingQuantity: number;
-  beneficiary?: Beneficiary;
-  supplierQuotes: Array<Quotation>;
-  medicalItem: MedicalItem;
-};
+  beneficiary: Beneficiary;
+}
+
+export interface Period {
+  year: number;
+  month: number;
+  day: number;
+}
 
 export type Beneficiary = {
   beneficiaryID?: number;
