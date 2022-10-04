@@ -7,3 +7,8 @@
   margin-bottom: 10px;
   color: red;
 }
+
+.editDescPrompt .infoText {
+  color: grey;
+  font-size: small;
+}

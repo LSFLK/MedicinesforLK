@@ -40,6 +40,7 @@ export default function EditBannerUrlPrompt({
   return (
     <div className="editDescPrompt">
       <h4>Edit Thumbnail Image URL</h4>
+      <div className="infoText">Suggested Img Dimensions: 480 X 480</div>
       <textarea
         value={thumbnail}
         rows={4}

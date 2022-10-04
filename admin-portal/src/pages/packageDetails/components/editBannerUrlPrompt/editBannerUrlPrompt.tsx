@@ -40,6 +40,7 @@ export default function EditBannerUrlPrompt({
   return (
     <div className="editDescPrompt">
       <h4>Edit Banner Image URL</h4>
+      <div className="infoText">Suggested Img Dimensions: 1920 X 1282</div>
       <textarea
         value={banner}
         rows={4}

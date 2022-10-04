@@ -168,7 +168,6 @@ export default function PackageDetails() {
   };
 
   const handleThumbnailUrlUpdate = async (editedAidPackage: AidPackage) => {
-    console.log("handleThumbnailUrlUpdate");
     await AidPackageService.updateAidPackage({
       ...aidPackage!,
       status: aidPackageStatus!,
@@ -362,7 +361,9 @@ export default function PackageDetails() {
                 />
               </div>
               {/* TODO: check if thumbnail exists - display current thumbnail, if available? in modal? */}
-              <p>{aidPackage?.thumbnail}</p>
+              <a href={aidPackage?.thumbnail} target="_blank" rel="noreferrer">
+                {aidPackage?.thumbnail}
+              </a>
 
               <div>
                 <OrderItemsTable
