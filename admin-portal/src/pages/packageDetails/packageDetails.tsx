@@ -18,7 +18,6 @@ import DeleteAidPackagePrompt from "./components/deleteAidPackagePrompt/editUpda
 import PledgeService from "../../apis/services/PledgeService";
 import { Pledge } from "../../types/Pledge";
 import DonorTable from "./components/donorTable/donorTable";
-import EditBannerUrlPrompt from "./components/editBannerUrlPrompt/editBannerUrlPrompt";
 import EditThumbnailUrlPrompt from "./components/editThumbnaiUrlPrompt/editThumbnailUrlPrompt";
 
 export default function PackageDetails() {
@@ -32,8 +31,6 @@ export default function PackageDetails() {
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] =
     useState(false);
   const [isEditDescriptionModalVisible, setIsEditDescriptionModalVisible] =
-    useState(false);
-  const [isEditBannerUrlModalVisible, setIsEditBannerUrlModalVisible] =
     useState(false);
   const [isEditThumbnailUrlModalVisible, setIsEditThumbnailUrlModalVisible] =
     useState(false);
@@ -161,12 +158,6 @@ export default function PackageDetails() {
     setIsEditDescriptionModalVisible(false);
   };
 
-  const handleBannerUrlUpdate = async (editedAidPackage: AidPackage) => {
-    await AidPackageService.updateAidPackage(editedAidPackage);
-    setAidPackage({ ...aidPackage!, banner: editedAidPackage.banner });
-    setIsEditBannerUrlModalVisible(false);
-  };
-
   const handleThumbnailUrlUpdate = async (editedAidPackage: AidPackage) => {
     await AidPackageService.updateAidPackage({
       ...aidPackage!,
@@ -222,11 +213,6 @@ export default function PackageDetails() {
   const handleEditDescriptionButtonClick = (selectedAidPackage: AidPackage) => {
     aidPackageToBeEdited.current = selectedAidPackage;
     setIsEditDescriptionModalVisible(true);
-  };
-
-  const handleEditBannerUrlButtonClick = () => {
-    aidPackageToBeEdited.current = aidPackage!;
-    setIsEditBannerUrlModalVisible(true);
   };
 
   const handleEditThumbnailUrlButtonClick = () => {
@@ -296,15 +282,6 @@ export default function PackageDetails() {
             />
           </Modal>
           <Modal
-            show={isEditBannerUrlModalVisible}
-            onClose={() => setIsEditBannerUrlModalVisible(false)}
-          >
-            <EditBannerUrlPrompt
-              aidPackage={aidPackageToBeEdited.current!}
-              onSave={handleBannerUrlUpdate}
-            />
-          </Modal>
-          <Modal
             show={isEditThumbnailUrlModalVisible}
             onClose={() => setIsEditThumbnailUrlModalVisible(false)}
           >
@@ -339,19 +316,6 @@ export default function PackageDetails() {
               </div>
 
               <p>{aidPackage.description}</p>
-
-              <div className="edit-desc">
-                <p className="heading">Banner Image Link</p>
-
-                <FiEdit3
-                  className="desc-edit-icon"
-                  onClick={() => handleEditBannerUrlButtonClick()}
-                />
-              </div>
-              {/* TODO: check if banner exists - display current banner, if available? in modal? */}
-              <a href={aidPackage?.banner} target="_blank" rel="noreferrer">
-                {aidPackage?.banner}
-              </a>
 
               <div className="edit-desc">
                 <p className="heading">Thumbnail Image Link</p>
