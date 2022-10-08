@@ -88,9 +88,9 @@ export default class AidPackageService {
     );
   }
 
-  static postNeeds(formData: FormData) {
+  static postNeeds(formData: FormData, lastUpdatedTime: number) {
     return AidPackageService.http.post<FormData, string>(
-      `requirements/medicalneeds`,
+      `requirements/medicalneeds?updatedTime=${lastUpdatedTime}`,
       formData
     );
   }

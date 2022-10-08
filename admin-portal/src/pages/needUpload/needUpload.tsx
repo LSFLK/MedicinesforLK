@@ -1,13 +1,19 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import "./needUpload.css";
 import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
+import moment from "moment";
 import AidPackageService from "../../apis/services/AidPackageService";
 
 export default function NeedUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
+  const [receivedDate, setReceivedDate] = useState("");
   const [responseData, setResponseData] = useState("");
+
+  useEffect(() => {
+    setReceivedDate(moment().format("YYYY-MM-DD"));
+  }, []);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setResponseData("");
@@ -20,10 +26,14 @@ export default function NeedUpload() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData();
+
     if (file) {
       formData.append("file", file);
       try {
-        const response = await AidPackageService.postNeeds(formData);
+        const response = await AidPackageService.postNeeds(
+          formData,
+          moment(receivedDate).valueOf()
+        );
         toast.success("File uploaded successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -62,6 +72,10 @@ export default function NeedUpload() {
     }
   };
 
+  const handleReceivedDate = (e: ChangeEvent<HTMLInputElement>) => {
+    setReceivedDate(e.target.value);
+  };
+
   return (
     <div className="pageContent">
       <header className="pageHeader">
@@ -77,7 +91,16 @@ export default function NeedUpload() {
             onChange={handleChange}
             value={fileName}
           />
-          <button type="submit">Upload</button>
+          <p>Select the date that the needs list received.</p>
+          <input
+            type="date"
+            onChange={handleReceivedDate}
+            value={receivedDate}
+          />
+          <br />
+          <button type="submit" className="upload-btn">
+            Upload
+          </button>
         </form>
       </div>
       <div className="error-list-div">{responseData}</div>

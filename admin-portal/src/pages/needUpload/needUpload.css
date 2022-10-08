@@ -3,6 +3,10 @@
   --elixir-leading: calc(var(--elixir-leading-desktop) * 1rem);
 }
 
+.upload-btn {
+  margin-top: 2rem;
+}
+
 .needsUpload .pageContent {
   --elixir-h1-vertical-rhythm-bottom: 1.25;
   --elixir-h1-vertical-rhythm-top: 3;
