@@ -14,7 +14,6 @@ import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import UserContext from "../../userContext";
 import { Pledge } from "../../types/Pledge";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
-import bannerImage from "./images/banner.jpg";
 import "./styles.css";
 
 export default function AidPackageDetailsPage() {
@@ -110,15 +109,21 @@ export default function AidPackageDetailsPage() {
             <div className="aid-package-title-container">
               <h1>{aidPackage.name}</h1>
             </div>
-            <div className="aid-package-header-image">
+            <div className="aid-pacakge-thumbnail-desc-container">
               <img
-                src={aidPackage?.banner ? aidPackage.banner : bannerImage}
-                alt="Banner"
+                className="package-image"
+                src={
+                  aidPackage?.thumbnail
+                    ? aidPackage.thumbnail
+                    : "/assets/images/package-thumbnail.jpg"
+                }
+                alt="packageImage"
                 decoding="async"
               />
-            </div>
-            <div>
-              <p>{aidPackage.description}</p>
+
+              <div className="aid-pacakge-desc-container">
+                <p>{aidPackage.description}</p>
+              </div>
             </div>
             <div className="aid-package-progress-container">
               <h3>

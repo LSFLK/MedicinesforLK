@@ -96,7 +96,7 @@
 }
 
 /* Small devices (portrait tablets and large phones) */
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 788px) {
   .navbar-container {
     height: unset;
     display: flex;
