@@ -325,9 +325,15 @@ export default function PackageDetails() {
                 />
               </div>
               {/* TODO: check if thumbnail exists - display current thumbnail, if available? in modal? */}
-              <a href={aidPackage?.thumbnail} target="_blank" rel="noreferrer">
-                {aidPackage?.thumbnail}
-              </a>
+              <p>
+                <a
+                  href={aidPackage?.thumbnail}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {aidPackage?.thumbnail}
+                </a>
+              </p>
 
               <div>
                 <OrderItemsTable
