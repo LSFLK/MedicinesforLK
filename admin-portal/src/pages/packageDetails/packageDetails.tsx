@@ -18,6 +18,7 @@ import DeleteAidPackagePrompt from "./components/deleteAidPackagePrompt/editUpda
 import PledgeService from "../../apis/services/PledgeService";
 import { Pledge } from "../../types/Pledge";
 import DonorTable from "./components/donorTable/donorTable";
+import EditThumbnailUrlPrompt from "./components/editThumbnaiUrlPrompt/editThumbnailUrlPrompt";
 
 export default function PackageDetails() {
   const { packageId } = useParams<{ packageId: string }>();
@@ -30,6 +31,8 @@ export default function PackageDetails() {
   const [isEditOrderItemModalVisible, setIsEditOrderItemModalVisible] =
     useState(false);
   const [isEditDescriptionModalVisible, setIsEditDescriptionModalVisible] =
+    useState(false);
+  const [isEditThumbnailUrlModalVisible, setIsEditThumbnailUrlModalVisible] =
     useState(false);
   const postToBeEdited = useRef<AidPackageUpdateComment | null>(null);
   const orderItemToBeEdited = useRef<AidPackageItem | null>(null);
@@ -140,14 +143,29 @@ export default function PackageDetails() {
     }
   };
 
+  // TODO: all these handle modal functions could be generatlized & refactored to use the same funcs/ components
   const handleDescriptionEdit = async (editedAidPackage: AidPackage) => {
     await AidPackageService.updateAidPackage({
       ...aidPackage!,
       status: aidPackageStatus!,
       description: editedAidPackage.description,
     });
-    await fetchAidPackage();
+    setAidPackage({
+      ...aidPackage!,
+      status: aidPackageStatus!,
+      description: editedAidPackage.description,
+    });
     setIsEditDescriptionModalVisible(false);
+  };
+
+  const handleThumbnailUrlUpdate = async (editedAidPackage: AidPackage) => {
+    await AidPackageService.updateAidPackage({
+      ...aidPackage!,
+      status: aidPackageStatus!,
+      thumbnail: editedAidPackage.thumbnail,
+    });
+    setAidPackage({ ...aidPackage!, thumbnail: editedAidPackage.thumbnail });
+    setIsEditThumbnailUrlModalVisible(false);
   };
 
   const handleNewComment = async (comment: string) => {
@@ -195,6 +213,11 @@ export default function PackageDetails() {
   const handleEditDescriptionButtonClick = (selectedAidPackage: AidPackage) => {
     aidPackageToBeEdited.current = selectedAidPackage;
     setIsEditDescriptionModalVisible(true);
+  };
+
+  const handleEditThumbnailUrlButtonClick = () => {
+    aidPackageToBeEdited.current = aidPackage!;
+    setIsEditThumbnailUrlModalVisible(true);
   };
 
   const handleStatusPostEdit = async (comment: AidPackageUpdateComment) => {
@@ -258,6 +281,15 @@ export default function PackageDetails() {
               onSave={handleDescriptionEdit}
             />
           </Modal>
+          <Modal
+            show={isEditThumbnailUrlModalVisible}
+            onClose={() => setIsEditThumbnailUrlModalVisible(false)}
+          >
+            <EditThumbnailUrlPrompt
+              aidPackage={aidPackageToBeEdited.current!}
+              onSave={handleThumbnailUrlUpdate}
+            />
+          </Modal>
           <div>
             <Link to="/">Aid Packages</Link> &gt; {aidPackage.name}
           </div>
@@ -284,6 +316,25 @@ export default function PackageDetails() {
               </div>
 
               <p>{aidPackage.description}</p>
+
+              <div className="edit-desc">
+                <p className="heading">Thumbnail Image Link</p>
+                <FiEdit3
+                  className="desc-edit-icon"
+                  onClick={() => handleEditThumbnailUrlButtonClick()}
+                />
+              </div>
+              {/* TODO: check if thumbnail exists - display current thumbnail, if available? in modal? */}
+              <p>
+                <a
+                  href={aidPackage?.thumbnail}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {aidPackage?.thumbnail}
+                </a>
+              </p>
+
               <div>
                 <OrderItemsTable
                   items={aidPackage?.aidPackageItems}

@@ -9,6 +9,8 @@ export interface AidPackage {
   goalAmount: number;
   receivedAmount: number;
   dateTime: number;
+  banner?: string;
+  thumbnail?: string;
 }
 
 export namespace AidPackage {
