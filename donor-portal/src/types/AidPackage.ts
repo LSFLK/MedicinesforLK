@@ -9,7 +9,6 @@ export interface AidPackage {
   aidPackageItems: AidPackageItem[];
   goalAmount: number;
   receivedAmount: number;
-  banner?: string;
   thumbnail?: string;
 }
 

@@ -5,7 +5,6 @@ import UserContext from "../../userContext";
 import { AidPackage } from "../../types/AidPackage";
 import AidPackageService from "../../apis/services/AidPackageService";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
-import packageImage from "./images/package.jpg";
 
 import "./styles.css";
 
@@ -29,7 +28,11 @@ function PackageCard({
     <div className="package-card" key={packageID}>
       <img
         className="package-image"
-        src={donorPackage?.thumbnail ? donorPackage.thumbnail : packageImage}
+        src={
+          donorPackage?.thumbnail
+            ? donorPackage.thumbnail
+            : "/assets/images/package-thumbnail.jpg"
+        }
         alt="packageImage"
         decoding="async"
       />
