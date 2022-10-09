@@ -90,11 +90,6 @@ export default function AssignSuppliers({
           need.period.day
         );
 
-        // all remaining quantities must be zero or positive
-        if (remainingQuantity < 0) {
-          isValidSupplierAssignments = false;
-        }
-
         // all assignments must be less than supplier max and more than 0
         const assignmentForNeed = needAssignments[need.needID!];
         need.supplierQuotes.forEach((quote) => {
