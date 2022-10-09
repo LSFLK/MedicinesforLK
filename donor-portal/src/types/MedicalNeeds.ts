@@ -1,4 +1,9 @@
 export interface MedicalNeed {
+  lastUpdatedDate: number;
+  medicalNeeds: Need[];
+}
+
+export interface Need {
   needID: number;
   item: MedicalItem;
   period: Period;

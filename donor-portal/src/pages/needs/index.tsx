@@ -1,15 +1,20 @@
+import { AxiosResponse } from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
-import { MedicalNeed } from "../../types/MedicalNeeds";
+import { MedicalNeed, Need } from "../../types/MedicalNeeds";
 import "./styles.css";
 
 function Needs() {
-  const [needs, setNeeds] = useState<MedicalNeed[]>([]);
+  const [needs, setNeeds] = useState<Need[]>([]);
+  const [lastUpdatedDate, setLastUpdatedDate] = useState<number>(0);
 
   useEffect(() => {
-    MedicalNeedsService.getMedicalNeeds().then((response) =>
-      setNeeds(response.data)
+    MedicalNeedsService.getMedicalNeeds().then(
+      (response: AxiosResponse<MedicalNeed>) => {
+        setNeeds(response.data.medicalNeeds);
+        setLastUpdatedDate(response.data.lastUpdatedDate);
+      }
     );
   }, []);
 
@@ -21,7 +26,7 @@ function Needs() {
         <>
           <p>
             This needs list from the Ministry of Health, Sri Lanka is up-to-date
-            as of :
+            as of :{moment.unix(lastUpdatedDate).local().format("YYYY-MM-DD")}
           </p>
           <div className="needs-table">
             <table>
