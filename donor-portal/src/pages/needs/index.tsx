@@ -2,18 +2,16 @@ import { AxiosResponse } from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
-import { MedicalNeed, Need } from "../../types/MedicalNeeds";
+import { MedicalNeed } from "../../types/MedicalNeeds";
 import "./styles.css";
 
 function Needs() {
-  const [needs, setNeeds] = useState<Need[]>([]);
-  const [lastUpdatedDate, setLastUpdatedDate] = useState<number>(0);
+  const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed>();
 
   useEffect(() => {
     MedicalNeedsService.getMedicalNeeds().then(
       (response: AxiosResponse<MedicalNeed>) => {
-        setNeeds(response.data.medicalNeeds);
-        setLastUpdatedDate(response.data.lastUpdatedDate);
+        setMedicalNeeds(response.data);
       }
     );
   }, []);
@@ -22,11 +20,15 @@ function Needs() {
     <div className="main-container needs-page">
       <h1 className="needs-heading">Latest Needs</h1>
 
-      {needs.length ? (
+      {medicalNeeds?.medicalNeeds.length ? (
         <>
           <p>
             This needs list from the Ministry of Health, Sri Lanka is up-to-date
-            as of :{moment.unix(lastUpdatedDate).local().format("YYYY-MM-DD")}
+            as of :{" "}
+            {moment
+              .unix(medicalNeeds.lastUpdatedTime / 1000)
+              .local()
+              .format("YYYY-MM-DD")}
           </p>
           <div className="needs-table">
             <table>
@@ -42,7 +44,7 @@ function Needs() {
                 </tr>
               </thead>
               <tbody>
-                {needs.map((need) => (
+                {medicalNeeds.medicalNeeds.map((need) => (
                   <tr key={need.needID}>
                     <td>{need.urgency}</td>
                     <td>
