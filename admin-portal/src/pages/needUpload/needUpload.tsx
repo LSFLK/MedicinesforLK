@@ -32,7 +32,7 @@ export default function NeedUpload() {
       try {
         const response = await AidPackageService.postNeeds(
           formData,
-          moment(receivedDate).valueOf()
+          moment(receivedDate).unix()
         );
         toast.success("File uploaded successfully!", {
           position: "top-right",
