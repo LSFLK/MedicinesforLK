@@ -1,5 +1,5 @@
 export interface MedicalNeed {
-  lastUpdatedDate: number;
+  lastUpdatedTime: number;
   medicalNeeds: Need[];
 }
 
