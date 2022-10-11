@@ -88,10 +88,10 @@ export default function DonateNowPage() {
     AidPackage[]
   >([]);
   const [activeTabItem, setActiveTabItem] = useState<TabItems>(
-    TabItems.GOAL_PENDING
+    TabItems.GOAL_REACHED
   );
   const [concurrentActiveTabItem, setConcurrentActiveTabItem] =
-    useState<TabItems>(TabItems.GOAL_PENDING);
+    useState<TabItems>(TabItems.GOAL_REACHED);
 
   const fetchPledgedAidPackages = async (donorId: string) => {
     const returnedPledgedPackages =
@@ -227,7 +227,8 @@ export default function DonateNowPage() {
               this page again to view updates.
             </p>
           )}
-        {activeTabItem === TabItems.GOAL_REACHED &&
+        {!isLoading &&
+          activeTabItem === TabItems.GOAL_REACHED &&
           !goalReachedAidPackages.length && (
             <p className="empty-state-text">
               There are no aid packages that have reached their goal at present.
