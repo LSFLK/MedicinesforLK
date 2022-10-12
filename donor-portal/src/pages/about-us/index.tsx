@@ -35,8 +35,6 @@ const volunteers = [
   "Tharindu Udupitiya",
   "Ayesh Almeida",
   "Dinuka Piyadigama",
-  "Ramindu Deshapriya",
-  "Kajendran Alagaratnam",
   "Kanushka Gayan",
   "Madusha Gunasekara",
   "Charuka Karunanayake",
@@ -55,6 +53,9 @@ const volunteers = [
   "Dr. Natasha Perera",
   "Buddhi Weerasekera",
   "Dllina Bandara",
+  "Sasindu Alahakoon",
+  "Nilesh Jayanandana",
+  "Ryan Kuruppu",
 ];
 
 const AboutUs = React.memo(() => {
