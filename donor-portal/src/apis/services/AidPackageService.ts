@@ -1,4 +1,4 @@
-import Http, { adminHttpClient, donorHttpClient } from "../httpCommon";
+import Http, { donorHttpClient } from "../httpCommon";
 import { AidPackage } from "../../types/AidPackage";
 import { AidPackageUpdateComment } from "../../types/AidPackageUpdateComment";
 import { Pledge } from "../../types/Pledge";
@@ -6,14 +6,12 @@ import { Pledge } from "../../types/Pledge";
 export default class AidPackageService {
   static donorHttp: Http;
 
-  static adminHttp: Http;
-
   static getAidPackages() {
     return donorHttpClient.get<AidPackage[]>("aidpackages");
   }
 
   static getAidPackage(packageID: number | string) {
-    return adminHttpClient.get<AidPackage>(`aidpackages/${packageID}`);
+    return donorHttpClient.get<AidPackage>(`aidpackages/${packageID}`);
   }
 
   static getPledgedAidPackages(donorId: string) {
