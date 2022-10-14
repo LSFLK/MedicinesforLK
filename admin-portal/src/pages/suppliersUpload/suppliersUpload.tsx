@@ -36,7 +36,6 @@ export default function SuppliersUpload() {
         setFileName("");
         setResponseData(response.data);
       } catch (e) {
-        console.log("something went wrong", e);
         if (axios.isAxiosError(e)) {
           const error = e as AxiosError<string>;
           toast.error("File upload unsuccessful", {
