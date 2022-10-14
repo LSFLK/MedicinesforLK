@@ -2,8 +2,8 @@ import { AuthReactConfig, Storage } from "@asgardeo/auth-react";
 import { STSClientConfig } from "@asgardeo/token-exchange-plugin";
 
 const SDKConfig: AuthReactConfig | STSClientConfig = {
-  clientID: "LZqQ7Ze31x5sJOBxffwimfSfpj8a",
-  baseUrl: "https://api.asgardeo.io/t/elixir",
+  clientID: `${process.env.REACT_APP_IDP_CLIENT_ID}`,
+  baseUrl: `${process.env.REACT_APP_IDP_BASE_URL}`,
   signInRedirectURL: `${process.env.REACT_APP_SIGN_IN_REDIRECT_URL}`,
   signOutRedirectURL: `${process.env.REACT_APP_SIGN_OUT_REDIRECT_URL}`,
   scope: ["openid", "email", "profile"],
