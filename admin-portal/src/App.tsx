@@ -7,8 +7,9 @@ import Http from "./apis/httpCommon";
 import AidPackageService from "./apis/services/AidPackageService";
 import "react-toastify/dist/ReactToastify.css";
 import PledgeService from "./apis/services/PledgeService";
-import SupplierService from "./apis/services/SupplierService";
 import MedicalNeedsService from "./apis/services/MedicalNeedsService";
+import QuotationService from "./apis/services/QuotationService";
+import SuppliersService from "./apis/services/SuppliersService";
 import NavBar from "./components/navbar/navbar";
 import SpinnerLoader from "./components/spinnerLoader/spinnerLoader";
 import "./App.css";
@@ -26,10 +27,16 @@ const PackageDetails = lazy(
   () =>
     import(/* webpackPrefetch: true */ "./pages/packageDetails/packageDetails")
 );
-const SupplierQuotationUpload = lazy(
+const QuotationUpload = lazy(
   () =>
     import(
-      /* webpackPrefetch: true */ "./pages/supplierQuotationUpload/supplierQuotationUpload"
+      /* webpackPrefetch: true */ "./pages/quotationUpload/quotationUpload"
+    )
+);
+const SuppliersUpload = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */ "./pages/suppliersUpload/suppliersUpload"
     )
 );
 const EditPledge = lazy(
@@ -48,7 +55,8 @@ function App() {
     AidPackageService.http = http;
     MedicalNeedsService.http = http;
     PledgeService.http = http;
-    SupplierService.http = http;
+    QuotationService.http = http;
+    SuppliersService.http = http;
   }, []);
 
   useEffect(() => {
@@ -99,8 +107,11 @@ function App() {
                 <Route path="/packages/:packageId" exact>
                   <PackageDetails />
                 </Route>
-                <Route exact path="/supplierQuotationUpload">
-                  <SupplierQuotationUpload />
+                <Route exact path="/quotationUpload">
+                  <QuotationUpload />
+                </Route>
+                <Route exact path="/suppliersUpload">
+                  <SuppliersUpload />
                 </Route>
                 <Route exact path="/packages/:packageId/pledges/:pledgeId">
                   <EditPledge />
