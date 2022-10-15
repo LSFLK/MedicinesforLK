@@ -186,6 +186,18 @@ const AboutUs = React.memo(() => {
                 <p>HardTalk PR</p>
               </a>
             </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/sanjivaweerawarana/">
+                <h3>Sanjiva Weerawarana, PhD</h3>
+                <p>Founder, Chairman & CEO</p>
+                <p>WSO2</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <h3>Dr. Natasha Perera</h3>
+              <p>Medical Coordinator</p>
+              <p>Red Cross Elixir Project</p>
+            </div>
           </div>
         </div>
 
