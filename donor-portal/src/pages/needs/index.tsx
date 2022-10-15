@@ -44,21 +44,23 @@ function Needs() {
                 </tr>
               </thead>
               <tbody>
-                {medicalNeeds.medicalNeeds.map((need) => (
-                  <tr key={need.needID}>
-                    <td>{need.urgency}</td>
-                    <td>
-                      {moment(
-                        `${need.period.month}/${need.period.day}/${need.period.year}`
-                      ).format("MM/DD/YYYY")}
-                    </td>
-                    <td>{need.beneficiary.name}</td>
-                    <td>{need.item.name}</td>
-                    <td>{need.item.type}</td>
-                    <td>{need.item.unit}</td>
-                    <td>{need.neededQuantity}</td>
-                  </tr>
-                ))}
+                {medicalNeeds.medicalNeeds
+                  .filter((need) => need.neededQuantity)
+                  .map((need) => (
+                    <tr key={need.needID}>
+                      <td>{need.urgency}</td>
+                      <td>
+                        {moment(
+                          `${need.period.month}/${need.period.day}/${need.period.year}`
+                        ).format("MM/DD/YYYY")}
+                      </td>
+                      <td>{need.beneficiary.name}</td>
+                      <td>{need.item.name}</td>
+                      <td>{need.item.type}</td>
+                      <td>{need.item.unit}</td>
+                      <td>{need.neededQuantity}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
