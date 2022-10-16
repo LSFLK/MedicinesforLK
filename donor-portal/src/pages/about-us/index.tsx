@@ -37,7 +37,6 @@ const volunteers = [
   "Dinuka Piyadigama",
   "Kanushka Gayan",
   "Madusha Gunasekara",
-  "Charuka Karunanayake",
   "Nipun Sampath",
   "Sameera Jayasoma",
   "Ruhaim Izmeth",
