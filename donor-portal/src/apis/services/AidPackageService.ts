@@ -23,7 +23,7 @@ export default class AidPackageService {
   }
 
   static getUpdateComments(packageID: number | string) {
-    return AidPackageService.donorHttp.get<AidPackageUpdateComment[]>(
+    return donorHttpClient.get<AidPackageUpdateComment[]>(
       `aidpackages/${packageID}/updatecomments`
     );
   }
