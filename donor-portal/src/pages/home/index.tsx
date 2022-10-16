@@ -17,7 +17,7 @@ export default function Home() {
     <div className="home-page">
       <div>
         <HeroSection
-          title="Coordinated donations to Sri&nbsp;Lanka’s medical supply needs"
+          title="Coordinated donations for Sri&nbsp;Lanka’s medical supply needs"
           image={bannerImage}
         />
       </div>
