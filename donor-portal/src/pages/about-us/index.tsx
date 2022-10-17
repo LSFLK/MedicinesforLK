@@ -322,14 +322,12 @@ const AboutUs = React.memo(() => {
               </p>
             </div>
             <div className="partner-section-card">
-              <a href=" ">
-                <img
-                  src={eclektikLogo}
-                  alt="Eclektik Design Logo"
-                  decoding="async"
-                  loading="lazy"
-                />
-              </a>
+              <img
+                src={eclektikLogo}
+                alt="Eclektik Design Logo"
+                decoding="async"
+                loading="lazy"
+              />
               <p>Creation of the project overview video</p>
             </div>
           </div>
