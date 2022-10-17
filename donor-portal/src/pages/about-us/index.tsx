@@ -9,6 +9,7 @@ import hardTalkLogo from "./images/hardTalk.jpeg";
 import watchDogLogo from "./images/watchdog-logo.png";
 import lastWordLogo from "./images/the-last-word-logo.png";
 import wso2logo from "./images/wso2.png";
+import eclektikLogo from "./images/eclektikLogo.jpeg";
 import "./styles.css";
 
 const volunteers = [
@@ -55,6 +56,7 @@ const volunteers = [
   "Sasindu Alahakoon",
   "Nilesh Jayanandana",
   "Ryan Kuruppu",
+  "Dr.Laura Leets",
 ];
 
 const AboutUs = React.memo(() => {
@@ -318,6 +320,15 @@ const AboutUs = React.memo(() => {
                 the desired audiences. We are in the business of impactful
                 persuasion and meaningful relationships.
               </p>
+            </div>
+            <div className="partner-section-card">
+              <img
+                src={eclektikLogo}
+                alt="Eclektik Design Logo"
+                decoding="async"
+                loading="lazy"
+              />
+              <p>Creation of the project overview video</p>
             </div>
           </div>
           <h2>Volunteers</h2>
