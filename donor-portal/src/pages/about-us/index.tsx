@@ -326,7 +326,12 @@ const AboutUs = React.memo(() => {
                 decoding="async"
                 loading="lazy"
               />
-              <p>Creation of the project overview video</p>
+              <p>
+                Eclektik Designs is a US based start-up that provides a full
+                suite of design solutions that include online video marketing
+                materials, trade-show graphics, logo designs and professional
+                brochures.
+              </p>
             </div>
           </div>
           <h2>Volunteers</h2>

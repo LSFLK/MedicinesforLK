@@ -2,25 +2,29 @@ import { AxiosResponse } from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import MedicalNeedsService from "../../apis/services/MedicalNeedsService";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 import { MedicalNeed } from "../../types/MedicalNeeds";
 import "./styles.css";
 
 function Needs() {
   const [medicalNeeds, setMedicalNeeds] = useState<MedicalNeed>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    MedicalNeedsService.getMedicalNeeds().then(
-      (response: AxiosResponse<MedicalNeed>) => {
+    setIsLoading(true);
+    MedicalNeedsService.getMedicalNeeds()
+      .then((response: AxiosResponse<MedicalNeed>) => {
         setMedicalNeeds(response.data);
-      }
-    );
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
   }, []);
 
   return (
     <div className="main-container needs-page">
       <h1 className="needs-heading">Latest Needs</h1>
-
-      {medicalNeeds?.medicalNeeds.length ? (
+      {isLoading && <SpinnerLoader loaderText="Loading the latest needs" />}
+      {!isLoading && medicalNeeds?.medicalNeeds.length && (
         <>
           <p>
             This needs list from the Ministry of Health, Sri Lanka is up-to-date
@@ -65,7 +69,8 @@ function Needs() {
             </table>
           </div>
         </>
-      ) : (
+      )}
+      {!isLoading && !medicalNeeds?.medicalNeeds.length && (
         <p>There are no urgent needs right now</p>
       )}
     </div>
