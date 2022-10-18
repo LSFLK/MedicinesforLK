@@ -20,7 +20,7 @@ const mobileNavItems = [
   },
   {
     path: "/suppliers",
-    name: "Suppliers",
+    name: "Hospitals & Suppliers",
   },
   {
     path: "/news-room",
