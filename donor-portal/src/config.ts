@@ -14,7 +14,10 @@ const SDKConfig: AuthReactConfig | STSClientConfig = {
   },
   storage: Storage.WebWorker,
   stsTokenEndpoint: "https://sts.choreo.dev/oauth2/token",
-  resourceServerURLs: [`${process.env.REACT_APP_DONOR_BACKEND_URL}`],
+  resourceServerURLs: [
+    `${process.env.REACT_APP_ADMIN_BACKEND_URL}`,
+    `${process.env.REACT_APP_DONOR_BACKEND_URL}`,
+  ],
   disableTrySignInSilently: false,
 };
 
