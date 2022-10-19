@@ -42,6 +42,10 @@ function App() {
       httpRequest,
       `${process.env.REACT_APP_DONOR_BACKEND_URL}`
     );
+    AidPackageService.adminHttp = new Http(
+      httpRequest,
+      `${process.env.REACT_APP_ADMIN_BACKEND_URL}`
+    );
   }, [state.isAuthenticated]);
 
   const { pathname } = useLocation();
