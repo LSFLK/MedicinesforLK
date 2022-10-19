@@ -9,12 +9,12 @@ import hardTalkLogo from "./images/hardTalk.jpeg";
 import watchDogLogo from "./images/watchdog-logo.png";
 import lastWordLogo from "./images/the-last-word-logo.png";
 import wso2logo from "./images/wso2.png";
+import eclektikLogo from "./images/eclektikLogo.jpeg";
 import "./styles.css";
 
 const volunteers = [
   "Anupama Pathirage",
   "Marcus Chandradasa",
-  "Dr. Sanjiva Weerawarana",
   "Jayasanka Weerasinghe",
   "Samisa Abeysinghe",
   "Nipuna Gunathilake",
@@ -37,7 +37,6 @@ const volunteers = [
   "Dinuka Piyadigama",
   "Kanushka Gayan",
   "Madusha Gunasekara",
-  "Charuka Karunanayake",
   "Nipun Sampath",
   "Sameera Jayasoma",
   "Ruhaim Izmeth",
@@ -50,12 +49,12 @@ const volunteers = [
   "Namali Premawardhana",
   "Avanthi Gunatilake",
   "Ryan Kuruppu",
-  "Dr. Natasha Perera",
   "Buddhi Weerasekera",
   "Dllina Bandara",
   "Sasindu Alahakoon",
   "Nilesh Jayanandana",
   "Ryan Kuruppu",
+  "Dr.Laura Leets",
 ];
 
 const AboutUs = React.memo(() => {
@@ -186,6 +185,18 @@ const AboutUs = React.memo(() => {
                 <p>HardTalk PR</p>
               </a>
             </div>
+            <div className="profile-card">
+              <a href="https://www.linkedin.com/in/sanjivaweerawarana/">
+                <h3>Sanjiva Weerawarana, PhD</h3>
+                <p>Founder, Chairman & CEO</p>
+                <p>WSO2</p>
+              </a>
+            </div>
+            <div className="profile-card">
+              <h3>Dr. Natasha Perera</h3>
+              <p>Medical Coordinator</p>
+              <p>Red Cross Elixir Project</p>
+            </div>
           </div>
         </div>
 
@@ -306,6 +317,20 @@ const AboutUs = React.memo(() => {
                 solutions and ensure organizations build the right bridges with
                 the desired audiences. We are in the business of impactful
                 persuasion and meaningful relationships.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <img
+                src={eclektikLogo}
+                alt="Eclektik Design Logo"
+                decoding="async"
+                loading="lazy"
+              />
+              <p>
+                Eclektik Designs is a US based start-up that provides a full
+                suite of design solutions that include online video marketing
+                materials, trade-show graphics, logo designs and professional
+                brochures.
               </p>
             </div>
           </div>

@@ -125,7 +125,7 @@ export default function DonateNowPage() {
 
   useEffect(() => {
     fetchAidPackages();
-  }, []);
+  }, [activeTabItem]);
 
   return (
     <div className="main-container medical-needs-page">

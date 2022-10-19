@@ -26,6 +26,7 @@ export default function AidPackageDetailsPage() {
     AidPackageUpdateComment[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [pledgeAmount, setPledgeAmount] = useState<string>("");
 
   const fetchAidPackage = async () => {
     setIsLoading(true);
@@ -65,7 +66,13 @@ export default function AidPackageDetailsPage() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const amount = form.get("amount")?.toString();
-    if (amount === undefined || userId == null || pledge == null) return;
+    if (
+      amount === undefined ||
+      userId == null ||
+      pledge == null ||
+      amount === ""
+    )
+      return;
     if (!window.confirm(`Please confirm your pledge of ${amount}`)) return;
     const updatedPledge: Pledge = {
       pledgeID: pledge.pledgeID,
@@ -81,6 +88,7 @@ export default function AidPackageDetailsPage() {
       pledge.pledgeID,
       updatedPledge
     );
+    setPledgeAmount("");
     fetchPledge(userId, packageId);
     fetchAidPackage();
   };
@@ -103,7 +111,7 @@ export default function AidPackageDetailsPage() {
   return (
     <>
       {isLoading && <SpinnerLoader loaderText="Loading..." />}
-      {aidPackage && (
+      {!isLoading && aidPackage && (
         <div className="main-container">
           <div className="aid-package-container">
             <div className="aid-package-title-container">
@@ -187,17 +195,21 @@ export default function AidPackageDetailsPage() {
                   {aidPackage.status === AidPackage.Status.Published && (
                     <form onSubmit={handlePledgeUpdate}>
                       <p>Enter amount (in USD)</p>
+
                       <input
                         type="number"
                         name="amount"
                         className="pledge-amount-input"
-                        defaultValue={pledge.amount}
                         min={0}
                         max={
                           aidPackage.goalAmount -
                           aidPackage.receivedAmount +
                           pledge.amount
                         }
+                        value={pledgeAmount}
+                        onChange={(e) => {
+                          setPledgeAmount(e.target.value);
+                        }}
                       />
                       <button type="submit" className="btn">
                         Update

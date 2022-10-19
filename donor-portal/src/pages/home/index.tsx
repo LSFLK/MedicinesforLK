@@ -10,6 +10,7 @@ import canadianRCLogo from "./images/canada_rc.png";
 import qatarRCLogo from "./images/qatar-red-crescent-logo.png";
 import microsoftLogo from "./images/microsoft-logo.png";
 import uberLogo from "./images/uber-logo.png";
+import payPalLogo from "./images/paypal-logo.png";
 import "./styles.css";
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
     <div className="home-page">
       <div>
         <HeroSection
-          title="Coordinated donations to Sri&nbsp;Lanka’s medical supply needs"
+          title="Coordinated donations for Sri&nbsp;Lanka’s medical supply needs"
           image={bannerImage}
         />
       </div>
@@ -160,6 +161,16 @@ export default function Home() {
                 <img
                   src={uberLogo}
                   alt="uber-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div className="donor-logo">
+              <a href="https://paypal.com/" target="_blank" rel="noreferrer">
+                <img
+                  src={payPalLogo}
+                  alt="paypal-logo"
                   decoding="async"
                   loading="lazy"
                 />
