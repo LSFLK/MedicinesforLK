@@ -1,6 +1,7 @@
 import React from "react";
 import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
+import releaseDoc from "./static/press-release.pdf";
 import "./styles.css";
 
 const NewsRoom = React.memo(() => {
@@ -29,6 +30,15 @@ const NewsRoom = React.memo(() => {
 
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a href={releaseDoc} target="_blank" rel="noreferrer">
+              <span className="red">October 19th 2022</span>
+              <p>
+                Sri Lanka Red Cross Society Launches Elixir – Sri Lanka’s First
+                Ever Medical Donation Matching Platform
+              </p>
+            </a>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/srilankaredcross/posts/pfbid0cC25DMKmdghvTXLhJBQxscS3buPkLuB3Fu5PLCPBDmmnuEQEZGoXFRdRDBfKuvnjl"
