@@ -39,7 +39,7 @@ function Needs() {
               <thead>
                 <tr>
                   <th>Urgency</th>
-                  <th>Period MM/DD/YYYY</th>
+                  <th>Date required by MM/DD/YYYY</th>
                   <th>Hospital / Beneficiary Institution</th>
                   <th>Item Name</th>
                   <th>Type</th>
@@ -62,7 +62,7 @@ function Needs() {
                       <td>{need.item.name}</td>
                       <td>{need.item.type}</td>
                       <td>{need.item.unit}</td>
-                      <td>{need.neededQuantity}</td>
+                      <td>{need.neededQuantity.toLocaleString()}</td>
                     </tr>
                   ))}
               </tbody>
