@@ -201,7 +201,7 @@ export default function DonateNowPage() {
           </div>
           <p className="text-white">
             We are currently accepting donations to a general fund that will
-            support multiple aid packages. Please donate us using our secure
+            support multiple aid packages. Please donate using our secure
             site.
           </p>
         </div>
