@@ -85,3 +85,13 @@
   font-weight: 600;
   padding-top: 1rem;
 }
+
+.social-share-btns-section button {
+  margin-right: 0.5em;
+}
+
+.social-share-btns-section #social-text {
+  font-size: small;
+  font-weight: 200;
+  margin: 1em 0;
+}
