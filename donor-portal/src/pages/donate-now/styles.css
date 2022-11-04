@@ -41,6 +41,13 @@
   border: 1px solid var(--elixir-color-gray-500);
 }
 
+.package-card.fund-aid-package {
+  height: 12rem;
+  display: flex;
+  margin: 1rem;
+  border: 1px solid var(--elixir-color-gray-500);
+}
+
 .card-details {
   width: 100%;
   padding: 1rem;
@@ -87,6 +94,19 @@
   height: 1.5rem;
   background-color: var(--elixir-color-gray-500);
   border-radius: 0.5rem;
+}
+.donate-button {
+  color: var(--elixir-color-red);
+  background-color: white;
+}
+
+.text-white {
+  color: white;
+}
+
+.fund-aid-package {
+  color: white;
+  background-color: var(--elixir-color-red);
 }
 
 .card_details__package_progress_bar span {
