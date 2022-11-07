@@ -6,8 +6,6 @@ import {
   TwitterIcon,
   WhatsappShareButton,
   WhatsappIcon,
-  ViberShareButton,
-  ViberIcon,
   TelegramShareButton,
   TelegramIcon,
   LinkedinShareButton,
@@ -52,10 +50,6 @@ export default function SocialShare({ aidPackage, progressStatus }: Props) {
         {/* FIXME: this always uses WhatsApp web, even if the App is there - try fixing this */}
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
-      <ViberShareButton url={currentUrl} title={aidPackage.name}>
-        {/* FIXME: Doesn't seem to work on web - test on mobile - might have to disable for web */}
-        <ViberIcon size={32} round />
-      </ViberShareButton>
       <TelegramShareButton url={currentUrl} title={aidPackage.name}>
         <TelegramIcon size={32} round />
       </TelegramShareButton>
