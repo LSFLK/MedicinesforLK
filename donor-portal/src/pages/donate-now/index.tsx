@@ -5,6 +5,7 @@ import UserContext from "../../userContext";
 import { AidPackage } from "../../types/AidPackage";
 import AidPackageService from "../../apis/services/AidPackageService";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
+import fundAidPackage from "./images/give-asia.png";
 
 import "./styles.css";
 
@@ -88,10 +89,10 @@ export default function DonateNowPage() {
     AidPackage[]
   >([]);
   const [activeTabItem, setActiveTabItem] = useState<TabItems>(
-    TabItems.GOAL_REACHED
+    TabItems.GOAL_PENDING
   );
   const [concurrentActiveTabItem, setConcurrentActiveTabItem] =
-    useState<TabItems>(TabItems.GOAL_REACHED);
+    useState<TabItems>(TabItems.GOAL_PENDING);
 
   const fetchPledgedAidPackages = async (donorId: string) => {
     const returnedPledgedPackages =
@@ -179,6 +180,32 @@ export default function DonateNowPage() {
           </button>
         </div>
       </div>
+      <div className="package-card fund-aid-package">
+        <img
+          className="package-image"
+          src={fundAidPackage}
+          alt="packageImage"
+          decoding="async"
+        />
+        <div className="card-details">
+          <div className="card-details__heading">
+            <h2 className="card-details__heading__text text-white">
+              Funding Aid Packages
+            </h2>
+            <a
+              href="https://give.asia/campaign/medicince-for-sri-lanka-poject-elixir"
+              className="donate-button btn"
+            >
+              Donate
+            </a>
+          </div>
+          <p className="text-white">
+            We are currently accepting donations to a general fund that will
+            support multiple aid packages. Please donate using our secure site.
+          </p>
+        </div>
+      </div>
+
       {isLoading && <SpinnerLoader loaderText="Loading..." />}
       <div className="package-list" style={{ opacity: isPending ? 0.5 : 1 }}>
         {activeTabItem === TabItems.GOAL_PENDING &&

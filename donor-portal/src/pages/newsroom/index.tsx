@@ -1,6 +1,9 @@
 import React from "react";
 import HeroSection from "../layout/hero-section";
 import bannerImage from "./images/banner.jpg";
+import pressReleaseEnglish from "./static/press-release-english.pdf";
+import pressReleaseSinhala from "./static/press-release-sinhala.pdf";
+import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
 
 const NewsRoom = React.memo(() => {
@@ -29,6 +32,26 @@ const NewsRoom = React.memo(() => {
 
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <span className="red">October 19th 2022</span>
+            <p>
+              Sri Lanka Red Cross Society Launches Elixir – Sri Lanka’s First
+              Ever Medical Donation Matching Platform
+            </p>
+            <div className="press-release">
+              <a href={pressReleaseEnglish} target="_blank" rel="noreferrer">
+                English
+              </a>
+              &nbsp;
+              <a href={pressReleaseSinhala} target="_blank" rel="noreferrer">
+                Sinhala
+              </a>
+              &nbsp;
+              <a href={pressReleaseTamil} target="_blank" rel="noreferrer">
+                Tamil
+              </a>
+            </div>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/srilankaredcross/posts/pfbid0cC25DMKmdghvTXLhJBQxscS3buPkLuB3Fu5PLCPBDmmnuEQEZGoXFRdRDBfKuvnjl"

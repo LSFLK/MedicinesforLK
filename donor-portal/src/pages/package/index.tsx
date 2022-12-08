@@ -15,6 +15,7 @@ import UserContext from "../../userContext";
 import { Pledge } from "../../types/Pledge";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 import "./styles.css";
+import SocialShare from "./components/social-share";
 
 export default function AidPackageDetailsPage() {
   const { id: packageId } = useParams<{ id: string }>();
@@ -27,6 +28,7 @@ export default function AidPackageDetailsPage() {
   >([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pledgeAmount, setPledgeAmount] = useState<string>("");
+  const [progressStatus, setProgressStatus] = useState("");
 
   const fetchAidPackage = async () => {
     setIsLoading(true);
@@ -108,6 +110,20 @@ export default function AidPackageDetailsPage() {
       fetchPledge(userId, packageId);
   }, [userId, state.isAuthenticated]);
 
+  useEffect(() => {
+    if (aidPackage) {
+      setProgressStatus(
+        `$${aidPackage.receivedAmount.toLocaleString("en-us", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })} raised of $${aidPackage.goalAmount.toLocaleString("en-us", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })} goal`
+      );
+    }
+  }, [aidPackage?.goalAmount, aidPackage?.receivedAmount]);
+
   return (
     <>
       {isLoading && <SpinnerLoader loaderText="Loading..." />}
@@ -131,22 +147,21 @@ export default function AidPackageDetailsPage() {
 
               <div className="aid-pacakge-desc-container">
                 <p>{aidPackage.description}</p>
+
+                <div className="social-share-btns-section">
+                  <div id="social-text">
+                    Share on social to help raise awareness & donations
+                  </div>
+
+                  <SocialShare
+                    aidPackage={aidPackage}
+                    progressStatus={progressStatus}
+                  />
+                </div>
               </div>
             </div>
             <div className="aid-package-progress-container">
-              <h3>
-                $
-                {aidPackage.receivedAmount.toLocaleString("en-us", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}{" "}
-                raised of $
-                {aidPackage.goalAmount.toLocaleString("en-us", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}{" "}
-                goal.
-              </h3>
+              <h3>{progressStatus}</h3>
               <SimpleProgressBar
                 current={aidPackage.receivedAmount as number}
                 max={aidPackage.goalAmount as number}
