@@ -1,0 +1,6 @@
+form-container {
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
