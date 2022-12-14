@@ -20,7 +20,6 @@ export default function SubscriptionForm() {
           <input
             type="text"
             name="LNAME"
-            className=""
             placeholder="Last Name"
             id="mce-LNAME"
           />
