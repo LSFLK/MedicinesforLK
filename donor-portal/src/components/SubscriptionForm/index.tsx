@@ -11,8 +11,20 @@ export default function SubscriptionForm() {
       >
         <h2 style={{ color: "white" }}>Subscribe to our newsletter</h2>
         <div className="name-fields">
-          <input type="text" name="FNAME" className="" placeholder="First Name"  id="mce-FNAME" />
-          <input type="text" name="LNAME" className="" placeholder="Last Name" id="mce-LNAME" />
+          <input
+            type="text"
+            name="FNAME"
+            className=""
+            placeholder="First Name"
+            id="mce-FNAME"
+          />
+          <input
+            type="text"
+            name="LNAME"
+            className=""
+            placeholder="Last Name"
+            id="mce-LNAME"
+          />
         </div>
         <input
           type="email"
