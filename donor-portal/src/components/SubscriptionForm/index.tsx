@@ -22,10 +22,11 @@ export default function SubscriptionForm() {
           placeholder="Email Address"
           required
         />
-        <br />
-        <button type="submit" className="btn">
-          Subscribe
-        </button>
+        <div>
+          <button type="submit" className="btn">
+            Subscribe
+          </button>
+        </div>
       </form>
     </div>
   );

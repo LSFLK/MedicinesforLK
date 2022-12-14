@@ -13,10 +13,10 @@
 }
 
 .form-container form {
-    width: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form-container label {
@@ -45,6 +45,8 @@
   background-color: white;
   color: black;
   border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 1.5rem
 }
 
 ::placeholder {
@@ -54,11 +56,11 @@
 
 @media only screen and (max-width: 424px) {
   .form-container .name-fields {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 0rem;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0rem;
+  }
 }
 
 
