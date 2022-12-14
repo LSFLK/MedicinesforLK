@@ -18,6 +18,7 @@ const Footer = React.memo(() => {
           </button>
         </div>
       </div>
+      <SubscriptionForm />
       <div className="footer-gray">
         <div className="footer-gray-top">
           <div className="icons">
@@ -66,7 +67,6 @@ const Footer = React.memo(() => {
           </Link>
         </div>
       </div>
-      <SubscriptionForm />
       <div className="footer-gray-bottom">
         <p>
           All content copyright © 2022 Sri Lanka Red Cross.
