@@ -14,7 +14,6 @@ export default function SubscriptionForm() {
           <input
             type="text"
             name="FNAME"
-            className=""
             placeholder="First Name"
             id="mce-FNAME"
           />
