@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   background-color: #333333;
+  padding-bottom: 1rem;
 }
 
 .form-container h2 {
