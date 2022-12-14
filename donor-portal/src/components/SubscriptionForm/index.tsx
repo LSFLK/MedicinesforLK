@@ -10,27 +10,18 @@ export default function SubscriptionForm() {
         target="_self"
       >
         <h2 style={{ color: "white" }}>Subscribe to our newsletter</h2>
-        <div>
-          <label htmlFor="mce-FNAME">
-            First Name
-            <input type="text" name="FNAME" className="" id="mce-FNAME" />
-          </label>
-          <label htmlFor="mce-LNAME">
-            Last Name
-            <input type="text" name="LNAME" className="" id="mce-LNAME" />
-          </label>
+        <div className="name-fields">
+          <input type="text" name="FNAME" className="label" placeholder="First Name"  id="mce-FNAME" />
+          <input type="text" name="LNAME" className="label" placeholder="Last Name" id="mce-LNAME" />
         </div>
-
-        <label htmlFor="mce-EMAIL">
-          Email Address <span className="asterisk">*</span>
-          <input
-            type="email"
-            name="EMAIL"
-            className="required email"
-            id="mce-EMAIL"
-            required
-          />
-        </label>
+        <input
+          type="email"
+          name="EMAIL"
+          className="required email"
+          id="mce-EMAIL"
+          placeholder="Email Address"
+          required
+        />
         <br />
         <button type="submit" className="btn">
           Subscribe

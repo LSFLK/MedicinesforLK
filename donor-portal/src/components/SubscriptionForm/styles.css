@@ -1,6 +1,64 @@
-form-container {
+.form-container {
   color: white;
-  padding: 1rem;
+  padding: 4rem;
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.form-container h2 {
+  margin-bottom: 2rem;
+}
+
+.form-container form {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container label {
+  padding: 1rem;
+}
+
+.form-container .name-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.form-container input {
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+  border: 0.3px solid white;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.form-container button {
+  height: 35px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: white;
+  color: var(--elixir-color-red);
+  border-radius: 10px;
+}
+
+::placeholder {
+  color: var(--elixir-color-red);
+  opacity: 0.8;
+}
+
+@media only screen and (min-width: 424px) {
+  
+}
+
+@media only screen and (max-width: 424px) {
+  .form-container .name-fields {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0rem;
+    }
 }
