@@ -1,9 +1,10 @@
 .form-container {
   color: white;
-  padding: 4rem;
+  padding: 4rem 4rem 0rem 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #333333;
 }
 
 .form-container h2 {
@@ -41,17 +42,13 @@
   font-size: 15px;
   font-weight: 500;
   background-color: white;
-  color: var(--elixir-color-red);
+  color: black;
   border-radius: 10px;
 }
 
 ::placeholder {
-  color: var(--elixir-color-red);
+  color: black;
   opacity: 0.8;
-}
-
-@media only screen and (min-width: 424px) {
-  
 }
 
 @media only screen and (max-width: 424px) {
@@ -61,4 +58,11 @@
       justify-content: flex-start;
       gap: 0rem;
     }
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .form-container h2 {
+    font-size: 32px;
+  }
 }
