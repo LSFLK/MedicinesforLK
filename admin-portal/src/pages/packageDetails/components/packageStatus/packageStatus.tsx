@@ -28,7 +28,7 @@ export default function PackageStatus({
                   });
                 }}
               />
-              <label htmlFor={key}>{status}</label>
+              <label style={{color:status===currentStatus?'black':'gray'}}  htmlFor={key}>{status}</label>
               {index + 1 < Object.entries(AidPackage.Status).length && (
                 <span>&nbsp;&gt;&nbsp;</span>
               )}
