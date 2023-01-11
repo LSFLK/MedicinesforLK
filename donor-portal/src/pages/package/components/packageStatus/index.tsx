@@ -17,7 +17,11 @@ export default function PackageStatus({ currentStatus }: PackageStatusProps) {
               {status !== AidPackage.Status.Draft && (
                 <>
                   {status === currentStatus && (
-                    <span className="checkMark">✔ </span>
+                      <input
+                          type="checkbox"
+                          id={key}
+                          checked={status === currentStatus}
+                      />
                   )}
                   {status}
                   {index + 1 < Object.entries(AidPackage.Status).length && (
