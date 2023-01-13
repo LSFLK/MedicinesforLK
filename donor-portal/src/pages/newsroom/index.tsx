@@ -7,6 +7,7 @@ import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
 
 const NewsRoom = React.memo(() => {
+  /* eslint-disable-next-line global-require */
   return (
     <div className="news-room">
       <HeroSection title="News Room" image={bannerImage} />
@@ -32,6 +33,21 @@ const NewsRoom = React.memo(() => {
 
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid0Cw9T4BJgc63CvAnieRpNF99GhKdJASpsT9xQKPBJtqPXsTQFoBfntRmd3GHBARhfl/?mibextid=Nif5oz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">Jan 11th, 2023</span>
+              <p>
+                Vital surgical supplies valued at over 2 million rupees handed
+                over to the Kandy National Hospital through the Sri Lanka Red
+                Cross Society.
+              </p>
+              <div className="news-room-image" />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <span className="red">October 19th 2022</span>
             <p>
