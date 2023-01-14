@@ -6,6 +6,7 @@ import pressReleaseSinhala from "./static/press-release-sinhala.pdf";
 import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
 import kandyDonationImage from "./images/kandy_donation.jpg";
+import microsoftDonation from "./images/microsoft_donation.jpg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -47,6 +48,26 @@ const NewsRoom = React.memo(() => {
               </p>
               <img
                 src={kandyDonationImage}
+                alt="kandy_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid02puSRKL5kprdmM23t5gPqwN2jRDyGCqvU7LMRGJUeS99RqAwqtWJnzat6PyBciqnl/?sfnsn=mo"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">January 9th, 2023</span>
+              <p>
+                Microsoft donates medicines worth USD 20,000 through Elixir
+                system, to help overcome the current medicine shortage in Sri
+                Lanka.
+              </p>
+              <img
+                src={microsoftDonation}
                 alt="kandy_donation"
                 decoding="async"
                 loading="lazy"
