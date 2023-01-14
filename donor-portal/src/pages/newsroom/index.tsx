@@ -5,7 +5,7 @@ import pressReleaseEnglish from "./static/press-release-english.pdf";
 import pressReleaseSinhala from "./static/press-release-sinhala.pdf";
 import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
-import kandy_donation_image from "./images/kandy_donation.jpg";
+import kandyDonationImage from "./images/kandy_donation.jpg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -46,7 +46,7 @@ const NewsRoom = React.memo(() => {
                 Cross Society.
               </p>
               <img
-                src={kandy_donation_image}
+                src={kandyDonationImage}
                 alt="kandy_donation"
                 decoding="async"
                 loading="lazy"
