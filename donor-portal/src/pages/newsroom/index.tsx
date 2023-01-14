@@ -8,6 +8,7 @@ import "./styles.css";
 import kandyDonationImage from "./images/kandy_donation.jpg";
 import microsoftDonation from "./images/microsoft_donation.jpg";
 
+
 const NewsRoom = React.memo(() => {
   return (
     <div className="news-room">
