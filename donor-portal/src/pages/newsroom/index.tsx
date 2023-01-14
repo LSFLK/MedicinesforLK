@@ -5,9 +5,9 @@ import pressReleaseEnglish from "./static/press-release-english.pdf";
 import pressReleaseSinhala from "./static/press-release-sinhala.pdf";
 import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
+import kandy_donation_image from "./images/kandy_donation.jpg";
 
 const NewsRoom = React.memo(() => {
-  /* eslint-disable-next-line global-require */
   return (
     <div className="news-room">
       <HeroSection title="News Room" image={bannerImage} />
@@ -45,7 +45,12 @@ const NewsRoom = React.memo(() => {
                 over to the Kandy National Hospital through the Sri Lanka Red
                 Cross Society.
               </p>
-              <div className="news-room-image" />
+              <img
+                src={kandy_donation_image}
+                alt="kandy_donation"
+                decoding="async"
+                loading="lazy"
+              />
             </a>
           </div>
           <div className="news-article-list-item">
