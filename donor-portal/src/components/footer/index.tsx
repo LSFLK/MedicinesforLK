@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import SubscriptionForm from "../SubscriptionForm";
 
 const Footer = React.memo(() => {
   return (
@@ -17,6 +18,7 @@ const Footer = React.memo(() => {
           </button>
         </div>
       </div>
+      <SubscriptionForm />
       <div className="footer-gray">
         <div className="footer-gray-top">
           <div className="icons">
