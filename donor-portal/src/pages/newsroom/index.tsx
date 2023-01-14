@@ -39,7 +39,7 @@ const NewsRoom = React.memo(() => {
               target="_blank"
               rel="noreferrer"
             >
-              <span className="red">Jan 11th, 2023</span>
+              <span className="red">January 11th, 2023</span>
               <p>
                 Vital surgical supplies valued at over 2 million rupees handed
                 over to the Kandy National Hospital through the Sri Lanka Red
