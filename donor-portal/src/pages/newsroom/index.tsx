@@ -32,6 +32,7 @@ const NewsRoom = React.memo(() => {
             </span>
           </div>
         </div>
+        
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
           <div className="news-article-list-item">
