@@ -5,6 +5,7 @@ import pressReleaseEnglish from "./static/press-release-english.pdf";
 import pressReleaseSinhala from "./static/press-release-sinhala.pdf";
 import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
+import singaporeRedCrossDonation from "./images/singapore_cross_donation.jpg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -29,9 +30,28 @@ const NewsRoom = React.memo(() => {
             </span>
           </div>
         </div>
-
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid02vuZFpZdr6BVaGFtRTTfkWE3NnZKxcp3NtzLG9JKy1UhWvY2AxCTa2ZqYFzzxZ6mHl/?mibextid=Nif5oz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">January 24, 2023</span>
+              <p>
+                The Singapore Red Cross recently donated medicine and medical
+                equipment to the Ministry of Health valued at over USD 85,000
+                towards resolving the ongoing crisis.
+              </p>
+              <img
+                src={singaporeRedCrossDonation}
+                alt="singapore_red_cross_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <span className="red">October 19th 2022</span>
             <p>
