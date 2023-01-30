@@ -5,6 +5,8 @@ import pressReleaseEnglish from "./static/press-release-english.pdf";
 import pressReleaseSinhala from "./static/press-release-sinhala.pdf";
 import pressReleaseTamil from "./static/press-release-tamil.pdf";
 import "./styles.css";
+import kandyDonationImage from "./images/kandy_donation.jpg";
+import microsoftDonation from "./images/microsoft_donation.jpg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -32,6 +34,46 @@ const NewsRoom = React.memo(() => {
 
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid0Cw9T4BJgc63CvAnieRpNF99GhKdJASpsT9xQKPBJtqPXsTQFoBfntRmd3GHBARhfl/?mibextid=Nif5oz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">January 11th, 2023</span>
+              <p>
+                Vital surgical supplies valued at over 2 million rupees handed
+                over to the Kandy National Hospital through the Sri Lanka Red
+                Cross Society.
+              </p>
+              <img
+                src={kandyDonationImage}
+                alt="kandy_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid02puSRKL5kprdmM23t5gPqwN2jRDyGCqvU7LMRGJUeS99RqAwqtWJnzat6PyBciqnl/?sfnsn=mo"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">January 9th, 2023</span>
+              <p>
+                Microsoft donates medicines worth USD 20,000 through Elixir
+                system, to help overcome the current medicine shortage in Sri
+                Lanka.
+              </p>
+              <img
+                src={microsoftDonation}
+                alt="kandy_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <span className="red">October 19th 2022</span>
             <p>
