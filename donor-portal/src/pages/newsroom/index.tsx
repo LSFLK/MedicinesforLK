@@ -8,6 +8,7 @@ import "./styles.css";
 import kandyDonationImage from "./images/kandy_donation.jpg";
 import microsoftDonation from "./images/microsoft_donation.jpg";
 import singaporeRedCrossDonation from "./images/singapore_red_cross_donation.jpg";
+import uberSriLankaDonation from "./images/uber_sri_lanka_donation.jpg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -35,6 +36,25 @@ const NewsRoom = React.memo(() => {
 
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid02kM7Ti4Q3i4Kq4hrrfxdagcJsR5v81zNVZ2uNiNuf8wU88sWTJi2kUG51FwP14MNZl/?sfnsn=mo"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">February 2, 2023</span>
+              <p>
+                Uber Sri Lanka donates medicines to the Ministry of Health Sri
+                Lanka valued at over USD $15,000 (LKR 5,000,000) through Elixir
+              </p>
+              <img
+                src={uberSriLankaDonation}
+                alt="uber_sri_lanka_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/133902706641597/posts/pfbid02vuZFpZdr6BVaGFtRTTfkWE3NnZKxcp3NtzLG9JKy1UhWvY2AxCTa2ZqYFzzxZ6mHl/?mibextid=Nif5oz"
