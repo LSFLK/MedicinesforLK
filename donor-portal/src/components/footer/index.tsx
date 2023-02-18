@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 import SubscriptionForm from "../SubscriptionForm";
 
 const Footer = React.memo(() => {
@@ -28,6 +34,13 @@ const Footer = React.memo(() => {
               rel="noreferrer"
             >
               <FaFacebookF className="icon" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/sri-lanka-red-cross-societysl/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin className="icon" />
             </a>
             <a
               href="https://twitter.com/SLRedCross"

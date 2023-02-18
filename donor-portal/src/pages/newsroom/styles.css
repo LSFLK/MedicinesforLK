@@ -46,6 +46,18 @@
   display: flex;
 }
 
+.news-article-list-item img {
+  max-width: 400px;
+  max-height: 350px;
+}
+
+@media screen and (max-width: 900px) {
+  .news-article-list-item img {
+    max-width: 200px;
+    max-height: 175px;
+  }
+}
+
 .news-room .contact-section {
   display: flex;
   flex-direction: column;
