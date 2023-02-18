@@ -9,6 +9,7 @@ import kandyDonationImage from "./images/kandy_donation.jpg";
 import microsoftDonation from "./images/microsoft_donation.jpg";
 import singaporeRedCrossDonation from "./images/singapore_red_cross_donation.jpg";
 import uberSriLankaDonation from "./images/uber_sri_lanka_donation.jpg";
+import mapInternationalDonation from "./images/map_international_donation.png";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -36,6 +37,28 @@ const NewsRoom = React.memo(() => {
 
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid02fG8wvq4HNr8DoH4K2s3DE1SYSuJ1NGiWak6WNMibEr5zzcHHARm2W4uFRMCgdNwfl/?mibextid=Nif5oz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">February 2, 2023</span>
+              <p>
+                Sri Lanka Red Cross Society&apos;s medical donation matching
+                platform, &apos;Elixir,&apos; facilitated a donation of
+                medicines and medical equipment worth more than USD 512,000.00
+                by MAP International and Sevalanka Foundation, aiming to support
+                the health sector&apos;s ongoing crisis
+              </p>
+              <img
+                src={mapInternationalDonation}
+                alt="map_international_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/133902706641597/posts/pfbid02kM7Ti4Q3i4Kq4hrrfxdagcJsR5v81zNVZ2uNiNuf8wU88sWTJi2kUG51FwP14MNZl/?sfnsn=mo"
