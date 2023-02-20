@@ -45,8 +45,18 @@
 .press-release {
   display: flex;
 }
-
-.news-article-list-item img {
+.introduction-video video{
+  max-width: 100vw;
+  max-height: 50vh;
+}
+@media screen and (max-width: 900px){
+  .introduction-video video{
+    max-width: 100vw;
+    max-height: 350px;
+    margin-top: 1.5rem;
+  }
+}
+  .news-article-list-item img{
   max-width: 400px;
   max-height: 350px;
 }
