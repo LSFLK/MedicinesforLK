@@ -46,6 +46,12 @@
   display: flex;
 }
 
+.introduction-video{
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .introduction-video video{
   max-width: 100vw;
   max-height: 50vh;
