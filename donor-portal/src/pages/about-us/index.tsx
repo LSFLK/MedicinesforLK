@@ -55,6 +55,7 @@ const volunteers = [
   "Nilesh Jayanandana",
   "Ryan Kuruppu",
   "Dr.Laura Leets",
+  "Tharindu Lakshan",
 ];
 
 const AboutUs = React.memo(() => {
