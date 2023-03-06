@@ -104,6 +104,10 @@
   align-items: center;
 }
 
+.introduction-video{
+  margin-top: 30px;
+}
+
 @media screen and (max-width: 900px) {
   .home-description,
   .home-description-text,

@@ -12,6 +12,7 @@ import microsoftLogo from "./images/microsoft-logo.png";
 import uberLogo from "./images/uber-logo.png";
 import payPalLogo from "./images/paypal-logo.png";
 import "./styles.css";
+import introductionVideo from "./video/introduction_to_elixir_video.mp4";
 
 export default function Home() {
   return (
@@ -21,6 +22,11 @@ export default function Home() {
           title="Coordinated donations for Sri&nbsp;Lanka’s medical supply needs"
           image={bannerImage}
         />
+      </div>
+      <div className="main-container introduction-video">
+        <video src={introductionVideo} controls>
+          <track kind="captions" />
+        </video>
       </div>
       <div className="main-container">
         <div className="home-description">
