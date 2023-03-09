@@ -106,6 +106,7 @@
 
 .introduction-video{
   margin-top: 30px;
+  min-height:0;
 }
 
 @media screen and (max-width: 900px) {
