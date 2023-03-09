@@ -10,7 +10,6 @@ import microsoftDonation from "./images/microsoft_donation.jpg";
 import singaporeRedCrossDonation from "./images/singapore_red_cross_donation.jpg";
 import uberSriLankaDonation from "./images/uber_sri_lanka_donation.jpg";
 import mapInternationalDonation from "./images/map_international_donation.png";
-import introductionVideo from "./video/introduction_to_elixir_video.mp4";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -34,11 +33,6 @@ const NewsRoom = React.memo(() => {
               [E] <a href="mailto:elixir@redcross.lk">elixir@redcross.lk</a>
             </span>
           </div>
-        </div>
-        <div className="introduction-video">
-          <video src={introductionVideo} controls>
-            <track kind="captions" />
-          </video>
         </div>
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
