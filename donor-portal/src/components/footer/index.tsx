@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import SubscriptionForm from "../SubscriptionForm";
 
-const date = new Date(); 
+const date = new Date();
 const Footer = React.memo(() => {
   return (
     <footer className="footer">
@@ -95,6 +95,5 @@ const Footer = React.memo(() => {
     </footer>
   );
 });
-
 
 export default Footer;
