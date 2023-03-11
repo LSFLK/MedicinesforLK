@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import SubscriptionForm from "../SubscriptionForm";
 
+const date = new Date(); 
 const Footer = React.memo(() => {
   return (
     <footer className="footer">
@@ -82,7 +83,7 @@ const Footer = React.memo(() => {
       </div>
       <div className="footer-gray-bottom">
         <p>
-          All content copyright © 2022 Sri Lanka Red Cross.
+          All content copyright © {(new Date()).getFullYear()} Sri Lanka Red Cross.
           <br className="visible-sm" />
           All rights reserved. |
           <a href=" https://www.redcross.lk/who-we-are/our-legal-status-in-sri-lanka/">
@@ -94,5 +95,6 @@ const Footer = React.memo(() => {
     </footer>
   );
 });
+
 
 export default Footer;
