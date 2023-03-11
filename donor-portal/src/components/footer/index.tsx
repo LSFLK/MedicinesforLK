@@ -83,7 +83,7 @@ const Footer = React.memo(() => {
       </div>
       <div className="footer-gray-bottom">
         <p>
-          All content copyright © {(new Date()).getFullYear()} Sri Lanka Red Cross.
+          All content copyright © {date.getFullYear()} Sri Lanka Red Cross.
           <br className="visible-sm" />
           All rights reserved. |
           <a href=" https://www.redcross.lk/who-we-are/our-legal-status-in-sri-lanka/">
