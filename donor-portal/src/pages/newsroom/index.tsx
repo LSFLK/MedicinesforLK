@@ -46,9 +46,9 @@ const NewsRoom = React.memo(() => {
               <span className="red">8th March 2023</span>
               <p>
                 Sri Lanka Red Cross Society&apos;s medical donation matching
-                platform, &quot;ELIXIR&quot;, takes pride in the contribution of USD
-                2467.53 by الهلال الاحمر القطري Qatar Red Crescent, which was
-                donated on March 8, 2023, in support of the ongoing crisis.
+                platform, &quot;ELIXIR&quot;, takes pride in the contribution of
+                USD 2467.53 by الهلال الاحمر القطري Qatar Red Crescent, which
+                was donated on March 8, 2023, in support of the ongoing crisis.
               </p>
               <img
                 src={qatarRedCrescentDonation}
