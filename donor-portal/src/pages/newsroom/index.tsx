@@ -11,7 +11,7 @@ import singaporeRedCrossDonation from "./images/singapore_red_cross_donation.jpg
 import uberSriLankaDonation from "./images/uber_sri_lanka_donation.jpg";
 import mapInternationalDonation from "./images/map_international_donation.png";
 import qatarRedCrescentDonation from "./images/qatar_Red_Crescent_donation.jpg";
-import redCrossAndRedCrescentSocietiesDonation from "./images/Red_Cross_and_Red_Crescent_Societies_donation.jpeg"
+import redCrossAndRedCrescentSocietiesDonation from "./images/Red_Cross_and_Red_Crescent_Societies_donation.jpeg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -46,7 +46,10 @@ const NewsRoom = React.memo(() => {
             >
               <span className="red">March 22, 2023</span>
               <p>
-              International Federation of Red Cross and Red Crescent Societies(IFRC) donated USD 41,531.88 on March 22, 2023 via &quot;Elixir&quot;, Sri Lanka&apos;s first medical donation matching platform by the Sri Lanka Red Cross Society.
+                International Federation of Red Cross and Red Crescent
+                Societies(IFRC) donated USD 41,531.88 on March 22, 2023 via
+                &quot;Elixir&quot;, Sri Lanka&apos;s first medical donation
+                matching platform by the Sri Lanka Red Cross Society.
               </p>
               <img
                 src={redCrossAndRedCrescentSocietiesDonation}
