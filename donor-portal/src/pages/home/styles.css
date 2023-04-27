@@ -104,9 +104,9 @@
   align-items: center;
 }
 
-.introduction-video{
+.introduction-video {
   margin-top: 30px;
-  min-height:0;
+  min-height: 0;
 }
 
 @media screen and (max-width: 900px) {
@@ -126,4 +126,70 @@
     padding: 0rem !important;
     margin-right: 0rem !important;
   }
+
+  .testimonial,
+  .testimonial .slide,
+  .details {
+    padding: 0rem !important;
+    margin-right: 0rem !important;
+    margin-left: 1rem !important;
+    width: 90% !important;
+  }
+
+  .details .quote {
+    margin-left: 350px !important;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    margin-left: 200px !important;
+  }
+}
+
+.testimonial {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  padding: 50px 120px;
+}
+
+.testimonial .slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.slide .p {
+  padding: 0 160px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: flex-start;
+}
+
+.details .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+
+.details .name {
+  font-weight: 600;
+}
+
+.details .job {
+  font-weight: 200;
+}
+
+.details .quote {
+  margin-left: 180px;
 }
