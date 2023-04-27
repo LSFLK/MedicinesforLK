@@ -13,6 +13,8 @@ import uberLogo from "./images/uber-logo.png";
 import payPalLogo from "./images/paypal-logo.png";
 import "./styles.css";
 import introductionVideo from "./video/introduction_to_elixir_video.mp4";
+import quoteleft from "./images/quoteleft.svg";
+import quoteright from "./images/quoteright.svg";
 
 export default function Home() {
   return (
@@ -72,10 +74,7 @@ export default function Home() {
           </div>
         </div>
         <div className="testimonial">
-          <img
-            alt="quote"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAbVJREFUSEvtlv0xxUAUxc+rgA5QASpABagAFaACVIAK6AAVoAMqQAd0YH5mN3NzszebZIz3h7czb14m2XPOzbkfm5nmtGZz0tVC+M+cH2r1hqQDSduSLiTdD4xwT9Juwm1K+sy4mjCClwmYMdeSTirCCIJbNfv2bcB9wpADtutL0pWk80B4OWEO3fOPFGzjVCQM+bEDYzH3G7sK4i+S1s19AuUFbv3ekjA23Tkw954q9vpgXyWBey/hvDBWvUniP69WbgJxiu7RBUt9FEXZ54XJ3ZkheHaFFb00bmyZh6QlqoOfbV6YCFcMAcUAKbnDulJ+qVxcsgvbwcBH8J1lhUsEFgDJUSHXVPBNT/4JHFzLditcI4hyTsUyXPoWTjFAGnEr7PMbEXkSn98Ih/WId3I8VBjgaepprocKsxdhAmgV1xjhh9SjY4WbgKdYjdivCvuJ1Vcstk9L4zXC7uSuqPVxRLBmKrTWhpmDg6I5rbzwkJYqHYtDWqp6LCKOfUuF1+0bhZHlnFBwtj4eomORQ4LNDH+uAfELh34KEiszjn7PuM6orX2BVAbS9McL4enejUT+P6u/AezKYB+o+kHEAAAAAElFTkSuQmCC"
-          />
+          <img alt="quote" src={quoteleft} />
           <div className="slide">
             <p>
               We are grateful to the Sri Lanka Red Cross Society for donating
@@ -94,10 +93,7 @@ export default function Home() {
 
           <div className="details">
             <div className="quote">
-              <img
-                alt="quote"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAcNJREFUSEvtloEtBUEQhr9XAR2gAjpABagAFaACVIAKUAEqQAV0gA7oQD65u8zt29tbeYknYZKXe7ndf/+Z2Zl/bsKcbDInXv6Jfyzzvy7Vy8AWsN2k4AG4Bl5HUrIG7AI+34EW5/+e5SLeA86AxQzJOXA0QO7aQWZNUjFXcS0lNsKbkagugMNkzxBp3LYD3LYvUmJTuVRRYSsh7V7LSwXGs8V9WSTeAO4rDnBLjPoEOK7EdVFHYtPn3dbYI6CjmumzEGvsFNDRXsRzI7YFnmrcBmLE33E4G7Gcz8BqBXkktrjELVTgBolrD0lbqqYN9StbXK3Dktvs64UI9lNBaIpNXKkduzYsabVVqxM+lcFosY/je9XOWvFnFqLzb815U308FGDap3dBw0vXqk5HYmVThasi1nNFJer2ZiP+JVL1/jJs+Gii7YZFKdWSCvbZWk6nUwdMsbjobE+nUwGJB9ibymAExxbKReteMekA6VoognLTSdm0qKI5iz1waq42m6wDR2I6Snv3OkYcx6KVKGE3zgYuNh2LZkecwpK1NGI9drMVKdkYYXuo92rU4uzlQcLaqi5V7kxrv+5jb6ZoasB/L+JP52hWHyG0KI8AAAAASUVORK5CYII="
-              />
+              <img alt="quote" src={quoteright} />
             </div>
             <div className="info">
               <span className="name">Sri Ranganayake Bandara</span>
