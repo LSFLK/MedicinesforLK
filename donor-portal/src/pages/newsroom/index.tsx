@@ -10,7 +10,8 @@ import microsoftDonation from "./images/microsoft_donation.jpg";
 import singaporeRedCrossDonation from "./images/singapore_red_cross_donation.jpg";
 import uberSriLankaDonation from "./images/uber_sri_lanka_donation.jpg";
 import mapInternationalDonation from "./images/map_international_donation.png";
-import introductionVideo from "./video/introduction_to_elixir_video.mp4";
+import qatarRedCrescentDonation from "./images/qatar_Red_Crescent_donation.jpg";
+import redCrossAndRedCrescentSocietiesDonation from "./images/Red_Cross_and_Red_Crescent_Societies_donation.jpeg";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -35,13 +36,50 @@ const NewsRoom = React.memo(() => {
             </span>
           </div>
         </div>
-        <div className="introduction-video">
-          <video src={introductionVideo} controls>
-            <track kind="captions" />
-          </video>
-        </div>
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://web.facebook.com/133902706641597/posts/pfbid0BEgnW331SxozgLPedBqsAXFovowZiqKP5ywx86xVwoYmAsee3XnBg71eJesjN2ZTl/?mibextid=Nif5oz&_rdc=1&_rdr"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">March 22, 2023</span>
+              <p>
+                International Federation of Red Cross and Red Crescent
+                Societies(IFRC) donated USD 41,531.88 on March 22, 2023 via
+                &quot;Elixir&quot;, Sri Lanka&apos;s first medical donation
+                matching platform by the Sri Lanka Red Cross Society.
+              </p>
+              <img
+                src={redCrossAndRedCrescentSocietiesDonation}
+                alt="Red_Cross_and_Red_Crescent_Societies_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid033d95cjgxEdnsCYfUwQoC566Hddm7g14tLRxPnjMPHLcyvxHKkXySKtJSjqeFbtwGl/?mibextid=Nif5oz"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">8th March 2023</span>
+              <p>
+                Sri Lanka Red Cross Society&apos;s medical donation matching
+                platform, &quot;ELIXIR&quot;, takes pride in the contribution of
+                USD 2467.53 by الهلال الاحمر القطري Qatar Red Crescent, which
+                was donated on March 8, 2023, in support of the ongoing crisis.
+              </p>
+              <img
+                src={qatarRedCrescentDonation}
+                alt="qatar_Red_Crescent_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/133902706641597/posts/pfbid02fG8wvq4HNr8DoH4K2s3DE1SYSuJ1NGiWak6WNMibEr5zzcHHARm2W4uFRMCgdNwfl/?mibextid=Nif5oz"

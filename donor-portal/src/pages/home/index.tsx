@@ -12,6 +12,9 @@ import microsoftLogo from "./images/microsoft-logo.png";
 import uberLogo from "./images/uber-logo.png";
 import payPalLogo from "./images/paypal-logo.png";
 import "./styles.css";
+import introductionVideo from "./video/introduction_to_elixir_video.mp4";
+import quoteleft from "./images/quoteleft.svg";
+import quoteright from "./images/quoteright.svg";
 
 export default function Home() {
   return (
@@ -21,6 +24,11 @@ export default function Home() {
           title="Coordinated donations for Sri&nbsp;Lanka’s medical supply needs"
           image={bannerImage}
         />
+      </div>
+      <div className="main-container introduction-video">
+        <video src={introductionVideo} controls muted autoPlay>
+          <track kind="captions" />
+        </video>
       </div>
       <div className="main-container">
         <div className="home-description">
@@ -63,6 +71,35 @@ export default function Home() {
               from both organizations and individuals. Check out our{" "}
               <Link to="/donate-now">aid packages</Link> to get started.
             </p>
+          </div>
+        </div>
+        <div className="testimonial">
+          <img alt="quote" src={quoteleft} />
+          <div className="slide">
+            <p>
+              We are grateful to the Sri Lanka Red Cross Society for donating
+              Sevoflurane to our hospital; with their assistance, we were able
+              to treat patients in all operating rooms for more than three
+              months. Because of the ongoing crisis, operations were temporarily
+              halted, causing issues with our service to our patients. SLRCS
+              &apos; s contribution made things easier and allowed almost all of
+              the hospital &apos; s operating rooms to continue. The donated
+              medication is a critical medication that must be available in
+              hospitals. The donation totaled two million rupees, and we used it
+              to treat over 100 patients. We are extremely grateful for the
+              assistance provided,
+            </p>
+          </div>
+
+          <div className="details">
+            <div className="quote">
+              <img alt="quote" src={quoteright} />
+            </div>
+            <div className="info">
+              <span className="name">Sri Ranganayake Bandara</span>
+              <span className="job">The Ward Master</span>
+              <span className="job">National Hospital in Kandy</span>
+            </div>
           </div>
         </div>
         <div className="current-donors">
