@@ -110,6 +110,9 @@
   margin-top: 30px;
   min-height: 0;
 }
+.intro-video{
+  width: 90%;
+}
 
 @media screen and (max-width: 900px) {
   .home-description,
@@ -148,6 +151,9 @@
     align-items: flex-start !important;
     justify-content: flex-start !important;
     margin-left: 200px !important;
+  }
+  .introduction-video {
+    margin-top: 70px;
   }
 }
 
