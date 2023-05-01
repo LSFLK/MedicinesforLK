@@ -26,7 +26,13 @@ export default function Home() {
         />
       </div>
       <div className="main-container introduction-video">
-        <video src={introductionVideo} controls muted autoPlay>
+        <video
+          className="intro-video"
+          src={introductionVideo}
+          controls
+          muted
+          autoPlay
+        >
           <track kind="captions" />
         </video>
       </div>
