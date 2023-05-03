@@ -22,7 +22,6 @@ export default function HeroSection({
       <div className="container">
         <div className="hero-text">
           <div className="title">{title}</div>
-
           <a
             href=" https://give.asia/campaign/medicince-for-sri-lanka-poject-elixir/donate?#/amount"
             className="btn"
