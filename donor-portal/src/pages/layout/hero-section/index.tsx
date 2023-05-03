@@ -23,9 +23,13 @@ export default function HeroSection({
       <div className="container">
         <div className="hero-text">
           <div className="title">{title}</div>
-          <Link to="/donate-now" className="btn">
-            Donate Now <FaAngleRight className="icon" />
-          </Link>
+
+          <a
+            href=" https://give.asia/campaign/medicince-for-sri-lanka-poject-elixir/donate?#/amount"
+            className="btn"
+          >
+            Donate Now <FaAngleRight className="icon" />{" "}
+          </a>
         </div>
       </div>
     </div>
