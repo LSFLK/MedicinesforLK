@@ -12,6 +12,8 @@ import uberSriLankaDonation from "./images/uber_sri_lanka_donation.jpg";
 import mapInternationalDonation from "./images/map_international_donation.png";
 import qatarRedCrescentDonation from "./images/qatar_Red_Crescent_donation.jpg";
 import redCrossAndRedCrescentSocietiesDonation from "./images/Red_Cross_and_Red_Crescent_Societies_donation.jpeg";
+import singaporeRedCrossDonation2 from "./images/singapore_red_cross_donation2.png";
+import mapInternationalAndSevalankaFoundationDonation from "./images/map_international_and_Sevalanka_foundation_donation.png";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -38,6 +40,47 @@ const NewsRoom = React.memo(() => {
         </div>
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid024HHW99mWSMq33pZCfsksFsTd7CzU4vYaQRLGoxUFfGNZJtf9kcAHV6WeFo41MR15l/?sfnsn=mo&mibextid=RUbZ1f"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">May 9, 2023</span>
+              <p>
+                MAP International and Sevalanka Foundation donated US$ 512,000
+                on May 09th, 2023 via &apos;Elixir&apos;, Sri Lanka&apos;s first
+                medical donation matching platform by the Sri Lanka Red Cross
+                Society.
+              </p>
+              <img
+                src={mapInternationalAndSevalankaFoundationDonation}
+                alt="map_international_and_Sevalanka_foundation_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div className="news-article-list-item">
+            <a
+              href="https://www.facebook.com/133902706641597/posts/pfbid0HCU5eg9cUyDRgcL96HE9E23LTdb5yvpssKFKjvyok1utawT3Qef39q1xuJHj5ZJ4l/?sfnsn=mo&mibextid=RUbZ1f"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">April 10, 2023</span>
+              <p>
+                Singapore Red Cross donated USD 149,148.99. on April 10th, 2023
+                via &apos;Elixir&apos;, Sri Lanka&apos;s first medical donation
+                matching platform by the Sri Lanka Red Cross Society.
+              </p>
+              <img
+                src={singaporeRedCrossDonation2}
+                alt="singapore_Red_Cross_Donation2"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://web.facebook.com/133902706641597/posts/pfbid0BEgnW331SxozgLPedBqsAXFovowZiqKP5ywx86xVwoYmAsee3XnBg71eJesjN2ZTl/?mibextid=Nif5oz&_rdc=1&_rdr"
