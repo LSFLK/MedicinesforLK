@@ -14,6 +14,7 @@ import qatarRedCrescentDonation from "./images/qatar_Red_Crescent_donation.jpg";
 import redCrossAndRedCrescentSocietiesDonation from "./images/Red_Cross_and_Red_Crescent_Societies_donation.jpeg";
 import singaporeRedCrossDonation2 from "./images/singapore_red_cross_donation2.png";
 import mapInternationalAndSevalankaFoundationDonation from "./images/map_international_and_Sevalanka_foundation_donation.png";
+import mbaAlumniGroupDonation from "./images/mba_alumni_group_donation.png";
 
 const NewsRoom = React.memo(() => {
   return (
@@ -40,6 +41,27 @@ const NewsRoom = React.memo(() => {
         </div>
         <div className="news-article-list">
           <h2 className="news-title">News </h2>
+          <div className="news-article-list-item">
+            <a
+              href="https://web.facebook.com/story.php?story_fbid=pfbid02kzJXLynBFfrsr1azCpGbSMumeqCPKX9V9wHPheNSmREgfNTqVqVN9AhVAomENmi8l&id=100067635049895&sfnsn=mo&mibextid=RUbZ1f&_rdc=1&_rdr"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="red">May 22, 2023</span>
+              <p>
+                Private donors - MBA Alumni Group donated LKR 150,000 (US
+                $489.78) on May 22nd, 2023 via &apos;Elixir&apos;, Sri
+                Lanka&apos;s first medical donation matching platform by the Sri
+                Lanka Red Cross Society.
+              </p>
+              <img
+                src={mbaAlumniGroupDonation}
+                alt="mba_alumni_group_donation"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+          </div>
           <div className="news-article-list-item">
             <a
               href="https://www.facebook.com/133902706641597/posts/pfbid024HHW99mWSMq33pZCfsksFsTd7CzU4vYaQRLGoxUFfGNZJtf9kcAHV6WeFo41MR15l/?sfnsn=mo&mibextid=RUbZ1f"
