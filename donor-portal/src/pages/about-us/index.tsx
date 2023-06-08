@@ -207,24 +207,6 @@ const AboutUs = React.memo(() => {
           <h2>Partners</h2>
           <div className="partner-card-container">
             <div className="partner-section-card">
-              <a href="https://web.facebook.com/flipitmedialk/">
-                <img
-                  src={flipitLogo}
-                  alt="Flipit Logo"
-                  decoding="async"
-                  loading="lazy"
-                />
-              </a>
-              <p>
-                Flipit Media is a creative content creation agency specializing
-                in Cinematography, Photography, Advertising Collateral, Social
-                Media Marketing, 2D/3D Animation, and Architectural
-                visualization. Our services also include Content Strategy &
-                Creation, Strategizing & Consultancy Services for Advertising on
-                Mass Media and Digital platforms.
-              </p>
-            </div>
-            <div className="partner-section-card">
               <a href="https://www.redcross.lk/">
                 <img
                   src={slRedCrossLogo}
@@ -355,6 +337,25 @@ const AboutUs = React.memo(() => {
               </p>
             </div>
           </div>
+          <div className="partner-section-card">
+            <a href="https://web.facebook.com/flipitmedialk/">
+              <img
+                src={flipitLogo}
+                alt="Flipit Logo"
+                decoding="async"
+                loading="lazy"
+              />
+            </a>
+            <p>
+              Flipit Media is a creative content creation agency specializing in
+              Cinematography, Photography, Advertising Collateral, Social Media
+              Marketing, 2D/3D Animation, and Architectural visualization. Our
+              services also include Content Strategy & Creation, Strategizing &
+              Consultancy Services for Advertising on Mass Media and Digital
+              platforms.
+            </p>
+          </div>
+
           <h2>Volunteers</h2>
           <ul className="volunteers-section">
             {volunteers.map((volunteer) => (
