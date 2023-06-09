@@ -11,6 +11,7 @@ import lastWordLogo from "./images/the-last-word-logo.png";
 import wso2logo from "./images/wso2.png";
 import eclektikLogo from "./images/eclektikLogo.jpeg";
 import "./styles.css";
+import flipitLogo from "./images/flipitLogo.png";
 
 const volunteers = [
   "Anupama Pathirage",
@@ -201,7 +202,6 @@ const AboutUs = React.memo(() => {
             </div>
           </div>
         </div>
-
         <div className="partner-section">
           <h2>Partners</h2>
           <div className="partner-card-container">
@@ -333,6 +333,24 @@ const AboutUs = React.memo(() => {
                 suite of design solutions that include online video marketing
                 materials, trade-show graphics, logo designs and professional
                 brochures.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <a href="https://web.facebook.com/flipitmedialk/">
+                <img
+                  src={flipitLogo}
+                  alt="Flipit Logo"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </a>
+              <p>
+                Flipit Media is a creative content creation agency specializing
+                in Cinematography, Photography, Advertising Collateral, Social
+                Media Marketing, 2D/3D Animation, and Architectural
+                visualization. Our services also include Content Strategy &
+                Creation, Strategizing & Consultancy Services for Advertising on
+                Mass Media and Digital platforms.
               </p>
             </div>
           </div>
