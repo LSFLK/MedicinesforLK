@@ -12,6 +12,7 @@ import wso2logo from "./images/wso2.png";
 import eclektikLogo from "./images/eclektikLogo.jpeg";
 import "./styles.css";
 import flipitLogo from "./images/flipitLogo.png";
+import xhacksterLogo from "./images/xhacksterLogo.png";
 
 const volunteers = [
   "Anupama Pathirage",
@@ -351,6 +352,28 @@ const AboutUs = React.memo(() => {
                 visualization. Our services also include Content Strategy &
                 Creation, Strategizing & Consultancy Services for Advertising on
                 Mass Media and Digital platforms.
+              </p>
+            </div>
+            <div className="partner-section-card">
+              <a href="https://xhackster.com/">
+                <img
+                  src={xhacksterLogo}
+                  alt="Xhackster Logo"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </a>
+              <p>
+                Xhackster is a company formed with the sole objective of rooting
+                out security vulnerabilities and other potential threats on
+                behalf of our valuable clients. In this information age, it’s
+                not a question of IF you will be attacked, but rather WHEN.
+                Xhackster consultants are highly recognised in the industry to
+                deliver advice on cutting-edge information security
+                architectural solutions and conduct management control audits or
+                in-depth technical penetration testing. We believe sustainable
+                cyber security is achieved through educating our clients whilst
+                strengthening their networks and having a better war strategy.
               </p>
             </div>
           </div>
