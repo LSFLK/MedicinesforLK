@@ -355,7 +355,7 @@ const AboutUs = React.memo(() => {
               </p>
             </div>
             <div className="partner-section-card">
-              <a href="https://opensource.lk/">
+              <a href="https://xhackster.com/">
                 <img
                   src={xhacksterLogo}
                   alt="Xhackster Logo"
