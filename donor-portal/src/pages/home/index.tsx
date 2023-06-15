@@ -213,6 +213,9 @@ export default function Home() {
             <div className="donor-logo">
               <a href="https://paypal.com/" target="_blank" rel="noreferrer">
                 <img
+                  style={{
+                    margin: 25,
+                  }}
                   src={payPalLogo}
                   alt="paypal-logo"
                   decoding="async"
@@ -223,6 +226,9 @@ export default function Home() {
             <div className="donor-logo">
               <a href="https://www.map.org/" target="_blank" rel="noreferrer">
                 <img
+                  style={{
+                    margin: 25,
+                  }}
                   src={mapMedicineLogo}
                   alt="map-medicine-logo"
                   decoding="async"
