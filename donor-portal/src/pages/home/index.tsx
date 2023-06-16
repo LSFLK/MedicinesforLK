@@ -16,6 +16,7 @@ import introductionVideo from "./video/introduction_to_elixir_video.mp4";
 import quoteleft from "./images/quoteleft.svg";
 import quoteright from "./images/quoteright.svg";
 import mapMedicineLogo from "./images/map_medicine.png";
+import sevalanka from "./images/sevalanka.jpg";
 
 export default function Home() {
   return (
@@ -231,6 +232,23 @@ export default function Home() {
                   }}
                   src={mapMedicineLogo}
                   alt="map-medicine-logo"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div className="donor-logo">
+              <a
+                href="https://www.sevalanka.org/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  style={{
+                    marginBottom: 25,
+                  }}
+                  src={sevalanka}
+                  alt="sevalanka-logo"
                   decoding="async"
                   loading="lazy"
                 />
